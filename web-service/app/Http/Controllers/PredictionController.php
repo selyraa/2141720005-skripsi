@@ -78,9 +78,9 @@ class PredictionController extends Controller
         ]);
 
         try {
-            $predictionUrl = env('PREDICTION_URL', 'http://localhost:5000/predict');
+            $predictionUrl = config('app.prediction_url');
 
-            $response = Http::post($predictionUrl, [
+            $response = Http::post($predictionUrl + "/predict", [
                 'age' => (float) $request->age,
                 'height' => (float) $request->height,
                 'weight' => (float) $request->weight,
