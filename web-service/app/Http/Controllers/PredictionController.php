@@ -80,7 +80,7 @@ class PredictionController extends Controller
         try {
             $predictionUrl = config('app.prediction_url');
 
-            $response = Http::post($predictionUrl + "/predict", [
+            $response = Http::post($predictionUrl . "/predict", [
                 'age' => (float) $request->age,
                 'height' => (float) $request->height,
                 'weight' => (float) $request->weight,
