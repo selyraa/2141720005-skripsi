@@ -15,6 +15,8 @@ return [
 
     'name' => env('APP_NAME', 'Laravel'),
 
+    'prediction_url' => env('PREDICTION_URL', 'http://localhost:5000'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Environment
