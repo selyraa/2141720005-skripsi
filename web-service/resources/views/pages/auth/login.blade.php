@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
     <!-- Core Css -->
     <link rel="stylesheet" href="{{asset('assets/css/theme.css')}}" />
-    <title>Login | Asn Indonesia</title>
+    <title>Login | Nut Castle</title>
 </head>
 
 <body class="DEFAULT_THEME bg-white dark:bg-dark">	

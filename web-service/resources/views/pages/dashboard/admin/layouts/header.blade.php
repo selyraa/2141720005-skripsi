@@ -184,9 +184,9 @@
                                         <div class="flex items-center justify-between">
                                             <div class="flex items-center">
                                                 <img src="{{ asset('assets/images/profile/user-1.jpg') }}" class="h-14 w-14 rounded-full mr-3" alt="User">
-                                                <div>
-                                                    <h5 class="text-base font-medium text-bodytext dark:text-darklink mb-1">John Doe</h5>
-                                                    <p class="text-xs text-gray-500 dark:text-gray-400">Administrator</p>
+                                                <div class="ml-2">
+                                                    <h5 class="text-base font-medium text-bodytext dark:text-darklink mb-1">{{ auth()->user()->name }}</h5>
+                                                    <p class="text-xs text-gray-500 dark:text-gray-400">{{ auth()->user()->role->name ?? 'No Role' }}</p>
                                                 </div>
                                             </div>
                                         </div>

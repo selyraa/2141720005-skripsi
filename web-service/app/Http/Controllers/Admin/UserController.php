@@ -25,7 +25,7 @@ class UserController extends Controller
         }
         
         // Get all users, ordered by name
-        $users = User::with('role')->orderBy('name')->get();
+        $users = User::with('role')->get();
         
         return view('pages.dashboard.admin.users.index', compact('users'));
     }

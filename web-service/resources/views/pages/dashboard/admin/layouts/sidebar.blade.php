@@ -38,7 +38,7 @@
                                     class="hide-menu flex-shrink-0">Kelola Pengguna</span>
                             </a>
                         </li>
-                        @endif
+                        
 
                         <div class="caption mt-8">
                             <i class="ti ti-dots nav-small-cap-icon "></i>
@@ -56,6 +56,7 @@
                                     class="hide-menu flex-shrink-0">Data Checkup Pelanggan</span>
                             </a>
                         </li>
+                        @endif
                         <div class="caption mt-8">
                             <i class="ti ti-dots nav-small-cap-icon "></i>
                             <span class="hide-menu">Prediksi & Rekomendasi</span>
@@ -82,6 +83,7 @@
                                     class="hide-menu flex-shrink-0">Jadwal</span>
                             </a>
                         </li>
+                        @if(auth()->check() && auth()->user()->role && in_array(auth()->user()->role->name, ['ahli gizi', 'asisten ahli gizi']))
                         <div class="caption mt-8">
                             <i class="ti ti-dots nav-small-cap-icon "></i>
                             <span class="hide-menu">Laporan & Analisis</span>
@@ -92,6 +94,7 @@
                                     class="hide-menu flex-shrink-0">Laporan</span>
                             </a>
                         </li>
+                        @endif
                     </ul>
                 </nav>
             </div>
