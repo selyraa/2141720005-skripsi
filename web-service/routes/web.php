@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PredictionController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\AccountSettingsController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', action: function () {
@@ -31,4 +32,10 @@ Route::middleware(['auth'])->group(function () {
     Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth']], function () {
         Route::resource('users', UserController::class);
     });
+
+    // Account Settings Routes
+    Route::get('/account/settings', [AccountSettingsController::class, 'index'])->name('account.settings');
+    Route::put('/account/profile', [AccountSettingsController::class, 'updateProfile'])->name('account.profile.update');
+    Route::put('/account/password', [AccountSettingsController::class, 'updatePassword'])->name('account.password.update');
+    Route::delete('/account/profile-photo', [AccountSettingsController::class, 'deleteProfilePhoto'])->name('account.profile-photo.delete');
 });

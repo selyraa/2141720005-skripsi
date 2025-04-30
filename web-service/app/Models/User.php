@@ -20,6 +20,7 @@ class User extends Authenticatable implements CanResetPasswordContract
         'role_id',
         'name',
         'email',
+        'profile_photo',
         'password',
         'email_verified_at',
         'phone_number',
@@ -62,5 +63,21 @@ class User extends Authenticatable implements CanResetPasswordContract
     public function programEnrollments()
     {
         return $this->hasMany(ProgramEnrollment::class);
+    }
+    
+    /**
+     * Get the profile photo URL.
+     *
+     * @return string
+     */
+    public function getProfilePhotoUrlAttribute()
+    {
+        if ($this->profile_photo) {
+            return asset('storage/' . $this->profile_photo);
+        }
+        
+        return $this->gender == 'female' 
+            ? asset('assets/images/profile/user-6.jpg')
+            : asset('assets/images/profile/user-1.jpg');
     }
 }
