@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
     <!-- Core Css -->
     <link rel="stylesheet" href="{{asset('assets/css/theme.css')}}" />
-    <title>Login | Asn Indonesia</title>
+    <title>Register | Asn Indonesia</title>
 </head>
 
 <body class="DEFAULT_THEME bg-white dark:bg-dark">	
@@ -26,10 +26,10 @@
                 <div class="h-full w-full flex justify-center items-center">
                     <div class="flex justify-center w-full">
                         <div class="xl:w-2/6 w-full">
-                            <div class="max-w-[460px] px-3 mx-auto">
+                            <div class="max-w-[500px] px-3 mx-auto">
                                 <div class="card">
                                     <div class="card-body">
-                                        <div class="mx-auto text-center mb-12">
+                                        <div class="mx-auto text-center mb-8">
                                             <div class="flex justify-center"> <div class="brand-logo flex items-center">
                                             <a href="/" class="text-nowrap logo-img">
                                                 <img
@@ -57,24 +57,14 @@
                                             </div>
                                             </div>
                                         </div>
-                                        <div class="grid grid-cols-2 gap-6 mb-4">
-                                            <a href="javascript:void(0)"
-                                                class="border border-light-dark rounded-md py-2.5 px-3 justify-center flex items-center hover:text-primary dark:hover:text-primary">
-                                                <img src="{{asset('assets/images/svgs/google-icon.svg')}}" alt=""
-                                                    class="me-2" width="18" height="18">
-                                                <span class="shrink-0">with Google</span>
-                                            </a>
-                                            <a href="javascript:void(0)"
-                                                class="border border-light-dark rounded-md py-2.5 px-3 justify-center flex items-center hover:text-primary dark:hover:text-primary">
-                                                <img src="{{asset('assets/images/svgs/facebook-icon.svg')}}" alt=""
-                                                    class="me-2" width="18" height="18">
-                                                <span class="shrink-0">with FB</span>
-                                            </a>
+                                        
+                                        <div class="text-center mb-6">
+                                            <h4 class="text-xl font-semibold">Create an account</h4>
+                                            <p class="text-slate-500 dark:text-darktext mt-1">It's free and easy!</p>
                                         </div>
-                                        <div class="flex items-center text-base  before:flex-[1_1_0%] before:border-t before:border-border before:me-6 after:flex-[1_1_0%] after:border-t after:border-border after:ms-6 dark:text-white dark:before:border-darkborder dark:after:border-darkborder">or sign in with</div>
                                         
                                         @if ($errors->any())
-                                            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mt-4" role="alert">
+                                            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
                                                 <ul>
                                                     @foreach ($errors->all() as $error)
                                                         <li>{{ $error }}</li>
@@ -83,13 +73,37 @@
                                             </div>
                                         @endif
                                         
-                                        <form method="POST" action="{{ route('login.post') }}">
+                                        <form method="POST" action="{{ route('register.post') }}">
                                             @csrf
-                                            <div class="flex flex-col gap-4 mt-4">
+                                            <div class="flex flex-col gap-4">
+                                                <div>
+                                                    <label for="name"
+                                                        class="text-dark dark:text-darklink font-semibold mb-2 block">Full Name</label>
+                                                    <input type="text" name="name" id="name" class="form-control py-2" value="{{ old('name') }}" required autofocus />
+                                                </div>
                                                 <div>
                                                     <label for="email"
                                                         class="text-dark dark:text-darklink font-semibold mb-2 block">Email</label>
-                                                    <input type="email" name="email" id="email" class="form-control py-2" value="{{ old('email') }}" required autofocus />
+                                                    <input type="email" name="email" id="email" class="form-control py-2" value="{{ old('email') }}" required />
+                                                </div>
+                                                <div>
+                                                    <label for="phone_number"
+                                                        class="text-dark dark:text-darklink font-semibold mb-2 block">Phone Number</label>
+                                                    <input type="text" name="phone_number" id="phone_number" class="form-control py-2" value="{{ old('phone_number') }}" />
+                                                </div>
+                                                <div>
+                                                    <label for="gender"
+                                                        class="text-dark dark:text-darklink font-semibold mb-2 block">Gender</label>
+                                                    <select name="gender" id="gender" class="form-control py-2">
+                                                        <option value="">Select Gender</option>
+                                                        <option value="male" {{ old('gender') == 'male' ? 'selected' : '' }}>Male</option>
+                                                        <option value="female" {{ old('gender') == 'female' ? 'selected' : '' }}>Female</option>
+                                                    </select>
+                                                </div>
+                                                <div>
+                                                    <label for="birth_date"
+                                                        class="text-dark dark:text-darklink font-semibold mb-2 block">Birth Date</label>
+                                                    <input type="date" name="birth_date" id="birth_date" class="form-control py-2" value="{{ old('birth_date') }}" />
                                                 </div>
                                                 <div>
                                                     <label for="password"
@@ -98,30 +112,27 @@
                                                         class="form-control py-2" required />
                                                 </div>
                                                 <div>
-                                                    <div class="flex justify-between my-2">
-                                                        <div>
-                                                            <label class="cursor-pointer label flex items-center">
-                                                                <input type="checkbox" name="remember" class="border-bordergray w-4 h-4 rounded-md text-primary dark:border-darkborder bg-transparent dark:checked:bg-primary dark:checked:border-primary focus:ring-0 focus:ring-offset-0" id="remember">
-                                                                <span class="label-text ms-2">Remember this Device</span>
-                                                            </label>
-                                                        </div>
-                                                        <a href="#"
-                                                            class="text-primary font-semibold">Forgot Password?</a>
-                                                    </div>
+                                                    <label for="password_confirmation"
+                                                        class="text-dark dark:text-darklink font-semibold mb-2 block">Confirm Password</label>
+                                                    <input type="password" name="password_confirmation" id="password_confirmation"
+                                                        class="form-control py-2" required />
                                                 </div>
-                                                <button type="submit" class="btn btn-md py-3">Sign In</button>
-                                                {{-- <div class="mt-2.5 text-center">
-                                                    <span class="text-base font-medium">New to
-                                                        Modernize? <a href="{{ route('register') }}"
-                                                            class="text-primary font-medium text-sm ms-2">Create an
-                                                            account</a></span>
-                                                </div> --}}
+                                                <div>
+                                                    <label class="cursor-pointer label flex items-center">
+                                                        <input type="checkbox" name="terms" class="border-bordergray w-4 h-4 rounded-md text-primary dark:border-darkborder bg-transparent dark:checked:bg-primary dark:checked:border-primary focus:ring-0 focus:ring-offset-0" id="terms" required>
+                                                        <span class="label-text ms-2">I agree to all <a href="#" class="text-primary">Terms & Conditions</a></span>
+                                                    </label>
+                                                </div>
+                                                <button type="submit" class="btn btn-md py-3">Sign Up</button>
+                                                <div class="mt-2.5 text-center">
+                                                    <span class="text-base font-medium">Already have an account? <a href="{{ route('login') }}"
+                                                            class="text-primary font-medium text-sm ms-2">Sign In</a></span>
+                                                </div>
                                             </div>
                                         </form>
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>

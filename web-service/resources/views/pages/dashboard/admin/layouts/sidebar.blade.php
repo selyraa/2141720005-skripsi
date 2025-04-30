@@ -26,6 +26,20 @@
                                     class="hide-menu flex-shrink-0">Dashboard</span>
                             </a>
                         </li>
+
+                        @if(auth()->check() && auth()->user()->role && in_array(auth()->user()->role->name, ['ahli gizi', 'asisten ahli gizi']))
+                        <div class="caption mt-8">
+                            <i class="ti ti-dots nav-small-cap-icon "></i>
+                            <span class="hide-menu">Administrasi</span>
+                        </div>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link dark-sidebar-link" href="{{ route('admin.users.index') }}">
+                                <i class="ti ti-users text-xl flex-shrink-0"></i> <span
+                                    class="hide-menu flex-shrink-0">Kelola Pengguna</span>
+                            </a>
+                        </li>
+                        @endif
+
                         <div class="caption mt-8">
                             <i class="ti ti-dots nav-small-cap-icon "></i>
                             <span class="hide-menu">Data Pelanggan</span>

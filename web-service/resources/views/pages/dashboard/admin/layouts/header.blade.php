@@ -172,6 +172,50 @@
                                 </div>
                             </div>
 
+                            <!-- User Profile Dropdown -->
+                            <div class="hs-dropdown [--strategy:absolute] [--adaptive:none] sm:[--trigger:hover] sm:relative group/menu">
+                                <a id="hs-dropdown-hover-event-profile"
+                                    class="relative hs-dropdown-toggle h-10 w-10 cursor-pointer hover:bg-lightprimary dark:hover:bg-darkprimary flex justify-center items-center rounded-full overflow-hidden group-hover/menu:ring-2 group-hover/menu:ring-primary">
+                                    <img src="{{ asset('assets/images/profile/user-1.jpg') }}" class="w-full h-full object-cover" alt="Profile">
+                                </a>
+                                <div class="card hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 right-0 rtl:right-auto rtl:left-0 mt-2 min-w-max top-auto w-full sm:w-[280px] hidden z-[2]"
+                                    aria-labelledby="hs-dropdown-hover-event-profile">
+                                    <div class="px-7 py-4 border-b border-gray-200 dark:border-gray-700">
+                                        <div class="flex items-center justify-between">
+                                            <div class="flex items-center">
+                                                <img src="{{ asset('assets/images/profile/user-1.jpg') }}" class="h-14 w-14 rounded-full mr-3" alt="User">
+                                                <div>
+                                                    <h5 class="text-base font-medium text-bodytext dark:text-darklink mb-1">John Doe</h5>
+                                                    <p class="text-xs text-gray-500 dark:text-gray-400">Administrator</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="py-2">
+                                        <a href="javascript:void(0)" class="dropdown-menu-link py-2 px-5 hover:bg-lightprimary hover:dark:bg-darkprimary flex items-center gap-2">
+                                            <i class="ti ti-user-circle text-lg"></i>
+                                            <span>My Profile</span>
+                                        </a>
+                                        <a href="javascript:void(0)" class="dropdown-menu-link py-2 px-5 hover:bg-lightprimary hover:dark:bg-darkprimary flex items-center gap-2">
+                                            <i class="ti ti-settings text-lg"></i>
+                                            <span>Account Settings</span>
+                                        </a>
+                                        <a href="javascript:void(0)" class="dropdown-menu-link py-2 px-5 hover:bg-lightprimary hover:dark:bg-darkprimary flex items-center gap-2">
+                                            <i class="ti ti-message-dots text-lg"></i>
+                                            <span>My Messages</span>
+                                        </a>
+                                        <hr class="my-2 border-gray-200 dark:border-gray-700">
+                                        <form action="{{ route('logout') }}" method="POST">
+                                            @csrf
+                                            <button type="submit" class="dropdown-menu-link py-2 px-5 hover:bg-lightprimary hover:dark:bg-darkprimary w-full text-left flex items-center gap-2 text-error">
+                                                <i class="ti ti-logout text-lg"></i>
+                                                <span>Sign Out</span>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>

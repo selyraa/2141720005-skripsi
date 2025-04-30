@@ -7,7 +7,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-class User extends Authenticatable implements CanResetPasswordContract, MustVerifyEmail
+class User extends Authenticatable implements CanResetPasswordContract
 {
     use Notifiable, SoftDeletes;
 
