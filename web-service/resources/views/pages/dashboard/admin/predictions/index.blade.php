@@ -42,7 +42,7 @@
                             <div class="mb-4">
                                 <label class="form-label">Umur</label>
                                 <input type="number" name="age" class="form-control @error('age') border-error @enderror"
-                                    value="{{ old('age') }}" required step="1">
+                                    value="{{ $predictionData['age'] ?? old('age') }}" required step="1">
                                 @error('age')
                                     <div class="text-error text-sm mt-1">{{ $message }}</div>
                                 @enderror
@@ -51,7 +51,7 @@
                             <div class="mb-4">
                                 <label class="form-label">Tinggi Badan (cm)</label>
                                 <input type="number" name="height" class="form-control @error('height') border-error @enderror"
-                                    value="{{ old('height') }}" required step="0.1">
+                                    value="{{ $predictionData['height'] ?? old('height') }}" required step="0.1">
                                 @error('height')
                                     <div class="text-error text-sm mt-1">{{ $message }}</div>
                                 @enderror
@@ -60,7 +60,7 @@
                             <div class="mb-4">
                                 <label class="form-label">Berat Badan (kg)</label>
                                 <input type="number" name="weight" class="form-control @error('weight') border-error @enderror"
-                                    value="{{ old('weight') }}" required step="0.1">
+                                    value="{{ $predictionData['weight'] ?? old('weight') }}" required step="0.1">
                                 @error('weight')
                                     <div class="text-error text-sm mt-1">{{ $message }}</div>
                                 @enderror
@@ -69,7 +69,7 @@
                             <div class="mb-4">
                                 <label class="form-label">Lemak Tubuh (%)</label>
                                 <input type="number" name="bodyFat" class="form-control @error('bodyFat') border-error @enderror"
-                                    value="{{ old('bodyFat') }}" required step="0.1">
+                                    value="{{ $predictionData['bodyFat'] ?? old('bodyFat') }}" required step="0.1">
                                 @error('bodyFat')
                                     <div class="text-error text-sm mt-1">{{ $message }}</div>
                                 @enderror
@@ -78,7 +78,7 @@
                             <div class="mb-4">
                                 <label class="form-label">Lemak Perut (%)</label>
                                 <input type="number" name="bellyFat" class="form-control @error('bellyFat') border-error @enderror"
-                                    value="{{ old('bellyFat') }}" required step="0.1">
+                                    value="{{ $predictionData['bellyFat'] ?? old('bellyFat') }}" required step="0.1">
                                 @error('bellyFat')
                                     <div class="text-error text-sm mt-1">{{ $message }}</div>
                                 @enderror
@@ -87,7 +87,7 @@
                             <div class="mb-4">
                                 <label class="form-label">Massa Otot (kg)</label>
                                 <input type="number" name="muscleMass" class="form-control @error('muscleMass') border-error @enderror"
-                                    value="{{ old('muscleMass') }}" required step="0.1">
+                                    value="{{ $predictionData['muscleMass'] ?? old('muscleMass') }}" required step="0.1">
                                 @error('muscleMass')
                                     <div class="text-error text-sm mt-1">{{ $message }}</div>
                                 @enderror
@@ -96,7 +96,7 @@
                             <div class="mb-4">
                                 <label class="form-label">Kebutuhan Kalori (kkal)</label>
                                 <input type="number" name="calorieNeeds" class="form-control @error('calorieNeeds') border-error @enderror"
-                                    value="{{ old('calorieNeeds') }}" required step="1">
+                                    value="{{ $predictionData['calorieNeeds'] ?? old('calorieNeeds') }}" required step="1">
                                 @error('calorieNeeds')
                                     <div class="text-error text-sm mt-1">{{ $message }}</div>
                                 @enderror
@@ -105,7 +105,7 @@
                             <div class="mb-4">
                                 <label class="form-label">Usia Sel</label>
                                 <input type="number" name="cellAge" class="form-control @error('cellAge') border-error @enderror"
-                                    value="{{ old('cellAge') }}" required step="1">
+                                    value="{{ $predictionData['cellAge'] ?? old('cellAge') }}" required step="1">
                                 @error('cellAge')
                                     <div class="text-error text-sm mt-1">{{ $message }}</div>
                                 @enderror
@@ -114,7 +114,7 @@
                             <div class="mb-4">
                                 <label class="form-label">Kepadatan Tulang</label>
                                 <input type="number" name="boneDensity" class="form-control @error('boneDensity') border-error @enderror"
-                                    value="{{ old('boneDensity') }}" required step="0.1">
+                                    value="{{ $predictionData['boneDensity'] ?? old('boneDensity') }}" required step="0.1">
                                 @error('boneDensity')
                                     <div class="text-error text-sm mt-1">{{ $message }}</div>
                                 @enderror
@@ -123,7 +123,7 @@
                             <div class="mb-4">
                                 <label class="form-label">Kadar Air (%)</label>
                                 <input type="number" name="waterContent" class="form-control @error('waterContent') border-error @enderror"
-                                    value="{{ old('waterContent') }}" required step="0.1">
+                                    value="{{ $predictionData['waterContent'] ?? old('waterContent') }}" required step="0.1">
                                 @error('waterContent')
                                     <div class="text-error text-sm mt-1">{{ $message }}</div>
                                 @enderror
@@ -139,7 +139,7 @@
                         <div class="flex justify-end mt-4">
                             <button type="submit" class="btn btn-primary">Prediksi Program</button>
                         </div>
-                </form>
+                    </form>
                 </div>
             </div>
         </div>

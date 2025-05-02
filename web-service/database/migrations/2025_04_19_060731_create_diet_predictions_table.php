@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('diet_predictions', function (Blueprint $table) {
             $table->id();
-            $table->date('predicted_date')->nullable();
+            $table->date('prediction_date')->nullable();
             $table->timestamps();
             $table->softDeletes();
 

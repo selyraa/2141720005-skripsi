@@ -21,7 +21,7 @@
                             <span class="hide-menu">Home</span>
                         </div>
                         <li class="sidebar-item">
-                            <a class="sidebar-link dark-sidebar-link" href="{{ route('dashboard') }}">
+                            <a class="sidebar-link dark-sidebar-link {{ request()->routeIs('dashboard') ? 'activemenu' : '' }}" href="{{ route('dashboard') }}">
                                 <i class="ti ti-layout-dashboard text-xl flex-shrink-0"></i> <span
                                     class="hide-menu flex-shrink-0">Dashboard</span>
                             </a>
@@ -33,7 +33,7 @@
                             <span class="hide-menu">Administrasi</span>
                         </div>
                         <li class="sidebar-item">
-                            <a class="sidebar-link dark-sidebar-link" href="{{ route('admin.users.index') }}">
+                            <a class="sidebar-link dark-sidebar-link {{ request()->routeIs('admin.users.*') ? 'activemenu' : '' }}" href="{{ route('admin.users.index') }}">
                                 <i class="ti ti-users text-xl flex-shrink-0"></i> <span
                                     class="hide-menu flex-shrink-0">Kelola Pengguna</span>
                             </a>
@@ -45,13 +45,13 @@
                             <span class="hide-menu">Data Pelanggan</span>
                         </div>
                         <li class="sidebar-item">
-                            <a class="sidebar-link dark-sidebar-link" href="#">
+                            <a class="sidebar-link dark-sidebar-link {{ request()->routeIs('customers.*') ? 'activemenu' : '' }}" href="#">
                                 <i class="ti ti-users text-xl flex-shrink-0"></i> <span
                                     class="hide-menu flex-shrink-0">Data Pelanggan</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link dark-sidebar-link" href="#">
+                            <a class="sidebar-link dark-sidebar-link {{ request()->routeIs('checkups.*') ? 'activemenu' : '' }}" href="{{ route('checkups.index') }}">
                                 <i class="ti ti-heartbeat text-xl flex-shrink-0"></i> <span
                                     class="hide-menu flex-shrink-0">Data Checkup Pelanggan</span>
                             </a>
@@ -62,13 +62,19 @@
                             <span class="hide-menu">Prediksi & Rekomendasi</span>
                         </div>
                         <li class="sidebar-item">
-                            <a class="sidebar-link dark-sidebar-link" href="{{ route('predictions.index') }}">
+                            <a class="sidebar-link dark-sidebar-link {{ request()->routeIs('predictions.*') ? 'activemenu' : '' }}" href="{{ route('predictions.index') }}">
                                 <i class="ti ti-brain text-xl flex-shrink-0"></i> <span
                                     class="hide-menu flex-shrink-0">Prediksi Program Diet</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link dark-sidebar-link" href="#">
+                            <a class="sidebar-link dark-sidebar-link {{ request()->routeIs('enrollments.*') ? 'activemenu' : '' }}" href="{{ route('enrollments.index') }}">
+                                <i class="ti ti-clipboard-check text-xl flex-shrink-0"></i> <span
+                                    class="hide-menu flex-shrink-0">Registrasi Program</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link dark-sidebar-link {{ request()->routeIs('recommendations.*') ? 'activemenu' : '' }}" href="#">
                                 <i class="ti ti-message text-xl flex-shrink-0"></i> <span
                                     class="hide-menu flex-shrink-0">Rekomendasi Diet</span>
                             </a>
@@ -78,7 +84,7 @@
                             <span class="hide-menu">Konsultasi</span>
                         </div>
                         <li class="sidebar-item">
-                            <a class="sidebar-link dark-sidebar-link" href="#">
+                            <a class="sidebar-link dark-sidebar-link {{ request()->routeIs('schedules.*') ? 'activemenu' : '' }}" href="#">
                                 <i class="ti ti-calendar text-xl flex-shrink-0"></i> <span
                                     class="hide-menu flex-shrink-0">Jadwal</span>
                             </a>
@@ -88,7 +94,7 @@
                             <span class="hide-menu">Pengaturan</span>
                         </div>
                         <li class="sidebar-item">
-                            <a class="sidebar-link dark-sidebar-link" href="{{ route('account.settings') }}">
+                            <a class="sidebar-link dark-sidebar-link {{ request()->routeIs('account.settings') ? 'activemenu' : '' }}" href="{{ route('account.settings') }}">
                                 <i class="ti ti-settings text-xl flex-shrink-0"></i> <span
                                     class="hide-menu flex-shrink-0">Pengaturan Akun</span>
                             </a>
@@ -100,7 +106,7 @@
                             <span class="hide-menu">Laporan & Analisis</span>
                         </div>
                         <li class="sidebar-item">
-                            <a class="sidebar-link dark-sidebar-link" href="#">
+                            <a class="sidebar-link dark-sidebar-link {{ request()->routeIs('reports.*') ? 'activemenu' : '' }}" href="#">
                                 <i class="ti ti-file-report text-xl flex-shrink-0"></i> <span
                                     class="hide-menu flex-shrink-0">Laporan</span>
                             </a>

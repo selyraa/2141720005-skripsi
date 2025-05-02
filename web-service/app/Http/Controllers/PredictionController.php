@@ -2,14 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Checkup;
+use App\Models\DietPrediction;
+use App\Models\DietProgram;
+use App\Models\PredictionResult;
+use App\Models\ProgramEnrollment;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Auth;
 
 class PredictionController extends Controller
 {
     public function index()
     {
-        return view('pages.dashboard.admin.predictions.index');
+        // If there's prediction data in session, pass it to the view
+        $predictionData = session('prediction_data') ?? null;
+        return view('pages.dashboard.admin.predictions.index', compact('predictionData'));
     }
 
     public function predict(Request $request)
@@ -93,15 +102,26 @@ class PredictionController extends Controller
                 'waterContent' => (float) $request->waterContent,
             ]);
 
-            // return response()->json($response->json());
-
             if ($response->successful() && $response->json('status') === 'success') {
-                return redirect()
-                    ->route('predictions.result')
-                    ->with('result', $response->json('result'));
+                // Store prediction data and results in the session (not as flash data)
+                session([
+                    'prediction_data' => [
+                        'age' => (float) $request->age,
+                        'height' => (float) $request->height,
+                        'weight' => (float) $request->weight,
+                        'bodyFat' => (float) $request->bodyFat,
+                        'bellyFat' => (float) $request->bellyFat,
+                        'muscleMass' => (float) $request->muscleMass,
+                        'calorieNeeds' => (float) $request->calorieNeeds,
+                        'cellAge' => (float) $request->cellAge,
+                        'boneDensity' => (float) $request->boneDensity,
+                        'waterContent' => (float) $request->waterContent,
+                    ],
+                    'result' => $response->json('result')
+                ]);
+                
+                return redirect()->route('predictions.result');
             }
-
-            return response()->json(["error" => "Failed to get prediction from server"]);
 
             return back()->with('error', 'Failed to get prediction from server');
         } catch (\Exception $e) {
@@ -112,9 +132,97 @@ class PredictionController extends Controller
     public function result()
     {
         if (!session()->has('result')) {
-            return redirect()->route('predictions.index');
+            return redirect()->route('predictions.index')->with('error', 'Tidak ada data prediksi yang tersedia');
         }
 
-        return view('pages.dashboard.admin.predictions.result');
+        // Get users with role 'user' for the dropdown selection
+        $users = User::all();
+
+        return view('pages.dashboard.admin.predictions.result', compact('users'));
+    }
+    
+    public function saveResult(Request $request)
+    {
+        if (!session()->has('result') || !session()->has('prediction_data')) {
+            return redirect()->route('predictions.index')->with('error', 'Tidak ada data prediksi yang tersedia');
+        }
+        
+        $request->validate([
+            'user_id' => 'required|exists:users,id',
+            'decision' => 'required|in:agree,change',
+            'prediction' => 'required|string',
+            'alternative_program' => 'required_if:decision,change|string',
+        ], [
+            'user_id.required' => 'Pelanggan harus dipilih',
+            'user_id.exists' => 'Pelanggan tidak valid'
+        ]);
+        
+        $predictionData = session('prediction_data');
+        $predictionResult = session('result');
+        
+        // Determine selected program based on user decision
+        $selectedProgram = $request->decision === 'agree' 
+            ? $request->prediction 
+            : $request->alternative_program;
+            
+        // 1. First, create the checkup record without program enrollment id
+        $checkup = Checkup::create([
+            'program_enrollment_id' => null, // Initially empty as required
+            'checkup_date' => now(),
+            'height' => $predictionData['height'],
+            'weight' => $predictionData['weight'],
+            'body_fat' => $predictionData['bodyFat'],
+            'belly_fat' => $predictionData['bellyFat'],
+            'bone_density' => $predictionData['boneDensity'],
+            'calories_needs' => $predictionData['calorieNeeds'],
+            'cell_age' => $predictionData['cellAge'],
+            'muscle_mass' => $predictionData['muscleMass'],
+            'water_content' => $predictionData['waterContent'],
+        ]);
+        
+        // 2. Create diet prediction record linked to the checkup
+        $dietPrediction = DietPrediction::create([
+            'checkup_id' => $checkup->id,
+            'prediction_date' => now(),
+        ]);
+        
+        // Find or create diet program records and save prediction results
+        $selectedDietProgramId = null;
+        
+        foreach ($predictionResult['probabilities'] as $programName => $probability) {
+            // Find or create the diet program
+            $dietProgram = DietProgram::firstOrCreate(['name' => $programName]);
+            
+            // Store selected program ID for later use
+            if ($programName === $selectedProgram) {
+                $selectedDietProgramId = $dietProgram->id;
+            }
+            
+            // Create prediction result with confidence score
+            PredictionResult::create([
+                'diet_prediction_id' => $dietPrediction->id,
+                'diet_program_id' => $dietProgram->id,
+                'confidence_score' => $probability,
+                'is_selected' => ($programName === $selectedProgram), // Mark only the selected program as true
+            ]);
+        }
+        
+        // 3. Create program enrollment with the selected diet program
+        $programEnrollment = ProgramEnrollment::create([
+            'user_id' => $request->user_id, // Use selected user instead of authenticated user
+            'diet_program_id' => $selectedDietProgramId,
+            'status' => 0, // 0 = on going
+        ]);
+        
+        // 4. Update the checkup with the program enrollment ID
+        $checkup->update([
+            'program_enrollment_id' => $programEnrollment->id
+        ]);
+        
+        // Clear the session data
+        session()->forget(['result', 'prediction_data']);
+        
+        // Redirect to enrollments.index with success message
+        return redirect()->route('enrollments.index')->with('success', 'Program diet berhasil disimpan');
     }
 }

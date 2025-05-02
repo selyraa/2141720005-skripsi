@@ -101,9 +101,9 @@
                         
                         <!-- User Info -->
                         <div class="flex flex-col items-center">
-                            <h4 class="text-lg font-medium text-dark dark:text-white">{{ auth()->user()->name }}</h4>
+                            {{-- <h4 class="text-lg font-medium text-dark dark:text-white">{{ auth()->user()->name }}</h4>
                             <p class="text-sm text-gray-500">{{ auth()->user()->role->name ?? 'No Role' }}</p>
-                            <p class="text-sm text-gray-500">{{ auth()->user()->email }}</p>
+                            <p class="text-sm text-gray-500">{{ auth()->user()->email }}</p> --}}
                             
                             @if($user->profile_photo)
                             <form id="delete-photo-form" action="{{ route('account.profile-photo.delete') }}" method="POST" class="hidden">

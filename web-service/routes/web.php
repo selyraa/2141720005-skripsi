@@ -4,6 +4,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PredictionController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\AccountSettingsController;
+use App\Http\Controllers\Admin\CheckupDataController;
+use App\Http\Controllers\ProgramEnrollmentController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', action: function () {
@@ -27,11 +29,26 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/predictions', [PredictionController::class, 'index'])->name('predictions.index');
     Route::post('/predictions', [PredictionController::class, 'predict'])->name('predictions.predict');
     Route::get('/predictions/result', [PredictionController::class, 'result'])->name('predictions.result');
+    Route::post('/predictions/save', [PredictionController::class, 'saveResult'])->name('predictions.saveResult');
+    
+    // Program Enrollment Routes
+    Route::get('/enrollments', [ProgramEnrollmentController::class, 'index'])->name('enrollments.index');
+    Route::get('/enrollments/create', [ProgramEnrollmentController::class, 'create'])->name('enrollments.create');
+    Route::post('/enrollments', [ProgramEnrollmentController::class, 'store'])->name('enrollments.store');
+    Route::get('/enrollments/{enrollment}', [ProgramEnrollmentController::class, 'show'])->name('enrollments.show');
+    Route::get('/enrollments/{enrollment}/edit', [ProgramEnrollmentController::class, 'edit'])->name('enrollments.edit');
+    Route::put('/enrollments/{enrollment}', [ProgramEnrollmentController::class, 'update'])->name('enrollments.update');
+    Route::delete('/enrollments/{enrollment}', [ProgramEnrollmentController::class, 'destroy'])->name('enrollments.destroy');
+    Route::get('/enrollments/{enrollment}/checkup', [ProgramEnrollmentController::class, 'createCheckup'])->name('enrollments.create-checkup');
+    Route::post('/enrollments/{enrollment}/checkup', [ProgramEnrollmentController::class, 'storeCheckup'])->name('enrollments.store-checkup');
     
     // Admin Routes - User Management
     Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth']], function () {
         Route::resource('users', UserController::class);
     });
+    
+    // Checkup Data Routes
+    Route::resource('checkups', CheckupDataController::class);
 
     // Account Settings Routes
     Route::get('/account/settings', [AccountSettingsController::class, 'index'])->name('account.settings');

@@ -27,6 +27,11 @@ class Checkup extends Model
 
     protected $dates = [
         'deleted_at',
+        'checkup_date',
+    ];
+
+    protected $casts = [
+        'checkup_date' => 'datetime',
     ];
 
     public function programEnrollment()

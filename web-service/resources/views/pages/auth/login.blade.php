@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr" data-color-theme="Blue_Theme" class="light selected"
+<html lang="en" dir="ltr" data-color-theme="NutCastle_Theme" class="light selected"
     data-layout="vertical" data-boxed-layout="boxed" data-card="shadow">
 
 <head>
@@ -8,12 +8,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Favicon icon-->
-    <link rel="shortcut icon" type="image/png" href="{{asset('assets/images/logos/favicon.png')}}" />
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
-    rel="stylesheet" />
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/images/logos/favicon.ico')}}" />
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap"
+        rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
     <!-- Core Css -->
     <link rel="stylesheet" href="{{asset('assets/css/theme.css')}}" />
+    <link rel="stylesheet" href="{{asset('assets/css/custom.css')}}" />
     <title>Login | Nut Castle</title>
 </head>
 
@@ -22,106 +23,100 @@
         <!--start the project-->
         <div id="main-wrapper" class="flex">
             <!-- Main Content -->
-            <main class="h-screen w-full bg-lightprimary">
+            <main class="h-screen w-full bg-lightsuccess dark:bg-darkinfo">
                 <div class="h-full w-full flex justify-center items-center">
                     <div class="flex justify-center w-full">
-                        <div class="xl:w-2/6 w-full">
-                            <div class="max-w-[460px] px-3 mx-auto">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="mx-auto text-center mb-12">
-                                            <div class="flex justify-center"> <div class="brand-logo flex items-center">
-                                            <a href="/" class="text-nowrap logo-img">
-                                                <img
-                                                src="{{asset('assets/images/logos/dark-logo.svg')}}"
-                                                class="dark:hidden block rtl:hidden"
-                                                alt="Logo-Dark"
-                                                />
-                                                <img
-                                                src="{{asset('assets/images/logos/light-logo.svg')}}"
-                                                class="dark:block hidden rtl:hidden rtl:dark:hidden"
-                                                alt="Logo-light"
-                                                />
-                                                
-                                                <img
-                                                src="{{asset('assets/images/logos/dark-logo-rtl.svg')}}"
-                                                class="dark:hidden hidden rtl:block rtl:dark:hidden"
-                                                alt="Logo-Dark"
-                                                />
-                                                <img
-                                                src="{{asset('assets/images/logos/light-logo-rtl.svg')}}"
-                                                class="dark:hidden hidden rtl:hidden rtl:dark:block"
-                                                alt="Logo-light"
-                                                />
-                                            </a>
+                        <div class="xl:w-2/6 lg:w-2/5 md:w-1/2 sm:w-3/4 w-11/12">
+                            <div class="max-w-[500px] px-5 mx-auto">
+                                <div class="card shadow-lg">
+                                    <div class="card-body p-6">
+                                        <div class="mx-auto text-center mb-6">
+                                            <div class="flex justify-center">
+                                                <div class="brand-logo flex items-center">
+                                                    {{-- <a href="/" class="text-nowrap logo-img">
+                                                        <img
+                                                            src="{{asset('assets/images/logos/dark-logo.svg')}}"
+                                                            class="dark:hidden block rtl:hidden"
+                                                            alt="Logo-Dark"
+                                                        />
+                                                    </a> --}}
+                                                </div>
                                             </div>
-                                            </div>
+                                            <h4 class="font-semibold text-xl text-dark dark:text-white mt-4 mb-1">
+                                                Welcome Back
+                                            </h4>
+                                            <p class="text-gray-500 dark:text-gray-400 mb-4">Sign in to continue to Nut Castle</p>
                                         </div>
-                                        <div class="grid grid-cols-2 gap-6 mb-4">
-                                            <a href="javascript:void(0)"
-                                                class="border border-light-dark rounded-md py-2.5 px-3 justify-center flex items-center hover:text-primary dark:hover:text-primary">
-                                                <img src="{{asset('assets/images/svgs/google-icon.svg')}}" alt=""
-                                                    class="me-2" width="18" height="18">
-                                                <span class="shrink-0">with Google</span>
-                                            </a>
-                                            <a href="javascript:void(0)"
-                                                class="border border-light-dark rounded-md py-2.5 px-3 justify-center flex items-center hover:text-primary dark:hover:text-primary">
-                                                <img src="{{asset('assets/images/svgs/facebook-icon.svg')}}" alt=""
-                                                    class="me-2" width="18" height="18">
-                                                <span class="shrink-0">with FB</span>
-                                            </a>
-                                        </div>
-                                        <div class="flex items-center text-base  before:flex-[1_1_0%] before:border-t before:border-border before:me-6 after:flex-[1_1_0%] after:border-t after:border-border after:ms-6 dark:text-white dark:before:border-darkborder dark:after:border-darkborder">or sign in with</div>
                                         
                                         @if ($errors->any())
-                                            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mt-4" role="alert">
-                                                <ul>
+                                            <div class="bg-lighterror dark:bg-darkerror text-error px-4 py-3 rounded relative mb-4" role="alert">
+                                                <ul class="list-disc pl-5">
                                                     @foreach ($errors->all() as $error)
                                                         <li>{{ $error }}</li>
                                                     @endforeach
                                                 </ul>
+                                                <button type="button" class="absolute top-0 bottom-0 right-0 px-4 py-3" onclick="this.parentElement.style.display='none'">
+                                                    <i class="ti ti-x"></i>
+                                                </button>
                                             </div>
                                         @endif
                                         
-                                        <form method="POST" action="{{ route('login.post') }}">
+                                        <form method="POST" action="{{ route('login.post') }}" class="space-y-4">
                                             @csrf
-                                            <div class="flex flex-col gap-4 mt-4">
-                                                <div>
-                                                    <label for="email"
-                                                        class="text-dark dark:text-darklink font-semibold mb-2 block">Email</label>
-                                                    <input type="email" name="email" id="email" class="form-control py-2" value="{{ old('email') }}" required autofocus />
+                                            <div class="form-group">
+                                                <label for="email" class="form-label block mb-2 font-medium text-dark dark:text-white">Email</label>
+                                                <input type="email" name="email" id="email" class="form-control w-full" value="{{ old('email') }}" required autofocus />
+                                            </div>
+                                            
+                                            <div class="form-group">
+                                                <label for="password" class="form-label block mb-2 font-medium text-dark dark:text-white">Password</label>
+                                                <input type="password" name="password" id="password" class="form-control w-full" required />
+                                            </div>
+                                            
+                                            <div class="flex items-center justify-between">
+                                                <div class="flex items-center">
+                                                    <input type="checkbox" name="remember" id="remember" 
+                                                        class="border-gray-200 rounded text-primary focus:ring-primary dark:bg-dark dark:border-gray-700 dark:checked:bg-primary dark:checked:border-primary dark:focus:ring-primary" />
+                                                    <label for="remember" class="ms-2 text-sm text-gray-600 dark:text-gray-400">Remember me</label>
                                                 </div>
-                                                <div>
-                                                    <label for="password"
-                                                        class="text-dark dark:text-darklink font-semibold mb-2 block">Password</label>
-                                                    <input type="password" name="password" id="password"
-                                                        class="form-control py-2" required />
+                                                <a href="#" class="text-sm font-medium text-primary hover:underline">Forgot Password?</a>
+                                            </div>
+                                            
+                                            <button type="submit" class="btn btn-primary w-full py-3">Sign In</button>
+                                            
+                                            <div class="relative my-4">
+                                                <div class="absolute inset-0 flex items-center">
+                                                    <div class="w-full border-t border-gray-200 dark:border-gray-700"></div>
                                                 </div>
-                                                <div>
-                                                    <div class="flex justify-between my-2">
-                                                        <div>
-                                                            <label class="cursor-pointer label flex items-center">
-                                                                <input type="checkbox" name="remember" class="border-bordergray w-4 h-4 rounded-md text-primary dark:border-darkborder bg-transparent dark:checked:bg-primary dark:checked:border-primary focus:ring-0 focus:ring-offset-0" id="remember">
-                                                                <span class="label-text ms-2">Remember this Device</span>
-                                                            </label>
-                                                        </div>
-                                                        <a href="#"
-                                                            class="text-primary font-semibold">Forgot Password?</a>
-                                                    </div>
+                                                <div class="relative flex justify-center">
+                                                    <span class="bg-white dark:bg-dark px-4 text-sm text-gray-500 dark:text-gray-400">or sign in with</span>
                                                 </div>
-                                                <button type="submit" class="btn btn-md py-3">Sign In</button>
-                                                {{-- <div class="mt-2.5 text-center">
-                                                    <span class="text-base font-medium">New to
-                                                        Modernize? <a href="{{ route('register') }}"
-                                                            class="text-primary font-medium text-sm ms-2">Create an
-                                                            account</a></span>
-                                                </div> --}}
+                                            </div>
+                                            
+                                            <div class="grid grid-cols-2 gap-4">
+                                                <a href="javascript:void(0)"
+                                                class="border border-light-dark rounded-md py-2.5 px-3 justify-center flex items-center hover:text-primary dark:hover:text-primary">
+                                                <img src="../assets/images/svgs/google-icon.svg" alt=""
+                                                    class="me-2" width="18" height="18">
+                                                <span class="shrink-0">with Google</span>
+                                            </a>
+                                            <a href="javascript:void(0)"
+                                            class="border border-light-dark rounded-md py-2.5 px-3 justify-center flex items-center hover:text-primary dark:hover:text-primary">
+                                            <img src="../assets/images/svgs/facebook-icon.svg" alt=""
+                                                class="me-2" width="18" height="18">
+                                            <span class="shrink-0">Facebook</span>
+                                        </a>
                                             </div>
                                         </form>
                                     </div>
                                 </div>
+                                
+                                <div class="text-center mt-5">
+                                    <p class="text-gray-600 dark:text-gray-400">
+                                        Don't have an account? <a href="#" class="font-medium text-primary hover:underline">Sign up</a>
+                                    </p>
+                                </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -130,10 +125,10 @@
         </div>
         <!--end of project-->
     </main>
-</div>
     
-<script src="{{asset('assets/js/theme/app.init.js')}}"></script>
-<script src="{{asset('assets/js/theme/app.min.js')}}"></script>
-<script src="{{asset('assets/js/theme.js')}}"></script>
+    <script src="{{asset('assets/js/vendor.min.js')}}"></script>
+    <script src="{{asset('assets/js/theme/app.init.js')}}"></script>
+    <script src="{{asset('assets/js/theme/app.min.js')}}"></script>
+    <script src="{{asset('assets/js/theme.js')}}"></script>
 </body>
 </html>
