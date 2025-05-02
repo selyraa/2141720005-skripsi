@@ -105,18 +105,28 @@
                                         </td>
                                         <td class="px-4 py-3 border-b text-gray-500 dark:text-gray-400">
                                             <div class="flex gap-2">
-                                                <a href="{{ route('checkups.show', $checkup->id) }}" class="btn btn-sm btn-primary">
-                                                    <i class="ti ti-eye"></i> Detail
+                                                <a href="{{ route('checkups.show', $checkup->id) }}" 
+                                                    class="p-2 bg-lightblue dark:bg-dark rounded-full hover:bg-blue hover:text-white transition-all" 
+                                                    title="Lihat">
+                                                    <i class="ti ti-eye text-blue hover:text-white"></i>
                                                 </a>
-                                                <a href="{{ route('checkups.edit', $checkup->id) }}" class="btn btn-sm btn-info">
-                                                    <i class="ti ti-edit"></i> Edit
+                                                <a href="{{ route('checkups.edit', $checkup->id) }}"
+                                                    class="p-2 bg-lightprimary dark:bg-darkprimary rounded-full hover:bg-primary hover:text-white transition-all" 
+                                                    title="Edit">
+                                                     <i class="ti ti-edit text-primary hover:text-white"></i>
                                                 </a>
                                                 <form action="{{ route('checkups.destroy', $checkup->id) }}" method="POST" class="inline">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-sm btn-error" onclick="return confirm('Apakah Anda yakin ingin menghapus data checkup ini?')">
+                                                    {{-- <button type="submit" class="btn btn-sm btn-error" onclick="return confirm('Apakah Anda yakin ingin menghapus data checkup ini?')">
                                                         <i class="ti ti-trash"></i> Hapus
-                                                    </button>
+                                                    </button> --}}
+                                                    <button type="button" 
+                                                        class="p-2 bg-lighterror dark:bg-darkerror rounded-full hover:bg-error hover:text-white transition-all" 
+                                                        title="Hapus"
+                                                        onclick="openConfirmationModal('delete', 'Hapus Data Checkup', 'Apakah Anda yakin ingin menghapus data checkup untuk {{ $checkup->programEnrollment->user->name ?? 'pengguna ini' }}?', 'Ya, Hapus', 'document.getElementById(\'delete-form-{{ $checkup->programEnrollment->user->name }}\').submit()')">
+                                                    <i class="ti ti-trash text-error hover:text-white"></i>
+                                                </button>
                                                 </form>
                                             </div>
                                         </td>
@@ -134,3 +144,7 @@
         </div>
     </div>
 @endsection
+
+@push('scripts')
+<script src="{{ asset('assets/js/components/confirmation-modal.js') }}"></script>
+@endpush

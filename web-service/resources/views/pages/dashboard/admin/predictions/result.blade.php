@@ -109,9 +109,9 @@
                                                 <a href="{{ route('predictions.index') }}" class="btn btn-secondary mr-2">
                                                     <i class="ti ti-arrow-left mr-1"></i> Edit Data Prediksi
                                                 </a>
-                                                <a href="{{ route('predictions.cancel') }}" class="btn btn-error" onclick="return confirm('Apakah Anda yakin ingin membatalkan prediksi ini?');">
+                                                <button type="button" class="btn btn-error" onclick="openConfirmationModal('delete', 'Batalkan Prediksi', 'Apakah Anda yakin ingin membatalkan prediksi ini?', 'Ya, Batalkan', 'window.location.href=\'{{ route('predictions.cancel') }}\'')">
                                                     <i class="ti ti-x mr-1"></i> Batalkan Prediksi
-                                                </a>
+                                                </button>
                                             </div>
                                             <button type="submit" class="btn btn-primary">
                                                 <i class="ti ti-check mr-1"></i> Simpan & Lanjutkan
@@ -140,7 +140,7 @@
             <div class="relative flex flex-col bg-white border shadow-sm rounded-xl overflow-hidden dark:bg-gray-800 dark:border-gray-700">
                 <div class="absolute top-2 right-2">
                     <button type="button" class="inline-flex flex-shrink-0 justify-center items-center h-8 w-8 rounded-md text-gray-500 hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white text-sm dark:text-gray-500 dark:hover:text-gray-400 dark:focus:ring-gray-700 dark:focus:ring-offset-gray-800" data-hs-overlay="#addCustomerModal">
-                        <span class="sr-only">Close</span>
+                        <span class="sr-only">Tutup</span>
                         <i class="ti ti-x text-lg"></i>
                     </button>
                 </div>
@@ -203,5 +203,7 @@
             @endif
         });
     </script>
+    
+    <script src="{{ asset('assets/js/components/confirmation-modal.js') }}"></script>
     @endpush
 @endsection

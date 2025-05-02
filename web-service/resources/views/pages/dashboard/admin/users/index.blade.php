@@ -56,12 +56,12 @@
                     <table class="w-full whitespace-nowrap rounded-lg overflow-hidden">
                         <thead class="bg-gray-50 dark:bg-dark-surface border-b">
                             <tr class="text-left">
-                                <th class="px-6 py-3 text-link dark:text-darklink font-semibold text-sm uppercase">Name</th>
-                                <th class="px-6 py-3 text-link dark:text-darklink font-semibold text-sm uppercase">Email</th>
-                                <th class="px-6 py-3 text-link dark:text-darklink font-semibold text-sm uppercase">Role</th>
-                                <th class="px-6 py-3 text-link dark:text-darklink font-semibold text-sm uppercase">Phone Number</th>
-                                <th class="px-6 py-3 text-link dark:text-darklink font-semibold text-sm uppercase">Gender</th>
-                                <th class="px-6 py-3 text-link dark:text-darklink font-semibold text-sm uppercase">Actions</th>
+                                <th class="px-4 py-3 border-b font-semibold text-gray-800 dark:text-gray-200">Nama</th>
+                                <th class="px-4 py-3 border-b font-semibold text-gray-800 dark:text-gray-200">Email</th>
+                                <th class="px-4 py-3 border-b font-semibold text-gray-800 dark:text-gray-200">Peran</th>
+                                <th class="px-4 py-3 border-b font-semibold text-gray-800 dark:text-gray-200">Nomor Telepon</th>
+                                <th class="px-4 py-3 border-b font-semibold text-gray-800 dark:text-gray-200">Jenis Kelamin</th>
+                                <th class="px-4 py-3 border-b font-semibold text-gray-800 dark:text-gray-200">Aksi</th>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-border dark:divide-darkborder">
@@ -94,11 +94,11 @@
                                     <td class="px-6 py-4 text-sm text-dark dark:text-white">
                                         @if($user->gender == 'male')
                                             <span class="inline-flex items-center">
-                                                <i class="ti ti-gender-male text-blue-500 mr-1"></i> Male
+                                                <i class="ti ti-gender-male text-blue-500 mr-1"></i> Laki-laki
                                             </span>
                                         @elseif($user->gender == 'female')
                                             <span class="inline-flex items-center">
-                                                <i class="ti ti-gender-female text-pink-500 mr-1"></i> Female
+                                                <i class="ti ti-gender-female text-pink-500 mr-1"></i> Perempuan
                                             </span>
                                         @else
                                             -
@@ -111,13 +111,13 @@
                                                title="Edit">
                                                 <i class="ti ti-edit text-primary hover:text-white"></i>
                                             </a>
-                                            <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST" 
-                                                  onsubmit="return confirm('Are you sure you want to delete this user?')" class="inline-block">
+                                            <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST" id="delete-form-{{ $user->id }}" class="inline-block">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" 
+                                                <button type="button" 
                                                         class="p-2 bg-lighterror dark:bg-darkerror rounded-full hover:bg-error hover:text-white transition-all" 
-                                                        title="Delete">
+                                                        title="Hapus"
+                                                        onclick="openConfirmationModal('delete', 'Hapus Pengguna', 'Apakah Anda yakin ingin menghapus pengguna {{ $user->name }}?', 'Ya, Hapus', 'document.getElementById(\'delete-form-{{ $user->id }}\').submit()')">
                                                     <i class="ti ti-trash text-error hover:text-white"></i>
                                                 </button>
                                             </form>
@@ -136,3 +136,7 @@
         </div>
     </div>
 @endsection
+
+@push('scripts')
+<script src="{{ asset('assets/js/components/confirmation-modal.js') }}"></script>
+@endpush

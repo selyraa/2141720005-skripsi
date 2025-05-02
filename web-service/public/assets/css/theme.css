@@ -4364,6 +4364,10 @@ h1,h2,h3,h4,h5,h6 {
   background-color: var(--color-lightwarning);
 }
 
+.bg-lightblue {
+  background-color: var(--color-lightblue);
+}
+
 .bg-link {
   background-color: var(--color-link);
 }
@@ -6275,6 +6279,10 @@ h1,h2,h3,h4,h5,h6 {
   background-color: var(--color-primary);
 }
 
+.hover\:bg-blue:hover {
+  background-color: var(--color-blue);
+}
+
 .hover\:bg-primaryemphasis:hover {
   background-color: var(--color-primary-emphasis);
 }
@@ -7556,6 +7564,10 @@ h1,h2,h3,h4,h5,h6 {
   background-color: var(--color-error);
 }
 
+:is(.dark .dark\:bg-darkblue) {
+  background-color: var(--color-darkblue);
+}
+
 :is(.dark .dark\:bg-gray-200) {
   --tw-bg-opacity: 1;
   background-color: rgb(229 231 235 / var(--tw-bg-opacity));
@@ -8001,6 +8013,10 @@ h1,h2,h3,h4,h5,h6 {
   background-color: var(--color-darkwarning);
 }
 
+:is(.dark .dark\:hover\:bg-darkblue:hover) {
+  background-color: var(--color-darkblue);
+}
+
 :is(.dark .dark\:hover\:bg-error:hover) {
   background-color: var(--color-error);
 }
@@ -8092,6 +8108,10 @@ h1,h2,h3,h4,h5,h6 {
 
 :is(.dark .hover\:dark\:bg-darkprimary):hover {
   background-color: var(--color-darkprimary);
+}
+
+:is(.dark .hover\:dark\:bg-darkblue):hover {
+  background-color: var(--color-darkblue);
 }
 
 :is(.dark .hover\:dark\:bg-erroremphasis):hover {
@@ -10795,6 +10815,9 @@ body .shop-detail-carousel .owl-carousel .owl-nav button {
     --color-lightsecondary:#c6a11e20;
     --color-darkprimary:#36541d;
     --color-darksecondary:#957917;
+    --color-blue: #5D87FF;
+    --color-lightblue: #5D87FF20;
+    --color-darkblue: #26334A;
 }
 
 [data-color-theme="Blue_Theme"]:root{

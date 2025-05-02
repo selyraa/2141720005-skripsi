@@ -6,7 +6,7 @@
             <div class="flex items-center grid grid-cols-12 gap-6">
                 <div class="col-span-9">
                     <h4 class="font-semibold text-xl text-dark dark:text-white mb-3">
-                        Program Enrollments
+                        Registrasi Program
                     </h4>
                     <ol class="flex items-center whitespace-nowrap" aria-label="Breadcrumb">
                         <li class="inline-flex items-center">
@@ -16,14 +16,14 @@
                             <i class="ti ti-slash text-sm leading-tight font-medium mx-2"></i>
                         </li>
                         <li class="inline-flex items-center text-sm font-semibold text-gray-800 truncate dark:text-gray-200 leading-tight" aria-current="page">
-                            Program Enrollments
+                            Registrasi Program
                         </li>
                     </ol>
                 </div>
                 <div class="col-span-3">
                     <div class="flex justify-end">
                         <a href="{{ route('predictions.index') }}" class="btn btn-primary">
-                            <i class="ti ti-plus me-1"></i> New Registration
+                            <i class="ti ti-plus me-1"></i> Tambah Registrasi
                         </a>
                     </div>
                 </div>
@@ -59,11 +59,11 @@
                                 <tr>
                                     <th class="px-6 py-3 border-b font-semibold text-gray-800 dark:text-gray-200">No</th>
                                     <th class="px-6 py-3 border-b font-semibold text-gray-800 dark:text-gray-200">User</th>
-                                    <th class="px-6 py-3 border-b font-semibold text-gray-800 dark:text-gray-200">Diet Program</th>
+                                    <th class="px-6 py-3 border-b font-semibold text-gray-800 dark:text-gray-200">Program Diet</th>
                                     <th class="px-6 py-3 border-b font-semibold text-gray-800 dark:text-gray-200">Status</th>
-                                    <th class="px-6 py-3 border-b font-semibold text-gray-800 dark:text-gray-200">Last Checkup</th>
-                                    <th class="px-6 py-3 border-b font-semibold text-gray-800 dark:text-gray-200">Registration Date</th>
-                                    <th class="px-6 py-3 border-b font-semibold text-gray-800 dark:text-gray-200">Actions</th>
+                                    <th class="px-6 py-3 border-b font-semibold text-gray-800 dark:text-gray-200">Checkup Terakhir</th>
+                                    <th class="px-6 py-3 border-b font-semibold text-gray-800 dark:text-gray-200">Tanggal Pendaftaran</th>
+                                    <th class="px-6 py-3 border-b font-semibold text-gray-800 dark:text-gray-200">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -103,20 +103,29 @@
                                         <td class="px-6 py-4 border-b text-gray-500 dark:text-gray-400">{{ $enrollment->created_at->format('d M Y') }}</td>
                                         <td class="px-6 py-4 border-b text-gray-500 dark:text-gray-400">
                                             <div class="flex gap-2">
-                                                <a href="{{ route('enrollments.show', $enrollment->id) }}" class="btn btn-sm btn-primary">
-                                                    <i class="ti ti-eye"></i> View
+                                                <a href="{{ route('enrollments.show', $enrollment->id) }}" 
+                                                    class="p-2 bg-lightblue dark:bg-dark rounded-full hover:bg-blue hover:text-white transition-all" 
+                                                    title="Lihat">
+                                                    <i class="ti ti-eye text-blue hover:text-white"></i>
                                                 </a>
-                                                <a href="{{ route('enrollments.edit', $enrollment->id) }}" class="btn btn-sm btn-info">
-                                                    <i class="ti ti-edit"></i> Edit
+                                                <a href="{{ route('enrollments.edit', $enrollment->id) }}"
+                                                    class="p-2 bg-lightprimary dark:bg-darkprimary rounded-full hover:bg-primary hover:text-white transition-all" 
+                                                    title="Edit">
+                                                    <i class="ti ti-edit text-primary hover:text-white"></i>
                                                 </a>
-                                                <a href="{{ route('enrollments.create-checkup', $enrollment->id) }}" class="btn btn-sm btn-success">
-                                                    <i class="ti ti-heartbeat"></i> New Checkup
+                                                <a href="{{ route('enrollments.create-checkup', $enrollment->id) }}"
+                                                    class="p-2 bg-lightsuccess dark:bg-darksuccess rounded-full hover:bg-success hover:text-white transition-all" 
+                                                    title="Tambah Checkup">
+                                                    <i class="ti ti-heartbeat text-success hover:text-white"></i>
                                                 </a>
-                                                <form action="{{ route('enrollments.destroy', $enrollment->id) }}" method="POST" class="inline">
+                                                <form action="{{ route('enrollments.destroy', $enrollment->id) }}" method="POST" class="inline" id="delete-enrollment-{{ $enrollment->id }}">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-sm btn-error" onclick="return confirm('Are you sure you want to delete this enrollment?')">
-                                                        <i class="ti ti-trash"></i> Delete
+                                                    <button type="button" 
+                                                        class="p-2 bg-lighterror dark:bg-darkerror rounded-full hover:bg-error hover:text-white transition-all" 
+                                                        title="Hapus"
+                                                        onclick="openConfirmationModal('delete', 'Hapus Pendaftaran Program', 'Apakah Anda yakin ingin menghapus pendaftaran program untuk {{ $enrollment->user->name ?? 'pengguna ini' }}?', 'Ya, Hapus', 'document.getElementById(\'delete-enrollment-{{ $enrollment->id }}\').submit()')">
+                                                        <i class="ti ti-trash text-error hover:text-white"></i>
                                                     </button>
                                                 </form>
                                             </div>
@@ -135,3 +144,7 @@
         </div>
     </div>
 @endsection
+
+@push('scripts')
+<script src="{{ asset('assets/js/components/confirmation-modal.js') }}"></script>
+@endpush

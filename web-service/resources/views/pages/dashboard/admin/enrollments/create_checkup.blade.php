@@ -6,7 +6,7 @@
             <div class="flex items-center grid grid-cols-12 gap-6">
                 <div class="col-span-12">
                     <h4 class="font-semibold text-xl text-dark dark:text-white mb-3">
-                        Add New Checkup
+                        Tambah Checkup Baru
                     </h4>
                     <ol class="flex items-center whitespace-nowrap" aria-label="Breadcrumb">
                         <li class="inline-flex items-center">
@@ -17,18 +17,18 @@
                         </li>
                         <li class="inline-flex items-center">
                             <a class="flex items-center text-sm text-gray-500 hover:text-primary focus:outline-none focus:text-primary dark:focus:text-primary leading-tight" href="{{ route('enrollments.index') }}">
-                                Program Enrollments
+                                Registrasi Program
                             </a>
                             <i class="ti ti-slash text-sm leading-tight font-medium mx-2"></i>
                         </li>
                         <li class="inline-flex items-center">
                             <a class="flex items-center text-sm text-gray-500 hover:text-primary focus:outline-none focus:text-primary dark:focus:text-primary leading-tight" href="{{ route('enrollments.show', $enrollment->id) }}">
-                                Details
+                                Detail
                             </a>
                             <i class="ti ti-slash text-sm leading-tight font-medium mx-2"></i>
                         </li>
                         <li class="inline-flex items-center text-sm font-semibold text-gray-800 truncate dark:text-gray-200 leading-tight" aria-current="page">
-                            New Checkup
+                            Checkup Baru
                         </li>
                     </ol>
                 </div>
@@ -40,11 +40,11 @@
         <div class="col-span-12 md:col-span-4">
             <div class="card">
                 <div class="card-body">
-                    <h3 class="card-title mb-4">Registration Information</h3>
+                    <h3 class="card-title mb-4">Informasi Registrasi</h3>
                     
                     <div class="space-y-4">
                         <div class="border-b border-gray-200 dark:border-gray-700 pb-4">
-                            <h4 class="text-lg font-medium text-dark dark:text-white">User Information</h4>
+                            <h4 class="text-lg font-medium text-dark dark:text-white">Informasi Pengguna</h4>
                             <div class="flex items-center mt-2">
                                 <div class="w-12 h-12 rounded-full overflow-hidden mr-4 bg-gray-200 dark:bg-gray-700 flex-shrink-0">
                                     <img src="{{ $enrollment->user->profile_photo_url ?? asset('assets/images/profile/user-1.jpg') }}" alt="User" class="w-full h-full object-cover">
@@ -57,7 +57,7 @@
                         </div>
 
                         <div class="border-b border-gray-200 dark:border-gray-700 py-4">
-                            <h4 class="text-lg font-medium text-dark dark:text-white">Current Program</h4>
+                            <h4 class="text-lg font-medium text-dark dark:text-white">Program Saat Ini</h4>
                             <div class="mt-2">
                                 <div class="grid grid-cols-2 gap-2 mb-2">
                                     <span class="text-gray-500">Program:</span>
@@ -95,7 +95,7 @@
         <div class="col-span-12 md:col-span-8">
             <div class="card">
                 <div class="card-body">
-                    <h3 class="card-title mb-4">New Checkup Data</h3>
+                    <h3 class="card-title mb-4">Data Checkup Baru</h3>
 
                     @if($errors->any())
                         <div class="bg-lighterror dark:bg-darkerror text-error px-4 py-3 rounded relative mb-4" role="alert">
@@ -162,9 +162,9 @@
 
                         <div class="border-t border-gray-200 dark:border-gray-700 pt-6">
                             <div class="form-group">
-                                <label for="diet_program_id" class="form-label block mb-2 font-medium text-dark dark:text-white">Change Diet Program? (Optional)</label>
+                                <label for="diet_program_id" class="form-label block mb-2 font-medium text-dark dark:text-white">Ubah Program Diet? (Opsional)</label>
                                 <select id="diet_program_id" name="diet_program_id" class="form-select w-full">
-                                    <option value="">Keep Current Program</option>
+                                    <option value="">Gunakan Program Saat Ini</option>
                                     @foreach($dietPrograms as $program)
                                         @if($program->id != $enrollment->diet_program_id)
                                             <option value="{{ $program->id }}" {{ old('diet_program_id') == $program->id ? 'selected' : '' }}>
@@ -173,16 +173,16 @@
                                         @endif
                                     @endforeach
                                 </select>
-                                <p class="text-xs text-gray-500 mt-1">Select only if you want to change the current diet program based on this checkup.</p>
+                                <p class="text-xs text-gray-500 mt-1">Pilih hanya jika Anda ingin mengganti program diet saat ini berdasarkan hasil pemeriksaan ini.</p>
                             </div>
                         </div>
 
                         <div class="flex justify-end">
                             <a href="{{ route('enrollments.index', $enrollment->id) }}" class="btn btn-secondary me-2">
-                                <i class="ti ti-x me-1"></i> Cancel
+                                <i class="ti ti-x me-1"></i> Batal
                             </a>
                             <button type="submit" class="btn btn-primary">
-                                <i class="ti ti-device-floppy me-1"></i> Save Checkup
+                                <i class="ti ti-device-floppy me-1"></i> Simpan Checkup
                             </button>
                         </div>
                     </form>
