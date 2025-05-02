@@ -50,77 +50,11 @@
             <div class="card-body">
                 <h3 class="card-title mb-4">Form Tambah Pengguna</h3>
                 
-                <form action="{{ route('admin.users.store') }}" method="POST" class="space-y-5">
-                    @csrf
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                        <div class="form-group">
-                            <label for="name" class="form-label block mb-2 font-medium text-dark dark:text-white">Nama</label>
-                            <input type="text" class="form-control w-full" id="name" name="name" value="{{ old('name') }}" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="email" class="form-label block mb-2 font-medium text-dark dark:text-white">Email</label>
-                            <input type="email" class="form-control w-full" id="email" name="email" value="{{ old('email') }}" required>
-                        </div>
-                    </div>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                        <div class="form-group">
-                            <label for="password" class="form-label block mb-2 font-medium text-dark dark:text-white">Password</label>
-                            <input type="password" class="form-control w-full" id="password" name="password" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="password_confirmation" class="form-label block mb-2 font-medium text-dark dark:text-white">Konfirmasi Password</label>
-                            <input type="password" class="form-control w-full" id="password_confirmation" name="password_confirmation" required>
-                        </div>
-                    </div>
-
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                        <div class="form-group">
-                            <label for="role_id" class="form-label block mb-2 font-medium text-dark dark:text-white">Role</label>
-                            <select class="form-select w-full" id="role_id" name="role_id" required>
-                                <option value="">Pilih Role</option>
-                                @foreach($roles as $role)
-                                    <option value="{{ $role->id }}" {{ old('role_id') == $role->id ? 'selected' : '' }}>
-                                        {{ $role->name }}
-                                    </option>
-                                @endforeach
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="phone_number" class="form-label block mb-2 font-medium text-dark dark:text-white">Nomor Telepon</label>
-                            <input type="text" class="form-control w-full" id="phone_number" name="phone_number" value="{{ old('phone_number') }}">
-                        </div>
-                    </div>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                        <div class="form-group">
-                            <label for="gender" class="form-label block mb-2 font-medium text-dark dark:text-white">Jenis Kelamin</label>
-                            <select class="form-select w-full" id="gender" name="gender">
-                                <option value="">Pilih Jenis Kelamin</option>
-                                <option value="male" {{ old('gender') == 'male' ? 'selected' : '' }}>Laki-laki</option>
-                                <option value="female" {{ old('gender') == 'female' ? 'selected' : '' }}>Perempuan</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="birth_date" class="form-label block mb-2 font-medium text-dark dark:text-white">Tanggal Lahir</label>
-                            <input type="date" class="form-control w-full" id="birth_date" name="birth_date" value="{{ old('birth_date') }}">
-                        </div>
-                    </div>
-
-                    <div class="flex justify-end mt-6">
-                        <a href="{{ route('admin.users.index') }}" class="btn btn-secondary me-2">
-                            <i class="ti ti-arrow-left me-1"></i>Kembali
-                        </a>
-                        <button type="submit" class="btn btn-primary">
-                            <i class="ti ti-user-plus me-1"></i>Buat Pengguna
-                        </button>
-                    </div>
-                </form>
+                <x-forms.user-form :action="route('admin.users.store')" buttonText="Buat Pengguna">
+                    <a href="{{ route('admin.users.index') }}" class="btn btn-secondary me-2">
+                        <i class="ti ti-arrow-left me-1"></i>Kembali
+                    </a>
+                </x-forms.user-form>
             </div>
         </div>
     </div>

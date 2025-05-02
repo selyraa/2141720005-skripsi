@@ -64,12 +64,19 @@
                                         <!-- User Selection Field -->
                                         <div class="mb-4">
                                             <label for="user_id" class="block text-sm font-medium mb-2">Pilih Pelanggan:</label>
-                                            <select name="user_id" id="user_id" class="form-select w-full" required>
-                                                <option value="">-- Pilih Pelanggan --</option>
-                                                @foreach($users as $user)
-                                                    <option value="{{ $user->id }}">{{ $user->name }} ({{ $user->email }})</option>
-                                                @endforeach
-                                            </select>
+                                            <div class="flex items-center">
+                                                <select name="user_id" id="user_id" class="form-select w-full" required>
+                                                    <option value="">-- Pilih Pelanggan --</option>
+                                                    @foreach($users as $user)
+                                                        <option value="{{ $user->id }}" {{ session('new_customer_id') == $user->id ? 'selected' : '' }}>
+                                                            {{ $user->name }} ({{ $user->email }})
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                                <button type="button" class="btn btn-primary ml-2" data-hs-overlay="#addCustomerModal">
+                                                    <i class="ti ti-user-plus"></i> Baru
+                                                </button>
+                                            </div>
                                             @error('user_id')
                                                 <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                                             @enderror
@@ -98,10 +105,17 @@
                                         </div>
                                         
                                         <div class="mt-6 flex justify-between">
-                                            <a href="{{ route('predictions.index') }}" class="btn btn-secondary">
-                                                <i class="ti ti-arrow-left mr-1"></i> Edit Data Prediksi
-                                            </a>
-                                            <button type="submit" class="btn btn-primary">Simpan & Lanjutkan</button>
+                                            <div>
+                                                <a href="{{ route('predictions.index') }}" class="btn btn-secondary mr-2">
+                                                    <i class="ti ti-arrow-left mr-1"></i> Edit Data Prediksi
+                                                </a>
+                                                <a href="{{ route('predictions.cancel') }}" class="btn btn-error" onclick="return confirm('Apakah Anda yakin ingin membatalkan prediksi ini?');">
+                                                    <i class="ti ti-x mr-1"></i> Batalkan Prediksi
+                                                </a>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary">
+                                                <i class="ti ti-check mr-1"></i> Simpan & Lanjutkan
+                                            </button>
                                         </div>
                                     </div>
                                 </form>
@@ -115,6 +129,48 @@
                             </div>
                         </div>
                     @endif
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Customer Modal -->
+    <div id="addCustomerModal" class="hs-overlay hidden w-full h-full fixed top-0 left-0 z-[60] overflow-x-hidden overflow-y-auto">
+        <div class="hs-overlay-open:mt-7 hs-overlay-open:opacity-100 hs-overlay-open:duration-500 mt-0 opacity-0 ease-out transition-all md:max-w-2xl md:w-full m-3 md:mx-auto">
+            <div class="relative flex flex-col bg-white border shadow-sm rounded-xl overflow-hidden dark:bg-gray-800 dark:border-gray-700">
+                <div class="absolute top-2 right-2">
+                    <button type="button" class="inline-flex flex-shrink-0 justify-center items-center h-8 w-8 rounded-md text-gray-500 hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white text-sm dark:text-gray-500 dark:hover:text-gray-400 dark:focus:ring-gray-700 dark:focus:ring-offset-gray-800" data-hs-overlay="#addCustomerModal">
+                        <span class="sr-only">Close</span>
+                        <i class="ti ti-x text-lg"></i>
+                    </button>
+                </div>
+
+                <div class="p-4 sm:p-10 overflow-y-auto">
+                    <div class="mb-6 text-center">
+                        <h3 class="mb-2 text-xl font-bold text-gray-800 dark:text-gray-200">
+                            Tambah Pelanggan Baru
+                        </h3>
+                        <p class="text-gray-500">
+                            Isi data pelanggan baru untuk didaftarkan ke program diet
+                        </p>
+                    </div>
+
+                    @if(session('success') && session('customer_created'))
+                        <div class="bg-success/10 text-success p-4 rounded-lg mb-4">
+                            Pelanggan <strong>{{ session('new_customer_name') }}</strong> berhasil dibuat dan dipilih. Silahkan lanjutkan dengan pengisian data program diet.
+                        </div>
+                    @endif
+
+                    <x-forms.user-form 
+                        :action="route('predictions.storeCustomer')" 
+                        buttonText="Tambah Pelanggan" 
+                        :defaultRole="$customerRole->id ?? null" 
+                        :hideRoleSelection="true"
+                    >
+                        <button type="button" class="btn btn-secondary me-2" data-hs-overlay="#addCustomerModal">
+                            <i class="ti ti-x me-1"></i>Batal
+                        </button>
+                    </x-forms.user-form>
                 </div>
             </div>
         </div>
@@ -135,6 +191,16 @@
                     }
                 });
             });
+
+            // Auto-open modal if there are validation errors in the customer form
+            @if($errors->any() && !old('_token'))
+                window.HSOverlay.open(document.querySelector('#addCustomerModal'));
+            @endif
+
+            // Auto-select newly created customer if one was just created
+            @if(session('customer_created'))
+                document.getElementById('user_id').value = '{{ session('new_customer_id') }}';
+            @endif
         });
     </script>
     @endpush

@@ -8,9 +8,11 @@ use App\Models\DietProgram;
 use App\Models\PredictionResult;
 use App\Models\ProgramEnrollment;
 use App\Models\User;
+use App\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class PredictionController extends Controller
 {
@@ -136,9 +138,14 @@ class PredictionController extends Controller
         }
 
         // Get users with role 'user' for the dropdown selection
-        $users = User::all();
-
-        return view('pages.dashboard.admin.predictions.result', compact('users'));
+        $users = User::whereHas('role', function($query) {
+            $query->where('name', 'pelanggan');
+        })->get();
+        
+        // Get pelanggan role for the user creation form
+        $customerRole = Role::where('name', 'pelanggan')->first();
+        
+        return view('pages.dashboard.admin.predictions.result', compact('users', 'customerRole'));
     }
     
     public function saveResult(Request $request)
@@ -224,5 +231,45 @@ class PredictionController extends Controller
         
         // Redirect to enrollments.index with success message
         return redirect()->route('enrollments.index')->with('success', 'Program diet berhasil disimpan');
+    }
+
+    /**
+     * Create a new customer user from the prediction results page
+     */
+    public function storeCustomer(Request $request)
+    {
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:8|confirmed',
+            'role_id' => 'required|exists:roles,id',
+            'phone_number' => 'nullable|string|max:15',
+            'gender' => 'nullable|in:male,female',
+            'birth_date' => 'nullable|date',
+        ]);
+        
+        // Create the new customer user
+        $validatedData['password'] = Hash::make($validatedData['password']);
+        $user = User::create($validatedData);
+        
+        // Flash success message for the modal
+        session()->flash('customer_created', true);
+        session()->flash('new_customer_id', $user->id);
+        session()->flash('new_customer_name', $user->name);
+        
+        // Redirect back to the prediction results page
+        return redirect()->route('predictions.result')
+            ->with('success', 'Pelanggan berhasil dibuat');
+    }
+
+    /**
+     * Cancel the current prediction and clear session data
+     */
+    public function cancelPrediction()
+    {
+        session()->forget(['result', 'prediction_data']);
+        
+        return redirect()->route('predictions.index')
+            ->with('error', 'Prediksi program diet dibatalkan');
     }
 }

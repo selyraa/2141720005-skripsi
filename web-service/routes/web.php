@@ -30,6 +30,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/predictions', [PredictionController::class, 'predict'])->name('predictions.predict');
     Route::get('/predictions/result', [PredictionController::class, 'result'])->name('predictions.result');
     Route::post('/predictions/save', [PredictionController::class, 'saveResult'])->name('predictions.saveResult');
+    Route::post('/predictions/customer', [PredictionController::class, 'storeCustomer'])->name('predictions.storeCustomer');
+    Route::get('/predictions/cancel', [PredictionController::class, 'cancelPrediction'])->name('predictions.cancel');
     
     // Program Enrollment Routes
     Route::get('/enrollments', [ProgramEnrollmentController::class, 'index'])->name('enrollments.index');

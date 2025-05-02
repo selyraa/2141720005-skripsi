@@ -67,9 +67,9 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse($enrollments as $enrollment)
+                                @forelse($enrollments as $index => $enrollment)
                                     <tr>
-                                        <td class="px-6 py-4 border-b text-gray-500 dark:text-gray-400">{{ $enrollment->id }}</td>
+                                        <td class="px-6 py-4 border-b text-gray-500 dark:text-gray-400">{{ $index + 1 }}</td>
                                         <td class="px-6 py-4 border-b text-gray-500 dark:text-gray-400">
                                             {{ $enrollment->user->name ?? 'N/A' }}
                                             <div class="text-xs text-gray-400">{{ $enrollment->user->email ?? '' }}</div>

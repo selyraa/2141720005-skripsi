@@ -30,13 +30,20 @@
             {{ session('error') }}
         </div>
     @endif
+    
+    @if(session('info'))
+        <div class="bg-info/10 text-info p-4 rounded-lg mb-4">
+            {{ session('info') }}
+        </div>
+    @endif
+
     <div class="grid grid-cols-12 gap-6">
         <div class="col-span-12">
             <div class="card">
                 <div class="card-body">
                     <h3 class="card-title mb-4">Form Prediksi Program Diet</h3>
 
-                    <form action="{{ route('predictions.predict') }}" method="POST">
+                    <form action="{{ route('predictions.predict') }}" method="POST" id="prediction-form">
                         @csrf
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div class="mb-4">
@@ -136,12 +143,56 @@
                             </div>
                         @endif
 
-                        <div class="flex justify-end mt-4">
-                            <button type="submit" class="btn btn-primary">Prediksi Program</button>
+                        @if(session('info'))
+                            <div class="bg-info/10 text-info p-4 rounded-lg mb-4">
+                                {{ session('info') }}
+                            </div>
+                        @endif
+
+                        <div class="flex justify-end mt-4 space-x-3">
+                            <button type="button" id="reset-form" class="btn btn-secondary">
+                                <i class="ti ti-refresh me-1"></i>Reset
+                            </button>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="ti ti-chart-bar me-1"></i>Prediksi Program
+                            </button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+
+    @push('scripts')
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const resetButton = document.getElementById('reset-form');
+            const form = document.getElementById('prediction-form');
+            
+            resetButton.addEventListener('click', function() {
+                // Get all input elements in the form
+                const inputs = form.querySelectorAll('input[type="number"]');
+                
+                // Reset each input field value
+                inputs.forEach(input => {
+                    input.value = '';
+                });
+                
+                // Optional: Show feedback to user
+                const feedbackDiv = document.createElement('div');
+                feedbackDiv.className = 'bg-success/10 text-success p-4 rounded-lg mb-4 mt-4';
+                feedbackDiv.textContent = 'Form telah direset. Silahkan isi data baru.';
+                
+                // Insert before the form's button container
+                const buttonsContainer = form.querySelector('.flex.justify-end');
+                form.insertBefore(feedbackDiv, buttonsContainer);
+                
+                // Remove the feedback message after 3 seconds
+                setTimeout(() => {
+                    feedbackDiv.remove();
+                }, 3000);
+            });
+        });
+    </script>
+    @endpush
 @endsection
