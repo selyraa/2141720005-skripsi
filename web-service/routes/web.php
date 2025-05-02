@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PredictionController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\AccountSettingsController;
@@ -23,7 +24,8 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // Protected Routes
 Route::middleware(['auth'])->group(function () {
-    Route::view('dashboard', 'pages.dashboard.admin.dashboard')->name('dashboard');
+    // Dashboard Route
+    Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
     
     // Prediction Routes
     Route::get('/predictions', [PredictionController::class, 'index'])->name('predictions.index');
