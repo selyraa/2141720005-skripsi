@@ -150,7 +150,7 @@
                         @endif
 
                         <div class="flex justify-end mt-4 space-x-3">
-                            <button type="button" id="reset-form" class="btn btn-secondary">
+                            <button type="button" id="reset-form" class="btn btn-secondary hidden">
                                 <i class="ti ti-refresh me-1"></i>Reset
                             </button>
                             <button type="submit" class="btn btn-primary">
@@ -169,29 +169,43 @@
             const resetButton = document.getElementById('reset-form');
             const form = document.getElementById('prediction-form');
             
+            const toggleResetButtonVisibility = () => {
+                const inputs = form.querySelectorAll('input[type="number"]');
+                let hasValue = false;
+
+                inputs.forEach(input => {
+                    if (input.value.trim() !== '') {
+                        hasValue = true;
+                    }
+                });
+
+                resetButton.classList.toggle('hidden', !hasValue);
+            };
+
+            form.addEventListener('input', toggleResetButtonVisibility);
+
             resetButton.addEventListener('click', function() {
-                // Get all input elements in the form
                 const inputs = form.querySelectorAll('input[type="number"]');
                 
-                // Reset each input field value
                 inputs.forEach(input => {
                     input.value = '';
                 });
                 
-                // Optional: Show feedback to user
                 const feedbackDiv = document.createElement('div');
                 feedbackDiv.className = 'bg-success/10 text-success p-4 rounded-lg mb-4 mt-4';
                 feedbackDiv.textContent = 'Form telah direset. Silahkan isi data baru.';
                 
-                // Insert before the form's button container
                 const buttonsContainer = form.querySelector('.flex.justify-end');
                 form.insertBefore(feedbackDiv, buttonsContainer);
                 
-                // Remove the feedback message after 3 seconds
                 setTimeout(() => {
                     feedbackDiv.remove();
                 }, 3000);
+
+                toggleResetButtonVisibility();
             });
+
+            toggleResetButtonVisibility();
         });
     </script>
     @endpush
