@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Casts\ProgramEnrollmentStatusCast;
 use App\Models\Checkup;
 use App\Models\DietPrediction;
 use App\Models\DietProgram;
@@ -132,24 +133,32 @@ class ProgramEnrollmentController extends Controller
     public function update(Request $request, $id)
     {
         $enrollment = ProgramEnrollment::findOrFail($id);
-        
-        // Validate input data
+
         $validatedData = $request->validate([
             'diet_program_id' => 'required|exists:diet_programs,id',
-            'status' => 'required|integer|in:0,1,2,3',
+            'status' => 'required|in:0,1,2,3',
         ]);
 
-        // Update program enrollment
+        $statusCast = new ProgramEnrollmentStatusCast();
+        $statuses = $statusCast->getStatuses();
+        
+        $status = $validatedData['status'];
+        if (is_numeric($status)) {
+            $status = (int) $status;
+        }
+        else if (is_string($status) && in_array($status, $statuses)) {
+            $status = array_search($status, $statuses);
+        }
+        
         $enrollment->update([
             'diet_program_id' => $validatedData['diet_program_id'],
-            'status' => $validatedData['status'],
+            'status' => $status,
         ]);
 
         // If program changed, update the prediction results
         if ($enrollment->wasChanged('diet_program_id')) {
             $latestCheckup = $enrollment->checkup()->latest()->first();
             if ($latestCheckup && $latestCheckup->dietPrediction) {
-                // Mark all previous results as not selected
                 PredictionResult::where('diet_prediction_id', $latestCheckup->dietPrediction->id)
                     ->update(['is_selected' => false]);
                 

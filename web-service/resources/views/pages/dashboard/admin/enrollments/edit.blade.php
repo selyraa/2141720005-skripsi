@@ -83,10 +83,10 @@
                             <div class="form-group">
                                 <label for="status" class="form-label block mb-2 font-medium text-dark dark:text-white">{{ __('app.status') }} <span class="text-red-500">*</span></label>
                                 <select id="status" name="status" class="form-select w-full" required>
-                                    <option value="0" {{ old('status', $enrollment->status) === 0 ? 'selected' : '' }}>{{ __('app.on_going') }}</option>
-                                    <option value="1" {{ old('status', $enrollment->status) === 1 ? 'selected' : '' }}>{{ __('app.completed') }}</option>
-                                    <option value="2" {{ old('status', $enrollment->status) === 2 ? 'selected' : '' }}>{{ __('app.cancelled') }}</option>
-                                    <option value="3" {{ old('status', $enrollment->status) === 3 ? 'selected' : '' }}>{{ __('app.changed') }}</option>
+                                    <option value="0" {{ (string)old('status', $enrollment->getRawOriginal('status')) === '0' ? 'selected' : '' }}>{{ __('app.on_going') }}</option>
+                                    <option value="1" {{ (string)old('status', $enrollment->getRawOriginal('status')) === '1' ? 'selected' : '' }}>{{ __('app.completed') }}</option>
+                                    <option value="2" {{ (string)old('status', $enrollment->getRawOriginal('status')) === '2' ? 'selected' : '' }}>{{ __('app.cancelled') }}</option>
+                                    <option value="3" {{ (string)old('status', $enrollment->getRawOriginal('status')) === '3' ? 'selected' : '' }}>{{ __('app.changed') }}</option>
                                 </select>
                             </div>
                         </div>

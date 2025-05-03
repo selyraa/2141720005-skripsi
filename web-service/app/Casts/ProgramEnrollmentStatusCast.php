@@ -37,6 +37,14 @@ class ProgramEnrollmentStatusCast implements CastsAttributes
      */
     public function set(Model $model, string $key, mixed $value, array $attributes): ?int
     {
-        return isset($value) ? array_search($value, $this->statuses) : null;
+        if (is_numeric($value)) {
+            return (int) $value;
+        }
+        
+        if (is_string($value) && in_array($value, $this->statuses)) {
+            return array_search($value, $this->statuses);
+        }
+        
+        return null;
     }
 }
