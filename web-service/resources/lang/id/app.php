@@ -118,8 +118,9 @@ return [
     
     // Sidebar Navigation
     'administration' => 'Administrasi',
+    'master' => 'Master',
     'manage_users' => 'Kelola Pengguna',
-    'customer_data' => 'Data Pelanggan',
+    'user_data' => 'Data Pengguna',
     'diet_program_data' => 'Data Program Diet',
     'customer_checkup_data' => 'Data Checkup Pelanggan',
     'prediction_recommendation' => 'Prediksi & Rekomendasi',

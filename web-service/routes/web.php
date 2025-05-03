@@ -6,6 +6,7 @@ use App\Http\Controllers\PredictionController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\AccountSettingsController;
 use App\Http\Controllers\Admin\CheckupDataController;
+use App\Http\Controllers\Admin\DietProgramController;
 use App\Http\Controllers\ProgramEnrollmentController;
 use Illuminate\Support\Facades\Route;
 
@@ -53,6 +54,9 @@ Route::middleware(['auth'])->group(function () {
     
     // Checkup Data Routes
     Route::resource('checkups', CheckupDataController::class);
+
+    // Diet Programs Routes
+    Route::resource('diet-programs', DietProgramController::class);
 
     // Account Settings Routes
     Route::get('/account/settings', [AccountSettingsController::class, 'index'])->name('account.settings');
