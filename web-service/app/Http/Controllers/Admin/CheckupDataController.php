@@ -21,11 +21,17 @@ class CheckupDataController extends Controller
     {
         // Get distinct program enrollment IDs with the latest checkup for each
         // Only include checkups that have a program_enrollment_id that is not null
-        $latestCheckups = Checkup::select('program_enrollment_id', DB::raw('MAX(id) as latest_id'))
-                        ->whereNotNull('program_enrollment_id')
-                        ->where('deleted_at', null)
-                        ->groupBy('program_enrollment_id')
-                        ->get()
+        // $latestCheckups = Checkup::select('program_enrollment_id', DB::raw('MAX(id) as latest_id'))
+        //                 ->whereNotNull('program_enrollment_id')
+        //                 ->where('deleted_at', null)
+        //                 ->groupBy('program_enrollment_id')
+        //                 ->get()
+        //                 ->pluck('latest_id');
+        $latestCheckups = Checkup::select('checkups.program_enrollment_id', DB::raw('MAX(checkups.id) as latest_id'))
+                        ->join('program_enrollments', 'checkups.program_enrollment_id', '=', 'program_enrollments.id')
+                        ->whereNull('checkups.deleted_at')
+                        ->whereNull('program_enrollments.deleted_at')
+                        ->groupBy('checkups.program_enrollment_id')
                         ->pluck('latest_id');
         
         // Query to get the actual checkup records with relationships

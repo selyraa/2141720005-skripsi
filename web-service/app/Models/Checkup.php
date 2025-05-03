@@ -34,6 +34,39 @@ class Checkup extends Model
         'checkup_date' => 'datetime',
     ];
 
+    /**
+     * Calculate BMI value based on height and weight
+     * 
+     * @return float
+     */
+    public function calculateBmi()
+    {
+        if ($this->height <= 0) return 0;
+        
+        $heightInMeters = $this->height / 100;
+        return $this->weight / ($heightInMeters * $heightInMeters);
+    }
+
+    /**
+     * Get BMI category based on value
+     * 
+     * @return string
+     */
+    public function getBmiCategory()
+    {
+        $bmi = $this->calculateBmi();
+        
+        if ($bmi < 18.5) {
+            return 'underweight';
+        } elseif ($bmi >= 18.5 && $bmi < 25) {
+            return 'normal';
+        } elseif ($bmi >= 25 && $bmi < 30) {
+            return 'overweight';
+        } else {
+            return 'obese';
+        }
+    }
+
     public function programEnrollment()
     {
         return $this->belongsTo(ProgramEnrollment::class);

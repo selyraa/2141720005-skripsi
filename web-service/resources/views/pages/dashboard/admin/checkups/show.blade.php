@@ -148,6 +148,14 @@
                             <div class="text-sm text-gray-500 dark:text-gray-400">BMI</div>
                             <div class="text-lg font-semibold text-dark dark:text-white">
                                 {{ number_format($checkup->weight / (($checkup->height / 100) * ($checkup->height / 100)), 2) }}
+                                <span class="text-sm font-normal ml-2 px-2 py-1 rounded 
+                                    @if($checkup->getBmiCategory() == 'underweight') bg-lightinfo text-info
+                                    @elseif($checkup->getBmiCategory() == 'normal') bg-lightsuccess text-success
+                                    @elseif($checkup->getBmiCategory() == 'overweight') bg-lightwarning text-warning
+                                    @elseif($checkup->getBmiCategory() == 'obese') bg-lighterror text-error
+                                    @endif">
+                                    {{ __(sprintf('app.%s', $checkup->getBmiCategory())) }}
+                                </span>
                             </div>
                         </div>
                         
