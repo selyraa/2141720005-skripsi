@@ -89,9 +89,9 @@
                                     aria-labelledby="hs-dropdown-hover-event-notification">
                                     <div class="flex items-center py-4 px-7 justify-between">
                                         <h3 class="mb-0 card-title">
-                                            Notifications</h3>
+                                            {{ __('Notifikasi') }}</h3>
                                         <span class="text-xs badge-md bg-primary text-white">5
-                                            new</span>
+                                            {{ __('baru') }}</span>
                                     </div>
                                     <div class="message-body max-h-[350px]" data-simplebar="">
                                         <a href="javascript:void(0)"
@@ -102,10 +102,9 @@
                                             </span>
                                             <div class="ps-4">
                                                 <h5 class="text-sm">
-                                                    Launch Admin
+                                                    {{ __('Luncurkan Admin') }}
                                                 </h5>
-                                                <span>Just see the my new
-                                                    admin!</span>
+                                                <span>{{ __('Lihat admin baru saya!') }}</span>
                                             </div>
                                         </a>
                                         <a href="javascript:void(0)"
@@ -116,9 +115,9 @@
                                             </span>
                                             <div class="ps-4">
                                                 <h5 class="text-sm">
-                                                    Meeting Today
+                                                    {{ __('Rapat Hari Ini') }}
                                                 </h5>
-                                                <span>Check your schedule</span>
+                                                <span>{{ __('Periksa jadwal Anda') }}</span>
                                             </div>
                                         </a>
                                         <a href="javascript:void(0)"
@@ -129,11 +128,9 @@
                                             </span>
                                             <div class="ps-4">
                                                 <h5 class="text-sm">
-                                                    New Payment received
+                                                    {{ __('Pembayaran Baru diterima') }}
                                                 </h5>
-                                                <span>Check
-                                                    your
-                                                    earnings</span>
+                                                <span>{{ __('Periksa penghasilan Anda') }}</span>
                                             </div>
                                         </a>
                                         <a href="javascript:void(0)"
@@ -144,9 +141,9 @@
                                             </span>
                                             <div class="ps-4">
                                                 <h5 class="text-sm">
-                                                    Pay Bills
+                                                    {{ __('Bayar Tagihan') }}
                                                 </h5>
-                                                <span>Just a reminder that you have pay</span>
+                                                <span>{{ __('Pengingat bahwa Anda harus membayar') }}</span>
                                             </div>
                                         </a>
                                         <a href="javascript:void(0)"
@@ -157,16 +154,15 @@
                                             </span>
                                             <div class="ps-4">
                                                 <h5 class="text-sm">
-                                                    Go for Event
+                                                    {{ __('Pergi ke Acara') }}
                                                 </h5>
-                                                <span>Just a reminder for
-                                                    event</span>
+                                                <span>{{ __('Pengingat untuk acara') }}</span>
                                             </div>
                                         </a>
                                     </div>
                                     <div class="pt-3 pb-6 px-7">
                                         <a href="#" class="btn btn-outline-primary block w-full">
-                                            See All Notifications
+                                            {{ __('app.see_all') }} {{ __('Notifikasi') }}
                                         </a>
                                     </div>
                                 </div>
@@ -199,17 +195,17 @@
                                         <a href="javascript:void(0)"
                                             class="dropdown-menu-link py-2 px-5 hover:bg-lightprimary hover:dark:bg-darkprimary flex items-center gap-2">
                                             <i class="ti ti-user-circle text-lg"></i>
-                                            <span>My Profile</span>
+                                            <span>{{ __('app.profile') }}</span>
                                         </a>
                                         <a href="{{ route('account.settings') }}"
                                             class="dropdown-menu-link py-2 px-5 hover:bg-lightprimary hover:dark:bg-darkprimary flex items-center gap-2">
                                             <i class="ti ti-settings text-lg"></i>
-                                            <span>Account Settings</span>
+                                            <span>{{ __('app.account_settings') }}</span>
                                         </a>
                                         <a href="javascript:void(0)"
                                             class="dropdown-menu-link py-2 px-5 hover:bg-lightprimary hover:dark:bg-darkprimary flex items-center gap-2">
                                             <i class="ti ti-message-dots text-lg"></i>
-                                            <span>My Messages</span>
+                                            <span>{{ __('Pesan Saya') }}</span>
                                         </a>
                                         <hr class="my-2 border-gray-200 dark:border-gray-700">
                                         <form action="{{ route('logout') }}" method="POST">
@@ -217,7 +213,7 @@
                                             <button type="submit"
                                                 class="dropdown-menu-link py-2 px-5 hover:bg-lightprimary hover:dark:bg-darkprimary w-full text-left flex items-center gap-2 text-error">
                                                 <i class="ti ti-logout text-lg"></i>
-                                                <span>Sign Out</span>
+                                                <span>{{ __('app.logout') }}</span>
                                             </button>
                                         </form>
                                     </div>

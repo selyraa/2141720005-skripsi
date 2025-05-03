@@ -18,97 +18,97 @@
                     <ul data-te-sidenav-menu-ref id="sidebarnav">
                         <div class="caption">
                             <i class="ti ti-dots nav-small-cap-icon "></i>
-                            <span class="hide-menu">Home</span>
+                            <span class="hide-menu">{{ __('app.home') }}</span>
                         </div>
                         <li class="sidebar-item">
                             <a class="sidebar-link dark-sidebar-link {{ request()->routeIs('dashboard') ? 'activemenu' : '' }}" href="{{ route('dashboard') }}">
                                 <i class="ti ti-layout-dashboard text-xl flex-shrink-0"></i> <span
-                                    class="hide-menu flex-shrink-0">Dashboard</span>
+                                    class="hide-menu flex-shrink-0">{{ __('app.dashboard') }}</span>
                             </a>
                         </li>
 
                         @if(auth()->check() && auth()->user()->role && in_array(auth()->user()->role->name, ['ahli gizi', 'asisten ahli gizi']))
                         <div class="caption mt-8">
                             <i class="ti ti-dots nav-small-cap-icon "></i>
-                            <span class="hide-menu">Administrasi</span>
+                            <span class="hide-menu">{{ __('app.administration') }}</span>
                         </div>
                         <li class="sidebar-item">
                             <a class="sidebar-link dark-sidebar-link {{ request()->routeIs('admin.users.*') ? 'activemenu' : '' }}" href="{{ route('admin.users.index') }}">
                                 <i class="ti ti-users text-xl flex-shrink-0"></i> <span
-                                    class="hide-menu flex-shrink-0">Kelola Pengguna</span>
+                                    class="hide-menu flex-shrink-0">{{ __('app.manage_users') }}</span>
                             </a>
                         </li>
                         
 
                         <div class="caption mt-8">
                             <i class="ti ti-dots nav-small-cap-icon "></i>
-                            <span class="hide-menu">Data Pelanggan</span>
+                            <span class="hide-menu">{{ __('app.customer_data') }}</span>
                         </div>
                         <li class="sidebar-item">
                             <a class="sidebar-link dark-sidebar-link {{ request()->routeIs('customers.*') ? 'activemenu' : '' }}" href="#">
                                 <i class="ti ti-users text-xl flex-shrink-0"></i> <span
-                                    class="hide-menu flex-shrink-0">Data Pelanggan</span>
+                                    class="hide-menu flex-shrink-0">{{ __('app.customer_data') }}</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
                             <a class="sidebar-link dark-sidebar-link {{ request()->routeIs('checkups.*') ? 'activemenu' : '' }}" href="{{ route('checkups.index') }}">
                                 <i class="ti ti-heartbeat text-xl flex-shrink-0"></i> <span
-                                    class="hide-menu flex-shrink-0">Data Checkup Pelanggan</span>
+                                    class="hide-menu flex-shrink-0">{{ __('app.customer_checkup_data') }}</span>
                             </a>
                         </li>
                         @endif
                         <div class="caption mt-8">
                             <i class="ti ti-dots nav-small-cap-icon "></i>
-                            <span class="hide-menu">Prediksi & Rekomendasi</span>
+                            <span class="hide-menu">{{ __('app.prediction_recommendation') }}</span>
                         </div>
                         <li class="sidebar-item">
                             <a class="sidebar-link dark-sidebar-link {{ request()->routeIs('predictions.*') ? 'activemenu' : '' }}" href="{{ route('predictions.index') }}">
                                 <i class="ti ti-brain text-xl flex-shrink-0"></i> <span
-                                    class="hide-menu flex-shrink-0">Prediksi Program Diet</span>
+                                    class="hide-menu flex-shrink-0">{{ __('app.diet_program_prediction') }}</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
                             <a class="sidebar-link dark-sidebar-link {{ request()->routeIs('enrollments.*') ? 'activemenu' : '' }}" href="{{ route('enrollments.index') }}">
                                 <i class="ti ti-clipboard-check text-xl flex-shrink-0"></i> <span
-                                    class="hide-menu flex-shrink-0">Registrasi Program</span>
+                                    class="hide-menu flex-shrink-0">{{ __('app.program_registration') }}</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
                             <a class="sidebar-link dark-sidebar-link {{ request()->routeIs('recommendations.*') ? 'activemenu' : '' }}" href="#">
                                 <i class="ti ti-message text-xl flex-shrink-0"></i> <span
-                                    class="hide-menu flex-shrink-0">Rekomendasi Diet</span>
+                                    class="hide-menu flex-shrink-0">{{ __('app.diet_recommendation') }}</span>
                             </a>
                         </li>
                         <div class="caption mt-8">
                             <i class="ti ti-dots nav-small-cap-icon "></i>
-                            <span class="hide-menu">Konsultasi</span>
+                            <span class="hide-menu">{{ __('app.consultation') }}</span>
                         </div>
                         <li class="sidebar-item">
                             <a class="sidebar-link dark-sidebar-link {{ request()->routeIs('schedules.*') ? 'activemenu' : '' }}" href="#">
                                 <i class="ti ti-calendar text-xl flex-shrink-0"></i> <span
-                                    class="hide-menu flex-shrink-0">Jadwal</span>
+                                    class="hide-menu flex-shrink-0">{{ __('app.schedule') }}</span>
                             </a>
                         </li>
                         <div class="caption mt-8">
                             <i class="ti ti-dots nav-small-cap-icon "></i>
-                            <span class="hide-menu">Pengaturan</span>
+                            <span class="hide-menu">{{ __('app.settings') }}</span>
                         </div>
                         <li class="sidebar-item">
                             <a class="sidebar-link dark-sidebar-link {{ request()->routeIs('account.settings') ? 'activemenu' : '' }}" href="{{ route('account.settings') }}">
                                 <i class="ti ti-settings text-xl flex-shrink-0"></i> <span
-                                    class="hide-menu flex-shrink-0">Pengaturan Akun</span>
+                                    class="hide-menu flex-shrink-0">{{ __('app.account_settings') }}</span>
                             </a>
                         </li>
 
                         @if(auth()->check() && auth()->user()->role && in_array(auth()->user()->role->name, ['ahli gizi', 'asisten ahli gizi']))
                         <div class="caption mt-8">
                             <i class="ti ti-dots nav-small-cap-icon "></i>
-                            <span class="hide-menu">Laporan & Analisis</span>
+                            <span class="hide-menu">{{ __('app.reports_analysis') }}</span>
                         </div>
                         <li class="sidebar-item">
                             <a class="sidebar-link dark-sidebar-link {{ request()->routeIs('reports.*') ? 'activemenu' : '' }}" href="#">
                                 <i class="ti ti-file-report text-xl flex-shrink-0"></i> <span
-                                    class="hide-menu flex-shrink-0">Laporan</span>
+                                    class="hide-menu flex-shrink-0">{{ __('app.reports') }}</span>
                             </a>
                         </li>
                         @endif

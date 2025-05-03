@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr" data-color-theme="Blue_Theme" class="light selected"
+<html lang="{{ app()->getLocale() }}" dir="ltr" data-color-theme="Blue_Theme" class="light selected"
     data-layout="vertical" data-boxed-layout="boxed" data-card="shadow">
 
 <head>
@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
     <!-- Core Css -->
     <link rel="stylesheet" href="{{asset('assets/css/theme.css')}}" />
-    <title>Register | Asn Indonesia</title>
+    <title>{{ __('app.register') }} | {{ __('app.app_name') }}</title>
 </head>
 
 <body class="DEFAULT_THEME bg-white dark:bg-dark">	
@@ -59,8 +59,8 @@
                                         </div>
                                         
                                         <div class="text-center mb-6">
-                                            <h4 class="text-xl font-semibold">Create an account</h4>
-                                            <p class="text-slate-500 dark:text-darktext mt-1">It's free and easy!</p>
+                                            <h4 class="text-xl font-semibold">{{ __('app.create') }} {{ __('app.register') }}</h4>
+                                            <p class="text-slate-500 dark:text-darktext mt-1">{{ __('app.welcome') }}!</p>
                                         </div>
                                         
                                         @if ($errors->any())
@@ -78,55 +78,55 @@
                                             <div class="flex flex-col gap-4">
                                                 <div>
                                                     <label for="name"
-                                                        class="text-dark dark:text-darklink font-semibold mb-2 block">Full Name</label>
+                                                        class="text-dark dark:text-darklink font-semibold mb-2 block">{{ __('app.name') }}</label>
                                                     <input type="text" name="name" id="name" class="form-control py-2" value="{{ old('name') }}" required autofocus />
                                                 </div>
                                                 <div>
                                                     <label for="email"
-                                                        class="text-dark dark:text-darklink font-semibold mb-2 block">Email</label>
+                                                        class="text-dark dark:text-darklink font-semibold mb-2 block">{{ __('app.email') }}</label>
                                                     <input type="email" name="email" id="email" class="form-control py-2" value="{{ old('email') }}" required />
                                                 </div>
                                                 <div>
                                                     <label for="phone_number"
-                                                        class="text-dark dark:text-darklink font-semibold mb-2 block">Phone Number</label>
+                                                        class="text-dark dark:text-darklink font-semibold mb-2 block">{{ __('app.phone') }}</label>
                                                     <input type="text" name="phone_number" id="phone_number" class="form-control py-2" value="{{ old('phone_number') }}" />
                                                 </div>
                                                 <div>
                                                     <label for="gender"
-                                                        class="text-dark dark:text-darklink font-semibold mb-2 block">Gender</label>
+                                                        class="text-dark dark:text-darklink font-semibold mb-2 block">{{ __('app.gender') }}</label>
                                                     <select name="gender" id="gender" class="form-control py-2">
-                                                        <option value="">Select Gender</option>
-                                                        <option value="male" {{ old('gender') == 'male' ? 'selected' : '' }}>Male</option>
-                                                        <option value="female" {{ old('gender') == 'female' ? 'selected' : '' }}>Female</option>
+                                                        <option value="">{{ __('app.gender') }}</option>
+                                                        <option value="male" {{ old('gender') == 'male' ? 'selected' : '' }}>{{ __('app.male') }}</option>
+                                                        <option value="female" {{ old('gender') == 'female' ? 'selected' : '' }}>{{ __('app.female') }}</option>
                                                     </select>
                                                 </div>
                                                 <div>
                                                     <label for="birth_date"
-                                                        class="text-dark dark:text-darklink font-semibold mb-2 block">Birth Date</label>
+                                                        class="text-dark dark:text-darklink font-semibold mb-2 block">{{ __('app.date_of_birth') }}</label>
                                                     <input type="date" name="birth_date" id="birth_date" class="form-control py-2" value="{{ old('birth_date') }}" />
                                                 </div>
                                                 <div>
                                                     <label for="password"
-                                                        class="text-dark dark:text-darklink font-semibold mb-2 block">Password</label>
+                                                        class="text-dark dark:text-darklink font-semibold mb-2 block">{{ __('app.password') }}</label>
                                                     <input type="password" name="password" id="password"
                                                         class="form-control py-2" required />
                                                 </div>
                                                 <div>
                                                     <label for="password_confirmation"
-                                                        class="text-dark dark:text-darklink font-semibold mb-2 block">Confirm Password</label>
+                                                        class="text-dark dark:text-darklink font-semibold mb-2 block">{{ __('app.confirm_password') }}</label>
                                                     <input type="password" name="password_confirmation" id="password_confirmation"
                                                         class="form-control py-2" required />
                                                 </div>
                                                 <div>
                                                     <label class="cursor-pointer label flex items-center">
                                                         <input type="checkbox" name="terms" class="border-bordergray w-4 h-4 rounded-md text-primary dark:border-darkborder bg-transparent dark:checked:bg-primary dark:checked:border-primary focus:ring-0 focus:ring-offset-0" id="terms" required>
-                                                        <span class="label-text ms-2">I agree to all <a href="#" class="text-primary">Terms & Conditions</a></span>
+                                                        <span class="label-text ms-2">{{ __('app.agree_terms') }} <a href="#" class="text-primary">{{ __('app.terms_conditions') }}</a></span>
                                                     </label>
                                                 </div>
-                                                <button type="submit" class="btn btn-md py-3">Sign Up</button>
+                                                <button type="submit" class="btn btn-md py-3">{{ __('app.sign_up') }}</button>
                                                 <div class="mt-2.5 text-center">
-                                                    <span class="text-base font-medium">Already have an account? <a href="{{ route('login') }}"
-                                                            class="text-primary font-medium text-sm ms-2">Sign In</a></span>
+                                                    <span class="text-base font-medium">{{ __('app.already_have_account') }} <a href="{{ route('login') }}"
+                                                            class="text-primary font-medium text-sm ms-2">{{ __('app.sign_in') }}</a></span>
                                                 </div>
                                             </div>
                                         </form>

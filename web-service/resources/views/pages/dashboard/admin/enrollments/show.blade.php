@@ -6,33 +6,33 @@
             <div class="flex items-center grid grid-cols-12 gap-6">
                 <div class="col-span-9">
                     <h4 class="font-semibold text-xl text-dark dark:text-white mb-3">
-                        Registrasi Program Details
+                        {{ __('app.enrollment_details') }}
                     </h4>
                     <ol class="flex items-center whitespace-nowrap" aria-label="Breadcrumb">
                         <li class="inline-flex items-center">
                             <a class="flex items-center text-sm text-gray-500 hover:text-primary focus:outline-none focus:text-primary dark:focus:text-primary leading-tight" href="{{ route('dashboard') }}">
-                                Home
+                                {{ __('app.home') }}
                             </a>
                             <i class="ti ti-slash text-sm leading-tight font-medium mx-2"></i>
                         </li>
                         <li class="inline-flex items-center">
                             <a class="flex items-center text-sm text-gray-500 hover:text-primary focus:outline-none focus:text-primary dark:focus:text-primary leading-tight" href="{{ route('enrollments.index') }}">
-                                Registrasi Program
+                                {{ __('app.program_registration') }}
                             </a>
                             <i class="ti ti-slash text-sm leading-tight font-medium mx-2"></i>
                         </li>
                         <li class="inline-flex items-center text-sm font-semibold text-gray-800 truncate dark:text-gray-200 leading-tight" aria-current="page">
-                            Details
+                            {{ __('app.details') }}
                         </li>
                     </ol>
                 </div>
                 <div class="col-span-3">
                     <div class="flex justify-end gap-2">
                         <a href="{{ route('enrollments.edit', $enrollment->id) }}" class="btn btn-info">
-                            <i class="ti ti-edit me-1"></i> Edit
+                            <i class="ti ti-edit me-1"></i> {{ __('app.edit') }}
                         </a>
                         <a href="{{ route('enrollments.create-checkup', $enrollment->id) }}" class="btn btn-success">
-                            <i class="ti ti-heartbeat me-1"></i> New Checkup
+                            <i class="ti ti-heartbeat me-1"></i> {{ __('app.new_checkup') }}
                         </a>
                     </div>
                 </div>
@@ -45,7 +45,7 @@
         <div class="col-span-12 md:col-span-4">
             <div class="card">
                 <div class="card-body">
-                    <h3 class="card-title mb-4">Registration Information</h3>
+                    {{-- <h3 class="card-title mb-4">{{ __('app.registration_information') }}</h3> --}}
                     
                     @if(session('success'))
                         <div class="bg-lightsuccess dark:bg-darksuccess text-success px-4 py-3 rounded relative mb-4" role="alert">
@@ -58,55 +58,39 @@
 
                     <div class="space-y-4">
                         <div class="border-b border-gray-200 dark:border-gray-700 pb-4">
-                            <h4 class="text-lg font-medium text-dark dark:text-white">User Information</h4>
+                            <h4 class="text-lg font-medium text-dark dark:text-white">{{ __('app.user_information') }}</h4>
                             <div class="flex items-center mt-2">
                                 <div class="w-12 h-12 rounded-full overflow-hidden mr-4 bg-gray-200 dark:bg-gray-700 flex-shrink-0">
-                                    <img src="{{ $enrollment->user->profile_photo_url ?? asset('assets/images/profile/user-1.jpg') }}" alt="User" class="w-full h-full object-cover">
+                                    <img src="{{ $enrollment->user->profile_photo_url ?? asset('assets/images/profile/user-1.jpg') }}" alt="{{ __('app.user') }}" class="w-full h-full object-cover">
                                 </div>
                                 <div class="ml-4">
                                     <h5 class="font-medium text-dark dark:text-white">{{ $enrollment->user->name ?? 'N/A' }}</h5>
                                     <p class="text-gray-500 text-sm">{{ $enrollment->user->email ?? 'N/A' }}</p>
-                                    <p class="text-gray-500 text-sm">{{ $enrollment->user->phone_number ?? 'No Phone Number' }}</p>
+                                    <p class="text-gray-500 text-sm">{{ $enrollment->user->phone_number ?? __('app.no_phone_number') }}</p>
                                 </div>
                             </div>
                         </div>
 
                         <div class="border-b border-gray-200 dark:border-gray-700 py-4">
-                            <h4 class="text-lg font-medium text-dark dark:text-white">Program Information</h4>
+                            <h4 class="text-lg font-medium text-dark dark:text-white">{{ __('app.program_information') }}</h4>
                             <div class="mt-2">
                                 <div class="grid grid-cols-2 gap-2 mb-2">
-                                    <span class="text-gray-500">Program:</span>
+                                    <span class="text-gray-500">{{ __('app.program') }}:</span>
                                     <span class="text-dark dark:text-white font-medium">{{ $enrollment->dietProgram->name ?? 'N/A' }}</span>
                                 </div>
                                 <div class="grid grid-cols-2 gap-2 mb-2">
-                                    <span class="text-gray-500">Status:</span>
-                                    <span>
-                                        @if($enrollment->status === 0)
-                                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
-                                                On Going
-                                            </span>
-                                        @elseif($enrollment->status === 1)
-                                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                                                Completed
-                                            </span>
-                                        @elseif($enrollment->status === 2)
-                                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
-                                                Canceled
-                                            </span>
-                                        @elseif($enrollment->status === 3)
-                                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
-                                                Changed
-                                            </span>
-                                        @endif
+                                    <span class="text-gray-500">{{ __('app.status') }}:</span>
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium {{ $enrollment->status == 'On going' ? 'bg-lightsuccess dark:bg-darksuccess text-success' : 'bg-lighterror dark:bg-darkerror text-error' }}">
+                                        {{ $enrollment->status }}
                                     </span>
                                 </div>
                                 <div class="grid grid-cols-2 gap-2 mb-2">
-                                    <span class="text-gray-500">Registration Date:</span>
+                                    <span class="text-gray-500">{{ __('app.enrollment_date') }}:</span>
                                     <span class="text-dark dark:text-white">{{ $enrollment->created_at->format('d M Y') }}</span>
                                 </div>
                                 <div class="grid grid-cols-2 gap-2">
-                                    <span class="text-gray-500">Description:</span>
-                                    <span class="text-dark dark:text-white">{{ $enrollment->dietProgram->description ?? 'No Description' }}</span>
+                                    <span class="text-gray-500">{{ __('app.description') }}:</span>
+                                    <span class="text-dark dark:text-white">{{ $enrollment->dietProgram->description ?? __('app.no_description') }}</span>
                                 </div>
                             </div>
                         </div>
@@ -121,7 +105,7 @@
                 <div class="card-body">
                     <div id="checkup-history-header">
                         <div class="flex justify-between items-center mb-4">
-                            <h3 class="card-title">Checkup History</h3>
+                            <h3 class="card-title">{{ __('app.checkup_history') }}</h3>
                         </div>
                     </div>
                     
@@ -132,11 +116,11 @@
                                 <table class="table-auto w-full text-left border-spacing-0 border-separate">
                                     <thead>
                                         <tr>
-                                            <th class="px-4 py-3 border-b font-semibold text-gray-800 dark:text-gray-200">Date</th>
-                                            <th class="px-4 py-3 border-b font-semibold text-gray-800 dark:text-gray-200">Height</th>
-                                            <th class="px-4 py-3 border-b font-semibold text-gray-800 dark:text-gray-200">Weight</th>
-                                            <th class="px-4 py-3 border-b font-semibold text-gray-800 dark:text-gray-200">Body Fat</th>
-                                            <th class="px-4 py-3 border-b font-semibold text-gray-800 dark:text-gray-200">Actions</th>
+                                            <th class="px-4 py-3 border-b font-semibold text-gray-800 dark:text-gray-200">{{ __('app.date') }}</th>
+                                            <th class="px-4 py-3 border-b font-semibold text-gray-800 dark:text-gray-200">{{ __('app.height') }}</th>
+                                            <th class="px-4 py-3 border-b font-semibold text-gray-800 dark:text-gray-200">{{ __('app.weight') }}</th>
+                                            <th class="px-4 py-3 border-b font-semibold text-gray-800 dark:text-gray-200">{{ __('app.body_fat') }}</th>
+                                            <th class="px-4 py-3 border-b font-semibold text-gray-800 dark:text-gray-200">{{ __('app.actions') }}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -146,10 +130,10 @@
                                                     {{ $checkup->checkup_date->format('d M Y') }}
                                                 </td>
                                                 <td class="px-4 py-3 border-b text-gray-500 dark:text-gray-400">
-                                                    {{ $checkup->height }} <span class="text-xs text-gray-500">cm</span>
+                                                    {{ $checkup->height }} <span class="text-xs text-gray-500">{{ __('app.cm') }}</span>
                                                 </td>
                                                 <td class="px-4 py-3 border-b text-gray-500 dark:text-gray-400">
-                                                    {{ $checkup->weight }} <span class="text-xs text-gray-500">kg</span>
+                                                    {{ $checkup->weight }} <span class="text-xs text-gray-500">{{ __('app.kg') }}</span>
                                                 </td>
                                                 <td class="px-4 py-3 border-b text-gray-500 dark:text-gray-400">
                                                     {{ $checkup->body_fat }}%
@@ -158,7 +142,7 @@
                                                     <button type="button" 
                                                         class="btn btn-sm btn-primary view-details-btn" 
                                                         data-checkup-id="{{ $checkup->id }}">
-                                                        <i class="ti ti-eye"></i> Details
+                                                        <i class="ti ti-eye"></i> {{ __('app.details') }}
                                                     </button>
                                                 </td>
                                             </tr>
@@ -167,7 +151,7 @@
                                 </table>
                             </div>
                         @else
-                            <div class="text-gray-500 p-4">No checkup data available</div>
+                            <div class="text-gray-500 p-4">{{ __('app.no_checkup_data') }}</div>
                         @endif
                     </div>
                     
@@ -175,7 +159,7 @@
                     <div id="checkup-details-view" class="hidden">
                         <div class="flex justify-between items-center mb-4">
                             <button id="back-to-history" class="btn btn-sm btn-secondary">
-                                <i class="ti ti-arrow-left mr-1"></i> Back to History
+                                <i class="ti ti-arrow-left mr-1"></i> {{ __('app.back_to_history') }}
                             </button>
                             <h4 id="checkup-date-title" class="text-lg font-semibold text-dark dark:text-white"></h4>
                         </div>
@@ -237,53 +221,53 @@
             
             if (data) {
                 // Update header with date
-                dateTitle.textContent = `Checkup Details - ${data.date}`;
+                dateTitle.textContent = `{{ __('app.checkup_details') }} - ${data.date}`;
                 
                 // Create details view content
                 let content = `
                     <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
                         <div class="space-y-1">
-                            <h5 class="font-medium text-dark dark:text-white">Height</h5>
-                            <p class="text-xl font-bold text-primary">${data.height} <span class="text-sm text-gray-500">cm</span></p>
+                            <h5 class="font-medium text-dark dark:text-white">{{ __('app.height') }}</h5>
+                            <p class="text-xl font-bold text-primary">${data.height} <span class="text-sm text-gray-500">{{ __('app.cm') }}</span></p>
                         </div>
                         
                         <div class="space-y-1">
-                            <h5 class="font-medium text-dark dark:text-white">Weight</h5>
-                            <p class="text-xl font-bold text-primary">${data.weight} <span class="text-sm text-gray-500">kg</span></p>
+                            <h5 class="font-medium text-dark dark:text-white">{{ __('app.weight') }}</h5>
+                            <p class="text-xl font-bold text-primary">${data.weight} <span class="text-sm text-gray-500">{{ __('app.kg') }}</span></p>
                         </div>
                         
                         <div class="space-y-1">
-                            <h5 class="font-medium text-dark dark:text-white">Body Fat</h5>
+                            <h5 class="font-medium text-dark dark:text-white">{{ __('app.body_fat') }}</h5>
                             <p class="text-xl font-bold text-primary">${data.bodyFat}%</p>
                         </div>
                         
                         <div class="space-y-1">
-                            <h5 class="font-medium text-dark dark:text-white">Belly Fat</h5>
+                            <h5 class="font-medium text-dark dark:text-white">{{ __('app.belly_fat') }}</h5>
                             <p class="text-xl font-bold text-primary">${data.bellyFat}%</p>
                         </div>
                         
                         <div class="space-y-1">
-                            <h5 class="font-medium text-dark dark:text-white">Muscle Mass</h5>
+                            <h5 class="font-medium text-dark dark:text-white">{{ __('app.muscle_mass') }}</h5>
                             <p class="text-xl font-bold text-primary">${data.muscleMass}%</p>
                         </div>
                         
                         <div class="space-y-1">
-                            <h5 class="font-medium text-dark dark:text-white">Bone Density</h5>
+                            <h5 class="font-medium text-dark dark:text-white">{{ __('app.bone_density') }}</h5>
                             <p class="text-xl font-bold text-primary">${data.boneDensity}</p>
                         </div>
                         
                         <div class="space-y-1">
-                            <h5 class="font-medium text-dark dark:text-white">Calories Needs</h5>
+                            <h5 class="font-medium text-dark dark:text-white">{{ __('app.calorie_needs') }}</h5>
                             <p class="text-xl font-bold text-primary">${data.caloriesNeeds} <span class="text-sm text-gray-500">kcal</span></p>
                         </div>
                         
                         <div class="space-y-1">
-                            <h5 class="font-medium text-dark dark:text-white">Cell Age</h5>
-                            <p class="text-xl font-bold text-primary">${data.cellAge} <span class="text-sm text-gray-500">years</span></p>
+                            <h5 class="font-medium text-dark dark:text-white">{{ __('app.cell_age') }}</h5>
+                            <p class="text-xl font-bold text-primary">${data.cellAge} <span class="text-sm text-gray-500">{{ __('app.years') }}</span></p>
                         </div>
                         
                         <div class="space-y-1">
-                            <h5 class="font-medium text-dark dark:text-white">Water Content</h5>
+                            <h5 class="font-medium text-dark dark:text-white">{{ __('app.water_content') }}</h5>
                             <p class="text-xl font-bold text-primary">${data.waterContent}%</p>
                         </div>
                     </div>
@@ -294,7 +278,7 @@
                     if ({{ $checkup->id }} == checkupId && {{ $checkup->dietPrediction ? 'true' : 'false' }}) {
                         content += `
                             <div class="mt-8 border-t border-gray-200 dark:border-gray-700 pt-4">
-                                <h4 class="text-lg font-semibold text-dark dark:text-white mb-4">Diet Program Prediction</h4>
+                                <h4 class="text-lg font-semibold text-dark dark:text-white mb-4">{{ __('app.diet_program_prediction') }}</h4>
                                 <div class="space-y-4">
                                     @if($checkup->dietPrediction && $checkup->dietPrediction->predictionResults->count() > 0)
                                         @foreach($checkup->dietPrediction->predictionResults as $result)
@@ -307,14 +291,14 @@
                                                     <span class="mr-2">{{ number_format($result->confidence_score * 100, 1) }}%</span>
                                                     @if($result->is_selected)
                                                         <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                                                            Selected
+                                                            {{ __('app.selected') }}
                                                         </span>
                                                     @endif
                                                 </div>
                                             </div>
                                         @endforeach
                                     @else
-                                        <p class="text-gray-500">No prediction results available.</p>
+                                        <p class="text-gray-500">{{ __('app.no_prediction_results') }}</p>
                                     @endif
                                 </div>
                             </div>

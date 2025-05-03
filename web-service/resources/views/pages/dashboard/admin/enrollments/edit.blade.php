@@ -6,23 +6,23 @@
             <div class="flex items-center grid grid-cols-12 gap-6">
                 <div class="col-span-12">
                     <h4 class="font-semibold text-xl text-dark dark:text-white mb-3">
-                        Edit Registrasi Program
+                        {{ __('app.edit_enrollment') }}
                     </h4>
                     <ol class="flex items-center whitespace-nowrap" aria-label="Breadcrumb">
                         <li class="inline-flex items-center">
                             <a class="flex items-center text-sm text-gray-500 hover:text-primary focus:outline-none focus:text-primary dark:focus:text-primary leading-tight" href="{{ route('dashboard') }}">
-                                Home
+                                {{ __('app.home') }}
                             </a>
                             <i class="ti ti-slash text-sm leading-tight font-medium mx-2"></i>
                         </li>
                         <li class="inline-flex items-center">
                             <a class="flex items-center text-sm text-gray-500 hover:text-primary focus:outline-none focus:text-primary dark:focus:text-primary leading-tight" href="{{ route('enrollments.index') }}">
-                                Registrasi Program
+                                {{ __('app.program_registration') }}
                             </a>
                             <i class="ti ti-slash text-sm leading-tight font-medium mx-2"></i>
                         </li>
                         <li class="inline-flex items-center text-sm font-semibold text-gray-800 truncate dark:text-gray-200 leading-tight" aria-current="page">
-                            Edit
+                            {{ __('app.edit') }}
                         </li>
                     </ol>
                 </div>
@@ -34,7 +34,7 @@
         <div class="col-span-12">
             <div class="card">
                 <div class="card-body">
-                    <h3 class="card-title mb-4">Edit Registration Information</h3>
+                    <h3 class="card-title mb-4">{{ __('app.edit_enrollment_information') }}</h3>
                     
                     @if($errors->any())
                         <div class="bg-lighterror dark:bg-darkerror text-error px-4 py-3 rounded relative mb-4" role="alert">
@@ -55,7 +55,7 @@
 
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div class="form-group">
-                                <label class="form-label block mb-2 font-medium text-dark dark:text-white">User</label>
+                                <label class="form-label block mb-2 font-medium text-dark dark:text-white">{{ __('app.user') }}</label>
                                 <div class="flex items-center">
                                     <div class="w-12 h-12 rounded-full overflow-hidden mr-3 bg-gray-200 dark:bg-gray-700 flex-shrink-0">
                                         <img src="{{ $enrollment->user->profile_photo_url ?? asset('assets/images/profile/user-1.jpg') }}" alt="User" class="w-full h-full object-cover">
@@ -69,9 +69,9 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="diet_program_id" class="form-label block mb-2 font-medium text-dark dark:text-white">Diet Program <span class="text-red-500">*</span></label>
+                                <label for="diet_program_id" class="form-label block mb-2 font-medium text-dark dark:text-white">{{ __('app.diet_program') }} <span class="text-red-500">*</span></label>
                                 <select id="diet_program_id" name="diet_program_id" class="form-select w-full" required>
-                                    <option value="">Select Diet Program</option>
+                                    <option value="">{{ __('app.select_program') }}</option>
                                     @foreach($dietPrograms as $program)
                                         <option value="{{ $program->id }}" {{ old('diet_program_id', $enrollment->diet_program_id) == $program->id ? 'selected' : '' }}>
                                             {{ $program->name }}
@@ -81,22 +81,22 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="status" class="form-label block mb-2 font-medium text-dark dark:text-white">Status <span class="text-red-500">*</span></label>
+                                <label for="status" class="form-label block mb-2 font-medium text-dark dark:text-white">{{ __('app.status') }} <span class="text-red-500">*</span></label>
                                 <select id="status" name="status" class="form-select w-full" required>
-                                    <option value="0" {{ old('status', $enrollment->status) === 0 ? 'selected' : '' }}>On Going</option>
-                                    <option value="1" {{ old('status', $enrollment->status) === 1 ? 'selected' : '' }}>Completed</option>
-                                    <option value="2" {{ old('status', $enrollment->status) === 2 ? 'selected' : '' }}>Canceled</option>
-                                    <option value="3" {{ old('status', $enrollment->status) === 3 ? 'selected' : '' }}>Changed</option>
+                                    <option value="0" {{ old('status', $enrollment->status) === 0 ? 'selected' : '' }}>{{ __('app.on_going') }}</option>
+                                    <option value="1" {{ old('status', $enrollment->status) === 1 ? 'selected' : '' }}>{{ __('app.completed') }}</option>
+                                    <option value="2" {{ old('status', $enrollment->status) === 2 ? 'selected' : '' }}>{{ __('app.cancelled') }}</option>
+                                    <option value="3" {{ old('status', $enrollment->status) === 3 ? 'selected' : '' }}>{{ __('app.changed') }}</option>
                                 </select>
                             </div>
                         </div>
 
                         <div class="flex justify-end">
                             <a href="{{ route('enrollments.index', $enrollment->id) }}" class="btn btn-secondary me-2">
-                                <i class="ti ti-x me-1"></i> Cancel
+                                <i class="ti ti-x me-1"></i> {{ __('app.cancel') }}
                             </a>
                             <button type="submit" class="btn btn-primary">
-                                <i class="ti ti-device-floppy me-1"></i> Save Changes
+                                <i class="ti ti-device-floppy me-1"></i> {{ __('app.save_changes') }}
                             </button>
                         </div>
                     </form>

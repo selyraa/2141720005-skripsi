@@ -6,17 +6,17 @@
             <div class="flex items-center grid grid-cols-12 gap-6">
                 <div class="col-span-9">
                     <h4 class="font-semibold text-xl text-dark dark:text-white mb-3">
-                        Hasil Prediksi Program Diet
+                        {{ __('app.prediction_result') }}
                     </h4>
                     <ol class="flex items-center whitespace-nowrap" aria-label="Breadcrumb">
                         <li class="inline-flex items-center">
                             <a class="flex items-center text-sm text-gray-500 hover:text-primary focus:outline-none focus:text-primary dark:focus:text-primary leading-tight" href="#">
-                                Home
+                                {{ __('app.home') }}
                             </a>
                             <i class="ti ti-slash text-sm leading-tight font-medium mx-2"></i>
                         </li>
                         <li class="inline-flex items-center text-sm font-semibold text-gray-800 truncate dark:text-gray-200 leading-tight" aria-current="page">
-                            Hasil Prediksi Program
+                            {{ __('app.prediction_results') }}
                         </li>
                     </ol>
                 </div>
@@ -28,16 +28,16 @@
         <div class="col-span-12">
             <div class="card">
                 <div class="card-body">
-                    <h3 class="card-title mb-4">Hasil Prediksi Program Diet</h3>
+                    <h3 class="card-title mb-4">{{ __('app.prediction_result') }}</h3>
                     
                     @if(session('result'))
                         <div class="mb-6">
                             <div class="bg-success/10 text-success p-4 rounded-lg mb-4">
-                                <h4 class="font-semibold text-lg">Program Diet yang Direkomendasikan: {{ session('result')['prediction'] }}</h4>
+                                <h4 class="font-semibold text-lg">{{ __('app.recommended_diet_program') }}: {{ session('result')['prediction'] }}</h4>
                             </div>
 
                             <div class="mb-6">
-                                <h5 class="font-semibold text-lg mb-3">Probabilitas per Program:</h5>
+                                <h5 class="font-semibold text-lg mb-3">{{ __('app.program_probabilities') }}:</h5>
                                 <div class="space-y-3">
                                     @foreach(session('result')['probabilities'] as $program => $probability)
                                         <div class="flex items-center">
@@ -54,7 +54,7 @@
                             </div>
 
                             <div class="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700 mb-6">
-                                <h5 class="font-semibold text-lg mb-4">Data Registrasi Program Diet</h5>
+                                <h5 class="font-semibold text-lg mb-4">{{ __('app.diet_program_registration_data') }}</h5>
                                 
                                 <form action="{{ route('predictions.saveResult') }}" method="POST">
                                     @csrf
@@ -63,10 +63,10 @@
                                     <div class="space-y-4">
                                         <!-- User Selection Field -->
                                         <div class="mb-4">
-                                            <label for="user_id" class="block text-sm font-medium mb-2">Pilih Pelanggan:</label>
+                                            <label for="user_id" class="block text-sm font-medium mb-2">{{ __('app.select_customer') }}:</label>
                                             <div class="flex items-center">
                                                 <select name="user_id" id="user_id" class="form-select w-full" required>
-                                                    <option value="">-- Pilih Pelanggan --</option>
+                                                    <option value="">-- {{ __('app.select_customer') }} --</option>
                                                     @foreach($users as $user)
                                                         <option value="{{ $user->id }}" {{ session('new_customer_id') == $user->id ? 'selected' : '' }}>
                                                             {{ $user->name }} ({{ $user->email }})
@@ -74,7 +74,7 @@
                                                     @endforeach
                                                 </select>
                                                 <button type="button" class="btn btn-primary ml-2" data-hs-overlay="#addCustomerModal">
-                                                    <i class="ti ti-user-plus"></i> Baru
+                                                    <i class="ti ti-user-plus"></i> {{ __('app.create') }}
                                                 </button>
                                             </div>
                                             @error('user_id')
@@ -85,16 +85,16 @@
                                         <div class="flex flex-col space-y-3">
                                             <label class="inline-flex items-center">
                                                 <input type="radio" name="decision" value="agree" class="form-radio" checked>
-                                                <span class="ml-2">Ya, saya setuju dengan program diet yang direkomendasikan</span>
+                                                <span class="ml-2">{{ __('app.agree_with_recommendation') }}</span>
                                             </label>
                                             <label class="inline-flex items-center">
                                                 <input type="radio" name="decision" value="change" class="form-radio">
-                                                <span class="ml-2">Tidak, saya ingin mengubah program diet</span>
+                                                <span class="ml-2">{{ __('app.disagree_with_recommendation') }}</span>
                                             </label>
                                         </div>
                                         
                                         <div id="alternativeProgramContainer" class="hidden mt-4 border-t pt-4">
-                                            <label class="block text-sm font-medium mb-2">Pilih Program Diet Alternatif:</label>
+                                            <label class="block text-sm font-medium mb-2">{{ __('app.select_alternative_program') }}:</label>
                                             <select name="alternative_program" class="form-select w-full">
                                                 @foreach(session('result')['probabilities'] as $program => $probability)
                                                     @if($program != session('result')['prediction'])
@@ -107,14 +107,14 @@
                                         <div class="mt-6 flex justify-between">
                                             <div>
                                                 <a href="{{ route('predictions.index') }}" class="btn btn-secondary mr-2">
-                                                    <i class="ti ti-arrow-left mr-1"></i> Edit Data Prediksi
+                                                    <i class="ti ti-arrow-left mr-1"></i> {{ __('app.edit_prediction_data') }}
                                                 </a>
-                                                <button type="button" class="btn btn-error" onclick="openConfirmationModal('delete', 'Batalkan Prediksi', 'Apakah Anda yakin ingin membatalkan prediksi ini?', 'Ya, Batalkan', 'window.location.href=\'{{ route('predictions.cancel') }}\'')">
-                                                    <i class="ti ti-x mr-1"></i> Batalkan Prediksi
+                                                <button type="button" class="btn btn-error" onclick="openConfirmationModal('delete', '{{ __('app.cancel_prediction') }}', '{{ __('app.are_you_sure_cancel_prediction') }}', '{{ __('app.yes_cancel') }}', 'window.location.href=\'{{ route('predictions.cancel') }}\'')">
+                                                    <i class="ti ti-x mr-1"></i> {{ __('app.cancel_prediction') }}
                                                 </button>
                                             </div>
                                             <button type="submit" class="btn btn-primary">
-                                                <i class="ti ti-check mr-1"></i> Simpan & Lanjutkan
+                                                <i class="ti ti-check mr-1"></i> {{ __('app.save_continue') }}
                                             </button>
                                         </div>
                                     </div>
@@ -123,9 +123,9 @@
                         </div>
                     @else
                         <div class="bg-warning/10 text-warning p-4 rounded-lg mb-4">
-                            Tidak ada hasil prediksi yang tersedia. Silahkan lakukan prediksi terlebih dahulu.
+                            {{ __('app.no_prediction_results') }}
                             <div class="mt-4">
-                                <a href="{{ route('predictions.index') }}" class="btn btn-secondary">Kembali ke Form Prediksi</a>
+                                <a href="{{ route('predictions.index') }}" class="btn btn-secondary">{{ __('app.back_to_prediction_form') }}</a>
                             </div>
                         </div>
                     @endif
@@ -140,7 +140,7 @@
             <div class="relative flex flex-col bg-white border shadow-sm rounded-xl overflow-hidden dark:bg-gray-800 dark:border-gray-700">
                 <div class="absolute top-2 right-2">
                     <button type="button" class="inline-flex flex-shrink-0 justify-center items-center h-8 w-8 rounded-md text-gray-500 hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white text-sm dark:text-gray-500 dark:hover:text-gray-400 dark:focus:ring-gray-700 dark:focus:ring-offset-gray-800" data-hs-overlay="#addCustomerModal">
-                        <span class="sr-only">Tutup</span>
+                        <span class="sr-only">{{ __('app.close') }}</span>
                         <i class="ti ti-x text-lg"></i>
                     </button>
                 </div>
@@ -148,27 +148,27 @@
                 <div class="p-4 sm:p-10 overflow-y-auto">
                     <div class="mb-6 text-center">
                         <h3 class="mb-2 text-xl font-bold text-gray-800 dark:text-gray-200">
-                            Tambah Pelanggan Baru
+                            {{ __('app.add_new_customer') }}
                         </h3>
                         <p class="text-gray-500">
-                            Isi data pelanggan baru untuk didaftarkan ke program diet
+                            {{ __('app.fill_new_customer_data') }}
                         </p>
                     </div>
 
                     @if(session('success') && session('customer_created'))
                         <div class="bg-success/10 text-success p-4 rounded-lg mb-4">
-                            Pelanggan <strong>{{ session('new_customer_name') }}</strong> berhasil dibuat dan dipilih. Silahkan lanjutkan dengan pengisian data program diet.
+                            {{ __('app.customer') }} <strong>{{ session('new_customer_name') }}</strong> {{ __('app.customer_added_selected') }}
                         </div>
                     @endif
 
                     <x-forms.user-form 
                         :action="route('predictions.storeCustomer')" 
-                        buttonText="Tambah Pelanggan" 
+                        buttonText="{{ __('app.add_customer') }}" 
                         :defaultRole="$customerRole->id ?? null" 
                         :hideRoleSelection="true"
                     >
                         <button type="button" class="btn btn-secondary me-2" data-hs-overlay="#addCustomerModal">
-                            <i class="ti ti-x me-1"></i>Batal
+                            <i class="ti ti-x me-1"></i>{{ __('app.cancel') }}
                         </button>
                     </x-forms.user-form>
                 </div>

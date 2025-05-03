@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr" data-color-theme="NutCastle_Theme" class="light selected"
+<html lang="{{ app()->getLocale() }}" dir="ltr" data-color-theme="NutCastle_Theme" class="light selected"
     data-layout="vertical" data-boxed-layout="boxed" data-card="shadow">
 
 <head>
@@ -15,7 +15,7 @@
     <!-- Core Css -->
     <link rel="stylesheet" href="{{asset('assets/css/theme.css')}}" />
     <link rel="stylesheet" href="{{asset('assets/css/custom.css')}}" />
-    <title>Login | Nut Castle</title>
+    <title>{{ __('app.login') }} | {{ __('app.app_name') }}</title>
 </head>
 
 <body class="DEFAULT_THEME bg-white dark:bg-dark">	
@@ -43,9 +43,9 @@
                                                 </div>
                                             </div>
                                             <h4 class="font-semibold text-xl text-dark dark:text-white mt-4 mb-1">
-                                                Welcome Back
+                                                {{ __('app.welcome_back') }}
                                             </h4>
-                                            <p class="text-gray-500 dark:text-gray-400 mb-4">Sign in to continue to Nut Castle</p>
+                                            <p class="text-gray-500 dark:text-gray-400 mb-4">{{ __('app.sign_in_to_continue') }}</p>
                                         </div>
                                         
                                         @if ($errors->any())
@@ -64,12 +64,12 @@
                                         <form method="POST" action="{{ route('login.post') }}" class="space-y-4">
                                             @csrf
                                             <div class="form-group">
-                                                <label for="email" class="form-label block mb-2 font-medium text-dark dark:text-white">Email</label>
+                                                <label for="email" class="form-label block mb-2 font-medium text-dark dark:text-white">{{ __('app.email') }}</label>
                                                 <input type="email" name="email" id="email" class="form-control w-full" value="{{ old('email') }}" required autofocus />
                                             </div>
                                             
                                             <div class="form-group">
-                                                <label for="password" class="form-label block mb-2 font-medium text-dark dark:text-white">Password</label>
+                                                <label for="password" class="form-label block mb-2 font-medium text-dark dark:text-white">{{ __('app.password') }}</label>
                                                 <input type="password" name="password" id="password" class="form-control w-full" required />
                                             </div>
                                             
@@ -77,19 +77,19 @@
                                                 <div class="flex items-center">
                                                     <input type="checkbox" name="remember" id="remember" 
                                                         class="border-gray-200 rounded text-primary focus:ring-primary dark:bg-dark dark:border-gray-700 dark:checked:bg-primary dark:checked:border-primary dark:focus:ring-primary" />
-                                                    <label for="remember" class="ms-2 text-sm text-gray-600 dark:text-gray-400">Remember me</label>
+                                                    <label for="remember" class="ms-2 text-sm text-gray-600 dark:text-gray-400">{{ __('app.remember_me') }}</label>
                                                 </div>
-                                                <a href="#" class="text-sm font-medium text-primary hover:underline">Forgot Password?</a>
+                                                <a href="#" class="text-sm font-medium text-primary hover:underline">{{ __('app.forgot_password') }}</a>
                                             </div>
                                             
-                                            <button type="submit" class="btn btn-primary w-full py-3">Sign In</button>
+                                            <button type="submit" class="btn btn-primary w-full py-3">{{ __('app.sign_in') }}</button>
                                             
                                             <div class="relative my-4">
                                                 <div class="absolute inset-0 flex items-center">
                                                     <div class="w-full border-t border-gray-200 dark:border-gray-700"></div>
                                                 </div>
                                                 <div class="relative flex justify-center">
-                                                    <span class="bg-white dark:bg-dark px-4 text-sm text-gray-500 dark:text-gray-400">or sign in with</span>
+                                                    <span class="bg-white dark:bg-dark px-4 text-sm text-gray-500 dark:text-gray-400">{{ __('app.or_sign_in_with') }}</span>
                                                 </div>
                                             </div>
                                             
@@ -98,7 +98,7 @@
                                                 class="border border-light-dark rounded-md py-2.5 px-3 justify-center flex items-center hover:text-primary dark:hover:text-primary">
                                                 <img src="../assets/images/svgs/google-icon.svg" alt=""
                                                     class="me-2" width="18" height="18">
-                                                <span class="shrink-0">with Google</span>
+                                                <span class="shrink-0">Google</span>
                                             </a>
                                             <a href="javascript:void(0)"
                                             class="border border-light-dark rounded-md py-2.5 px-3 justify-center flex items-center hover:text-primary dark:hover:text-primary">
@@ -113,7 +113,7 @@
                                 
                                 <div class="text-center mt-5">
                                     <p class="text-gray-600 dark:text-gray-400">
-                                        Don't have an account? <a href="#" class="font-medium text-primary hover:underline">Sign up</a>
+                                        {{ __('app.dont_have_account') }} <a href="#" class="font-medium text-primary hover:underline">{{ __('app.sign_up') }}</a>
                                     </p>
                                 </div>
                             </div>

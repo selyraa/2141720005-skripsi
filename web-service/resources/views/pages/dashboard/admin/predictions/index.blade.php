@@ -6,17 +6,17 @@
             <div class="flex items-center grid grid-cols-12 gap-6">
                 <div class="col-span-9">
                     <h4 class="font-semibold text-xl text-dark dark:text-white mb-3">
-                        Prediksi Program Diet
+                        {{ __('app.diet_program_prediction') }}
                     </h4>
                     <ol class="flex items-center whitespace-nowrap" aria-label="Breadcrumb">
                         <li class="inline-flex items-center">
                             <a class="flex items-center text-sm text-gray-500 hover:text-primary focus:outline-none focus:text-primary dark:focus:text-primary leading-tight" href="#">
-                                Home
+                                {{ __('app.home') }}
                             </a>
                             <i class="ti ti-slash text-sm leading-tight font-medium mx-2"></i>
                         </li>
                         <li class="inline-flex items-center text-sm font-semibold text-gray-800 truncate dark:text-gray-200 leading-tight" aria-current="page">
-                            Tambah Prediksi Program
+                            {{ __('app.add_prediction') }}
                         </li>
                     </ol>
                 </div>
@@ -41,13 +41,13 @@
         <div class="col-span-12">
             <div class="card">
                 <div class="card-body">
-                    <h3 class="card-title mb-4">Form Prediksi Program Diet</h3>
+                    <h3 class="card-title mb-4">{{ __('app.prediction_form') }}</h3>
 
                     <form action="{{ route('predictions.predict') }}" method="POST" id="prediction-form">
                         @csrf
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div class="mb-4">
-                                <label class="form-label">Umur</label>
+                                <label class="form-label">{{ __('app.age') }}</label>
                                 <input type="number" name="age" class="form-control @error('age') border-error @enderror"
                                     value="{{ $predictionData['age'] ?? old('age') }}" required step="1">
                                 @error('age')
@@ -56,7 +56,7 @@
                             </div>
 
                             <div class="mb-4">
-                                <label class="form-label">Tinggi Badan (cm)</label>
+                                <label class="form-label">{{ __('app.height') }} ({{ __('app.cm') }})</label>
                                 <input type="number" name="height" class="form-control @error('height') border-error @enderror"
                                     value="{{ $predictionData['height'] ?? old('height') }}" required step="0.1">
                                 @error('height')
@@ -65,7 +65,7 @@
                             </div>
 
                             <div class="mb-4">
-                                <label class="form-label">Berat Badan (kg)</label>
+                                <label class="form-label">{{ __('app.weight') }} ({{ __('app.kg') }})</label>
                                 <input type="number" name="weight" class="form-control @error('weight') border-error @enderror"
                                     value="{{ $predictionData['weight'] ?? old('weight') }}" required step="0.1">
                                 @error('weight')
@@ -74,7 +74,7 @@
                             </div>
 
                             <div class="mb-4">
-                                <label class="form-label">Lemak Tubuh (%)</label>
+                                <label class="form-label">{{ __('app.body_fat') }} (%)</label>
                                 <input type="number" name="bodyFat" class="form-control @error('bodyFat') border-error @enderror"
                                     value="{{ $predictionData['bodyFat'] ?? old('bodyFat') }}" required step="0.1">
                                 @error('bodyFat')
@@ -83,7 +83,7 @@
                             </div>
 
                             <div class="mb-4">
-                                <label class="form-label">Lemak Perut (%)</label>
+                                <label class="form-label">{{ __('app.belly_fat') }} (%)</label>
                                 <input type="number" name="bellyFat" class="form-control @error('bellyFat') border-error @enderror"
                                     value="{{ $predictionData['bellyFat'] ?? old('bellyFat') }}" required step="0.1">
                                 @error('bellyFat')
@@ -92,7 +92,7 @@
                             </div>
 
                             <div class="mb-4">
-                                <label class="form-label">Massa Otot (kg)</label>
+                                <label class="form-label">{{ __('app.muscle_mass') }} ({{ __('app.kg') }})</label>
                                 <input type="number" name="muscleMass" class="form-control @error('muscleMass') border-error @enderror"
                                     value="{{ $predictionData['muscleMass'] ?? old('muscleMass') }}" required step="0.1">
                                 @error('muscleMass')
@@ -101,7 +101,7 @@
                             </div>
 
                             <div class="mb-4">
-                                <label class="form-label">Kebutuhan Kalori (kkal)</label>
+                                <label class="form-label">{{ __('app.calorie_needs') }} (kkal)</label>
                                 <input type="number" name="calorieNeeds" class="form-control @error('calorieNeeds') border-error @enderror"
                                     value="{{ $predictionData['calorieNeeds'] ?? old('calorieNeeds') }}" required step="1">
                                 @error('calorieNeeds')
@@ -110,7 +110,7 @@
                             </div>
 
                             <div class="mb-4">
-                                <label class="form-label">Usia Sel</label>
+                                <label class="form-label">{{ __('app.cell_age') }}</label>
                                 <input type="number" name="cellAge" class="form-control @error('cellAge') border-error @enderror"
                                     value="{{ $predictionData['cellAge'] ?? old('cellAge') }}" required step="1">
                                 @error('cellAge')
@@ -119,7 +119,7 @@
                             </div>
 
                             <div class="mb-4">
-                                <label class="form-label">Kepadatan Tulang</label>
+                                <label class="form-label">{{ __('app.bone_density') }}</label>
                                 <input type="number" name="boneDensity" class="form-control @error('boneDensity') border-error @enderror"
                                     value="{{ $predictionData['boneDensity'] ?? old('boneDensity') }}" required step="0.1">
                                 @error('boneDensity')
@@ -128,7 +128,7 @@
                             </div>
 
                             <div class="mb-4">
-                                <label class="form-label">Kadar Air (%)</label>
+                                <label class="form-label">{{ __('app.water_content') }} (%)</label>
                                 <input type="number" name="waterContent" class="form-control @error('waterContent') border-error @enderror"
                                     value="{{ $predictionData['waterContent'] ?? old('waterContent') }}" required step="0.1">
                                 @error('waterContent')
@@ -151,10 +151,10 @@
 
                         <div class="flex justify-end mt-4 space-x-3">
                             <button type="button" id="reset-form" class="btn btn-secondary hidden">
-                                <i class="ti ti-refresh me-1"></i>Reset
+                                <i class="ti ti-refresh me-1"></i>{{ __('app.reset') }}
                             </button>
                             <button type="submit" class="btn btn-primary">
-                                <i class="ti ti-chart-bar me-1"></i>Prediksi Program
+                                <i class="ti ti-chart-bar me-1"></i>{{ __('app.predict_program') }}
                             </button>
                         </div>
                     </form>
@@ -193,7 +193,7 @@
                 
                 const feedbackDiv = document.createElement('div');
                 feedbackDiv.className = 'bg-success/10 text-success p-4 rounded-lg mb-4 mt-4';
-                feedbackDiv.textContent = 'Form telah direset. Silahkan isi data baru.';
+                feedbackDiv.textContent = '{{ __('app.form_reset') }}';
                 
                 const buttonsContainer = form.querySelector('.flex.justify-end');
                 form.insertBefore(feedbackDiv, buttonsContainer);

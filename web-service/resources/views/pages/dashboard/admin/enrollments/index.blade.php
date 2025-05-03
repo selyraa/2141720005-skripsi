@@ -6,24 +6,24 @@
             <div class="flex items-center grid grid-cols-12 gap-6">
                 <div class="col-span-9">
                     <h4 class="font-semibold text-xl text-dark dark:text-white mb-3">
-                        Registrasi Program
+                        {{ __('app.program_registration') }}
                     </h4>
                     <ol class="flex items-center whitespace-nowrap" aria-label="Breadcrumb">
                         <li class="inline-flex items-center">
                             <a class="flex items-center text-sm text-gray-500 hover:text-primary focus:outline-none focus:text-primary dark:focus:text-primary leading-tight" href="{{ route('dashboard') }}">
-                                Home
+                                {{ __('app.home') }}
                             </a>
                             <i class="ti ti-slash text-sm leading-tight font-medium mx-2"></i>
                         </li>
                         <li class="inline-flex items-center text-sm font-semibold text-gray-800 truncate dark:text-gray-200 leading-tight" aria-current="page">
-                            Registrasi Program
+                            {{ __('app.program_registration') }}
                         </li>
                     </ol>
                 </div>
                 <div class="col-span-3">
                     <div class="flex justify-end">
                         <a href="{{ route('predictions.index') }}" class="btn btn-primary">
-                            <i class="ti ti-plus me-1"></i> Tambah Registrasi
+                            <i class="ti ti-plus me-1"></i> {{ __('app.add_registration') }}
                         </a>
                     </div>
                 </div>
@@ -57,13 +57,13 @@
                         <table class="table-auto w-full text-left border-spacing-0 border-separate">
                             <thead>
                                 <tr>
-                                    <th class="px-6 py-3 border-b font-semibold text-gray-800 dark:text-gray-200">No</th>
-                                    <th class="px-6 py-3 border-b font-semibold text-gray-800 dark:text-gray-200">User</th>
-                                    <th class="px-6 py-3 border-b font-semibold text-gray-800 dark:text-gray-200">Program Diet</th>
-                                    <th class="px-6 py-3 border-b font-semibold text-gray-800 dark:text-gray-200">Status</th>
-                                    <th class="px-6 py-3 border-b font-semibold text-gray-800 dark:text-gray-200">Checkup Terakhir</th>
-                                    <th class="px-6 py-3 border-b font-semibold text-gray-800 dark:text-gray-200">Tanggal Pendaftaran</th>
-                                    <th class="px-6 py-3 border-b font-semibold text-gray-800 dark:text-gray-200">Aksi</th>
+                                    <th class="px-6 py-3 border-b font-semibold text-gray-800 dark:text-gray-200">{{ __('app.number') }}</th>
+                                    <th class="px-6 py-3 border-b font-semibold text-gray-800 dark:text-gray-200">{{ __('app.user') }}</th>
+                                    <th class="px-6 py-3 border-b font-semibold text-gray-800 dark:text-gray-200">{{ __('app.diet_program') }}</th>
+                                    <th class="px-6 py-3 border-b font-semibold text-gray-800 dark:text-gray-200">{{ __('app.status') }}</th>
+                                    <th class="px-6 py-3 border-b font-semibold text-gray-800 dark:text-gray-200">{{ __('app.last_checkup') }}</th>
+                                    <th class="px-6 py-3 border-b font-semibold text-gray-800 dark:text-gray-200">{{ __('app.enrollment_date') }}</th>
+                                    <th class="px-6 py-3 border-b font-semibold text-gray-800 dark:text-gray-200">{{ __('app.actions') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -105,17 +105,17 @@
                                             <div class="flex gap-2">
                                                 <a href="{{ route('enrollments.show', $enrollment->id) }}" 
                                                     class="p-2 bg-lightblue dark:bg-dark rounded-full hover:bg-blue hover:text-white transition-all" 
-                                                    title="Lihat">
+                                                    title="{{ __('app.view') }}">
                                                     <i class="ti ti-eye text-blue hover:text-white"></i>
                                                 </a>
                                                 <a href="{{ route('enrollments.edit', $enrollment->id) }}"
                                                     class="p-2 bg-lightprimary dark:bg-darkprimary rounded-full hover:bg-primary hover:text-white transition-all" 
-                                                    title="Edit">
+                                                    title="{{ __('app.edit') }}">
                                                     <i class="ti ti-edit text-primary hover:text-white"></i>
                                                 </a>
                                                 <a href="{{ route('enrollments.create-checkup', $enrollment->id) }}"
                                                     class="p-2 bg-lightsuccess dark:bg-darksuccess rounded-full hover:bg-success hover:text-white transition-all" 
-                                                    title="Tambah Checkup">
+                                                    title="{{ __('app.add_checkup') }}">
                                                     <i class="ti ti-heartbeat text-success hover:text-white"></i>
                                                 </a>
                                                 <form action="{{ route('enrollments.destroy', $enrollment->id) }}" method="POST" class="inline" id="delete-enrollment-{{ $enrollment->id }}">
@@ -123,8 +123,8 @@
                                                     @method('DELETE')
                                                     <button type="button" 
                                                         class="p-2 bg-lighterror dark:bg-darkerror rounded-full hover:bg-error hover:text-white transition-all" 
-                                                        title="Hapus"
-                                                        onclick="openConfirmationModal('delete', 'Hapus Pendaftaran Program', 'Apakah Anda yakin ingin menghapus pendaftaran program untuk {{ $enrollment->user->name ?? 'pengguna ini' }}?', 'Ya, Hapus', 'document.getElementById(\'delete-enrollment-{{ $enrollment->id }}\').submit()')">
+                                                        title="{{ __('app.delete') }}"
+                                                        onclick="openConfirmationModal('delete', '{{ __('app.delete_enrollment') }}', '{{ __('app.confirm_delete', ['item' => $enrollment->user->name ?? __('app.this_user')]) }}', '{{ __('app.yes_delete') }}', 'document.getElementById(\'delete-enrollment-{{ $enrollment->id }}\').submit()')">
                                                         <i class="ti ti-trash text-error hover:text-white"></i>
                                                     </button>
                                                 </form>
@@ -133,7 +133,7 @@
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td colspan="7" class="px-6 py-4 border-b text-center text-gray-500 dark:text-gray-400">No program enrollments found.</td>
+                                        <td colspan="7" class="px-6 py-4 border-b text-center text-gray-500 dark:text-gray-400">{{ __('app.no_enrollments_found') }}</td>
                                     </tr>
                                 @endforelse
                             </tbody>

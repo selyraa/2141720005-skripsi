@@ -6,24 +6,24 @@
             <div class="flex items-center grid grid-cols-12 gap-6">
                 <div class="col-span-9">
                     <h4 class="font-semibold text-xl text-dark dark:text-white mb-3">
-                        Data Checkup Pelanggan
+                        {{ __('app.customer_checkup_data') }}
                     </h4>
                     <ol class="flex items-center whitespace-nowrap" aria-label="Breadcrumb">
                         <li class="inline-flex items-center">
                             <a class="flex items-center text-sm text-gray-500 hover:text-primary focus:outline-none focus:text-primary dark:focus:text-primary leading-tight" href="{{ route('dashboard') }}">
-                                Home
+                                {{ __('app.home') }}
                             </a>
                             <i class="ti ti-slash text-sm leading-tight font-medium mx-2"></i>
                         </li>
                         <li class="inline-flex items-center text-sm font-semibold text-gray-800 truncate dark:text-gray-200 leading-tight" aria-current="page">
-                            Data Checkup Pelanggan
+                            {{ __('app.customer_checkup_data') }}
                         </li>
                     </ol>
                 </div>
                 <div class="col-span-3">
                     <div class="flex justify-end">
                         <a href="{{ route('checkups.create') }}" class="btn btn-primary">
-                            <i class="ti ti-plus me-1"></i> Tambah Checkup
+                            <i class="ti ti-plus me-1"></i> {{ __('app.add_checkup') }}
                         </a>
                     </div>
                 </div>
@@ -36,8 +36,8 @@
             <div class="card">
                 <div class="card-body">
                     <h3 class="card-title mb-4 flex justify-between items-center">
-                        <span>Data Checkup Pelanggan</span>
-                        <span class="text-sm text-gray-500 font-normal">*Menampilkan data checkup terbaru untuk setiap program enrollment</span>
+                        <span>{{ __('app.customer_checkup_data') }}</span>
+                        <span class="text-sm text-gray-500 font-normal">{{ __('app.latest_checkup_note') }}</span>
                     </h3>
                     
                     @if(session('success'))
@@ -62,14 +62,14 @@
                         <table class="table-auto w-full text-left border-spacing-0 border-separate">
                             <thead>
                                 <tr>
-                                    <th class="px-4 py-3 border-b font-semibold text-gray-800 dark:text-gray-200">No</th>
-                                    <th class="px-4 py-3 border-b font-semibold text-gray-800 dark:text-gray-200">Nama Pelanggan</th>
-                                    <th class="px-4 py-3 border-b font-semibold text-gray-800 dark:text-gray-200">Umur</th>
-                                    <th class="px-4 py-3 border-b font-semibold text-gray-800 dark:text-gray-200">Tinggi (cm)</th>
-                                    <th class="px-4 py-3 border-b font-semibold text-gray-800 dark:text-gray-200">Berat (kg)</th>
-                                    <th class="px-4 py-3 border-b font-semibold text-gray-800 dark:text-gray-200">Program Diet</th>
-                                    <th class="px-4 py-3 border-b font-semibold text-gray-800 dark:text-gray-200">Tanggal Checkup</th>
-                                    <th class="px-4 py-3 border-b font-semibold text-gray-800 dark:text-gray-200">Aksi</th>
+                                    <th class="px-4 py-3 border-b font-semibold text-gray-800 dark:text-gray-200">{{ __('app.number') }}</th>
+                                    <th class="px-4 py-3 border-b font-semibold text-gray-800 dark:text-gray-200">{{ __('app.name') }}</th>
+                                    <th class="px-4 py-3 border-b font-semibold text-gray-800 dark:text-gray-200">{{ __('app.age') }}</th>
+                                    <th class="px-4 py-3 border-b font-semibold text-gray-800 dark:text-gray-200">{{ __('app.height') }}</th>
+                                    <th class="px-4 py-3 border-b font-semibold text-gray-800 dark:text-gray-200">{{ __('app.weight') }}</th>
+                                    <th class="px-4 py-3 border-b font-semibold text-gray-800 dark:text-gray-200">{{ __('app.diet_program') }}</th>
+                                    <th class="px-4 py-3 border-b font-semibold text-gray-800 dark:text-gray-200">{{ __('app.checkup_date') }}</th>
+                                    <th class="px-4 py-3 border-b font-semibold text-gray-800 dark:text-gray-200">{{ __('app.actions') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -81,50 +81,47 @@
                                                 {{ $checkup->programEnrollment->user->name }}
                                                 <div class="text-xs text-gray-400">{{ $checkup->programEnrollment->user->email }}</div>
                                             @else
-                                                <span class="text-red-500">Data Tidak Tersedia</span>
+                                                <span class="text-red-500">{{ __('app.data_not_available') }}</span>
                                             @endif
                                         </td>
                                         <td class="px-4 py-3 border-b text-gray-500 dark:text-gray-400">
-                                            {{ $checkup->cell_age }} <span class="text-xs text-gray-500">tahun</span>
+                                            {{ $checkup->cell_age }} <span class="text-xs text-gray-500">{{ __('app.years') }}</span>
                                         </td>
                                         <td class="px-4 py-3 border-b text-gray-500 dark:text-gray-400">
-                                            {{ $checkup->height }} <span class="text-xs text-gray-500">cm</span>
+                                            {{ $checkup->height }} <span class="text-xs text-gray-500">{{ __('app.cm') }}</span>
                                         </td>
                                         <td class="px-4 py-3 border-b text-gray-500 dark:text-gray-400">
-                                            {{ $checkup->weight }} <span class="text-xs text-gray-500">kg</span>
+                                            {{ $checkup->weight }} <span class="text-xs text-gray-500">{{ __('app.kg') }}</span>
                                         </td>
                                         <td class="px-4 py-3 border-b text-gray-500 dark:text-gray-400">
                                             @if($checkup->programEnrollment && $checkup->programEnrollment->dietProgram)
                                                 {{ $checkup->programEnrollment->dietProgram->name }}
                                             @else
-                                                <span class="text-red-500">Data Tidak Tersedia</span>
+                                                <span class="text-red-500">{{ __('app.data_not_available') }}</span>
                                             @endif
                                         </td>
                                         <td class="px-4 py-3 border-b text-gray-500 dark:text-gray-400">
-                                            {{ $checkup->checkup_date ? $checkup->checkup_date->format('d M Y') : 'N/A' }}
+                                            {{ $checkup->checkup_date ? $checkup->checkup_date->format('d M Y') : __('app.not_available') }}
                                         </td>
                                         <td class="px-4 py-3 border-b text-gray-500 dark:text-gray-400">
                                             <div class="flex gap-2">
                                                 <a href="{{ route('checkups.show', $checkup->id) }}" 
                                                     class="p-2 bg-lightblue dark:bg-dark rounded-full hover:bg-blue hover:text-white transition-all" 
-                                                    title="Lihat">
+                                                    title="{{ __('app.view') }}">
                                                     <i class="ti ti-eye text-blue hover:text-white"></i>
                                                 </a>
                                                 <a href="{{ route('checkups.edit', $checkup->id) }}"
                                                     class="p-2 bg-lightprimary dark:bg-darkprimary rounded-full hover:bg-primary hover:text-white transition-all" 
-                                                    title="Edit">
+                                                    title="{{ __('app.edit') }}">
                                                      <i class="ti ti-edit text-primary hover:text-white"></i>
                                                 </a>
                                                 <form action="{{ route('checkups.destroy', $checkup->id) }}" method="POST" class="inline">
                                                     @csrf
                                                     @method('DELETE')
-                                                    {{-- <button type="submit" class="btn btn-sm btn-error" onclick="return confirm('Apakah Anda yakin ingin menghapus data checkup ini?')">
-                                                        <i class="ti ti-trash"></i> Hapus
-                                                    </button> --}}
                                                     <button type="button" 
                                                         class="p-2 bg-lighterror dark:bg-darkerror rounded-full hover:bg-error hover:text-white transition-all" 
-                                                        title="Hapus"
-                                                        onclick="openConfirmationModal('delete', 'Hapus Data Checkup', 'Apakah Anda yakin ingin menghapus data checkup untuk {{ $checkup->programEnrollment->user->name ?? 'pengguna ini' }}?', 'Ya, Hapus', 'document.getElementById(\'delete-form-{{ $checkup->programEnrollment->user->name }}\').submit()')">
+                                                        title="{{ __('app.delete') }}"
+                                                        onclick="openConfirmationModal('delete', '{{ __('app.delete_checkup_data') }}', '{{ __('app.confirm_delete_checkup', ['name' => $checkup->programEnrollment->user->name ?? __('app.this_user')]) }}', '{{ __('app.yes_delete') }}', 'document.getElementById(\'delete-form-{{ $checkup->programEnrollment->user->name }}\').submit()')">
                                                     <i class="ti ti-trash text-error hover:text-white"></i>
                                                 </button>
                                                 </form>
@@ -133,7 +130,7 @@
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td colspan="8" class="px-4 py-3 border-b text-center text-gray-500 dark:text-gray-400">Tidak ada data checkup yang ditemukan.</td>
+                                        <td colspan="8" class="px-4 py-3 border-b text-center text-gray-500 dark:text-gray-400">{{ __('app.no_checkup_data_found') }}</td>
                                     </tr>
                                 @endforelse
                             </tbody>
