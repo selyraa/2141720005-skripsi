@@ -6,7 +6,7 @@
             <div class="flex items-center grid grid-cols-12 gap-6">
                 <div class="col-span-9">
                     <h4 class="font-semibold text-xl text-dark dark:text-white mb-3">
-                        {{ __('app.create_diet_program') }}
+                        {{ __('app.add_diet_program') }}
                     </h4>
                     <ol class="flex items-center whitespace-nowrap" aria-label="Breadcrumb">
                         <li class="inline-flex items-center">
@@ -22,7 +22,7 @@
                             <i class="ti ti-slash text-sm leading-tight font-medium mx-2"></i>
                         </li>
                         <li class="inline-flex items-center text-sm font-semibold text-gray-800 truncate dark:text-gray-200 leading-tight" aria-current="page">
-                            {{ __('app.create') }}
+                            {{ __('app.add_diet_program') }}
                         </li>
                     </ol>
                 </div>
@@ -41,7 +41,7 @@
         <div class="col-span-12">
             <div class="card">
                 <div class="card-body">
-                    <h3 class="card-title mb-4">{{ __('app.create_diet_program') }}</h3>
+                    <h3 class="card-title mb-4">{{ __('app.add_diet_program_form') }}</h3>
                     
                     @if($errors->any())
                         <div class="bg-lighterror dark:bg-darkerror text-error px-4 py-3 rounded relative mb-4" role="alert">

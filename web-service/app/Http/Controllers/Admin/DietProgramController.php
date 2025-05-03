@@ -16,12 +16,6 @@ class DietProgramController extends Controller
      */
     public function index()
     {
-        // Check if user has required role (nutritionist or assistant)
-        if (!auth()->user()->role || !in_array(auth()->user()->role->name, ['ahli gizi', 'asisten ahli gizi'])) {
-            abort(403, 'Unauthorized action.');
-        }
-        
-        // Get all diet programs
         $dietPrograms = DietProgram::all();
         
         return view('pages.dashboard.admin.diet-programs.index', compact('dietPrograms'));

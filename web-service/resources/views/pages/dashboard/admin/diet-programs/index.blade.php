@@ -6,7 +6,7 @@
             <div class="flex items-center grid grid-cols-12 gap-6">
                 <div class="col-span-9">
                     <h4 class="font-semibold text-xl text-dark dark:text-white mb-3">
-                        {{ __('app.diet_programs') }}
+                        {{ __('app.manage_diet_programs') }}
                     </h4>
                     <ol class="flex items-center whitespace-nowrap" aria-label="Breadcrumb">
                         <li class="inline-flex items-center">
@@ -16,14 +16,14 @@
                             <i class="ti ti-slash text-sm leading-tight font-medium mx-2"></i>
                         </li>
                         <li class="inline-flex items-center text-sm font-semibold text-gray-800 truncate dark:text-gray-200 leading-tight" aria-current="page">
-                            {{ __('app.diet_programs') }}
+                            {{ __('app.manage_diet_programs') }}
                         </li>
                     </ol>
                 </div>
                 <div class="col-span-3">
                     <div class="flex justify-end">
                         <a href="{{ route('diet-programs.create') }}" class="btn btn-primary">
-                            <i class="ti ti-plus me-1"></i> {{ __('app.create_diet_program') }}
+                            <i class="ti ti-plus me-1"></i> {{ __('app.add_diet_program') }}
                         </a>
                     </div>
                 </div>

@@ -119,7 +119,9 @@ return [
     // Sidebar Navigation
     'administration' => 'Administrasi',
     'master' => 'Master',
+    'management' => 'Manajemen',    
     'manage_users' => 'Kelola Pengguna',
+    'manage_diet_programs' => 'Kelola Program Diet',
     'user_data' => 'Data Pengguna',
     'diet_program_data' => 'Data Program Diet',
     'customer_checkup_data' => 'Data Checkup Pelanggan',
@@ -134,11 +136,13 @@ return [
     
     // Diet Program
     'diet_programs' => 'Program Diet',
-    'create_diet_program' => 'Buat Program Diet',
-    'edit_diet_program' => 'Edit Program Diet',
+    'add_diet_program' => 'Tambah Program Diet',
+    'edit_diet_programs' => 'Edit Program Diet',
     'program_name' => 'Nama Program',
     'program_details' => 'Detail Program',
     'program_status' => 'Status Program',
+    'delete_diet_program' => 'Hapus Program Diet',
+    'add_diet_program_form' => 'Form Tambah Program Diet',
     
     'duration' => 'Durasi',
     'days' => 'Hari',

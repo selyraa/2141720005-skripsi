@@ -30,18 +30,18 @@
                         @if(auth()->check() && auth()->user()->role && in_array(auth()->user()->role->name, ['ahli gizi', 'asisten ahli gizi']))
                         <div class="caption mt-8">
                             <i class="ti ti-dots nav-small-cap-icon "></i>
-                            <span class="hide-menu">{{ __('app.master') }}</span>
+                            <span class="hide-menu">{{ __('app.management') }}</span>
                         </div>
                         <li class="sidebar-item">
                             <a class="sidebar-link dark-sidebar-link {{ request()->routeIs('admin.users.*') ? 'activemenu' : '' }}" href="{{ route('admin.users.index') }}">
                                 <i class="ti ti-users text-xl flex-shrink-0"></i> <span
-                                    class="hide-menu flex-shrink-0">{{ __('app.user_data') }}</span>
+                                    class="hide-menu flex-shrink-0">{{ __('app.manage_users') }}</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
                             <a class="sidebar-link dark-sidebar-link {{ request()->routeIs('diet-programs.*') ? 'activemenu' : '' }}" href="{{ route('diet-programs.index') }}">
                                 <i class="ti ti-apple text-xl flex-shrink-0"></i> <span
-                                    class="hide-menu flex-shrink-0">{{ __('app.diet_program_data') }}</span>
+                                    class="hide-menu flex-shrink-0">{{ __('app.manage_diet_programs') }}</span>
                             </a>
                         </li>
                         
