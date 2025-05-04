@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\AccountSettingsController;
 use App\Http\Controllers\Admin\CheckupDataController;
 use App\Http\Controllers\Admin\DietProgramController;
+use App\Http\Controllers\Admin\ConsultationScheduleController;
 use App\Http\Controllers\ProgramEnrollmentController;
 use Illuminate\Support\Facades\Route;
 
@@ -57,6 +58,9 @@ Route::middleware(['auth'])->group(function () {
 
     // Diet Programs Routes
     Route::resource('diet-programs', DietProgramController::class);
+
+    // Consultation Schedule Routes
+    Route::resource('consultation-schedules', ConsultationScheduleController::class);
 
     // Account Settings Routes
     Route::get('/account/settings', [AccountSettingsController::class, 'index'])->name('account.settings');

@@ -61,7 +61,7 @@
                                     class="hide-menu flex-shrink-0">{{ __('app.customer_checkup_data') }}</span>
                             </a>
                         </li>
-                        @endif
+                        
                         <div class="caption mt-8">
                             <i class="ti ti-dots nav-small-cap-icon "></i>
                             <span class="hide-menu">{{ __('app.prediction_recommendation') }}</span>
@@ -78,6 +78,7 @@
                                     class="hide-menu flex-shrink-0">{{ __('app.program_registration') }}</span>
                             </a>
                         </li>
+                        @endif
                         <li class="sidebar-item">
                             <a class="sidebar-link dark-sidebar-link {{ request()->routeIs('recommendations.*') ? 'activemenu' : '' }}" href="#">
                                 <i class="ti ti-message text-xl flex-shrink-0"></i> <span
@@ -89,7 +90,7 @@
                             <span class="hide-menu">{{ __('app.consultation') }}</span>
                         </div>
                         <li class="sidebar-item">
-                            <a class="sidebar-link dark-sidebar-link {{ request()->routeIs('schedules.*') ? 'activemenu' : '' }}" href="#">
+                            <a class="sidebar-link dark-sidebar-link {{ request()->routeIs('consultation-schedules.*') ? 'activemenu' : '' }}" href="{{ route('consultation-schedules.index') }}">
                                 <i class="ti ti-calendar text-xl flex-shrink-0"></i> <span
                                     class="hide-menu flex-shrink-0">{{ __('app.schedule') }}</span>
                             </a>

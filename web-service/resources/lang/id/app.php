@@ -172,6 +172,15 @@ return [
     'in_progress' => 'Sedang Berlangsung',
     'completed' => 'Selesai',
     'cancelled' => 'Dibatalkan',
+    'pending' => 'Menunggu', 
+    'edit_schedule_form' => 'Form Edit Jadwal',
+    'select_enrollment' => 'Pilih Pendaftaran',
+    'created_at' => 'Dibuat Pada',
+    'updated_at' => 'Diperbarui Pada',
+    'no_notes_available' => 'Tidak ada catatan tersedia',
+    'delete_schedule' => 'Hapus Jadwal',
+    'confirm_delete_schedule' => 'Apakah Anda yakin ingin menghapus jadwal konsultasi untuk :name?',
+    'create_schedule_form' => 'Form Buat Jadwal',
     
     // Checkups
     'checkups' => 'Pemeriksaan',
