@@ -8,6 +8,7 @@ use App\Http\Controllers\AccountSettingsController;
 use App\Http\Controllers\Admin\CheckupDataController;
 use App\Http\Controllers\Admin\DietProgramController;
 use App\Http\Controllers\Admin\ConsultationScheduleController;
+use App\Http\Controllers\Admin\ReportController;
 use App\Http\Controllers\ProgramEnrollmentController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,7 +29,7 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::middleware(['auth'])->group(function () {
     // Dashboard Route
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    
+
     // Prediction Routes
     Route::get('/predictions', [PredictionController::class, 'index'])->name('predictions.index');
     Route::post('/predictions', [PredictionController::class, 'predict'])->name('predictions.predict');
@@ -36,7 +37,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/predictions/save', [PredictionController::class, 'saveResult'])->name('predictions.saveResult');
     Route::post('/predictions/customer', [PredictionController::class, 'storeCustomer'])->name('predictions.storeCustomer');
     Route::get('/predictions/cancel', [PredictionController::class, 'cancelPrediction'])->name('predictions.cancel');
-    
+
     // Program Enrollment Routes
     Route::get('/enrollments', [ProgramEnrollmentController::class, 'index'])->name('enrollments.index');
     Route::get('/enrollments/create', [ProgramEnrollmentController::class, 'create'])->name('enrollments.create');
@@ -47,17 +48,21 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/enrollments/{enrollment}', [ProgramEnrollmentController::class, 'destroy'])->name('enrollments.destroy');
     Route::get('/enrollments/{enrollment}/checkup', [ProgramEnrollmentController::class, 'createCheckup'])->name('enrollments.create-checkup');
     Route::post('/enrollments/{enrollment}/checkup', [ProgramEnrollmentController::class, 'storeCheckup'])->name('enrollments.store-checkup');
-    
+
     // Admin Routes - User Management
     Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth']], function () {
         Route::resource('users', UserController::class);
     });
-    
+
     // Checkup Data Routes
     Route::resource('checkups', CheckupDataController::class);
 
     // Diet Programs Routes
     Route::resource('diet-programs', DietProgramController::class);
+
+    // Reports Routes
+    Route::get('/reports', [ReportController::class, 'index'])->name('reports.index');
+    Route::post('/reports/export', [ReportController::class, 'exportPdf'])->name('reports.export');
 
     // Consultation Schedule Routes
     Route::resource('consultation-schedules', ConsultationScheduleController::class);

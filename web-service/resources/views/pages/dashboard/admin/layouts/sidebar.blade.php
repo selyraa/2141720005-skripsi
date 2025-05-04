@@ -112,7 +112,7 @@
                             <span class="hide-menu">{{ __('app.reports_analysis') }}</span>
                         </div>
                         <li class="sidebar-item">
-                            <a class="sidebar-link dark-sidebar-link {{ request()->routeIs('reports.*') ? 'activemenu' : '' }}" href="#">
+                            <a class="sidebar-link dark-sidebar-link {{ request()->routeIs('reports.*') ? 'activemenu' : '' }}" href="{{ route('reports.index') }}">
                                 <i class="ti ti-file-report text-xl flex-shrink-0"></i> <span
                                     class="hide-menu flex-shrink-0">{{ __('app.reports') }}</span>
                             </a>

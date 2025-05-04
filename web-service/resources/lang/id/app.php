@@ -300,6 +300,23 @@ return [
     'view_all' => 'Lihat Semua',
     'see_all' => 'Lihat Semua',
 
+    // Reports
+    'reports' => 'Laporan',
+    'reports_analysis' => 'Laporan & Analisis',
+    'export_to_pdf' => 'Ekspor ke PDF',
+    'start_date' => 'Tanggal Mulai',
+    'end_date' => 'Tanggal Selesai',
+    'period' => 'Periode',
+    'all_programs' => 'Semua Program',
+    'generated_at' => 'Dibuat pada',
+    'progress' => 'Progres',
+    'customer' => 'Pelanggan',
+    'no_enrollments_found' => 'Tidak ada pendaftaran program yang ditemukan.',
+    'program_registration' => 'Pendaftaran Program',
+    'copyright' => 'Hak Cipta',
+    'all_rights_reserved' => 'Semua Hak Dilindungi',
+    'diet_program_report' => 'Laporan Program Diet',
+    
     // Dashboard
     'customer_count' => 'Jumlah Pelanggan',
     'weight_gain_count_program' => 'Program Naik Berat Badan',
