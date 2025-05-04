@@ -12,18 +12,18 @@ use App\Http\Controllers\Admin\ReportController;
 use App\Http\Controllers\ProgramEnrollmentController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', action: function () {
-    return view('pages.auth.login');
-});
-
+// Public Routes
+Route::redirect('/', '/login');
 Route::view('landing', 'pages.landing.index')->name('landing');
 
 // Authentication Routes
-Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
-Route::post('/login', [AuthController::class, 'login'])->name('login.post');
-// Route::get('/register', [AuthController::class, 'showRegister'])->name('register');
-// Route::post('/register', [AuthController::class, 'register'])->name('register.post');
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::controller(AuthController::class)->group(function () {
+    Route::get('/login', 'showLogin')->name('login');
+    Route::post('/login', 'login')->name('login.post');
+    // Route::get('/register', 'showRegister')->name('register');
+    // Route::post('/register', 'register')->name('register.post');
+    Route::post('/logout', 'logout')->name('logout');
+});
 
 // Protected Routes
 Route::middleware(['auth'])->group(function () {
@@ -31,45 +31,45 @@ Route::middleware(['auth'])->group(function () {
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     // Prediction Routes
-    Route::get('/predictions', [PredictionController::class, 'index'])->name('predictions.index');
-    Route::post('/predictions', [PredictionController::class, 'predict'])->name('predictions.predict');
-    Route::get('/predictions/result', [PredictionController::class, 'result'])->name('predictions.result');
-    Route::post('/predictions/save', [PredictionController::class, 'saveResult'])->name('predictions.saveResult');
-    Route::post('/predictions/customer', [PredictionController::class, 'storeCustomer'])->name('predictions.storeCustomer');
-    Route::get('/predictions/cancel', [PredictionController::class, 'cancelPrediction'])->name('predictions.cancel');
+    Route::controller(PredictionController::class)->prefix('predictions')->name('predictions.')->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::post('/', 'predict')->name('predict');
+        Route::get('/result', 'result')->name('result');
+        Route::post('/save', 'saveResult')->name('saveResult');
+        Route::post('/customer', 'storeCustomer')->name('storeCustomer');
+        Route::get('/cancel', 'cancelPrediction')->name('cancel');
+    });
 
     // Program Enrollment Routes
-    Route::get('/enrollments', [ProgramEnrollmentController::class, 'index'])->name('enrollments.index');
-    Route::get('/enrollments/create', [ProgramEnrollmentController::class, 'create'])->name('enrollments.create');
-    Route::post('/enrollments', [ProgramEnrollmentController::class, 'store'])->name('enrollments.store');
-    Route::get('/enrollments/{enrollment}', [ProgramEnrollmentController::class, 'show'])->name('enrollments.show');
-    Route::get('/enrollments/{enrollment}/edit', [ProgramEnrollmentController::class, 'edit'])->name('enrollments.edit');
-    Route::put('/enrollments/{enrollment}', [ProgramEnrollmentController::class, 'update'])->name('enrollments.update');
-    Route::delete('/enrollments/{enrollment}', [ProgramEnrollmentController::class, 'destroy'])->name('enrollments.destroy');
-    Route::get('/enrollments/{enrollment}/checkup', [ProgramEnrollmentController::class, 'createCheckup'])->name('enrollments.create-checkup');
-    Route::post('/enrollments/{enrollment}/checkup', [ProgramEnrollmentController::class, 'storeCheckup'])->name('enrollments.store-checkup');
+    Route::resource('enrollments', ProgramEnrollmentController::class);
+    Route::controller(ProgramEnrollmentController::class)->prefix('enrollments')->name('enrollments.')->group(function () {
+        Route::get('/{enrollment}/checkup', 'createCheckup')->name('create-checkup');
+        Route::post('/{enrollment}/checkup', 'storeCheckup')->name('store-checkup');
+    });
 
-    // Admin Routes - User Management
-    Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth']], function () {
+    // Admin Routes
+    Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('users', UserController::class);
     });
 
-    // Checkup Data Routes
-    Route::resource('checkups', CheckupDataController::class);
-
-    // Diet Programs Routes
-    Route::resource('diet-programs', DietProgramController::class);
+    // Resource Routes
+    Route::resources([
+        'checkups' => CheckupDataController::class,
+        'diet-programs' => DietProgramController::class,
+        'consultation-schedules' => ConsultationScheduleController::class,
+    ]);
 
     // Reports Routes
-    Route::get('/reports', [ReportController::class, 'index'])->name('reports.index');
-    Route::post('/reports/export', [ReportController::class, 'exportPdf'])->name('reports.export');
-
-    // Consultation Schedule Routes
-    Route::resource('consultation-schedules', ConsultationScheduleController::class);
+    Route::controller(ReportController::class)->prefix('reports')->name('reports.')->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::post('/export', 'exportPdf')->name('export');
+    });
 
     // Account Settings Routes
-    Route::get('/account/settings', [AccountSettingsController::class, 'index'])->name('account.settings');
-    Route::put('/account/profile', [AccountSettingsController::class, 'updateProfile'])->name('account.profile.update');
-    Route::put('/account/password', [AccountSettingsController::class, 'updatePassword'])->name('account.password.update');
-    Route::delete('/account/profile-photo', [AccountSettingsController::class, 'deleteProfilePhoto'])->name('account.profile-photo.delete');
+    Route::controller(AccountSettingsController::class)->prefix('account')->name('account.')->group(function () {
+        Route::get('/settings', 'index')->name('settings');
+        Route::put('/profile', 'updateProfile')->name('profile.update');
+        Route::put('/password', 'updatePassword')->name('password.update');
+        Route::delete('/profile-photo', 'deleteProfilePhoto')->name('profile-photo.delete');
+    });
 });
