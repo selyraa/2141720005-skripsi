@@ -15,13 +15,18 @@ class ConsultationScheduleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $perPage = $request->input('per_page', 10);
+        
         $schedules = ConsultationSchedule::with(['programEnrollment.user', 'programEnrollment.dietProgram'])
             ->orderBy('schedule_date', 'desc')
-            ->get();
-
-        return view('pages.dashboard.admin.consultation-schedules.index', compact('schedules'));
+            ->paginate($perPage)
+            ->withQueryString();
+        
+        $perPageOptions = [5, 10, 20, 50, 100];
+        
+        return view('pages.dashboard.admin.consultation-schedules.index', compact('schedules', 'perPage', 'perPageOptions'));
     }
 
     /**
@@ -32,7 +37,7 @@ class ConsultationScheduleController extends Controller
     public function create()
     {
         $enrollments = ProgramEnrollment::with(['user', 'dietProgram'])
-            ->where('status', 0) // Only active/ongoing enrollments
+            ->where('status', 0)
             ->get();
 
         $statusCast = new ConsultationScheduleStatusCast();

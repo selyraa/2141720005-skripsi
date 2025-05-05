@@ -17,16 +17,10 @@ class CheckupDataController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        // Get distinct program enrollment IDs with the latest checkup for each
-        // Only include checkups that have a program_enrollment_id that is not null
-        // $latestCheckups = Checkup::select('program_enrollment_id', DB::raw('MAX(id) as latest_id'))
-        //                 ->whereNotNull('program_enrollment_id')
-        //                 ->where('deleted_at', null)
-        //                 ->groupBy('program_enrollment_id')
-        //                 ->get()
-        //                 ->pluck('latest_id');
+        $perPage = $request->input('per_page', 10);
+        
         $latestCheckups = Checkup::select('checkups.program_enrollment_id', DB::raw('MAX(checkups.id) as latest_id'))
                         ->join('program_enrollments', 'checkups.program_enrollment_id', '=', 'program_enrollments.id')
                         ->whereNull('checkups.deleted_at')
@@ -34,16 +28,18 @@ class CheckupDataController extends Controller
                         ->groupBy('checkups.program_enrollment_id')
                         ->pluck('latest_id');
         
-        // Query to get the actual checkup records with relationships
         $checkups = Checkup::with(['programEnrollment.user', 'programEnrollment.dietProgram'])
                     ->whereIn('id', $latestCheckups)
                     ->whereHas('programEnrollment', function ($query) {
                         $query->whereNull('deleted_at');
                     })
                     ->orderBy('checkup_date', 'desc')
-                    ->get();
+                    ->paginate($perPage)
+                    ->withQueryString();
         
-        return view('pages.dashboard.admin.checkups.index', compact('checkups'));
+        $perPageOptions = [5, 10, 20, 50, 100];
+        
+        return view('pages.dashboard.admin.checkups.index', compact('checkups', 'perPage', 'perPageOptions'));
     }
 
     /**
@@ -99,7 +95,6 @@ class CheckupDataController extends Controller
             'dietPrediction.predictionResults.dietProgram',
         ])->findOrFail($id);
 
-        // Get all checkups for this user/enrollment to show history
         $userCheckups = Checkup::where('program_enrollment_id', $checkup->program_enrollment_id)
                         ->orderBy('checkup_date', 'desc')
                         ->get();

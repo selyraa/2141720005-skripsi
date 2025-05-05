@@ -19,13 +19,18 @@ class ProgramEnrollmentController extends Controller
     /**
      * Display a listing of program enrollments
      */
-    public function index()
+    public function index(Request $request)
     {
-        // Load enrollments with related data
-        $enrollments = ProgramEnrollment::with(['user', 'dietProgram', 'checkup'])
-            ->get();
+        $perPage = $request->input('per_page', 10);
         
-        return view('pages.dashboard.admin.enrollments.index', compact('enrollments'));
+        $enrollments = ProgramEnrollment::with(['user', 'dietProgram', 'checkup'])
+            ->orderBy('created_at', 'desc')
+            ->paginate($perPage)
+            ->withQueryString();
+        
+        $perPageOptions = [5, 10, 20, 50, 100];
+        
+        return view('pages.dashboard.admin.enrollments.index', compact('enrollments', 'perPage', 'perPageOptions'));
     }
 
     /**
@@ -45,7 +50,6 @@ class ProgramEnrollmentController extends Controller
      */
     public function store(Request $request)
     {
-        // Validate input data
         $validatedData = $request->validate([
             'user_id' => 'required|exists:users,id',
             'diet_program_id' => 'required|exists:diet_programs,id',
@@ -94,7 +98,7 @@ class ProgramEnrollmentController extends Controller
         PredictionResult::create([
             'diet_prediction_id' => $dietPrediction->id,
             'diet_program_id' => $validatedData['diet_program_id'],
-            'confidence_score' => 1.0, // 100% confidence for manual selection
+            'confidence_score' => 1.0,
             'is_selected' => true,
         ]);
 
@@ -162,16 +166,13 @@ class ProgramEnrollmentController extends Controller
                 PredictionResult::where('diet_prediction_id', $latestCheckup->dietPrediction->id)
                     ->update(['is_selected' => false]);
                 
-                // Find if there's an existing prediction result for this program
                 $predictionResult = PredictionResult::where('diet_prediction_id', $latestCheckup->dietPrediction->id)
                     ->where('diet_program_id', $validatedData['diet_program_id'])
                     ->first();
                 
                 if ($predictionResult) {
-                    // Update existing result
                     $predictionResult->update(['is_selected' => true]);
                 } else {
-                    // Create new result
                     PredictionResult::create([
                         'diet_prediction_id' => $latestCheckup->dietPrediction->id,
                         'diet_program_id' => $validatedData['diet_program_id'],
@@ -216,7 +217,6 @@ class ProgramEnrollmentController extends Controller
     {
         $enrollment = ProgramEnrollment::findOrFail($id);
         
-        // Validate input data
         $validatedData = $request->validate([
             'diet_program_id' => 'nullable|exists:diet_programs,id',
             'height' => 'required|numeric|min:100|max:250',
@@ -251,12 +251,10 @@ class ProgramEnrollmentController extends Controller
             'prediction_date' => now(),
         ]);
         
-        // Check if diet program was changed
         if (!empty($validatedData['diet_program_id']) && $validatedData['diet_program_id'] != $enrollment->diet_program_id) {
-            // Update enrollment with new program
             $enrollment->update([
                 'diet_program_id' => $validatedData['diet_program_id'],
-                'status' => 0, // Reset status to "on going"
+                'status' => 0, 
             ]);
             
             // Create prediction result for the selected program with 100% confidence
@@ -267,7 +265,6 @@ class ProgramEnrollmentController extends Controller
                 'is_selected' => true,
             ]);
         } else {
-            // Use current program
             PredictionResult::create([
                 'diet_prediction_id' => $dietPrediction->id,
                 'diet_program_id' => $enrollment->diet_program_id,

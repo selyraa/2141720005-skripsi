@@ -157,6 +157,7 @@ return [
     'cancelled' => 'Dibatalkan',
     'on_going' => 'Sedang Berlangsung',
     'changed' => 'Diubah',
+    'enrollment_count' => 'Jumlah Pendaftaran',
 
     
     // Consultation
@@ -336,4 +337,13 @@ return [
     'program_status_summary' => 'Ringkasan Status Program',
     'body_composition_changes' => 'Perubahan Komposisi Tubuh',
     'average_changes_after_programs' => 'Perubahan Rata-rata Setelah Program',
+
+    // Pagination
+    'previous' => 'Sebelumnya',
+    'next' => 'Selanjutnya',
+    'show' => 'Tampilkan',
+    'showing' => 'Menampilkan',
+    'of' => 'dari',
+    'to' => 'ke',
+    'entries' => 'entri',
 ];

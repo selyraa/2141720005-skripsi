@@ -167,9 +167,7 @@
                         </table>
                     </div>
                     
-                    <div class="mt-4">
-                        {{ $enrollments->appends(request()->query())->links() }}
-                    </div>
+                    @include('components.pagination', ['paginator' => $enrollments, 'perPage' => $perPage, 'perPageOptions' => $perPageOptions])
                 </div>
             </div>
         </div>

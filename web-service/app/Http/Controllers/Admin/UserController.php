@@ -17,17 +17,22 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        // Check if user has required role
         if (Gate::denies('manage-users')) {
             abort(403, 'Unauthorized action.');
         }
         
-        // Get all users, ordered by name
-        $users = User::with('role')->get();
+        $perPage = $request->input('per_page', 10);
         
-        return view('pages.dashboard.admin.users.index', compact('users'));
+        $users = User::with('role')
+            ->orderBy('name')
+            ->paginate($perPage)
+            ->withQueryString();
+        
+        $perPageOptions = [5, 10, 20, 50, 100];
+        
+        return view('pages.dashboard.admin.users.index', compact('users', 'perPage', 'perPageOptions'));
     }
 
     /**
@@ -41,7 +46,6 @@ class UserController extends Controller
             abort(403, 'Unauthorized action.');
         }
         
-        // Get all roles for the dropdown
         $roles = Role::orderBy('name')->get();
         
         return view('pages.dashboard.admin.users.create', compact('roles'));
@@ -59,7 +63,6 @@ class UserController extends Controller
             abort(403, 'Unauthorized action.');
         }
         
-        // Validate input
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
@@ -70,7 +73,6 @@ class UserController extends Controller
             'birth_date' => 'nullable|date',
         ]);
         
-        // Create user
         $validatedData['password'] = Hash::make($validatedData['password']);
         User::create($validatedData);
         
@@ -111,7 +113,6 @@ class UserController extends Controller
         
         $user = User::findOrFail($id);
         
-        // Validate input
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'email' => [
@@ -128,7 +129,6 @@ class UserController extends Controller
             'birth_date' => 'nullable|date',
         ]);
         
-        // Update password only if provided
         if (empty($validatedData['password'])) {
             unset($validatedData['password']);
         } else {
@@ -155,7 +155,6 @@ class UserController extends Controller
         
         $user = User::findOrFail($id);
         
-        // Prevent deletion of own account
         if (auth()->user()->id === $user->id) {
             return redirect()->route('admin.users.index')
                 ->with('error', 'You cannot delete your own account!');

@@ -72,7 +72,7 @@
                             <tbody>
                                 @forelse ($schedules as $index => $schedule)
                                     <tr>
-                                        <td class="px-4 py-3 border-b text-gray-500 dark:text-gray-400">{{ $index + 1 }}</td>
+                                        <td class="px-4 py-3 border-b text-gray-500 dark:text-gray-400">{{ $index + $schedules->firstItem() }}</td>
                                         <td class="px-4 py-3 border-b text-gray-500 dark:text-gray-400">{{ $schedule->schedule_date->format('d M Y H:i') }}</td>
                                         <td class="px-4 py-3 border-b text-gray-500 dark:text-gray-400">
                                             @if($schedule->programEnrollment && $schedule->programEnrollment->user)
@@ -127,6 +127,9 @@
                             </tbody>
                         </table>
                     </div>
+                    
+                    <!-- Add pagination component -->
+                    @include('components.pagination', ['paginator' => $schedules, 'perPage' => $perPage, 'perPageOptions' => $perPageOptions])
                 </div>
             </div>
         </div>

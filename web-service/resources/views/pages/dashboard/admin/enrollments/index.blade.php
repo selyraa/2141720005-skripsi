@@ -35,6 +35,10 @@
         <div class="col-span-12">
             <div class="card">
                 <div class="card-body">
+                    <h3 class="card-title mb-4 flex justify-between items-center">
+                        <span>{{ __('app.program_registration') }}</span>
+                    </h3>
+                    
                     @if(session('success'))
                         <div class="bg-lightsuccess dark:bg-darksuccess text-success px-4 py-3 rounded relative mb-4" role="alert">
                             <span class="block sm:inline">{{ session('success') }}</span>
@@ -57,31 +61,37 @@
                         <table class="table-auto w-full text-left border-spacing-0 border-separate">
                             <thead>
                                 <tr>
-                                    <th class="px-6 py-3 border-b font-semibold text-gray-800 dark:text-gray-200">{{ __('app.number') }}</th>
-                                    <th class="px-6 py-3 border-b font-semibold text-gray-800 dark:text-gray-200">{{ __('app.user') }}</th>
-                                    <th class="px-6 py-3 border-b font-semibold text-gray-800 dark:text-gray-200">{{ __('app.diet_program') }}</th>
-                                    <th class="px-6 py-3 border-b font-semibold text-gray-800 dark:text-gray-200">{{ __('app.status') }}</th>
-                                    <th class="px-6 py-3 border-b font-semibold text-gray-800 dark:text-gray-200">{{ __('app.last_checkup') }}</th>
-                                    <th class="px-6 py-3 border-b font-semibold text-gray-800 dark:text-gray-200">{{ __('app.enrollment_date') }}</th>
-                                    <th class="px-6 py-3 border-b font-semibold text-gray-800 dark:text-gray-200">{{ __('app.actions') }}</th>
+                                    <th class="px-4 py-3 border-b font-semibold text-gray-800 dark:text-gray-200">{{ __('app.number') }}</th>
+                                    <th class="px-4 py-3 border-b font-semibold text-gray-800 dark:text-gray-200">{{ __('app.user') }}</th>
+                                    <th class="px-4 py-3 border-b font-semibold text-gray-800 dark:text-gray-200">{{ __('app.diet_program') }}</th>
+                                    <th class="px-4 py-3 border-b font-semibold text-gray-800 dark:text-gray-200">{{ __('app.status') }}</th>
+                                    <th class="px-4 py-3 border-b font-semibold text-gray-800 dark:text-gray-200">{{ __('app.last_checkup') }}</th>
+                                    <th class="px-4 py-3 border-b font-semibold text-gray-800 dark:text-gray-200">{{ __('app.enrollment_date') }}</th>
+                                    <th class="px-4 py-3 border-b font-semibold text-gray-800 dark:text-gray-200">{{ __('app.actions') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @forelse($enrollments as $index => $enrollment)
                                     <tr>
-                                        <td class="px-6 py-4 border-b text-gray-500 dark:text-gray-400">{{ $index + 1 }}</td>
-                                        <td class="px-6 py-4 border-b text-gray-500 dark:text-gray-400">
+                                        <td class="px-4 py-3 border-b text-gray-500 dark:text-gray-400">{{ $index + $enrollments->firstItem() }}</td>
+                                        <td class="px-4 py-3 border-b text-gray-500 dark:text-gray-400">
                                             {{ $enrollment->user->name ?? 'N/A' }}
                                             <div class="text-xs text-gray-400">{{ $enrollment->user->email ?? '' }}</div>
                                         </td>
-                                        <td class="px-6 py-4 border-b text-gray-500 dark:text-gray-400">{{ $enrollment->dietProgram->name ?? 'N/A' }}</td>
-                                        <td class="px-6 py-4 border-b text-gray-500 dark:text-gray-400">
-                                            
-                                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium">
+                                        <td class="px-4 py-3 border-b text-gray-500 dark:text-gray-400">{{ $enrollment->dietProgram->name ?? 'N/A' }}</td>
+                                        <td class="px-4 py-3 border-b text-gray-500 dark:text-gray-400">
+                                            <span class="inline-flex px-2 py-1 text-xs font-semibold leading-5 rounded-full
+                                                @if($enrollment->status == 'active' || $enrollment->status == 'on_going') bg-green-100 text-green-800
+                                                @elseif($enrollment->status == 'completed') bg-blue-100 text-blue-800
+                                                @elseif($enrollment->status == 'cancelled') bg-red-100 text-red-800
+                                                @elseif($enrollment->status == 'changed') bg-yellow-100 text-yellow-800
+                                                @else bg-gray-100 text-gray-800
+                                                @endif
+                                            ">
                                                 {{ $enrollment->status }}
                                             </span>
                                         </td>
-                                        <td class="px-6 py-4 border-b text-gray-500 dark:text-gray-400">
+                                        <td class="px-4 py-3 border-b text-gray-500 dark:text-gray-400">
                                             @php
                                                 $lastCheckup = $enrollment->checkup->count() > 0 
                                                     ? $enrollment->checkup->sortByDesc('checkup_date')->first() 
@@ -100,8 +110,8 @@
                                             @endphp
                                             {{ $formattedDate }}
                                         </td>
-                                        <td class="px-6 py-4 border-b text-gray-500 dark:text-gray-400">{{ $enrollment->created_at->format('d M Y') }}</td>
-                                        <td class="px-6 py-4 border-b text-gray-500 dark:text-gray-400">
+                                        <td class="px-4 py-3 border-b text-gray-500 dark:text-gray-400">{{ $enrollment->created_at->format('d M Y') }}</td>
+                                        <td class="px-4 py-3 border-b text-gray-500 dark:text-gray-400">
                                             <div class="flex gap-2">
                                                 <a href="{{ route('enrollments.show', $enrollment->id) }}" 
                                                     class="p-2 bg-lightblue dark:bg-dark rounded-full hover:bg-blue hover:text-white transition-all" 
@@ -133,12 +143,13 @@
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td colspan="7" class="px-6 py-4 border-b text-center text-gray-500 dark:text-gray-400">{{ __('app.no_enrollments_found') }}</td>
+                                        <td colspan="7" class="px-4 py-3 border-b text-center text-gray-500 dark:text-gray-400">{{ __('app.no_enrollments_found') }}</td>
                                     </tr>
                                 @endforelse
                             </tbody>
                         </table>
                     </div>
+                    @include('components.pagination', ['paginator' => $enrollments, 'perPage' => $perPage, 'perPageOptions' => $perPageOptions])
                 </div>
             </div>
         </div>

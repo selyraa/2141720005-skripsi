@@ -16,29 +16,28 @@ class ReportController extends Controller
      */
     public function index(Request $request)
     {
-        // Get filter parameters
         $startDate = $request->get('start_date') ? Carbon::parse($request->get('start_date'))->startOfMonth() : Carbon::now()->startOfMonth();
         $endDate = $request->get('end_date') ? Carbon::parse($request->get('end_date'))->endOfMonth() : Carbon::now()->endOfMonth();
         $programId = $request->get('program');
+        
+        $perPage = $request->input('per_page', 10);
 
-        // Get all diet programs for the filter dropdown
         $dietPrograms = DietProgram::all();
 
-        // Build the query for program enrollments
         $query = ProgramEnrollment::with(['user', 'dietProgram'])
             ->whereBetween('created_at', [$startDate, $endDate]);
 
-        // Apply program filter if selected
         if ($programId) {
             $query->where('diet_program_id', $programId);
         }
 
-        // Fetch paginated results
         $enrollments = $query->orderBy('created_at', 'desc')
-            ->paginate(10)
+            ->paginate($perPage)
             ->withQueryString();
+            
+        $perPageOptions = [5, 10, 20, 50, 100];
 
-        return view('pages.dashboard.admin.reports.index', compact('enrollments', 'dietPrograms'));
+        return view('pages.dashboard.admin.reports.index', compact('enrollments', 'dietPrograms', 'perPage', 'perPageOptions'));
     }
 
     /**
@@ -46,33 +45,25 @@ class ReportController extends Controller
      */
     public function exportPdf(Request $request)
     {
-        // Get filter parameters
         $startDate = $request->get('start_date') ? Carbon::parse($request->get('start_date'))->startOfMonth() : Carbon::now()->startOfMonth();
         $endDate = $request->get('end_date') ? Carbon::parse($request->get('end_date'))->endOfMonth() : Carbon::now()->endOfMonth();
         $programId = $request->get('program');
 
-        // Get selected program if applicable
         $program = $programId ? DietProgram::find($programId) : null;
 
-        // Build the query for program enrollments
         $query = ProgramEnrollment::with(['user', 'dietProgram'])
             ->whereBetween('created_at', [$startDate, $endDate]);
 
-        // Apply program filter if selected
         if ($programId) {
             $query->where('diet_program_id', $programId);
         }
 
-        // Get all enrollments without pagination for PDF
         $enrollments = $query->orderBy('created_at', 'desc')->get();
 
-        // Generate PDF
         $pdf = PDF::loadView('pages.dashboard.admin.reports.pdf', compact('enrollments', 'startDate', 'endDate', 'program'));
         
-        // Set filename with date range
         $filename = 'enrollment_report_' . $startDate->format('Y_m') . '_to_' . $endDate->format('Y_m') . '.pdf';
         
-        // Download the PDF file
         return $pdf->download($filename);
     }
     
@@ -90,7 +81,6 @@ class ReportController extends Controller
         
         $todayDate = Carbon::now();
         
-        // Calculate whole days between dates by starting both at beginning of day
         return abs($todayDate->startOfDay()->diffInDays($enrollmentDate->startOfDay()));
     }
     
@@ -109,7 +99,6 @@ class ReportController extends Controller
         
         $daysElapsed = self::calculateDuration($enrollmentDate);
         
-        // Calculate progress percentage and cap at 100%
         return min(100, round(($daysElapsed / $programDuration) * 100));
     }
 }

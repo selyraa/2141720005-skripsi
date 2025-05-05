@@ -14,11 +14,17 @@ class DietProgramController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $dietPrograms = DietProgram::all();
+        $perPage = $request->input('per_page', 10);
         
-        return view('pages.dashboard.admin.diet-programs.index', compact('dietPrograms'));
+        $dietPrograms = DietProgram::orderBy('name')
+            ->paginate($perPage)
+            ->withQueryString();
+        
+        $perPageOptions = [5, 10, 20, 50, 100];
+        
+        return view('pages.dashboard.admin.diet-programs.index', compact('dietPrograms', 'perPage', 'perPageOptions'));
     }
 
     /**
@@ -28,7 +34,6 @@ class DietProgramController extends Controller
      */
     public function create()
     {
-        // Check if user has required role
         if (!auth()->user()->role || !in_array(auth()->user()->role->name, ['ahli gizi', 'asisten ahli gizi'])) {
             abort(403, 'Unauthorized action.');
         }
@@ -44,18 +49,15 @@ class DietProgramController extends Controller
      */
     public function store(Request $request)
     {
-        // Check if user has required role
         if (!auth()->user()->role || !in_array(auth()->user()->role->name, ['ahli gizi', 'asisten ahli gizi'])) {
             abort(403, 'Unauthorized action.');
         }
         
-        // Validate input data
         $validated = $request->validate([
             'name' => 'required|string|max:255|unique:diet_programs,name,NULL,id,deleted_at,NULL',
             'description' => 'nullable|string',
         ]);
         
-        // Create new diet program
         DietProgram::create($validated);
         
         return redirect()->route('diet-programs.index')
@@ -70,14 +72,12 @@ class DietProgramController extends Controller
      */
     public function show($id)
     {
-        // Check if user has required role
         if (!auth()->user()->role || !in_array(auth()->user()->role->name, ['ahli gizi', 'asisten ahli gizi'])) {
             abort(403, 'Unauthorized action.');
         }
         
         $dietProgram = DietProgram::findOrFail($id);
         
-        // Get enrollments associated with this diet program
         $enrollments = $dietProgram->programEnrollments()
             ->with('user')
             ->take(10)
@@ -94,7 +94,6 @@ class DietProgramController extends Controller
      */
     public function edit($id)
     {
-        // Check if user has required role
         if (!auth()->user()->role || !in_array(auth()->user()->role->name, ['ahli gizi', 'asisten ahli gizi'])) {
             abort(403, 'Unauthorized action.');
         }
@@ -113,20 +112,17 @@ class DietProgramController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // Check if user has required role
         if (!auth()->user()->role || !in_array(auth()->user()->role->name, ['ahli gizi', 'asisten ahli gizi'])) {
             abort(403, 'Unauthorized action.');
         }
         
         $dietProgram = DietProgram::findOrFail($id);
         
-        // Validate input data
         $validated = $request->validate([
             'name' => 'required|string|max:255|unique:diet_programs,name,' . $id . ',id,deleted_at,NULL',
             'description' => 'nullable|string',
         ]);
         
-        // Update diet program
         $dietProgram->update($validated);
         
         return redirect()->route('diet-programs.index')
@@ -141,20 +137,17 @@ class DietProgramController extends Controller
      */
     public function destroy($id)
     {
-        // Check if user has required role
         if (!auth()->user()->role || !in_array(auth()->user()->role->name, ['ahli gizi', 'asisten ahli gizi'])) {
             abort(403, 'Unauthorized action.');
         }
         
         $dietProgram = DietProgram::findOrFail($id);
         
-        // Check if diet program is in use before deleting
         if ($dietProgram->programEnrollments()->count() > 0) {
             return redirect()->route('diet-programs.index')
                 ->with('error', 'Diet program cannot be deleted as it is currently in use.');
         }
         
-        // Soft delete diet program
         $dietProgram->delete();
         
         return redirect()->route('diet-programs.index')

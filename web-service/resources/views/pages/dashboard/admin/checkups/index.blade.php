@@ -75,7 +75,7 @@
                             <tbody>
                                 @forelse($checkups as $index => $checkup)
                                     <tr>
-                                        <td class="px-4 py-3 border-b text-gray-500 dark:text-gray-400">{{ $index + 1 }}</td>
+                                        <td class="px-4 py-3 border-b text-gray-500 dark:text-gray-400">{{ $index + $checkups->firstItem() }}</td>
                                         <td class="px-4 py-3 border-b text-gray-500 dark:text-gray-400">
                                             @if($checkup->programEnrollment && $checkup->programEnrollment->user)
                                                 {{ $checkup->programEnrollment->user->name }}
@@ -115,13 +115,13 @@
                                                     title="{{ __('app.edit') }}">
                                                      <i class="ti ti-edit text-primary hover:text-white"></i>
                                                 </a>
-                                                <form action="{{ route('checkups.destroy', $checkup->id) }}" method="POST" class="inline">
+                                                <form action="{{ route('checkups.destroy', $checkup->id) }}" method="POST" class="inline" id="delete-form-{{ $checkup->id }}">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="button" 
                                                         class="p-2 bg-lighterror dark:bg-darkerror rounded-full hover:bg-error hover:text-white transition-all" 
                                                         title="{{ __('app.delete') }}"
-                                                        onclick="openConfirmationModal('delete', '{{ __('app.delete_checkup_data') }}', '{{ __('app.confirm_delete_checkup', ['name' => $checkup->programEnrollment->user->name ?? __('app.this_user')]) }}', '{{ __('app.yes_delete') }}', 'document.getElementById(\'delete-form-{{ $checkup->programEnrollment->user->name }}\').submit()')">
+                                                        onclick="openConfirmationModal('delete', '{{ __('app.delete_checkup_data') }}', '{{ __('app.confirm_delete_checkup', ['name' => $checkup->programEnrollment->user->name ?? __('app.this_user')]) }}', '{{ __('app.yes_delete') }}', 'document.getElementById(\'delete-form-{{ $checkup->id }}\').submit()')">
                                                     <i class="ti ti-trash text-error hover:text-white"></i>
                                                 </button>
                                                 </form>
@@ -136,6 +136,9 @@
                             </tbody>
                         </table>
                     </div>
+
+                    <!-- Add pagination component -->
+                    @include('components.pagination', ['paginator' => $checkups, 'perPage' => $perPage, 'perPageOptions' => $perPageOptions])
                 </div>
             </div>
         </div>

@@ -115,7 +115,7 @@
                             @endif
                         @else
                             <div class="p-4 text-center text-gray-500 dark:text-gray-400">
-                                {{ __('app.no_program_enrollments') }}
+                                {{ __('app.no_enrollments_found') }}
                             </div>
                         @endif
                     </div>
