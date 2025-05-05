@@ -112,7 +112,7 @@
                                                     <button type="button" 
                                                         class="p-2 bg-lighterror dark:bg-darkerror rounded-full hover:bg-error hover:text-white transition-all" 
                                                         title="{{ __('app.delete') }}"
-                                                        onclick="openConfirmationModal('delete', '{{ __('app.delete_schedule') }}', 'Apakah Anda yakin ingin menghapus {{ $schedule->programEnrollment->user->name }}?', '{{ __('app.yes_delete') }}', 'document.getElementById(\'delete-form-{{ $schedule->id }}\').submit()')">
+                                                        onclick="openConfirmationModal('delete', '{{ __('app.delete_schedule_consultation') }}', 'Apakah Anda yakin ingin menghapus jadwal konsultasi {{ $schedule->programEnrollment->user->name }}?', '{{ __('app.yes_delete') }}', 'document.getElementById(\'delete-form-{{ $schedule->id }}\').submit()')">
                                                         <i class="ti ti-trash text-error hover:text-white"></i>
                                                     </button>
                                                 </form>

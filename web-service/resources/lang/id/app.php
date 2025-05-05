@@ -57,6 +57,7 @@ return [
     'edit_enrollment' => 'Edit Registrasi Program',
     'edit_enrollment_information' => 'Edit Informasi Registrasi',
     'save_changes' => 'Simpan Perubahan',
+    'delete_user_data' => 'Hapus Data Pengguna',
     
     // Authentication
     'login' => 'Masuk',
@@ -143,6 +144,7 @@ return [
     'program_status' => 'Status Program',
     'delete_diet_program' => 'Hapus Program Diet',
     'add_diet_program_form' => 'Form Tambah Program Diet',
+    'confirm_delete_diet_program' => 'Apakah Anda yakin ingin menghapus program diet :item?',
     
     'duration' => 'Durasi',
     'days' => 'Hari',
@@ -179,7 +181,7 @@ return [
     'created_at' => 'Dibuat Pada',
     'updated_at' => 'Diperbarui Pada',
     'no_notes_available' => 'Tidak ada catatan tersedia',
-    'delete_schedule' => 'Hapus Jadwal',
+    'delete_schedule_consultation' => 'Hapus Jadwal Konsultasi',
     'confirm_delete_schedule' => 'Apakah Anda yakin ingin menghapus jadwal konsultasi untuk :name?',
     'create_schedule_form' => 'Form Buat Jadwal',
     
@@ -202,6 +204,8 @@ return [
     'customer_data' => 'Data Pelanggan',
     'checkup_date' => 'Tanggal Checkup',
     'checkup_data' => 'Data Checkup',
+    'delete_checkup_data' => 'Hapus Data Checkup',
+    'confirm_delete_checkup' => 'Apakah Anda yakin ingin menghapus data checkup ini?',
     
     // Diet Recommendation
     'diet_recommendations' => 'Rekomendasi Diet',
