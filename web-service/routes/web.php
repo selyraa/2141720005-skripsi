@@ -8,6 +8,7 @@ use App\Http\Controllers\AccountSettingsController;
 use App\Http\Controllers\Admin\CheckupDataController;
 use App\Http\Controllers\Admin\DietProgramController;
 use App\Http\Controllers\Admin\ConsultationScheduleController;
+use App\Http\Controllers\Admin\LlmContextController;
 use App\Http\Controllers\Admin\ReportController;
 use App\Http\Controllers\ProgramEnrollmentController;
 use Illuminate\Support\Facades\Route;
@@ -57,6 +58,7 @@ Route::middleware(['auth'])->group(function () {
         'checkups' => CheckupDataController::class,
         'diet-programs' => DietProgramController::class,
         'consultation-schedules' => ConsultationScheduleController::class,
+        'llm-contexts' => LlmContextController::class,
     ]);
 
     // Reports Routes

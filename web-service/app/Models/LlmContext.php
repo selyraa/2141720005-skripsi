@@ -12,6 +12,7 @@ class LlmContext extends Model
     protected $table = 'llm_contexts';
 
     protected $fillable = [
+        'title',
         'context',
     ];
 

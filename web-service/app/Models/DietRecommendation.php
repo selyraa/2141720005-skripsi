@@ -14,6 +14,7 @@ class DietRecommendation extends Model
     protected $fillable = [
         'checkup_id',
         'llm_context_id',
+        'prompt',
         'result',
     ];
 

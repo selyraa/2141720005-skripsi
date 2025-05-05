@@ -44,6 +44,12 @@
                                     class="hide-menu flex-shrink-0">{{ __('app.manage_diet_programs') }}</span>
                             </a>
                         </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link dark-sidebar-link {{ request()->routeIs('llm-contexts.*') ? 'activemenu' : '' }}" href="{{ route('llm-contexts.index') }}">
+                                <i class="ti ti-message-circle text-xl flex-shrink-0"></i> <span
+                                    class="hide-menu flex-shrink-0">{{ __('app.llm_contexts') }}</span>
+                            </a>
+                        </li>
                         
                         <div class="caption mt-8">
                             <i class="ti ti-dots nav-small-cap-icon "></i>

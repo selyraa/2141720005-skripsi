@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('llm_contexts', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
             $table->text('context')->nullable();
             $table->timestamps();
             $table->softDeletes();

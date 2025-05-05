@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('diet_recommendations', function (Blueprint $table) {
             $table->id();
-            $table->text('recommendation')->nullable();
+            $table->text('prompt')->nullable();
+            $table->text('result')->nullable();
             $table->timestamps();
             $table->softDeletes();
 
