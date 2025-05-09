@@ -33,13 +33,13 @@
                                         <div class="mx-auto text-center mb-6">
                                             <div class="flex justify-center">
                                                 <div class="brand-logo flex items-center">
-                                                    {{-- <a href="/" class="text-nowrap logo-img">
+                                                    <a href="/" class="text-nowrap logo-img">
                                                         <img
-                                                            src="{{asset('assets/images/logos/dark-logo.svg')}}"
-                                                            class="dark:hidden block rtl:hidden"
-                                                            alt="Logo-Dark"
+                                                            src="{{asset('assets/images/logos/logo-nutcastle.png')}}"
+                                                            class="block w-24"
+                                                            alt="NutCastle Logo"
                                                         />
-                                                    </a> --}}
+                                                    </a>
                                                 </div>
                                             </div>
                                             <h4 class="font-semibold text-xl text-dark dark:text-white mt-4 mb-1">
