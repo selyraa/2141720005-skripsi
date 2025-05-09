@@ -363,12 +363,15 @@ return [
     'percentage_of_programs_followed' => 'Persentase Program yang Diikuti',
     'weight_trend_by_program' => 'Tren Berat Badan Berdasarkan Program',
     'average_customer_weight_trend' => 'Rata-rata Tren Berat Badan Pelanggan',
+    'customer_weight_trend' => 'Tren Berat Badan Pelanggan',
     'bmi_distribution' => 'Distribusi BMI',
     'customer_bmi_categories' => 'Kategori BMI Pelanggan',
     'program_status_distribution' => 'Distribusi Status Program',
     'program_status_summary' => 'Ringkasan Status Program',
     'body_composition_changes' => 'Perubahan Komposisi Tubuh',
     'average_changes_after_programs' => 'Perubahan Rata-rata Setelah Program',
+    'filter_by_program' => "Filter Berdasarkan Program",
+    'all_customers' => 'Semua Pelanggan',
 
     // Pagination
     'previous' => 'Sebelumnya',

@@ -137,20 +137,30 @@
                         <div class="card">
                             <div class="card-body">
                                 <h5 class="card-title">{{ __('app.weight_trend_by_program') }}</h5>
-                                <p class="card-subtitle">{{ __('app.average_customer_weight_trend') }}</p>
-                                <div class="mb-4 mt-4">
-                                    <select id="weightTrendFilter" class="form-select">
-                                        <option value="all">{{ __('app.all_programs') }}</option>
-                                        <option value="weightGain">{{ __('app.weight_gain_program') }}</option>
-                                        <option value="weightLoss">{{ __('app.weight_loss_program') }}</option>
-                                        <option value="fatLoss">{{ __('app.fat_loss_program') }}</option>
-                                    </select>
+                                <p class="card-subtitle">{{ __('app.customer_weight_trend') }}</p>
+                                <div class="flex flex-wrap gap-4 mb-4 mt-4">
+                                    <div class="w-full md:w-1/3 lg:w-1/4">
+                                        <label for="programFilter" class="block text-sm font-medium text-gray-700 mb-1">{{ __('app.filter_by_program') }}</label>
+                                        <select id="programFilter" class="form-select">
+                                            <option value="all">{{ __('app.all_programs') }}</option>
+                                            <option value="weightGain">{{ __('app.weight_gain_program') }}</option>
+                                            <option value="weightLoss">{{ __('app.weight_loss_program') }}</option>
+                                            <option value="fatLoss">{{ __('app.fat_loss_program') }}</option>
+                                        </select>
+                                    </div>
+                                    <div class="w-full md:w-1/3 lg:w-1/4">
+                                        <label for="customerFilter" class="block text-sm font-medium text-gray-700 mb-1">{{ __('app.select_customer') }}</label>
+                                        <select id="customerFilter" class="form-select">
+                                            <option value="all">{{ __('app.all_customers') }}</option>
+                                        </select>
+                                    </div>
                                 </div>
                                 <div id="weight-trend-chart" class="my-4"
                                     data-dates='{{ json_encode($weightTrendData['dates']) }}'
                                     data-weight-gain='{{ json_encode($weightTrendData['weightGainData']) }}'
                                     data-weight-loss='{{ json_encode($weightTrendData['weightLossData']) }}'
-                                    data-fat-loss='{{ json_encode($weightTrendData['fatLossData']) }}'></div>
+                                    data-fat-loss='{{ json_encode($weightTrendData['fatLossData']) }}'
+                                    data-customer-data='{{ json_encode($weightTrendData['customerData']) }}'></div>
                             </div>
                         </div>
                     </div>

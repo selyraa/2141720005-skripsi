@@ -6,7 +6,7 @@
     <div class="py-5 px-5">
         <div class="brand-logo">
             <a href="#" class="text-nowrap logo-img">
-                <img src="{{ asset('assets/images/logos/lightbulb.png') }}" class="block w-8" alt="Logo" />
+                <img src="{{ asset('assets/images/logos/logo-nutcastle.png') }}" class="block w-14" alt="Logo" />
             </a>
         </div>
     </div>

@@ -52,15 +52,13 @@ class DashboardController extends Controller
 
         $sixMonthsAgo = Carbon::now()->subMonths(6);
 
-        // Get all checkups from the last 6 months
-        $checkups = Checkup::with(['programEnrollment.dietProgram'])
+        $checkups = Checkup::with(['programEnrollment.dietProgram', 'programEnrollment.user'])
             ->where('checkup_date', '>=', $sixMonthsAgo)
             ->whereNotNull('program_enrollment_id')
             ->orderBy('checkup_date')
             ->get();
 
         // Calculate BMI distribution
-        // Get the latest checkup for each user to reflect current state
         $latestCheckups = Checkup::select('checkups.program_enrollment_id', DB::raw('MAX(checkups.id) as latest_id'))
             ->join('program_enrollments', 'checkups.program_enrollment_id', '=', 'program_enrollments.id')
             ->whereNull('checkups.deleted_at')
@@ -84,79 +82,114 @@ class DashboardController extends Controller
             }
         }
 
-        $dates = [];
-        $weightGainData = [];
-        $weightLossData = [];
-        $fatLossData = [];
-
-        $months = [];
-        for ($i = 0; $i < 6; $i++) {
-            $date = Carbon::now()->subMonths(5 - $i)->format('M Y');
-            $months[] = $date;
-            $dates[] = $date;
-            $weightGainData[] = 0;
-            $weightLossData[] = 0;
-            $fatLossData[] = 0;
+        $availablePrograms = DietProgram::all();
+        
+        $customersData = [];
+        
+        $allCheckupDates = [];
+        $uniqueDates = [];
+        
+        foreach ($checkups as $checkup) {
+            if (!$checkup->checkup_date) continue;
+            
+            $dateStr = $checkup->checkup_date->format('Y-m-d');
+            if (!in_array($dateStr, $uniqueDates)) {
+                $uniqueDates[] = $dateStr;
+            }
         }
-
-        if ($checkups->isNotEmpty()) {
-            // Group checkups by month and program
-            $groupedCheckups = $checkups->groupBy(function ($checkup) {
-                if (!$checkup->programEnrollment || !$checkup->programEnrollment->dietProgram) {
-                    return null;
-                }
-
-                $programType = null;
-                $programName = $checkup->programEnrollment->dietProgram->name;
-
-                if (str_contains($programName, 'Naik BB')) {
-                    $programType = 'weightGain';
-                } elseif (str_contains($programName, 'Turun BB')) {
-                    $programType = 'weightLoss';
-                } elseif (str_contains($programName, 'Turun Lemak')) {
-                    $programType = 'fatLoss';
-                }
-
-                $month = Carbon::parse($checkup->checkup_date)->format('M Y');
-                return $programType . '_' . $month;
-            });
-
-            // Calculate average weights
-            foreach ($groupedCheckups as $key => $group) {
-                if ($key === null) continue;
-
-                // Split the key into program type and month, checking if the key contains an underscore
-                $keyParts = explode('_', $key);
-                if (count($keyParts) < 2) continue; // Skip if we don't have both program type and month
-
-                $programType = $keyParts[0];
-                $month = $keyParts[1];
-
-                $avgWeight = $group->avg('weight');
-
-                $monthIndex = array_search($month, $months);
-                if ($monthIndex !== false) {
-                    switch ($programType) {
-                        case 'weightGain':
-                            $weightGainData[$monthIndex] = round($avgWeight, 1);
-                            break;
-                        case 'weightLoss':
-                            $weightLossData[$monthIndex] = round($avgWeight, 1);
-                            break;
-                        case 'fatLoss':
-                            $fatLossData[$monthIndex] = round($avgWeight, 1);
-                            break;
-                    }
+        
+        sort($uniqueDates);
+        
+        $formattedDates = [];
+        foreach ($uniqueDates as $dateStr) {
+            $date = Carbon::parse($dateStr);
+            $formattedDates[] = $date->format('d M Y');
+        }
+        
+        foreach ($checkups as $checkup) {
+            if (!$checkup->programEnrollment || !$checkup->programEnrollment->dietProgram || !$checkup->programEnrollment->user) {
+                continue;
+            }
+            
+            $userId = $checkup->programEnrollment->user->id;
+            $userName = $checkup->programEnrollment->user->name;
+            $programId = $checkup->programEnrollment->dietProgram->id;
+            $programName = $checkup->programEnrollment->dietProgram->name;
+            $dateStr = $checkup->checkup_date->format('Y-m-d');
+            $displayDate = $checkup->checkup_date->format('d M Y');
+            
+            if (!in_array($dateStr, $uniqueDates)) {
+                continue;
+            }
+            
+            $programType = null;
+            if (str_contains($programName, 'Naik BB')) {
+                $programType = 'weightGain';
+            } elseif (str_contains($programName, 'Turun BB')) {
+                $programType = 'weightLoss';
+            } elseif (str_contains($programName, 'Turun Lemak')) {
+                $programType = 'fatLoss';
+            }
+            
+            if (!isset($customersData[$userId])) {
+                $customersData[$userId] = [
+                    'id' => $userId,
+                    'name' => $userName,
+                    'programId' => $programId,
+                    'programName' => $programName,
+                    'programType' => $programType,
+                    'weights' => array_fill_keys($formattedDates, null)
+                ];
+            }
+            
+            $customersData[$userId]['weights'][$displayDate] = round($checkup->weight, 1);
+        }
+        
+        $customerWeightData = array_values($customersData);
+        
+        $weightGainData = array_fill(0, count($formattedDates), 0);
+        $weightLossData = array_fill(0, count($formattedDates), 0);
+        $fatLossData = array_fill(0, count($formattedDates), 0);
+        $weightGainCounts = array_fill(0, count($formattedDates), 0);
+        $weightLossCounts = array_fill(0, count($formattedDates), 0);
+        $fatLossCounts = array_fill(0, count($formattedDates), 0);
+        
+        foreach ($customerWeightData as $customer) {
+            foreach ($customer['weights'] as $date => $weight) {
+                if ($weight === null) continue;
+                
+                $dateIndex = array_search($date, $formattedDates);
+                if ($dateIndex === false) continue;
+                
+                switch ($customer['programType']) {
+                    case 'weightGain':
+                        $weightGainData[$dateIndex] += $weight;
+                        $weightGainCounts[$dateIndex]++;
+                        break;
+                    case 'weightLoss':
+                        $weightLossData[$dateIndex] += $weight;
+                        $weightLossCounts[$dateIndex]++;
+                        break;
+                    case 'fatLoss':
+                        $fatLossData[$dateIndex] += $weight;
+                        $fatLossCounts[$dateIndex]++;
+                        break;
                 }
             }
         }
-
-        // Prepare the weight trend data for the view
+        
+        for ($i = 0; $i < count($formattedDates); $i++) {
+            $weightGainData[$i] = $weightGainCounts[$i] > 0 ? round($weightGainData[$i] / $weightGainCounts[$i], 1) : 0;
+            $weightLossData[$i] = $weightLossCounts[$i] > 0 ? round($weightLossData[$i] / $weightLossCounts[$i], 1) : 0;
+            $fatLossData[$i] = $fatLossCounts[$i] > 0 ? round($fatLossData[$i] / $fatLossCounts[$i], 1) : 0;
+        }
+        
         $weightTrendData = [
-            'dates' => $dates,
+            'dates' => $formattedDates,
             'weightGainData' => $weightGainData,
             'weightLossData' => $weightLossData,
-            'fatLossData' => $fatLossData
+            'fatLossData' => $fatLossData,
+            'customerData' => $customerWeightData
         ];
 
         return view('pages.dashboard.admin.dashboard', compact(
@@ -168,7 +201,8 @@ class DashboardController extends Controller
             'weightTrendData',
             'programStatusLabels',
             'programStatusData',
-            'bmiDistribution'
+            'bmiDistribution',
+            'availablePrograms'
         ));
     }
 }
