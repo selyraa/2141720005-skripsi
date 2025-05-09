@@ -15,15 +15,18 @@ function initBMIDistributionChart() {
     const overweight = parseInt(chartElement.getAttribute('data-overweight')) || 0;
     const obese = parseInt(chartElement.getAttribute('data-obese')) || 0;
     
+    const totalBMIs = underweight + normal + overweight + obese;
+    
     const options = {
         series: [underweight, normal, overweight, obese],
         chart: {
             type: 'donut',
             height: 350,
             fontFamily: "inherit",
+            foreColor: "#adb0bb",
         },
-        labels: ['Kekurangan Berat Badan', 'Normal', 'Kelebihan Berat Badan', 'Obesitas'],
-        colors: ['var(--color-info)', 'var(--color-success)', 'var(--color-warning)', 'var(--color-error)'],
+        labels: ['Kekurangan BB', 'Normal', 'Kelebihan BB', 'Obesitas'],
+        colors: ["#4F46E5", "#10B981", "#F59E0B", "#EF4444"],
         plotOptions: {
             pie: {
                 donut: {
@@ -34,11 +37,13 @@ function initBMIDistributionChart() {
                         name: {
                             show: true,
                             fontSize: '16px',
+                            color: undefined,
                             offsetY: -10,
                         },
                         value: {
                             show: true,
                             fontSize: '20px',
+                            fontWeight: 600,
                             color: undefined,
                             offsetY: 16,
                             formatter: function (val) {
@@ -48,25 +53,45 @@ function initBMIDistributionChart() {
                         total: {
                             show: true,
                             label: 'Total',
-                            color: '#7C8FAC',
                             fontSize: '16px',
+                            fontWeight: 600,
+                            color: "#7C8FAC",
                             formatter: function (w) {
-                                return w.globals.seriesTotals.reduce((a, b) => a + b, 0);
+                                return totalBMIs;
                             }
                         }
                     }
                 }
             }
         },
+        dataLabels: {
+            enabled: false,
+        },
+        stroke: {
+            show: false,
+        },
         legend: {
-            show: false
+            show: true,
+            position: 'bottom',
+            horizontalAlign: 'center',
+            fontSize: '14px',
+            markers: {
+                width: 12,
+                height: 12,
+                radius: 6,
+            },
+            itemMargin: {
+                horizontal: 8,
+                vertical: 8
+            },
         },
         tooltip: {
             theme: "dark",
             fillSeriesColor: false,
             y: {
-                formatter: function(value) {
-                    return value;
+                formatter: function(value, { seriesIndex, dataPointIndex, w }) {
+                    const percent = Math.round((value / totalBMIs) * 100);
+                    return `${value} (${percent}%)`;
                 }
             }
         }

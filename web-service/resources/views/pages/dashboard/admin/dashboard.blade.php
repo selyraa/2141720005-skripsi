@@ -73,21 +73,9 @@
                                 <div id="diet-program-chart" class="my-8"
                                     data-weight-gain="{{ $weightGainCount }}"
                                     data-weight-loss="{{ $weightLossCount }}"
-                                    data-fat-loss="{{ $fatLossCount }}"></div>
-                                <div class="grid grid-cols-2 gap-4 mt-4">
-                                    <div class="flex items-center">
-                                        <span class="h-3 w-3 bg-success rounded-full mr-2"></span>
-                                        <span class="text-sm">{{ __('app.weight_gain_program') }} ({{ $weightGainCount }})</span>
-                                    </div>
-                                    <div class="flex items-center">
-                                        <span class="h-3 w-3 bg-warning rounded-full mr-2"></span>
-                                        <span class="text-sm">{{ __('app.weight_loss_program') }} ({{ $weightLossCount }})</span>
-                                    </div>
-                                    <div class="flex items-center col-span-2">
-                                        <span class="h-3 w-3 bg-info rounded-full mr-2"></span>
-                                        <span class="text-sm">{{ __('app.fat_loss_program') }} ({{ $fatLossCount }})</span>
-                                    </div>
+                                    data-fat-loss="{{ $fatLossCount }}">
                                 </div>
+                                
                             </div>
                         </div>
                     </div>
@@ -104,24 +92,6 @@
                                     data-normal="{{ $bmiDistribution['normal'] }}"
                                     data-overweight="{{ $bmiDistribution['overweight'] }}"
                                     data-obese="{{ $bmiDistribution['obese'] }}"></div>
-                                <div class="grid grid-cols-2 gap-4 mt-4">
-                                    <div class="flex items-center">
-                                        <span class="h-3 w-3 bg-info rounded-full mr-2"></span>
-                                        <span class="text-sm">{{ __('app.underweight') ?? 'Underweight' }} (<18.5): {{ $bmiDistribution['underweight'] }}</span>
-                                    </div>
-                                    <div class="flex items-center">
-                                        <span class="h-3 w-3 bg-success rounded-full mr-2"></span>
-                                        <span class="text-sm">{{ __('app.normal') ?? 'Normal' }} (18.5-24.9): {{ $bmiDistribution['normal'] }}</span>
-                                    </div>
-                                    <div class="flex items-center">
-                                        <span class="h-3 w-3 bg-warning rounded-full mr-2"></span>
-                                        <span class="text-sm">{{ __('app.overweight') ?? 'Overweight' }} (25-29.9): {{ $bmiDistribution['overweight'] }}</span>
-                                    </div>
-                                    <div class="flex items-center">
-                                        <span class="h-3 w-3 bg-error rounded-full mr-2"></span>
-                                        <span class="text-sm">{{ __('app.obese') ?? 'Obese' }} (>30): {{ $bmiDistribution['obese'] }}</span>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>

@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 foreColor: "#adb0bb",
                 height: 350, 
             },
-            colors: ["var(--color-info)", "var(--color-success)", "var(--color-warning)"],
+            colors: ["#4F46E5", "#10B981", "#F59E0B"],
             labels: [
                 "Program Naik BB",
                 "Program Turun BB",
@@ -64,7 +64,19 @@ document.addEventListener("DOMContentLoaded", function () {
                 show: false,
             },
             legend: {
-                show: false,
+                show: true,
+                position: 'bottom',
+                horizontalAlign: 'center',
+                fontSize: '14px',
+                markers: {
+                    width: 12,
+                    height: 12,
+                    radius: 6,
+                },
+                itemMargin: {
+                    horizontal: 10,
+                    vertical: 8
+                }
             },
             tooltip: {
                 theme: "dark",
