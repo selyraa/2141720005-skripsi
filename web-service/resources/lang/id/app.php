@@ -4,7 +4,7 @@ return [
     // General
     'app_name' => 'Nut Castle',
     'welcome' => 'Selamat Datang',
-    'dashboard' => 'Dasbor',
+    'dashboard' => 'Dashboard',
     'home' => 'Beranda',
     'profile' => 'Profil',
     'settings' => 'Pengaturan',
