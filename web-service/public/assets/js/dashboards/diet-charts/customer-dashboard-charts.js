@@ -70,7 +70,7 @@ function initWeightTrendChart() {
             },
             title: {
                 text: "Tanggal",
-                offsetY: 10,
+                offsetY: -5,
                 style: {
                     fontWeight: 500
                 }
@@ -180,7 +180,7 @@ function initBodyCompositionChart() {
             },
             title: {
                 text: "Tanggal",
-                offsetY: 10,
+                offsetY: -5,
                 style: {
                     fontWeight: 500
                 }

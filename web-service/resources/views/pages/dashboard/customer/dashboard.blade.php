@@ -5,8 +5,7 @@
 @section('content')
     <div class="w-full px-5 py-5">
         <!-- Welcome Header Card -->
-        <div
-            class="card bg-lightsuccess dark:bg-darkinfo shadow-none dark:shadow-none position-relative overflow-hidden mb-6">
+        <div class="card bg-lightsuccess dark:bg-darkinfo shadow-none dark:shadow-none position-relative overflow-hidden mb-6">
             <div class="card-body md:py-3 py-5">
                 <div class="flex items-center grid grid-cols-12 gap-6">
                     <div class="col-span-9">
