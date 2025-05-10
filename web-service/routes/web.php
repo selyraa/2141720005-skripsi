@@ -7,11 +7,13 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PredictionController;
 use App\Http\Controllers\ProgramEnrollmentController;
 use App\Http\Controllers\Admin\CheckupDataController;
+use App\Http\Controllers\Customer\CheckupDataController as CustomerCheckupDataController;
 use App\Http\Controllers\Admin\ConsultationScheduleController;
 use App\Http\Controllers\Admin\DietProgramController;
 use App\Http\Controllers\Admin\LlmContextController;
 use App\Http\Controllers\Admin\ReportController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Middleware\RoleMiddleware;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -51,9 +53,13 @@ Route::middleware(['auth'])->group(function () {
     })->name('dashboard');
     
     // Customer Routes
-    Route::prefix('customer')->name('customer.')->group(function() 
+    Route::prefix('customer')->name('customer.')->middleware(RoleMiddleware::class . ':pelanggan')->group(function() 
     {
         Route::get('dashboard', [CustomerDashboardController::class, 'index'])->name('dashboard');
+        
+        // Customer Checkup Data Routes - only allow index and show methods
+        Route::resource('checkups', CustomerCheckupDataController::class)
+            ->only(['index', 'show']);
     });
 
     // Prediction Routes
@@ -80,20 +86,22 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('users', UserController::class);
     });
 
-    // Resource Routes
-    Route::resources([
-        'checkups' => CheckupDataController::class,
-        'diet-programs' => DietProgramController::class,
-        'consultation-schedules' => ConsultationScheduleController::class,
-        'llm-contexts' => LlmContextController::class,
-    ]);
-
-    // Reports Routes
-    Route::prefix('reports')->name('reports.')->controller(ReportController::class)->group(function () 
-    {
-        Route::get('/', 'index')->name('index');
-        Route::post('/export', 'exportPdf')->name('export');
-    });
+    // Resource Routes - Admin and Nutritionist Access Only
+    // Route::middleware(RoleMiddleware::class . ':ahli gizi,asisten ahli gizi')->group(function() {
+        Route::resources([
+            'checkups' => CheckupDataController::class,
+            'diet-programs' => DietProgramController::class,
+            'consultation-schedules' => ConsultationScheduleController::class,
+            'llm-contexts' => LlmContextController::class,
+        ]);
+        
+        // Reports Routes - Admin and Nutritionist Access Only
+        Route::prefix('reports')->name('reports.')->controller(ReportController::class)->group(function () 
+        {
+            Route::get('/', 'index')->name('index');
+            Route::post('/export', 'exportPdf')->name('export');
+        });
+    // });
 
     // Account Settings Routes
     Route::prefix('account')->name('account.')->controller(AccountSettingsController::class)->group(function () 

@@ -234,6 +234,9 @@ return [
     'delete_checkup_data' => 'Hapus Data Checkup',
     'confirm_delete_checkup' => 'Apakah Anda yakin ingin menghapus data checkup ini?',
     'no_checkup_data_found' => 'Tidak ada data checkup yang ditemukan',
+    'my_data' => 'Data Saya',
+    'my_checkup_data' => 'Data Checkup Saya',
+    'my_checkup_history' => 'Riwayat Checkup Saya',
     
     // Diet Recommendation
     'diet_recommendations' => 'Rekomendasi Diet',

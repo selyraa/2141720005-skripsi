@@ -27,6 +27,19 @@
                             </a>
                         </li>
 
+                        @if(auth()->check() && auth()->user()->role && auth()->user()->role->name === 'pelanggan')
+                        <div class="caption mt-8">
+                            <i class="ti ti-dots nav-small-cap-icon "></i>
+                            <span class="hide-menu">{{ __('app.my_data') }}</span>
+                        </div>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link dark-sidebar-link {{ request()->routeIs('customer.checkups.*') ? 'activemenu' : '' }}" href="{{ route('customer.checkups.index') }}">
+                                <i class="ti ti-heartbeat text-xl flex-shrink-0"></i> <span
+                                    class="hide-menu flex-shrink-0">{{ __('app.my_checkup_data') }}</span>
+                            </a>
+                        </li>
+                        @endif
+                        
                         @if(auth()->check() && auth()->user()->role && in_array(auth()->user()->role->name, ['ahli gizi', 'asisten ahli gizi']))
                         <div class="caption mt-8">
                             <i class="ti ti-dots nav-small-cap-icon "></i>
