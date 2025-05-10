@@ -113,7 +113,7 @@
                 </div>
             </div>
 
-            <!-- Ideal Weight Card -->
+            <!-- Calorie Needs Card -->
             <div class="col-span-12 sm:col-span-6 lg:col-span-3">
                 <div class="card mb-0 shadow-none bg-lightsuccess dark:bg-darksuccess w-full">
                     <div class="card-body">
@@ -122,11 +122,11 @@
                                 <img src="/assets/images/svgs/icon-favorites.svg" width="40" height="40"
                                     class="mb-3" alt="">
                             </div>
-                            <p class="font-semibold text-success mb-1">Berat Badan Ideal</p>
+                            <p class="font-semibold text-success mb-1">Kebutuhan Kalori</p>
                             <h5 class="text-lg font-semibold text-success mb-0">
-                                {{ $idealWeightMin && $idealWeightMax ? number_format($idealWeightMin, 1) . '-' . number_format($idealWeightMax, 1) . ' kg' : '-- kg' }}
+                                {{ $latestNutritionData['calories_needs'] ? number_format($latestNutritionData['calories_needs']) . ' kkal' : '-- kkal' }}
                             </h5>
-                            <p class="text-xs text-gray-600 mt-2">Berdasarkan BMI normal (18.5-24.9)</p>
+                            <p class="text-xs text-gray-600 mt-2">Berdasarkan data pemeriksaan terakhir</p>
                         </div>
                     </div>
                 </div>
