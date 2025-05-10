@@ -5,7 +5,8 @@
 @section('content')
     <div class="w-full px-5 py-5">
         <!-- Welcome Header Card -->
-        <div class="card bg-lightsuccess dark:bg-darkinfo shadow-none dark:shadow-none position-relative overflow-hidden mb-6">
+        <div
+            class="card bg-lightsuccess dark:bg-darkinfo shadow-none dark:shadow-none position-relative overflow-hidden mb-6">
             <div class="card-body md:py-3 py-5">
                 <div class="flex items-center grid grid-cols-12 gap-6">
                     <div class="col-span-9">
@@ -396,49 +397,56 @@
                         <p class="card-subtitle">Rekomendasi personal untuk Anda</p>
 
                         <div class="grid grid-cols-1 gap-4 mt-5">
-                            @if ($bmiCategory)
-                                <div
-                                    class="p-4 rounded-lg border border-{{ $bmiCategory == 'underweight' ? 'info' : ($bmiCategory == 'normal' ? 'success' : 'warning') }}/20 bg-light{{ $bmiCategory == 'underweight' ? 'info' : ($bmiCategory == 'normal' ? 'success' : 'warning') }}/10">
-                                    <div class="flex">
-                                        <div class="flex-shrink-0 mr-3">
-                                            <div
-                                                class="w-10 h-10 rounded-full bg-light{{ $bmiCategory == 'underweight' ? 'info' : ($bmiCategory == 'normal' ? 'success' : 'warning') }} flex items-center justify-center">
-                                                <i
-                                                    class="ti ti-scale text-{{ $bmiCategory == 'underweight' ? 'info' : ($bmiCategory == 'normal' ? 'success' : 'warning') }}"></i>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <h6 class="font-medium mb-1">
-                                                @if ($bmiCategory == 'underweight')
-                                                    Tips untuk Menaikkan Berat
-                                                @elseif($bmiCategory == 'overweight' || $bmiCategory == 'obese')
-                                                    Tips untuk Menurunkan Berat
-                                                @elseif($bmiCategory == 'normal')
-                                                    Pertahankan Berat Ideal
-                                                @endif
-                                            </h6>
-                                            <ul class="list-disc ml-5 mt-2 text-sm text-gray-600 space-y-1">
-                                                @if ($bmiCategory == 'underweight')
-                                                    <li>Konsumsi makanan padat nutrisi dengan kalori lebih tinggi</li>
-                                                    <li>Tambahkan camilan sehat di antara waktu makan utama</li>
-                                                    <li>Fokus pada latihan kekuatan untuk membangun massa otot</li>
-                                                    <li>Konsumsi protein yang cukup (1.6-2.2 gram per kg berat badan)</li>
-                                                @elseif($bmiCategory == 'overweight' || $bmiCategory == 'obese')
-                                                    <li>Batasi konsumsi makanan olahan dan tinggi gula</li>
-                                                    <li>Tingkatkan aktivitas fisik harian (minimal 30 menit per hari)</li>
-                                                    <li>Fokus pada makanan tinggi serat dan protein</li>
-                                                    <li>Jaga hidrasi dengan minum air putih yang cukup</li>
-                                                @elseif($bmiCategory == 'normal')
-                                                    <li>Pertahankan pola makan seimbang dengan porsi yang tepat</li>
-                                                    <li>Tetap aktif dengan berolahraga secara konsisten</li>
-                                                    <li>Pantau berat badan secara berkala</li>
-                                                    <li>Jaga kualitas tidur yang baik (7-8 jam per malam)</li>
-                                                @endif
-                                            </ul>
+                            <div
+                                class="p-4 rounded-lg border border-{{ $programName == 'Naik BB' ? 'info' : ($programName == 'Turun BB' ? 'warning' : ($programName == 'Turun Lemak' ? 'danger' : 'success')) }}/20 bg-light{{ $programName == 'Naik BB' ? 'info' : ($programName == 'Turun BB' ? 'warning' : ($programName == 'Turun Lemak' ? 'danger' : 'success')) }}/10">
+                                <div class="flex">
+                                    <div class="flex-shrink-0 mr-3">
+                                        <div
+                                            class="w-10 h-10 rounded-full bg-light{{ $programName == 'Naik BB' ? 'info' : ($programName == 'Turun BB' ? 'warning' : ($programName == 'Turun Lemak' ? 'danger' : 'success')) }} flex items-center justify-center">
+                                            <i
+                                                class="ti ti-scale text-{{ $programName == 'Naik BB' ? 'info' : ($programName == 'Turun BB' ? 'warning' : (isset($enrollment->dietProgram) && $enrollment->dietProgram->name == 'Turun Lemak' ? 'danger' : 'success')) }}"></i>
                                         </div>
                                     </div>
+                                    <div>
+                                        <h6 class="font-medium mb-1">
+                                            @if ($programName == 'Naik BB')
+                                                Tips untuk Menaikkan Berat Badan
+                                            @elseif($programName == 'Turun BB')
+                                                Tips untuk Menurunkan Berat Badan
+                                            @elseif($programName == 'Turun Lemak')
+                                                Tips untuk Menurunkan Lemak Tubuh
+                                            @else
+                                                Tips Kesehatan Umum
+                                            @endif
+                                        </h6>
+                                        <ul class="list-disc ml-5 mt-2 text-sm text-gray-600 space-y-1">
+                                            @if ($programName == 'Naik BB')
+                                                <li>Konsumsi makanan padat nutrisi dengan kalori lebih tinggi</li>
+                                                <li>Tambahkan camilan sehat tinggi protein di antara waktu makan utama</li>
+                                                <li>Fokus pada latihan kekuatan untuk membangun massa otot</li>
+                                                <li>Konsumsi protein yang cukup (1.6-2.2 gram per kg berat badan)</li>
+                                            @elseif($programName == 'Turun BB')
+                                                <li>Batasi konsumsi makanan olahan dan tinggi gula</li>
+                                                <li>Tingkatkan aktivitas fisik harian (minimal 30-45 menit per hari)</li>
+                                                <li>Fokus pada makanan tinggi serat dan protein</li>
+                                                <li>Perhatikan porsi makan dan hindari makan berlebihan</li>
+                                            @elseif($programName == 'Turun Lemak')
+                                                <li>Lakukan latihan HIIT (High Intensity Interval Training) secara rutin
+                                                </li>
+                                                <li>Kombinasikan latihan kardio dengan latihan beban</li>
+                                                <li>Tingkatkan asupan protein untuk menjaga massa otot</li>
+                                                <li>Kurangi konsumsi karbohidrat olahan dan tingkatkan konsumsi lemak sehat
+                                                </li>
+                                            @else
+                                                <li>Pertahankan pola makan seimbang dengan porsi yang tepat</li>
+                                                <li>Tetap aktif dengan berolahraga secara konsisten</li>
+                                                <li>Pantau berat badan secara berkala</li>
+                                                <li>Jaga kualitas tidur yang baik (7-8 jam per malam)</li>
+                                            @endif
+                                        </ul>
+                                    </div>
                                 </div>
-                            @endif
+                            </div>
 
                             <div class="p-4 bg-light/5 rounded-lg border">
                                 <div class="flex">
