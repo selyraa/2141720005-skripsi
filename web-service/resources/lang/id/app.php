@@ -237,6 +237,10 @@ return [
     'my_data' => 'Data Saya',
     'my_checkup_data' => 'Data Checkup Saya',
     'my_checkup_history' => 'Riwayat Checkup Saya',
+    'my_consultation_schedules' => 'Jadwal Konsultasi Saya',
+    'my_consultation_history' => 'Riwayat Konsultasi Saya',
+    'no_consultation_schedules_found' => 'Tidak ada jadwal konsultasi yang ditemukan',
+    'view' => 'Lihat',
     
     // Diet Recommendation
     'diet_recommendations' => 'Rekomendasi Diet',

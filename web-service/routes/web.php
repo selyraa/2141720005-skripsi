@@ -9,6 +9,7 @@ use App\Http\Controllers\ProgramEnrollmentController;
 use App\Http\Controllers\Admin\CheckupDataController;
 use App\Http\Controllers\Customer\CheckupDataController as CustomerCheckupDataController;
 use App\Http\Controllers\Admin\ConsultationScheduleController;
+use App\Http\Controllers\Customer\ConsultationScheduleController as CustomerConsultationScheduleController;
 use App\Http\Controllers\Admin\DietProgramController;
 use App\Http\Controllers\Admin\LlmContextController;
 use App\Http\Controllers\Admin\ReportController;
@@ -59,6 +60,10 @@ Route::middleware(['auth'])->group(function () {
         
         // Customer Checkup Data Routes - only allow index and show methods
         Route::resource('checkups', CustomerCheckupDataController::class)
+            ->only(['index', 'show']);
+            
+        // Customer Consultation Schedule Routes - only allow index and show methods
+        Route::resource('consultation-schedules', CustomerConsultationScheduleController::class)
             ->only(['index', 'show']);
     });
 

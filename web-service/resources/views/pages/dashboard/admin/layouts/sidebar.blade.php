@@ -38,6 +38,12 @@
                                     class="hide-menu flex-shrink-0">{{ __('app.my_checkup_data') }}</span>
                             </a>
                         </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link dark-sidebar-link {{ request()->routeIs('customer.consultation-schedules.*') ? 'activemenu' : '' }}" href="{{ route('customer.consultation-schedules.index') }}">
+                                <i class="ti ti-calendar text-xl flex-shrink-0"></i> <span
+                                    class="hide-menu flex-shrink-0">{{ __('app.my_consultation_schedules') }}</span>
+                            </a>
+                        </li>
                         @endif
                         
                         @if(auth()->check() && auth()->user()->role && in_array(auth()->user()->role->name, ['ahli gizi', 'asisten ahli gizi']))
@@ -104,6 +110,7 @@
                                     class="hide-menu flex-shrink-0">{{ __('app.diet_recommendation') }}</span>
                             </a>
                         </li>
+                        @if(auth()->check() && auth()->user()->role && !in_array(auth()->user()->role->name, ['pelanggan']))
                         <div class="caption mt-8">
                             <i class="ti ti-dots nav-small-cap-icon "></i>
                             <span class="hide-menu">{{ __('app.consultation') }}</span>
@@ -114,6 +121,7 @@
                                     class="hide-menu flex-shrink-0">{{ __('app.schedule') }}</span>
                             </a>
                         </li>
+                        @endif
                         <div class="caption mt-8">
                             <i class="ti ti-dots nav-small-cap-icon "></i>
                             <span class="hide-menu">{{ __('app.settings') }}</span>
