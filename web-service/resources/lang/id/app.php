@@ -54,7 +54,7 @@ return [
     'select_user' => 'Pilih Pengguna',
     'select_program' => 'Pilih Program Diet',
     'initial_checkup_data' => 'Data Checkup Awal',
-    'edit_enrollment' => 'Edit Registrasi Program',
+    'edit_enrollment' => 'Edit Pendaftaran Program',
     'edit_enrollment_information' => 'Edit Informasi Registrasi',
     'save_changes' => 'Simpan Perubahan',
     'delete_user_data' => 'Hapus Data Pengguna',

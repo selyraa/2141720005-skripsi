@@ -22,7 +22,7 @@
                             <i class="ti ti-slash text-sm leading-tight font-medium mx-2"></i>
                         </li>
                         <li class="inline-flex items-center text-sm font-semibold text-gray-800 truncate dark:text-gray-200 leading-tight" aria-current="page">
-                            {{ __('app.edit') }}
+                            {{ __('app.edit_enrollment') }}
                         </li>
                     </ol>
                 </div>
