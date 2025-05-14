@@ -138,7 +138,7 @@ return [
     // Diet Program
     'diet_programs' => 'Program Diet',
     'add_diet_program' => 'Tambah Program Diet',
-    'edit_diet_programs' => 'Edit Program Diet',
+    'edit_diet_program' => 'Edit Program Diet',
     'program_name' => 'Nama Program',
     'program_details' => 'Detail Program',
     'program_status' => 'Status Program',
