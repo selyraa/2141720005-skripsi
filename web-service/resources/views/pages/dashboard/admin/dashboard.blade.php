@@ -154,18 +154,6 @@
                         </div>
                     </div>
                     <!---Program Success Rate Chart End--->
-                    
-                    <!---Body Composition Chart--->
-                    <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ __('app.body_composition_changes') ?? 'Body Composition Changes' }}</h5>
-                                <p class="card-subtitle">{{ __('app.average_changes_after_programs') ?? 'Average changes after program completion' }}</p>
-                                <div id="body-composition-chart" class="my-8"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <!---Body Composition Chart End--->
                 </div>
             </div>
             <!---Progress & Body Composition Charts End--->
