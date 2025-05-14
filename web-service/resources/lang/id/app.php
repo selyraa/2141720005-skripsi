@@ -346,6 +346,8 @@ return [
     'export_to_pdf' => 'Ekspor ke PDF',
     'start_date' => 'Tanggal Mulai',
     'end_date' => 'Tanggal Selesai',
+    'start_month' => 'Bulan Mulai',
+    'end_month' => 'Bulan Selesai',
     'period' => 'Periode',
     'all_programs' => 'Semua Program',
     'generated_at' => 'Dibuat pada',

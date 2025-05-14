@@ -58,7 +58,7 @@
                     <div class="mb-6">
                         <form id="filter-form" action="{{ route('reports.index') }}" method="GET" class="flex flex-wrap gap-4 items-end">
                             <div class="flex-1">
-                                <label for="start_date" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">{{ __('app.start_date') }}</label>
+                                <label for="start_date" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">{{ __('app.start_month') }}</label>
                                 <input 
                                     type="month" 
                                     id="start_date" 
@@ -68,7 +68,7 @@
                                 >
                             </div>
                             <div class="flex-1">
-                                <label for="end_date" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">{{ __('app.end_date') }}</label>
+                                <label for="end_date" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">{{ __('app.end_month') }}</label>
                                 <input 
                                     type="month" 
                                     id="end_date" 
@@ -111,7 +111,6 @@
                                     <th class="px-4 py-3 border-b font-semibold text-gray-800 dark:text-gray-200">{{ __('app.enrollment_date') }}</th>
                                     <th class="px-4 py-3 border-b font-semibold text-gray-800 dark:text-gray-200">{{ __('app.duration') }}</th>
                                     <th class="px-4 py-3 border-b font-semibold text-gray-800 dark:text-gray-200">{{ __('app.status') }}</th>
-                                    <th class="px-4 py-3 border-b font-semibold text-gray-800 dark:text-gray-200">{{ __('app.progress') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -143,19 +142,6 @@
                                             @else
                                                 <span class="inline-flex px-2 py-1 text-xs font-semibold leading-5 text-gray-800 bg-gray-100 rounded-full">{{ $enrollment->status }}</span>
                                             @endif
-                                        </td>
-                                        <td class="px-4 py-3 border-b text-gray-500 dark:text-gray-400">
-                                            @php
-                                                $progress = \App\Http\Controllers\Admin\ReportController::calculateProgress(
-                                                    $enrollment->created_at, 
-                                                    $enrollment->dietProgram ? $enrollment->dietProgram->duration : 0
-                                                );
-                                            @endphp
-                                            
-                                            <div class="w-full bg-gray-200 rounded-full dark:bg-gray-700 h-2.5">
-                                                <div class="bg-primary h-2.5 rounded-full" style="width: {{ $progress }}%"></div>
-                                            </div>
-                                            <span class="text-xs mt-1 inline-block">{{ $progress }}%</span>
                                         </td>
                                     </tr>
                                 @empty

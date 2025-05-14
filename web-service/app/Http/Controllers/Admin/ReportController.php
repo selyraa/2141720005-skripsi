@@ -91,14 +91,4 @@ class ReportController extends Controller
      * @param int|null $programDuration The total duration of the program in days
      * @return int The progress percentage (0-100)
      */
-    public static function calculateProgress($enrollmentDate, $programDuration)
-    {
-        if (!$enrollmentDate || !$programDuration || $programDuration <= 0) {
-            return 0;
-        }
-        
-        $daysElapsed = self::calculateDuration($enrollmentDate);
-        
-        return min(100, round(($daysElapsed / $programDuration) * 100));
-    }
 }

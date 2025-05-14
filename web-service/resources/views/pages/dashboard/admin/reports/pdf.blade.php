@@ -113,7 +113,6 @@
                 <th>{{ __('app.enrollment_date') }}</th>
                 <th>{{ __('app.duration') }}</th>
                 <th>{{ __('app.status') }}</th>
-                <th>{{ __('app.progress') }}</th>
             </tr>
         </thead>
         <tbody>
@@ -141,19 +140,6 @@
                         @else
                             {{ $enrollment->status }}
                         @endif
-                    </td>
-                    <td>
-                        @php
-                            $progress = \App\Http\Controllers\Admin\ReportController::calculateProgress(
-                                $enrollment->created_at, 
-                                $enrollment->dietProgram ? $enrollment->dietProgram->duration : 0
-                            );
-                        @endphp
-                        
-                        <div class="progress-bar-container">
-                            <div class="progress-bar" style="width: {{ $progress }}%"></div>
-                        </div>
-                        <div style="font-size: 11px; margin-top: 4px;">{{ $progress }}%</div>
                     </td>
                 </tr>
             @empty
