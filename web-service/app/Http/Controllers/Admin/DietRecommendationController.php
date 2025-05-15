@@ -188,90 +188,18 @@ class DietRecommendationController extends Controller
     public function update(Request $request, $id)
     {
         $validated = $request->validate([
-            'llm_context_id' => 'required|exists:llm_contexts,id',
-            'custom_prompt' => 'nullable|string',
+            'result' => 'required|string',
         ]);
         
         $recommendation = DietRecommendation::findOrFail($id);
-        $checkup = Checkup::with(['programEnrollment.user', 'programEnrollment.dietProgram'])
-            ->findOrFail($recommendation->checkup_id);
-        $llmContext = LlmContext::findOrFail($validated['llm_context_id']);
         
-        // Create prompt by replacing placeholders in the context
-        $prompt = $llmContext->context;
+        // Just update the result directly without regenerating from the API
+        $recommendation->update([
+            'result' => $validated['result'],
+        ]);
         
-        // Replace placeholders with actual data
-        $prompt = str_replace('{tinggi_badan}', $checkup->height, $prompt);
-        $prompt = str_replace('{berat_badan}', $checkup->weight, $prompt);
-        $prompt = str_replace('{lemak_tubuh}', $checkup->body_fat, $prompt);
-        $prompt = str_replace('{lemak_perut}', $checkup->belly_fat, $prompt);
-        $prompt = str_replace('{massa_otot}', $checkup->muscle_mass, $prompt);
-        $prompt = str_replace('{kebutuhan_kalori}', $checkup->calories_needs, $prompt);
-        $prompt = str_replace('{usia_sel}', $checkup->cell_age, $prompt);
-        $prompt = str_replace('{kepadatan_tulang}', $checkup->bone_density, $prompt);
-        $prompt = str_replace('{kadar_air}', $checkup->water_content, $prompt);
-        
-        // Add program diet information if available
-        $programDiet = $checkup->programEnrollment->dietProgram->name ?? 'Tidak tersedia';
-        $prompt = str_replace('{program_diet}', $programDiet, $prompt);
-        
-        // Add user information if available
-        $userData = '';
-        if ($checkup->programEnrollment && $checkup->programEnrollment->user) {
-            $user = $checkup->programEnrollment->user;
-            $userData .= "Nama: " . $user->name . "\n";
-            $userData .= "Jenis Kelamin: " . ($user->gender ?? 'Tidak tersedia') . "\n";
-            $userData .= "Umur: " . ($user->birth_date ? now()->diffInYears($user->birth_date) . ' tahun' : 'Tidak tersedia') . "\n";
-        }
-        $prompt = str_replace('{user_data}', $userData, $prompt);
-        
-        // Add custom prompt if provided
-        if (!empty($validated['custom_prompt'])) {
-            $prompt .= "\n\nTambahan: " . $validated['custom_prompt'];
-        }
-        
-        // Call Google Gemini API
-        try {
-            $geminiApiKey = config('services.gemini.api_key');
-            $geminiUrl = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-lite:generateContent?key=" . $geminiApiKey;
-            
-            $response = Http::post($geminiUrl, [
-                'contents' => [
-                    [
-                        'parts' => [
-                            [
-                                'text' => $prompt
-                            ]
-                        ]
-                    ]
-                ],
-                'generationConfig' => [
-                    'temperature' => 0.7,
-                    'maxOutputTokens' => 2048,
-                ]
-            ]);
-            
-            if ($response->successful()) {
-                $result = $response->json();
-                $generatedText = $result['candidates'][0]['content']['parts'][0]['text'] ?? 'No result generated.';
-                
-                // Update the diet recommendation
-                $recommendation->update([
-                    'llm_context_id' => $validated['llm_context_id'],
-                    'prompt' => $prompt,
-                    'result' => $generatedText,
-                ]);
-                
-                return redirect()->route('diet-recommendations.show', $recommendation->id)
-                    ->with('success', 'Diet recommendation updated successfully!');
-            } else {
-                Log::error('Gemini API error: ' . $response->body());
-                return back()->with('error', 'Failed to generate recommendation from Gemini API. Please try again.');
-            }
-        } catch (\Exception $e) {
-            Log::error('Error calling Gemini API: ' . $e->getMessage());
-            return back()->with('error', 'Error generating recommendation: ' . $e->getMessage());
-        }
+        return redirect()->route('diet-recommendations.show', $recommendation->id)
+            ->with('success', 'Diet recommendation updated successfully!');
     }
 
     /**

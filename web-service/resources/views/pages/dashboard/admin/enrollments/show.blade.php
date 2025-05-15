@@ -147,7 +147,7 @@
                                                         </button>
                                                         <a href="{{ route('diet-recommendations.create.checkup', $checkup->id) }}" 
                                                             class="btn btn-sm btn-success">
-                                                            <i class="ti ti-message-2"></i> {{ __('app.get_recommendation') }}
+                                                            <i class="ti ti-message-2"></i> {{ __('app.generate_recommendation') }}
                                                         </a>
                                                     </div>
                                                 </td>

@@ -22,7 +22,7 @@
                             <i class="ti ti-slash text-sm leading-tight font-medium mx-2"></i>
                         </li>
                         <li class="inline-flex items-center text-sm font-semibold text-gray-800 truncate dark:text-gray-200 leading-tight" aria-current="page">
-                            {{ __('app.recommendation_details') }}
+                            {{ __('app.diet_recommendation_details') }}
                         </li>
                     </ol>
                 </div>
@@ -46,12 +46,12 @@
             <div class="card">
                 <div class="card-body">
                     <h3 class="card-title mb-4 flex items-center">
-                        <i class="ti ti-user text-xl mr-2"></i> {{ __('app.patient_information') }}
+                        <i class="ti ti-user text-xl mr-2"></i> {{ __('app.user_information') }}
                     </h3>
                     
                     <div class="space-y-4">
                         <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded">
-                            <div class="text-sm text-gray-500 dark:text-gray-400">{{ __('app.patient_name') }}</div>
+                            <div class="text-sm text-gray-500 dark:text-gray-400">{{ __('app.customer_name') }}</div>
                             <div class="text-lg font-semibold text-dark dark:text-white">{{ $recommendation->checkup->programEnrollment->user->name ?? 'N/A' }}</div>
                         </div>
                         
@@ -70,10 +70,6 @@
                             <div class="text-dark dark:text-white">{{ $recommendation->llmContext->title }}</div>
                         </div>
 
-                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded">
-                            <div class="text-sm text-gray-500 dark:text-gray-400">{{ __('app.generated_at') }}</div>
-                            <div class="text-dark dark:text-white">{{ $recommendation->created_at->format('d M Y, H:i') }}</div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -81,11 +77,13 @@
             <div class="card mt-6">
                 <div class="card-body">
                     <h3 class="card-title mb-4 flex items-center">
-                        <i class="ti ti-file-text text-xl mr-2"></i> {{ __('app.prompt_used') }}
+                        <i class="ti ti-file-text text-xl mr-2"></i> {{ __('app.context_used') }}
                     </h3>
                     
                     <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded">
+                         <div class="overflow-x-auto">
                         <pre class="whitespace-pre-wrap text-sm text-gray-700 dark:text-gray-300">{{ $recommendation->prompt }}</pre>
+                    </div>
                     </div>
                 </div>
             </div>

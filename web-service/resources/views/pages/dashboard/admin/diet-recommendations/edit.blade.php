@@ -17,12 +17,12 @@
                         </li>
                         <li class="inline-flex items-center">
                             <a class="flex items-center text-sm text-gray-500 hover:text-primary focus:outline-none focus:text-primary dark:focus:text-primary leading-tight" href="{{ route('diet-recommendations.index') }}">
-                                {{ __('app.diet_recommendations') }}
+                                {{ __('app.edit_diet_recommendation') }}
                             </a>
                             <i class="ti ti-slash text-sm leading-tight font-medium mx-2"></i>
                         </li>
                         <li class="inline-flex items-center text-sm font-semibold text-gray-800 truncate dark:text-gray-200 leading-tight" aria-current="page">
-                            {{ __('app.edit_recommendation') }}
+                            {{ __('app.edit_diet_recommendation') }}
                         </li>
                     </ol>
                 </div>
@@ -38,61 +38,11 @@
     </div>
 
     <div class="grid grid-cols-12 gap-6">
-        <!-- Patient Information -->
-        <div class="col-span-12 md:col-span-4">
-            <div class="card">
-                <div class="card-body">
-                    <h3 class="card-title mb-4">{{ __('app.patient_information') }}</h3>
-                    
-                    <div class="space-y-4">
-                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded">
-                            <div class="text-sm text-gray-500 dark:text-gray-400">{{ __('app.patient_name') }}</div>
-                            <div class="text-lg font-semibold text-dark dark:text-white">{{ $recommendation->checkup->programEnrollment->user->name }}</div>
-                        </div>
-                        
-                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded">
-                            <div class="text-sm text-gray-500 dark:text-gray-400">{{ __('app.checkup_date') }}</div>
-                            <div class="text-dark dark:text-white">{{ $recommendation->checkup->checkup_date->format('d M Y') }}</div>
-                        </div>
-                        
-                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded">
-                            <div class="text-sm text-gray-500 dark:text-gray-400">{{ __('app.diet_program') }}</div>
-                            <div class="text-dark dark:text-white">{{ $recommendation->checkup->programEnrollment->dietProgram->name ?? 'N/A' }}</div>
-                        </div>
-                    </div>
-                    
-                    <h3 class="card-title mb-4 mt-6">{{ __('app.checkup_metrics') }}</h3>
-                    
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded">
-                            <div class="text-sm text-gray-500 dark:text-gray-400">{{ __('app.height') }}</div>
-                            <div class="text-dark dark:text-white">{{ $recommendation->checkup->height }} cm</div>
-                        </div>
-                        
-                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded">
-                            <div class="text-sm text-gray-500 dark:text-gray-400">{{ __('app.weight') }}</div>
-                            <div class="text-dark dark:text-white">{{ $recommendation->checkup->weight }} kg</div>
-                        </div>
-                        
-                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded">
-                            <div class="text-sm text-gray-500 dark:text-gray-400">{{ __('app.bmi') }}</div>
-                            <div class="text-dark dark:text-white">{{ round($recommendation->checkup->calculateBmi(), 1) }} ({{ $recommendation->checkup->getBmiCategory() }})</div>
-                        </div>
-                        
-                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded">
-                            <div class="text-sm text-gray-500 dark:text-gray-400">{{ __('app.body_fat') }}</div>
-                            <div class="text-dark dark:text-white">{{ $recommendation->checkup->body_fat }}%</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
         <!-- Update Recommendation Form -->
-        <div class="col-span-12 md:col-span-8">
+        <div class="col-span-12">
             <div class="card">
                 <div class="card-body">
-                    <h3 class="card-title mb-4">{{ __('app.update_recommendation_form') }}</h3>
+                    <h3 class="card-title mb-4">{{ __('app.edit_diet_recommendation') }}</h3>
                     
                     @if($errors->any())
                         <div class="bg-lighterror dark:bg-darkerror text-error px-4 py-3 rounded relative mb-4" role="alert">
@@ -119,31 +69,12 @@
                         
                         <div class="grid grid-cols-1 gap-6">
                             <div class="form-group">
-                                <label for="llm_context_id" class="form-label block mb-2 font-medium text-dark dark:text-white">{{ __('app.prompt_template') }} <span class="text-red-500">*</span></label>
-                                <select id="llm_context_id" name="llm_context_id" class="form-control w-full @error('llm_context_id') is-invalid @enderror" required>
-                                    <option value="">{{ __('app.select_prompt_template') }}</option>
-                                    @foreach($llmContexts as $context)
-                                        <option value="{{ $context->id }}" {{ $recommendation->llm_context_id == $context->id ? 'selected' : '' }}>
-                                            {{ $context->title }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                                @error('llm_context_id')
+                                <label for="result" class="form-label block mb-2 font-medium text-dark dark:text-white">{{ __('app.recommendation_content') }} <span class="text-red-500">*</span></label>
+                                <textarea id="result" name="result" rows="20" class="form-control w-full @error('result') is-invalid @enderror" required>{{ old('result', $recommendation->result) }}</textarea>
+                                <p class="text-sm text-gray-500 mt-1">{{ __('app.edit_recommendation_help') }}</p>
+                                @error('result')
                                     <span class="text-error text-sm mt-1">{{ $message }}</span>
                                 @enderror
-                            </div>
-
-                            <div class="form-group">
-                                <label for="custom_prompt" class="form-label block mb-2 font-medium text-dark dark:text-white">{{ __('app.additional_instructions') }} <span class="text-gray-500">({{ __('app.optional') }})</span></label>
-                                <textarea id="custom_prompt" name="custom_prompt" rows="3" class="form-control w-full @error('custom_prompt') is-invalid @enderror">{{ old('custom_prompt') }}</textarea>
-                                <p class="text-sm text-gray-500 mt-1">{{ __('app.additional_instructions_help') }}</p>
-                                @error('custom_prompt')
-                                    <span class="text-error text-sm mt-1">{{ $message }}</span>
-                                @enderror
-                            </div>
-                            
-                            <div class="alert bg-lightwarning dark:bg-darkwarning text-warning px-4 py-3 rounded">
-                                <p><i class="ti ti-alert-triangle mr-1"></i> {{ __('app.regeneration_warning') }}</p>
                             </div>
                         </div>
 
@@ -152,20 +83,10 @@
                                 <i class="ti ti-x me-1"></i> {{ __('app.cancel') }}
                             </a>
                             <button type="submit" class="btn btn-primary">
-                                <i class="ti ti-refresh me-1"></i> {{ __('app.regenerate_recommendation') }}
+                                <i class="ti ti-save me-1"></i> {{ __('app.save_changes') }}
                             </button>
                         </div>
                     </form>
-                </div>
-            </div>
-            
-            <div class="card mt-6">
-                <div class="card-body">
-                    <h3 class="card-title mb-4">{{ __('app.current_recommendation') }}</h3>
-                    
-                    <div class="p-4 bg-gray-50 dark:bg-gray-800 rounded">
-                        <pre class="whitespace-pre-wrap text-sm text-gray-700 dark:text-gray-300">{{ $recommendation->result }}</pre>
-                    </div>
                 </div>
             </div>
         </div>

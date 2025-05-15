@@ -29,7 +29,7 @@
             <div class="card">
                 <div class="card-body">
                     <h3 class="card-title mb-4 flex justify-between items-center">
-                        <span>{{ __('app.diet_recommendation_data') }}</span>
+                        <span>{{ __('app.diet_recommendation') }}</span>
                     </h3>
                     
                     @if(session('success'))
@@ -56,7 +56,7 @@
                                 <tr>
                                     <th class="px-4 py-3 border-b font-semibold text-gray-800 dark:text-gray-200">{{ __('app.number') }}</th>
                                     <th class="px-4 py-3 border-b font-semibold text-gray-800 dark:text-gray-200">{{ __('app.customer') }}</th>
-                                    <th class="px-4 py-3 border-b font-semibold text-gray-800 dark:text-gray-200">{{ __('app.template') }}</th>
+                                    <th class="px-4 py-3 border-b font-semibold text-gray-800 dark:text-gray-200">{{ __('app.context_template') }}</th>
                                     <th class="px-4 py-3 border-b font-semibold text-gray-800 dark:text-gray-200">{{ __('app.date') }}</th>
                                     <th class="px-4 py-3 border-b font-semibold text-gray-800 dark:text-gray-200">{{ __('app.actions') }}</th>
                                 </tr>

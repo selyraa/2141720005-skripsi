@@ -6,7 +6,7 @@
             <div class="flex items-center grid grid-cols-12 gap-6">
                 <div class="col-span-9">
                     <h4 class="font-semibold text-xl text-dark dark:text-white mb-3">
-                        {{ __('app.generate_diet_recommendation') }}
+                        {{ __('app.add_diet_recommendation') }}
                     </h4>
                     <ol class="flex items-center whitespace-nowrap" aria-label="Breadcrumb">
                         <li class="inline-flex items-center">
@@ -22,7 +22,7 @@
                             <i class="ti ti-slash text-sm leading-tight font-medium mx-2"></i>
                         </li>
                         <li class="inline-flex items-center text-sm font-semibold text-gray-800 truncate dark:text-gray-200 leading-tight" aria-current="page">
-                            {{ __('app.generate_recommendation') }}
+                            {{ __('app.add_diet_recommendation') }}
                         </li>
                     </ol>
                 </div>
@@ -42,11 +42,11 @@
         <div class="col-span-12 md:col-span-4">
             <div class="card">
                 <div class="card-body">
-                    <h3 class="card-title mb-4">{{ __('app.patient_information') }}</h3>
+                    <h3 class="card-title mb-4">{{ __('app.user_information') }}</h3>
                     
                     <div class="space-y-4">
                         <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded">
-                            <div class="text-sm text-gray-500 dark:text-gray-400">{{ __('app.patient_name') }}</div>
+                            <div class="text-sm text-gray-500 dark:text-gray-400">{{ __('app.customer_name') }}</div>
                             <div class="text-lg font-semibold text-dark dark:text-white">{{ $checkup->programEnrollment->user->name }}</div>
                         </div>
                         
@@ -61,7 +61,7 @@
                         </div>
                     </div>
                     
-                    <h3 class="card-title mb-4 mt-6">{{ __('app.checkup_metrics') }}</h3>
+                    <h3 class="card-title mb-4 mt-6">{{ __('app.checkup_data') }}</h3>
                     
                     <div class="grid grid-cols-2 gap-4">
                         <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded">
@@ -122,7 +122,7 @@
         <div class="col-span-12 md:col-span-8">
             <div class="card">
                 <div class="card-body">
-                    <h3 class="card-title mb-4">{{ __('app.generate_recommendation_form') }}</h3>
+                    <h3 class="card-title mb-4">{{ __('app.add_diet_recommendation_form') }}</h3>
                     
                     @if($errors->any())
                         <div class="bg-lighterror dark:bg-darkerror text-error px-4 py-3 rounded relative mb-4" role="alert">
@@ -149,9 +149,9 @@
                         
                         <div class="grid grid-cols-1 gap-6">
                             <div class="form-group">
-                                <label for="llm_context_id" class="form-label block mb-2 font-medium text-dark dark:text-white">{{ __('app.prompt_template') }} <span class="text-red-500">*</span></label>
+                                <label for="llm_context_id" class="form-label block mb-2 font-medium text-dark dark:text-white">{{ __('app.context_template') }} <span class="text-red-500">*</span></label>
                                 <select id="llm_context_id" name="llm_context_id" class="form-control w-full @error('llm_context_id') is-invalid @enderror" required>
-                                    <option value="">{{ __('app.select_prompt_template') }}</option>
+                                    <option value="">{{ __('app.select_context_template') }}</option>
                                     @foreach($llmContexts as $context)
                                         <option value="{{ $context->id }}">{{ $context->title }}</option>
                                     @endforeach
@@ -162,16 +162,12 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="custom_prompt" class="form-label block mb-2 font-medium text-dark dark:text-white">{{ __('app.additional_instructions') }} <span class="text-gray-500">({{ __('app.optional') }})</span></label>
+                                <label for="custom_prompt" class="form-label block mb-2 font-medium text-dark dark:text-white">{{ __('app.additional_context') }} <span class="text-gray-500">({{ __('app.optional') }})</span></label>
                                 <textarea id="custom_prompt" name="custom_prompt" rows="3" class="form-control w-full @error('custom_prompt') is-invalid @enderror">{{ old('custom_prompt') }}</textarea>
                                 <p class="text-sm text-gray-500 mt-1">{{ __('app.additional_instructions_help') }}</p>
                                 @error('custom_prompt')
                                     <span class="text-error text-sm mt-1">{{ $message }}</span>
                                 @enderror
-                            </div>
-                            
-                            <div class="alert bg-lightinfo dark:bg-darkinfo text-info px-4 py-3 rounded">
-                                <p><i class="ti ti-info-circle mr-1"></i> {{ __('app.recommendation_generation_info') }}</p>
                             </div>
                         </div>
 
