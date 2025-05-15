@@ -70,6 +70,7 @@
                             </a>
                         </li>
                         
+                        
                         <div class="caption mt-8">
                             <i class="ti ti-dots nav-small-cap-icon "></i>
                             <span class="hide-menu">{{ __('app.customer_data') }}</span>
@@ -104,10 +105,16 @@
                             </a>
                         </li>
                         @endif
-                        <li class="sidebar-item">
+                        {{-- <li class="sidebar-item">
                             <a class="sidebar-link dark-sidebar-link {{ request()->routeIs('recommendations.*') ? 'activemenu' : '' }}" href="#">
                                 <i class="ti ti-message text-xl flex-shrink-0"></i> <span
                                     class="hide-menu flex-shrink-0">{{ __('app.diet_recommendation') }}</span>
+                            </a>
+                        </li> --}}
+                        <li class="sidebar-item">
+                            <a class="sidebar-link dark-sidebar-link {{ request()->routeIs('diet-recommendations.*') ? 'activemenu' : '' }}" href="{{ route('diet-recommendations.index') }}">
+                                <i class="ti ti-message-2 text-xl flex-shrink-0"></i> <span
+                                    class="hide-menu flex-shrink-0">{{ __('app.diet_recommendations') }}</span>
                             </a>
                         </li>
                         @if(auth()->check() && auth()->user()->role && !in_array(auth()->user()->role->name, ['pelanggan']))

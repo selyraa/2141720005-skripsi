@@ -251,6 +251,8 @@ return [
     'calories' => 'Kalori',
     'daily_calories' => 'Kalori Harian',
     'calorie_intake' => 'Asupan Kalori',
+    'recommendation_result' => 'Hasil Rekomendasi',
+    'get_recommendation' => 'Rekomendasi',
     
     // Prediction
     'diet_prediction' => 'Prediksi Diet',

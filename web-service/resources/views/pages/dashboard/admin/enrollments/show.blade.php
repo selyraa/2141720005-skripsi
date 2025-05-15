@@ -139,11 +139,17 @@
                                                     {{ $checkup->body_fat }}%
                                                 </td>
                                                 <td class="px-4 py-3 border-b text-gray-500 dark:text-gray-400">
-                                                    <button type="button" 
-                                                        class="btn btn-sm btn-primary view-details-btn" 
-                                                        data-checkup-id="{{ $checkup->id }}">
-                                                        <i class="ti ti-eye"></i> {{ __('app.details') }}
-                                                    </button>
+                                                    <div class="flex gap-2">
+                                                        <button type="button" 
+                                                            class="btn btn-sm btn-primary view-details-btn" 
+                                                            data-checkup-id="{{ $checkup->id }}">
+                                                            <i class="ti ti-eye"></i> {{ __('app.details') }}
+                                                        </button>
+                                                        <a href="{{ route('diet-recommendations.create.checkup', $checkup->id) }}" 
+                                                            class="btn btn-sm btn-success">
+                                                            <i class="ti ti-message-2"></i> {{ __('app.get_recommendation') }}
+                                                        </a>
+                                                    </div>
                                                 </td>
                                             </tr>
                                         @endforeach

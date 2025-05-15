@@ -11,6 +11,7 @@ use App\Http\Controllers\Customer\CheckupDataController as CustomerCheckupDataCo
 use App\Http\Controllers\Admin\ConsultationScheduleController;
 use App\Http\Controllers\Customer\ConsultationScheduleController as CustomerConsultationScheduleController;
 use App\Http\Controllers\Admin\DietProgramController;
+use App\Http\Controllers\Admin\DietRecommendationController;
 use App\Http\Controllers\Admin\LlmContextController;
 use App\Http\Controllers\Admin\ReportController;
 use App\Http\Controllers\Admin\UserController;
@@ -98,7 +99,10 @@ Route::middleware(['auth'])->group(function () {
             'diet-programs' => DietProgramController::class,
             'consultation-schedules' => ConsultationScheduleController::class,
             'llm-contexts' => LlmContextController::class,
+            'diet-recommendations' => DietRecommendationController::class,
         ]);
+        
+        Route::get('diet-recommendations/create/{checkupId}', [DietRecommendationController::class, 'create'])->name('diet-recommendations.create.checkup');
         
         // Reports Routes - Admin and Nutritionist Access Only
         Route::prefix('reports')->name('reports.')->controller(ReportController::class)->group(function () 
