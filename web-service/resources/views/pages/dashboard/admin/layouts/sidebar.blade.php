@@ -44,6 +44,12 @@
                                     class="hide-menu flex-shrink-0">{{ __('app.my_consultation_schedules') }}</span>
                             </a>
                         </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link dark-sidebar-link {{ request()->routeIs('customer.diet-recommendations.*') ? 'activemenu' : '' }}" href="{{ route('customer.diet-recommendations.index') }}">
+                                <i class="ti ti-message-2 text-xl flex-shrink-0"></i> <span
+                                    class="hide-menu flex-shrink-0">{{ __('app.my_diet_recommendations') }}</span>
+                            </a>
+                        </li>
                         @endif
                         
                         @if(auth()->check() && auth()->user()->role && in_array(auth()->user()->role->name, ['ahli gizi', 'asisten ahli gizi']))
@@ -104,7 +110,7 @@
                                     class="hide-menu flex-shrink-0">{{ __('app.program_registration') }}</span>
                             </a>
                         </li>
-                        @endif
+                        
                         {{-- <li class="sidebar-item">
                             <a class="sidebar-link dark-sidebar-link {{ request()->routeIs('recommendations.*') ? 'activemenu' : '' }}" href="#">
                                 <i class="ti ti-message text-xl flex-shrink-0"></i> <span
@@ -117,6 +123,7 @@
                                     class="hide-menu flex-shrink-0">{{ __('app.diet_recommendations') }}</span>
                             </a>
                         </li>
+                        @endif
                         @if(auth()->check() && auth()->user()->role && !in_array(auth()->user()->role->name, ['pelanggan']))
                         <div class="caption mt-8">
                             <i class="ti ti-dots nav-small-cap-icon "></i>

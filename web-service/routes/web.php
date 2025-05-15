@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\ConsultationScheduleController;
 use App\Http\Controllers\Customer\ConsultationScheduleController as CustomerConsultationScheduleController;
 use App\Http\Controllers\Admin\DietProgramController;
 use App\Http\Controllers\Admin\DietRecommendationController;
+use App\Http\Controllers\Customer\DietRecommendationController as CustomerDietRecommendationController;
 use App\Http\Controllers\Admin\LlmContextController;
 use App\Http\Controllers\Admin\ReportController;
 use App\Http\Controllers\Admin\UserController;
@@ -65,6 +66,10 @@ Route::middleware(['auth'])->group(function () {
             
         // Customer Consultation Schedule Routes - only allow index and show methods
         Route::resource('consultation-schedules', CustomerConsultationScheduleController::class)
+            ->only(['index', 'show']);
+            
+        // Customer Diet Recommendation Routes - only allow index and show methods
+        Route::resource('diet-recommendations', CustomerDietRecommendationController::class)
             ->only(['index', 'show']);
     });
 

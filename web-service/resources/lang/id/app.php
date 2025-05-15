@@ -273,6 +273,7 @@ return [
     'add_diet_recommendation' => 'Tambah Rekomendasi Diet',
     'add_diet_recommendation_form' => 'Form Tambah Rekomendasi Diet',
     'diet_recommendation_created' => 'Diet recommendation updated successfully!',
+    'my_diet_recommendations' => 'Rekomendasi Diet Saya',
     
     // Prediction
     'diet_prediction' => 'Prediksi Diet',
