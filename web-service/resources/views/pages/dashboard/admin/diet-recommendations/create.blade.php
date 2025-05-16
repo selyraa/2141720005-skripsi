@@ -105,8 +105,8 @@
                         </div>
                         
                         <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded">
-                            <div class="text-sm text-gray-500 dark:text-gray-400">{{ __('app.calories_needs') }}</div>
-                            <div class="text-dark dark:text-white">{{ $checkup->calories_needs }} kcal</div>
+                            <div class="text-sm text-gray-500 dark:text-gray-400">{{ __('app.calorie_needs') }}</div>
+                            <div class="text-dark dark:text-white">{{ $checkup->calories_needs }} kkal</div>
                         </div>
                         
                         <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded">
