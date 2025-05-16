@@ -392,6 +392,8 @@ return [
     'fat_loss_program'     => 'Turun Lemak',
     'all_programs' => 'Semua Program',
     'diet_program_distribution' => 'Distribusi Program Diet',
+    'age_distribution' => 'Distribusi Usia',
+    'age_distribution_summary' => 'Ringkasan Distribusi Usia',
     'percentage_of_programs_followed' => 'Persentase Program yang Diikuti',
     'weight_trend_by_program' => 'Tren Berat Badan Berdasarkan Program',
     'average_customer_weight_trend' => 'Rata-rata Tren Berat Badan Pelanggan',

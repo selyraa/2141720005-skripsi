@@ -192,6 +192,68 @@ class DashboardController extends Controller
             'customerData' => $customerWeightData
         ];
 
+        // Calculate age distribution of customers who follow diet programs
+        $ageDistributionLabels = ['<18', '18-24', '25-34', '35-44', '45-54', '55+'];
+        $ageDistributionData = array_fill(0, count($ageDistributionLabels), 0);
+        
+        // Create array for detailed age breakdown
+        $ageDetailedBreakdown = [
+            // For <18
+            0 => [],
+            // For 18-24
+            1 => [],
+            // For 25-34
+            2 => [],
+            // For 35-44
+            3 => [],
+            // For 45-54
+            4 => [],
+            // For 55+
+            5 => [],
+        ];
+        
+        $customers = User::whereHas('role', function($query) {
+                $query->where('name', 'pelanggan');
+            })
+            ->whereHas('programEnrollments')
+            ->get();
+            
+        foreach ($customers as $customer) {
+            if (!$customer->birth_date) continue;
+            
+            // Ensure birth_date is properly parsed to calculate age
+            $birthDate = $customer->birth_date;
+            if (is_string($birthDate)) {
+                $birthDate = Carbon::parse($birthDate);
+            }
+            $age = $birthDate->age;
+            
+            if ($age < 18) {
+                $ageDistributionData[0]++; 
+                $ageDetailedBreakdown[0][$age] = isset($ageDetailedBreakdown[0][$age]) ? $ageDetailedBreakdown[0][$age] + 1 : 1;
+            }
+            elseif ($age >= 18 && $age <= 24) {
+                $ageDistributionData[1]++;
+                $ageDetailedBreakdown[1][$age] = isset($ageDetailedBreakdown[1][$age]) ? $ageDetailedBreakdown[1][$age] + 1 : 1;
+            }
+            elseif ($age >= 25 && $age <= 34) {
+                $ageDistributionData[2]++;
+                $ageDetailedBreakdown[2][$age] = isset($ageDetailedBreakdown[2][$age]) ? $ageDetailedBreakdown[2][$age] + 1 : 1;
+            }
+            elseif ($age >= 35 && $age <= 44) {
+                $ageDistributionData[3]++;
+                $ageDetailedBreakdown[3][$age] = isset($ageDetailedBreakdown[3][$age]) ? $ageDetailedBreakdown[3][$age] + 1 : 1;
+            }
+            elseif ($age >= 45 && $age <= 54) {
+                $ageDistributionData[4]++;
+                $ageDetailedBreakdown[4][$age] = isset($ageDetailedBreakdown[4][$age]) ? $ageDetailedBreakdown[4][$age] + 1 : 1;
+            }
+            else {
+                $ageDistributionData[5]++;
+                $ageDetailedBreakdown[5][$age] = isset($ageDetailedBreakdown[5][$age]) ? $ageDetailedBreakdown[5][$age] + 1 : 1;
+            }
+        }
+
         return view('pages.dashboard.admin.dashboard', compact(
             'customerCount',
             'weightGainCount',
@@ -202,7 +264,10 @@ class DashboardController extends Controller
             'programStatusLabels',
             'programStatusData',
             'bmiDistribution',
-            'availablePrograms'
+            'availablePrograms',
+            'ageDistributionLabels',
+            'ageDistributionData',
+            'ageDetailedBreakdown'
         ));
     }
 }

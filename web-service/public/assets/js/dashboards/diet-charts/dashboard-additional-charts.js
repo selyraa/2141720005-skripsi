@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Initialize all new visualization charts
     initBMIDistributionChart();
     initProgramStatusChart();
+    initAgeDistributionChart();
     initBodyCompositionChart();
 });
 
@@ -137,6 +138,124 @@ function initProgramStatusChart() {
                 formatter: function(value) {
                     return value;
                 }
+            }
+        }
+    };
+    
+    new ApexCharts(chartElement, options).render();
+}
+
+// Age Distribution Chart
+function initAgeDistributionChart() {
+    const chartElement = document.getElementById('age-distribution-chart');
+    if (!chartElement) return;
+    
+    const ageLabels = JSON.parse(chartElement.getAttribute('data-labels') || '[]');
+    const ageValues = JSON.parse(chartElement.getAttribute('data-values') || '[]');
+    const detailedBreakdown = JSON.parse(chartElement.getAttribute('data-detailed-breakdown') || '{}');
+    
+    const totalCustomers = ageValues.reduce((acc, curr) => acc + curr, 0);
+    
+    const options = {
+        series: [{
+            name: 'Customers',
+            data: ageValues
+        }],
+        chart: {
+            type: 'bar',
+            height: 350,
+            fontFamily: "inherit",
+            foreColor: "#adb0bb",
+            toolbar: {
+                show: false
+            }
+        },
+        plotOptions: {
+            bar: {
+                horizontal: false,
+                columnWidth: '55%',
+                borderRadius: 4,
+                distributed: true,
+            },
+        },
+        colors: ['#4F46E5', '#10B981', '#F59E0B', '#EF4444', '#6366F1', '#EC4899'],
+        dataLabels: {
+            enabled: false,
+        },
+        legend: {
+            show: false
+        },
+        grid: {
+            borderColor: "rgba(0,0,0,0.1)",
+            strokeDashArray: 3,
+            xaxis: {
+                lines: {
+                    show: false,
+                },
+            },
+        },
+        xaxis: {
+            categories: ageLabels,
+            axisBorder: {
+                show: false,
+            },
+            axisTicks: {
+                show: false,
+            }
+        },
+        yaxis: {
+            title: {
+                text: 'Jumlah Pelanggan',
+            },
+            tickAmount: 5,
+            min: 0,
+            forceNiceScale: true,
+            labels: {
+                formatter: function(val) {
+                    return Math.floor(val);
+                }
+            },
+            // Ensure only integers are shown on y-axis
+            decimalsInFloat: 0,
+        },
+        tooltip: {
+            theme: "dark",
+            custom: function({ series, seriesIndex, dataPointIndex, w }) {
+                // Get the age group data and its detailed breakdown
+                const ageGroup = w.globals.categoryLabels[dataPointIndex];
+                const value = series[0][dataPointIndex];
+                const percent = totalCustomers > 0 ? Math.round((value / totalCustomers) * 100) : 0;
+                
+                // Get the detailed breakdown for this age group
+                const breakdown = detailedBreakdown[dataPointIndex] || {};
+                
+                let detailedHTML = '';
+                
+                // Sort ages numerically 
+                const sortedAges = Object.keys(breakdown).map(Number).sort((a, b) => a - b);
+                
+                // Create detailed breakdown HTML
+                if (sortedAges.length > 0) {
+                    detailedHTML = '<div class="mt-2 pt-2 border-t border-gray-700">';
+                    detailedHTML += '<div class="font-medium mb-1">Detail:</div>';
+                    
+                    sortedAges.forEach(age => {
+                        const count = breakdown[age];
+                        detailedHTML += `<div class="grid grid-cols-2 gap-2">
+                            <span class="text-left">${age} tahun:</span> 
+                            <span class="text-right">${count} pelanggan</span>
+                        </div>`;
+                    });
+                    
+                    detailedHTML += '</div>';
+                }
+                
+                // Return tooltip HTML
+                return `<div class="bg-gray-800 p-3 rounded shadow-lg">
+                    <div class="font-medium mb-2">${ageGroup}</div>
+                    <div class="text-lg font-semibold">${Math.round(value)} pelanggan (${percent}%)</div>
+                    ${detailedHTML}
+                </div>`;
             }
         }
     };

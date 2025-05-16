@@ -3,7 +3,10 @@
 @section('content')
     <div class="w-full px-5 py-5">
         <div class="grid grid-cols-12 gap-6">
-            <!---Top Cards--->
+            <!-                                <div id="age-distribution-chart" class="my-8"
+                                     data-labels='{{ json_encode($ageDistributionLabels ?? ["<18", "18-24", "25-34", "35-44", "45-54", "55+"]) }}'
+                                     data-values='{{ json_encode($ageDistributionData ?? [0, 0, 0, 0, 0, 0]) }}'
+                                     data-detailed-breakdown='{{ json_encode($ageDetailedBreakdown ?? []) }}'></div>op Cards--->
             <div class="col-span-12">
                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4">
                     <div class="card mb-0 shadow-none bg-lightprimary dark:bg-darkprimary w-full">
@@ -154,6 +157,21 @@
                         </div>
                     </div>
                     <!---Program Success Rate Chart End--->
+                    
+                    <!---Age Distribution Chart--->
+                    <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ __('app.age_distribution') ?? 'Customer Age Distribution' }}</h5>
+                                <p class="card-subtitle">{{ __('app.age_distribution_summary') ?? 'Age groups of customers enrolled in diet programs' }}</p>
+                                <div id="age-distribution-chart" class="my-8"
+                                     data-labels='{{ json_encode($ageDistributionLabels ?? ["18-24", "25-34", "35-44", "45-54", "55+"]) }}'
+                                     data-values='{{ json_encode($ageDistributionData ?? [0, 0, 0, 0, 0]) }}'
+                                     data-detailed-breakdown='{{ json_encode($ageDetailedBreakdown ?? []) }}'></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!---Age Distribution Chart End--->
                 </div>
             </div>
             <!---Progress & Body Composition Charts End--->
