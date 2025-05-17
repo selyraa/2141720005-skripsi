@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", function () {
     initBMIDistributionChart();
     initProgramStatusChart();
     initAgeDistributionChart();
-    initBodyCompositionChart();
 });
 
 // BMI Distribution Chart
