@@ -366,11 +366,11 @@
                         <div class="space-y-4">
                             <div class="flex items-start">
                                  <i class="ti ti-map-pin text-primary text-xl mr-4"></i>
-                                <p>Jl. Sigura - Gura No.Kav 2, Karangbesuki, Kec. Sukun,<br> Kota Malang, Jawa Timur 65147</p>
+                                <p class="ml-2">Jl. Sigura - Gura No.Kav 2, Karangbesuki, Kec. Sukun,<br> Kota Malang, Jawa Timur 65147</p>
                             </div>
                             <div class="flex items-center">
                                 <i class="ti ti-phone text-primary text-xl mr-4"></i>
-                                <p>+62 816-565-232</p>
+                                <p class="ml-2">+62 816-565-232</p>
                             </div>
                             {{-- <div class="flex items-center">
                                 <i class="ti ti-mail text-primary text-xl mr-4"></i>
