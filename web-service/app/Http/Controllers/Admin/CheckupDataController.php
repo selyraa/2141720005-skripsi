@@ -241,6 +241,6 @@ class CheckupDataController extends Controller
         $checkup->delete();
         
         return redirect()->route('checkups.index')
-            ->with('error', __('app.checkup_deleted_successfully'));
+            ->with('success', __('app.checkup_deleted_successfully'));
     }
 }

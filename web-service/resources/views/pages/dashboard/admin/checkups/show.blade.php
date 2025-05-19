@@ -224,10 +224,24 @@
                                         <td class="border-b px-4 py-2">{{ $item->body_fat }}%</td>
                                         <td class="border-b px-4 py-2">{{ $item->muscle_mass }} kg</td>
                                         <td class="border-b px-4 py-2">
-                                            <a href="{{ route('checkups.show', $item->id) }}" class="btn btn-sm btn-primary {{ $item->id === $checkup->id ? 'opacity-50 cursor-not-allowed' : '' }}"
-                                               {{ $item->id === $checkup->id ? 'disabled' : '' }}>
-                                                <i class="ti ti-eye"></i> {{ __('app.details') }}
-                                            </a>
+                                            <div class="flex space-x-2">
+                                                <a href="{{ route('checkups.show', $item->id) }}" class="btn btn-sm btn-primary {{ $item->id === $checkup->id ? 'opacity-50 cursor-not-allowed' : '' }}"
+                                                   {{ $item->id === $checkup->id ? 'disabled' : '' }}>
+                                                    <i class="ti ti-eye"></i> {{ __('app.details') }}
+                                                </a>
+                                                @if($item->id !== $checkup->id)
+                                                <form action="{{ route('checkups.destroy', $item->id) }}" method="POST" class="inline-block" id="delete-history-form-{{ $item->id }}">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="button" 
+                                                        class="btn btn-sm bg-lighterror dark:bg-darkerror text-error hover:bg-error hover:text-white transition-all" 
+                                                        title="{{ __('app.delete') }}"
+                                                        onclick="openConfirmationModal('delete', '{{ __('app.delete_checkup_data') }}', '{{ __('app.confirm_delete_checkup', ['name' => $checkup->programEnrollment->user->name ?? __('app.this_user')]) }}', '{{ __('app.yes_delete') }}', 'document.getElementById(\'delete-history-form-{{ $item->id }}\').submit()')">
+                                                        <i class="ti ti-trash"></i> {{ __('app.delete') }}
+                                                    </button>
+                                                </form>
+                                                @endif
+                                            </div>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -244,3 +258,7 @@
         </div>
     </div>
 @endsection
+
+@push('scripts')
+<script src="{{ asset('assets/js/components/confirmation-modal.js') }}"></script>
+@endpush
