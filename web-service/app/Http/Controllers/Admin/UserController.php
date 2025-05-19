@@ -163,6 +163,6 @@ class UserController extends Controller
         $user->delete();
         
         return redirect()->route('admin.users.index')
-            ->with('success', __('app.user_deleted_successfully'));
+            ->with('error', __('app.user_deleted_successfully'));
     }
 }
