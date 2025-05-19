@@ -236,7 +236,7 @@ class PredictionController extends Controller
         session()->forget(['result', 'prediction_data']);
         
         // Redirect to enrollments.index with success message
-        return redirect()->route('enrollments.index')->with('success', 'Program diet berhasil disimpan');
+        return redirect()->route('enrollments.index')->with('success', __('app.enrollment_created_successfully'));
     }
 
     /**

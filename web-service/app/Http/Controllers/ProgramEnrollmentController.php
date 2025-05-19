@@ -147,7 +147,7 @@ class ProgramEnrollmentController extends Controller
         ]);
 
         return redirect()->route('enrollments.index')
-            ->with('success', 'Program enrollment created successfully!');
+            ->with('success', __('app.program_enrollment_created_successfully'));
     }
 
     /**
@@ -233,7 +233,7 @@ class ProgramEnrollmentController extends Controller
         }
 
         return redirect()->route('enrollments.index')
-            ->with('success', 'Program enrollment updated successfully!');
+            ->with('success', __('app.program_enrollment_updated_successfully'));
     }
 
     /**
@@ -245,7 +245,7 @@ class ProgramEnrollmentController extends Controller
         $enrollment->delete();
         
         return redirect()->route('enrollments.index')
-            ->with('success', 'Program enrollment deleted successfully!');
+            ->with('error', __('app.program_enrollment_deleted_successfully'));
     }
     
     /**

@@ -200,6 +200,9 @@ return [
     'on_going' => 'Sedang Berlangsung',
     'changed' => 'Diubah',
     'enrollment_count' => 'Jumlah Pendaftaran',
+    'enrollment_created_successfully' => 'Pendaftaran Program berhasil dibuat',
+    'enrollment_updated_successfully' => 'Pendaftaran Program berhasil diperbarui',
+    'enrollment_deleted_successfully' => 'Pendaftaran Program berhasil dihapus',
 
     
     // Consultation
