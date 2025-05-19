@@ -4,57 +4,37 @@
     <div class="max-w-full">
 
         <!-- Hero Section -->
-        <section class="hero-section overflow-hidden items-center mb-12">
+        <section class="hero-section overflow-hidden items-center mb-12 bg-lightprimary dark:bg-darkprimary py-16">
             <div class="container container-xl">
                 <div class="grid grid-cols-12 gap-6 items-center">
                     <div class="xl:col-span-6 col-span-12">
                         <div class="xl:pt-0 pt-8">
                             <h6 class="flex items-center gap-2 text-base mb-3" data-aos="fade-up" data-aos-delay="200"
                                 data-aos-duration="1000">
-                                <i class="ti ti-rocket text-secondary text-lg"></i>Kick
-                                start
-                                your project with
+                                <i class="ti ti-apple text-secondary text-lg"></i>Healthy Living & Wellness
                             </h6>
                             <h1 class="font-bold mb-7 lg:text-[55px] lg:leading-[66px] text-4xl" data-aos="fade-up"
                                 data-aos-delay="400" data-aos-duration="1000">
-                                Bimbel
+                                Nut Castle
                                 <br>
                                 <span class="text-primary">
-                                    ASN Indonesia</span>
+                                    Cafe</span>
                             </h1>
                             <p class="text-lg mb-10" data-aos="fade-up" data-aos-delay="600" data-aos-duration="1000">
-                                Belajar seru dengan para Mentor ASN Terbaik! Yuk gabung bersama kami dan taklukan tes CPNS
-                                dengan mudah!
+                                Your ultimate destination for nutritional wellness and healthy lifestyle. We combine delicious food with expert health guidance to help you achieve your optimal well-being.
                             </p>
-                            <div class="md:flex  items-center  gap-3.5" data-aos="fade-up" data-aos-delay="800"
+                            <div class="md:flex items-center gap-3.5" data-aos="fade-up" data-aos-delay="800"
                                 data-aos-duration="1000">
                                 <a class="btn py-3 px-12 mb-3 sm:mb-0 flex justify-center"
-                                    href="../main/authentication-login.html">Masuk</a>
+                                    href="{{ route('login') }}">Login</a>
                                 <a class="btn btn-outline-primary scroll-link px-6 py-3 flex justify-center"
-                                    href="#production-template">Daftar</a>
+                                    href="#services">Our Services</a>
                             </div>
                         </div>
                     </div>
                     <div class="md:col-span-6 col-span-12 xl:block hidden">
-                        <div class="hero-img-slide position-relative bg-lightprimary p-4 rounded overflow-hidden">
-                            <div class="flex flex-row">
-                                <div class>
-                                    <div class="banner-img-1 slideup">
-                                        <img src="../assets/images/hero-img/bannerimg1.svg" alt class />
-                                    </div>
-                                    <div class="banner-img-1 slideup">
-                                        <img src="../assets/images/hero-img/bannerimg1.svg" alt class />
-                                    </div>
-                                </div>
-                                <div class>
-                                    <div class="banner-img-2 slideDown">
-                                        <img src="../assets/images/hero-img/bannerimg2.svg" alt class />
-                                    </div>
-                                    <div class="banner-img-2 slideDown">
-                                        <img src="../assets/images/hero-img/bannerimg2.svg" alt class />
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="hero-img-slide position-relative p-4 rounded overflow-hidden">
+                            <img src="../assets/images/hero-img/hero.jpg" alt="Healthy Food at Nut Castle Cafe" class="rounded-lg shadow-xl" />
                         </div>
                     </div>
                 </div>
@@ -62,1387 +42,414 @@
         </section>
         <!-- Hero Section End-->
 
-        <!-- Hero Section -->
-        <section class="hero-section overflow-hidden items-center mb-12">
+        <!-- About Us Section -->
+        <section id="about-us" class="overflow-hidden items-center mb-12">
             <div class="container container-xl">
                 <div class="grid grid-cols-12 gap-6 items-center">
                     <div class="xl:col-span-6 col-span-12">
                         <div class="xl:pt-0 pt-8">
-                            <div class="banner-img-1 slideup">
-                                <img src="../assets/images/hero-img/bannerimg1.svg" alt class />
+                            <div class="rounded-lg overflow-hidden shadow-lg">
+                                <img src="../assets/images/hero-img/about-us.jpg" alt="About Nut Castle" class="w-full h-auto" />
                             </div>
                         </div>
                     </div>
-                    <div class="md:col-span-6 col-span-12 xl:block hidden">
+                    <div class="md:col-span-6 col-span-12">
                         <div class="xl:pt-0 pt-8">
-                            <h1 class="font-bold mb-7 lg:text-[55px] lg:leading-[66px] text-4xl" data-aos="fade-up"
+                            <h2 class="font-bold mb-7 text-4xl" data-aos="fade-up"
                                 data-aos-delay="400" data-aos-duration="1000">
-                                Tentang
-                                <br>
+                                About
                                 <span class="text-primary">
-                                    ASN Indonesia</span>
-                            </h1>
-                            <p class="text-lg mb-10" data-aos="fade-up" data-aos-delay="600" data-aos-duration="1000">
-                                ASN Indonesia sudah banyak bantu calon ASN lulus ujian sejak 2019. Kami memahami masalah dan kendala belajar yang dialami pejuang ASN selama ini.
-<br>
-Lami ingin membantu lebih banyak calon ASN untuk lulus seleksi dan meraih mimpinya. Selalu berupaya memberikan fasilitas belajar terbaik untuk meningkatkan pemahaman dan kesiapan calon ASN menghadapi tes seleksi
+                                    Nut Castle Cafe</span>
+                            </h2>
+                            <p class="text-lg mb-6" data-aos="fade-up" data-aos-delay="600" data-aos-duration="1000">
+                                Established in 2020, Nut Castle Cafe is more than just a cafe - it's a wellness hub dedicated to promoting healthy living through nutrition and fitness.
+                            </p>
+                            <p class="text-lg mb-6" data-aos="fade-up" data-aos-delay="600" data-aos-duration="1000">
+                                Our mission is to create a community where health-conscious individuals can enjoy nutritious meals, receive expert guidance, and participate in wellness activities that enhance their quality of life.
+                            </p>
+                            <p class="text-lg mb-6" data-aos="fade-up" data-aos-delay="600" data-aos-duration="1000">
+                                At Nut Castle, we combine the science of nutrition with the art of culinary excellence to create dishes that are both delicious and beneficial for your body.
                             </p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <!-- Hero Section End-->
+        <!-- About Us Section End-->
 
-        <!-- Product Section -->
-        <section class="mb-10" id="production-template">
+        <!-- Services Section -->
+        <section id="services" class="mb-16 pt-8 pb-16 bg-lightgray dark:bg-darkprimary">
             <div class="container relative container-xl">
                 <div class="lg:w-3/5 w-full mx-auto" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
-
-                    <h2 class="text-center font-bold md:text-4xl text-2xl mb-14">
-                        Paket Belajar
+                    <h2 class="text-center font-bold md:text-4xl text-2xl mb-6">
+                        Our Services
                     </h2>
                     <p class="text-lg mb-10 text-center" data-aos="fade-up" data-aos-delay="600" data-aos-duration="1000">
-                        Pilih paket yang paling sesuai untuk mendukung proses belajar kamu
+                        Comprehensive wellness solutions tailored to your health needs
                     </p>
                 </div>
 
-                <!-- Demos -->
-                <div class="text-center mb-8">
-                    <span class="items-center badge-md text-base bg-primary text-white py-2">Demos</span>
-                </div>
-                <div class="container full-container py-5">
-
-
-                    <!---Pricing Card--->
-                    <div class="grid grid-cols-12 gap-6 mt-6">
-                        <div class="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12">
-                            <div class="card">
-                                <div class="card-body">
-                                    <span class="font-bold text-xs text-dark dark:text-darklink uppercase
-                                    ">Silver</span>
-                                    <div class="my-7">
-                                        <img src="../assets/images/backgrounds/silver.png" alt=""
-                                            class="h-20 w-20">
-                                    </div>
-                                    <h2 class="font-bold text-5xl mb-3">Free</h2>
-                                    <ul class="mb-7">
-                                        <li class="flex items-center gap-2 py-2">
-                                            <i class="ti ti-check text-primary text-base"></i>
-                                            <span class="text-sm text-link dark:text-darklink
-                                          ">3 Members</span>
-                                        </li>
-                                        <li class="flex items-center gap-2 py-2">
-                                            <i class="ti ti-check text-primary text-base"></i>
-                                            <span class="text-sm text-link dark:text-darklink
-                                          ">Single Device</span>
-                                        </li>
-                                        <li class="flex items-center gap-2 py-2">
-                                            <i
-                                                class="ti ti-x text-link dark:text-darklink opacity-60 text-base "></i>
-                                            <span class="text-sm text-link dark:text-darklink opacity-60
-                                          ">50GB Storage</span>
-                                        </li>
-                                        <li class="flex items-center gap-2 py-2">
-                                            <i
-                                                class="ti ti-x text-link dark:text-darklink opacity-60 text-base"></i>
-                                            <span class="text-sm text-link dark:text-darklink opacity-60
-                                          ">Monthly Backups</span>
-                                        </li>
-                                        <li class="flex items-center gap-2 py-2">
-                                            <i
-                                                class="ti ti-x text-link dark:text-darklink opacity-60 text-base"></i>
-                                            <span class="text-sm text-link dark:text-darklink opacity-60
-                                          ">Permissions & workflows</span>
-                                        </li>
-                                    </ul>
-                                    <button class="btn w-full  py-3.5">Choose Silver</button>
+                <div class="grid grid-cols-12 gap-6 mt-6">
+                    <!-- Service Card 1 -->
+                    <div class="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12">
+                        <div class="card h-full">
+                            <div class="card-body">
+                                <div class="mb-6 text-primary">
+                                    <i class="ti ti-stethoscope text-5xl"></i>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12">
-                            <div class="card">
-                                <div class="card-body relative">
-                                    <div class="absolute right-6 top-4">
-                                        <span
-                                            class="flex  badge-md ms-auto items-center justify-end bg-lightwarning dark:bg-darkwarning text-xs  text-warning w-fit">POPULAR</span>
-                                    </div>
-                                    <span class="font-bold text-xs text-dark dark:text-darklink uppercase
-                                    ">Bronze</span>
-                                    <div class="my-7">
-                                        <img src="../assets/images/backgrounds/bronze.png" alt=""
-                                            class="h-20 w-20">
-                                    </div>
-                                    <div class="flex mb-3">
-                                        <h5 class="font-bold mb-0 text-lg">$</h5>
-                                        <h2 class="font-bold text-5xl ms-2 mb-0">4.99</h2>
-                                        <span class="text-link dark:text-white ms-2 text-base flex items-center">/mo</span>
-                                      </div>
-                                    <ul class="mb-7">
-                                        <li class="flex items-center gap-2 py-2">
-                                            <i class="ti ti-check text-primary text-base"></i>
-                                            <span class="text-sm text-link dark:text-darklink
-                                          ">4 Members</span>
-                                        </li>
-                                        <li class="flex items-center gap-2 py-2">
-                                            <i class="ti ti-check text-primary text-base"></i>
-                                            <span class="text-sm text-link dark:text-darklink
-                                          ">Single Device</span>
-                                        </li>
-                                        <li class="flex items-center gap-2 py-2">
-                                            <i
-                                                class="ti ti-check text-primary text-base"></i>
-                                            <span class="text-sm text-link dark:text-darklink
-                                          ">80GB Storage</span>
-                                        </li>
-                                        <li class="flex items-center gap-2 py-2">
-                                            <i
-                                                class="ti ti-x text-link dark:text-darklink opacity-60 text-base"></i>
-                                            <span class="text-sm text-link dark:text-darklink opacity-60
-                                          ">Monthly Backups</span>
-                                        </li>
-                                        <li class="flex items-center gap-2 py-2">
-                                            <i
-                                                class="ti ti-x text-link dark:text-darklink opacity-60 text-base"></i>
-                                            <span class="text-sm text-link dark:text-darklink opacity-60
-                                          ">Permissions & workflows</span>
-                                        </li>
-                                    </ul>
-                                    <button class="btn w-full  py-3.5">Choose Bronze</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12">
-                            <div class="card">
-                                <div class="card-body">
-                                    <span class="font-bold text-xs text-dark dark:text-darklink uppercase
-                                    ">Gold</span>
-                                    <div class="my-7">
-                                        <img src="../assets/images/backgrounds/gold.png" alt=""
-                                            class="h-20 w-20">
-                                    </div>
-                                    <div class="flex mb-3">
-                                        <h5 class="font-bold mb-0 text-lg">$</h5>
-                                        <h2 class="font-bold text-5xl ms-2 mb-0">9.99</h2>
-                                        <span class="text-link dark:text-white ms-2 text-base flex items-center">/mo</span>
-                                      </div>
-                                    <ul class="mb-7">
-                                        <li class="flex items-center gap-2 py-2">
-                                            <i class="ti ti-check text-primary text-base"></i>
-                                            <span class="text-sm text-link dark:text-darklink
-                                          ">5 Members</span>
-                                        </li>
-                                        <li class="flex items-center gap-2 py-2">
-                                            <i class="ti ti-check text-primary text-base"></i>
-                                            <span class="text-sm text-link dark:text-darklink
-                                          ">Single Device</span>
-                                        </li>
-                                        <li class="flex items-center gap-2 py-2">
-                                            <i
-                                                class="ti ti-check text-primary text-base"></i>
-                                            <span class="text-sm text-link dark:text-darklink
-                                          ">120GB Storage</span>
-                                        </li>
-                                        <li class="flex items-center gap-2 py-2">
-                                            <i
-                                                class="ti ti-check text-primary text-base"></i>
-                                            <span class="text-sm text-link dark:text-darklink
-                                          ">Monthly Backups</span>
-                                        </li>
-                                        <li class="flex items-center gap-2 py-2">
-                                            <i
-                                                class="ti ti-check text-primary text-base"></i>
-                                            <span class="text-sm text-link dark:text-darklink
-                                          ">Permissions & workflows</span>
-                                        </li>
-                                    </ul>
-                                    <button class="btn w-full  py-3.5">Choose Gold</button>
-                                </div>
+                                <h3 class="font-bold text-2xl mb-4">Health Check-ups</h3>
+                                <p class="mb-6">
+                                    Comprehensive health assessments including BMI calculation, body composition analysis, and nutritional evaluation conducted by our certified health professionals.
+                                </p>
+                                <a href="#" class="text-primary font-medium hover:underline flex items-center gap-2">
+                                    Learn more <i class="ti ti-arrow-right"></i>
+                                </a>
                             </div>
                         </div>
                     </div>
-                    <!---Pricing Card End--->
-
-                </div>
-
-                <!-- Apps -->
-                <div class="mt-10">
-                    <div class="text-center mb-8">
-                        <span class="items-center badge-md text-base bg-primary text-white py-2">Apps</span>
+                    
+                    <!-- Service Card 2 -->
+                    <div class="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12">
+                        <div class="card h-full">
+                            <div class="card-body">
+                                <div class="mb-6 text-primary">
+                                    <i class="ti ti-user-circle text-5xl"></i>
+                                </div>
+                                <h3 class="font-bold text-2xl mb-4">Health Consultations</h3>
+                                <p class="mb-6">
+                                    One-on-one sessions with our nutritionists and health experts to create personalized nutrition plans that align with your health goals and dietary preferences.
+                                </p>
+                                <a href="#" class="text-primary font-medium hover:underline flex items-center gap-2">
+                                    Learn more <i class="ti ti-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="grid grid-cols-12  gap-6">
-                        <div class="lg:col-span-3 md:col-span-6 sm:col-span-6 col-span-12">
-                            <div
-                                class="border border-light-dark overflow-hidden rounded-md relative flex justify-center items-center group ">
-                                <img src="../assets/images/apps/app-calendar.jpg" alt class="max-w-full w-full" />
-                                <a target="_blank" href="../main/app-calendar.html"
-                                    class="preview-btn text-sm py-2 px-4 ">Live
-                                    Preview</a>
-                                <div class="bg-overlay">
+                    
+                    <!-- Service Card 3 -->
+                    <div class="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12">
+                        <div class="card h-full">
+                            <div class="card-body">
+                                <div class="mb-6 text-primary">
+                                    <i class="ti ti-bike text-5xl"></i>
                                 </div>
-                            </div>
-                            <div class="text-center p-3 text-sm font-medium text-dark dark:text-white">Calendar</div>
-                        </div>
-                        <div class="lg:col-span-3 md:col-span-6 sm:col-span-6 col-span-12">
-                            <div
-                                class="border border-light-dark overflow-hidden rounded-md relative flex justify-center items-center group ">
-                                <img src="../assets/images/apps/app-chat.jpg" alt class="max-w-full w-full" />
-                                <a target="_blank" href="../main/app-chat.html"
-                                    class="preview-btn text-sm py-2 px-4 ">Live
-                                    Preview</a>
-                                <div class="bg-overlay">
-                                </div>
-                            </div>
-                            <div class="text-center p-3 text-sm font-medium text-dark dark:text-white">Chat</div>
-                        </div>
-                        <div class="lg:col-span-3 md:col-span-6 sm:col-span-6 col-span-12">
-                            <div
-                                class="border border-light-dark overflow-hidden rounded-md relative flex justify-center items-center group">
-                                <img src="../assets/images/apps/app-email.jpg" alt class="max-w-full w-full" />
-                                <a target="_blank" href="../main/app-email.html"
-                                    class="preview-btn text-sm py-2 px-4 ">Live
-                                    Preview</a>
-                                <div class="bg-overlay">
-                                </div>
-                            </div>
-                            <div class="text-center p-3 text-sm font-medium text-dark dark:text-white">Email</div>
-                        </div>
-                        <div class="lg:col-span-3 md:col-span-6 sm:col-span-6 col-span-12">
-                            <div
-                                class="border border-light-dark overflow-hidden rounded-md relative flex justify-center items-center group">
-                                <img src="../assets/images/apps/app-contact.jpg" alt class="max-w-full w-full" />
-                                <a target="_blank" href="../main/app-contact.html"
-                                    class="preview-btn text-sm py-2 px-4 ">Live
-                                    Preview</a>
-                                <div class="bg-overlay">
-                                </div>
-                            </div>
-                            <div class="text-center p-3 text-sm font-medium text-dark dark:text-white">Contact</div>
-                        </div>
-                        <div class="lg:col-span-3 md:col-span-6 sm:col-span-6 col-span-12">
-                            <div
-                                class="border border-light-dark overflow-hidden rounded-md relative flex justify-center items-center group">
-                                <img src="../assets/images/apps/app-invoice.jpg" alt class="max-w-full w-full" />
-                                <a target="_blank" href="../main/app-invoice.html"
-                                    class="preview-btn text-sm py-2 px-4 ">Live
-                                    Preview</a>
-                                <div class="bg-overlay">
-                                </div>
-                            </div>
-                            <div class="text-center p-3 text-sm font-medium text-dark dark:text-white">Invoice</div>
-                        </div>
-                        <div class="lg:col-span-3 md:col-span-6 sm:col-span-6 col-span-12">
-                            <div
-                                class="border border-light-dark overflow-hidden rounded-md relative flex justify-center items-center group">
-                                <img src="../assets/images/apps/modernize-bt-app-contact-list.jpg" alt
-                                    class="max-w-full w-full" />
-                                <a target="_blank" href="../main/app-contact2.html"
-                                    class="preview-btn text-sm py-2 px-4 ">Live
-                                    Preview</a>
-                                <div class="bg-overlay">
-                                </div>
-                            </div>
-                            <div class="text-center p-3 text-sm font-medium text-dark dark:text-white">Contact
-                                List
+                                <h3 class="font-bold text-2xl mb-4">Sports Classes</h3>
+                                <p class="mb-6">
+                                    Group and individual fitness sessions including yoga, pilates, and strength training designed to complement your nutritional journey and enhance overall wellness.
+                                </p>
+                                <a href="#" class="text-primary font-medium hover:underline flex items-center gap-2">
+                                    Learn more <i class="ti ti-arrow-right"></i>
+                                </a>
                             </div>
                         </div>
-                        <div class="lg:col-span-3 md:col-span-6 sm:col-span-6 col-span-12">
-                            <div
-                                class="border border-light-dark overflow-hidden rounded-md relative flex justify-center items-center group">
-                                <img src="../assets/images/apps/app-user-profile.jpg" alt class="max-w-full w-full" />
-                                <a target="_blank" href="../main/page-user-profile.html"
-                                    class="preview-btn text-sm py-2 px-4 ">Live
-                                    Preview</a>
-                                <div class="bg-overlay">
+                    </div>
+                    
+                    <!-- Service Card 4 -->
+                    <div class="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12">
+                        <div class="card h-full">
+                            <div class="card-body">
+                                <div class="mb-6 text-primary">
+                                    <i class="ti ti-apple text-5xl"></i>
                                 </div>
-                            </div>
-                            <div class="text-center p-3 text-sm font-medium text-dark dark:text-white">User
-                                Profile
+                                <h3 class="font-bold text-2xl mb-4">Diet Programs</h3>
+                                <p class="mb-6">
+                                    Customized diet plans tailored to your specific health needs, whether it's weight management, muscle gain, or managing health conditions through nutrition.
+                                </p>
+                                <a href="#" class="text-primary font-medium hover:underline flex items-center gap-2">
+                                    Learn more <i class="ti ti-arrow-right"></i>
+                                </a>
                             </div>
                         </div>
-                        <div class="lg:col-span-3 md:col-span-6 sm:col-span-6 col-span-12">
-                            <div
-                                class="border border-light-dark overflow-hidden rounded-md relative flex justify-center items-center group">
-                                <img src="../assets/images/apps/modernize-vue-app-blog.jpg" alt
-                                    class="max-w-full w-full" />
-                                <a target="_blank" href="../main/blog-posts.html"
-                                    class="preview-btn text-sm py-2 px-4 ">Live
-                                    Preview</a>
-                                <div class="bg-overlay">
+                    </div>
+                    
+                    <!-- Service Card 5 -->
+                    <div class="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12">
+                        <div class="card h-full">
+                            <div class="card-body">
+                                <div class="mb-6 text-primary">
+                                    <i class="ti ti-chef-hat text-5xl"></i>
                                 </div>
-                            </div>
-                            <div class="text-center p-3 text-sm font-medium text-dark dark:text-white">Blog
+                                <h3 class="font-bold text-2xl mb-4">Healthy Cafe</h3>
+                                <p class="mb-6">
+                                    Enjoy our menu of nutritious meals and beverages made from fresh, locally-sourced ingredients that support your health goals while delighting your taste buds.
+                                </p>
+                                <a href="#" class="text-primary font-medium hover:underline flex items-center gap-2">
+                                    View Menu <i class="ti ti-arrow-right"></i>
+                                </a>
                             </div>
                         </div>
-                        <div class="lg:col-span-3 md:col-span-6 sm:col-span-6 col-span-12">
-                            <div
-                                class="border border-light-dark overflow-hidden rounded-md relative flex justify-center items-center group">
-                                <img src="../assets/images/apps/modernize-vue-app-blog-detail.jpg" alt
-                                    class="max-w-full w-full" />
-                                <a target="_blank" href="../main/blog-detail.html"
-                                    class="preview-btn text-sm py-2 px-4 ">Live
-                                    Preview</a>
-                                <div class="bg-overlay">
+                    </div>
+                    
+                    <!-- Service Card 6 -->
+                    <div class="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12">
+                        <div class="card h-full">
+                            <div class="card-body">
+                                <div class="mb-6 text-primary">
+                                    <i class="ti ti-book text-5xl"></i>
                                 </div>
-                            </div>
-                            <div class="text-center p-3 text-sm font-medium text-dark dark:text-white">Blog
-                                Detail
-                            </div>
-                        </div>
-                        <div class="lg:col-span-3 md:col-span-6 sm:col-span-6 col-span-12">
-                            <div
-                                class="border border-light-dark overflow-hidden rounded-md relative flex justify-center items-center group">
-                                <img src="../assets/images/apps/modernize-vue-app-shop.jpg" alt
-                                    class="max-w-full w-full" />
-                                <a target="_blank" href="../main/eco-shop.html"
-                                    class="preview-btn text-sm py-2 px-4 ">Live
-                                    Preview</a>
-                                <div class="bg-overlay">
-                                </div>
-                            </div>
-                            <div class="text-center p-3 text-sm font-medium text-dark dark:text-white">eCommerce
-                                Shop
-                            </div>
-                        </div>
-                        <div class="lg:col-span-3 md:col-span-6 sm:col-span-6 col-span-12">
-                            <div
-                                class="border border-light-dark overflow-hidden rounded-md relative flex justify-center items-center group">
-                                <img src="../assets/images/apps/app-ecommerce-detail.jpg" alt class="max-w-full w-full" />
-                                <a target="_blank" href="../main/eco-shop-detail.html"
-                                    class="preview-btn text-sm py-2 px-4 ">Live
-                                    Preview</a>
-                                <div class="bg-overlay">
-                                </div>
-                            </div>
-                            <div class="text-center p-3 text-sm font-medium text-dark dark:text-white">eCommerce
-                                Detail
-                            </div>
-                        </div>
-                        <div class="lg:col-span-3 md:col-span-6 sm:col-span-6 col-span-12">
-                            <div
-                                class="border border-light-dark overflow-hidden rounded-md relative flex justify-center items-center group">
-                                <img src="../assets/images/apps/app-ecommerce-list.jpg" alt class="max-w-full w-full" />
-                                <a target="_blank" href="../main/eco-product-list.html"
-                                    class="preview-btn text-sm py-2 px-4 ">Live
-                                    Preview</a>
-                                <div class="bg-overlay">
-                                </div>
-                            </div>
-                            <div class="text-center p-3 text-sm font-medium text-dark dark:text-white">eCommerce
-                                List
+                                <h3 class="font-bold text-2xl mb-4">Wellness Workshops</h3>
+                                <p class="mb-6">
+                                    Educational sessions and cooking classes to help you understand nutrition better and learn how to prepare healthy meals at home for continued wellness.
+                                </p>
+                                <a href="#" class="text-primary font-medium hover:underline flex items-center gap-2">
+                                    See Schedule <i class="ti ti-arrow-right"></i>
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
         </section>
-        <!-- Product Section End-->
+        <!-- Services Section End-->
 
-        <!-- Curosel Section-->
-        <section class="bg-lightgray dark:bg-darkprimary py-11">
+        <!-- Activities Section -->
+        <section id="activities" class="py-12">
             <div class="container container-xl">
                 <div class="lg:w-3/5 w-full mx-auto">
-                    <h2 class="text-center font-bold md:text-4xl text-2xl mb-10 pt-11">
-                        Increase speed of your development and
-                        launch quickly with Modernize
+                    <h2 class="text-center font-bold md:text-4xl text-2xl mb-10">
+                        Our Regular Activities
                     </h2>
+                    <p class="text-lg mb-10 text-center" data-aos="fade-up" data-aos-delay="600" data-aos-duration="1000">
+                        Join our community in these regular wellness activities
+                    </p>
                 </div>
-            </div>
-            <div class="sliding-wrapper position-relative overflow-hidden">
-                <div class="slide-background flex flex-row w-100">
-                    <div class="slide">
-                        <img src="../assets/images/slider/slider-group.png" alt="slide" height="100%" />
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Activity 1 -->
+                    <div class="card overflow-hidden">
+                        <div class="h-100 overflow-hidden">
+                            <img src="../assets/images/backgrounds/activity-1.jpg" alt="Morning Yoga" class="w-full h-auto object-cover">
+                        </div>
+                        <div class="card-body">
+                            <span class="badge-primary text-xs font-bold py-1 px-2 rounded mb-3 inline-block">Monday & Wednesday</span>
+                            <h3 class="text-xl font-bold mb-2">Morning Yoga</h3>
+                            <p class="mb-4">Start your day with balance and energy through our guided yoga sessions suitable for all levels.</p>
+                            <div class="flex items-center">
+                                <span class="text-sm"><i class="ti ti-clock mr-1"></i> 7:00 AM - 8:30 AM</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="slide">
-                        <img src="../assets/images/slider/slider-group.png" alt="slide" height="100%" />
+                    
+                    <!-- Activity 2 -->
+                    <div class="card overflow-hidden">
+                        <div class="h-100 overflow-hidden">
+                            <img src="../assets/images/backgrounds/activity-2.jpg" alt="Nutrition Consultation" class="w-full h-auto object-cover">
+                        </div>
+                        <div class="card-body">
+                            <span class="badge-primary text-xs font-bold py-1 px-2 rounded mb-3 inline-block">Tuesday & Thursday</span>
+                            <h3 class="text-xl font-bold mb-2">Nutrition Consultations</h3>
+                            <p class="mb-4">One-on-one sessions with our certified nutritionists to personalize your diet plan.</p>
+                            <div class="flex items-center">
+                                <span class="text-sm"><i class="ti ti-clock mr-1"></i> 10:00 AM - 4:00 PM</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="slide">
-                        <img src="../assets/images/slider/slider-group.png" alt="slide" height="100%" />
+                    
+                    <!-- Activity 3 -->
+                    <div class="card overflow-hidden">
+                        <div class="h-100 overflow-hidden">
+                            <img src="../assets/images/backgrounds/activity-3.jpg" alt="Cooking Workshop" class="w-full h-auto object-cover">
+                        </div>
+                        <div class="card-body">
+                            <span class="badge-primary text-xs font-bold py-1 px-2 rounded mb-3 inline-block">Saturday</span>
+                            <h3 class="text-xl font-bold mb-2">Healthy Cooking Workshop</h3>
+                            <p class="mb-4">Learn to prepare delicious and nutritious meals with our chef's guidance and tips.</p>
+                            <div class="flex items-center">
+                                <span class="text-sm"><i class="ti ti-clock mr-1"></i> 2:00 PM - 4:00 PM</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
-        <!-- Curosel Section End-->
+        <!-- Activities Section End-->
 
         <!-- Testimonial Section -->
-        <section class="py-11 pb-0">
+        <section class="py-12 bg-lightgray dark:bg-darkprimary">
             <div class="container container-xl">
                 <div class="lg:w-3/5 w-full mx-auto">
-                    <h2 class="text-center font-bold md:text-4xl text-2xl mb-10 pt-11" data-aos="fade-up"
-                        data-aos-delay="200" data-aos-duration="1000">
-                        Don’t just take our words for it, See
-                        what developers like you are saying
+                    <h2 class="text-center font-bold md:text-4xl text-2xl mb-10" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
+                        What Our Clients Say
                     </h2>
                 </div>
-                <div class="grid grid-cols-12 gap-6">
-                    <div class="col-span-12">
-                        <div class="review-slider" data-aos="fade-up" data-aos-delay="400" data-aos-duration="1000">
-                            <div class="owl-carousel owl-theme">
-                                <div class="item my-3">
-                                    <div class="card">
-                                        <div class="card-body p-6">
-                                            <div class="flex justify-between mb-4">
-                                                <div class="flex gap-3 items-center">
-                                                    <img src="../assets/images/profile/user-7.jpg" alt
-                                                        class="rounded-full h-10 w-10" />
-                                                    <div>
-                                                        <h6 class="text-base">Jenny
-                                                            Wilson</h6>
-                                                        <p class="mb-0">Features
-                                                            avaibility</p>
-                                                    </div>
-                                                </div>
-                                                <div>
-                                                    <ul class="flex items-center justify-end gap-1 mb-0">
-                                                        <li>
-                                                            <a href>
-                                                                <img src="../assets/images/svgs/icon-star.svg" alt
-                                                                    class="img-fluid">
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href>
-                                                                <img src="../assets/images/svgs/icon-star.svg" alt
-                                                                    class="img-fluid">
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href>
-                                                                <img src="../assets/images/svgs/icon-star.svg" alt
-                                                                    class="img-fluid">
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href>
-                                                                <img src="../assets/images/svgs/icon-star.svg" alt
-                                                                    class="img-fluid">
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href>
-                                                                <img src="../assets/images/svgs/icon-star.svg" alt
-                                                                    class="img-fluid">
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <p class="mb-0 mt-3 text-dark dark:text-white text-base">
-                                                The dashboard
-                                                template from
-                                                adminmart has
-                                                helped me
-                                                provide a clean
-                                                and sleek look
-                                                to my dashboard
-                                                and made
-                                                it look exactly
-                                                the way I wanted
-                                                it to, mainly
-                                                without
-                                                having.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item my-3">
-                                    <div class="card">
-                                        <div class="card-body p-6">
-                                            <div class="flex justify-between mb-4">
-                                                <div class="flex gap-3 items-center">
-                                                    <img src="../assets/images/profile/user-2.jpg" alt
-                                                        class="rounded-full h-10 w-10" />
-                                                    <div>
-                                                        <h6 class="text-base">Minshan
-                                                            Cui</h6>
-                                                        <p class="mb-0">Features
-                                                            avaibility</p>
-                                                    </div>
-                                                </div>
-                                                <div>
-                                                    <ul class="flex items-center justify-end gap-1 mb-0">
-                                                        <li>
-                                                            <a href>
-                                                                <img src="../assets/images/svgs/icon-star.svg" alt
-                                                                    class="img-fluid">
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href>
-                                                                <img src="../assets/images/svgs/icon-star.svg" alt
-                                                                    class="img-fluid">
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href>
-                                                                <img src="../assets/images/svgs/icon-star.svg" alt
-                                                                    class="img-fluid">
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href>
-                                                                <img src="../assets/images/svgs/icon-star.svg" alt
-                                                                    class="img-fluid">
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href>
-                                                                <img src="../assets/images/svgs/icon-star.svg" alt
-                                                                    class="img-fluid">
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <p class="mb-0 mt-3 text-dark dark:text-white text-base">
-                                                The quality of
-                                                design is
-                                                excellent,
-                                                customizability
-                                                and
-                                                flexibility much
-                                                better than the
-                                                other products
-                                                available in the
-                                                market. I
-                                                strongly
-                                                recommend the
-                                                AdminMart to
-                                                other buyers.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item my-3">
-                                    <div class="card">
-                                        <div class="card-body p-6">
-                                            <div class="flex justify-between mb-4">
-                                                <div class="flex gap-3 items-center">
-                                                    <img src="../assets/images/profile/user-3.jpg" alt
-                                                        class="rounded-full h-10 w-10" />
-                                                    <div>
-                                                        <h6 class="text-base">Eminson
-                                                            Mendoza</h6>
-                                                        <p class="mb-0">Features
-                                                            avaibility</p>
-                                                    </div>
-                                                </div>
-                                                <div>
-                                                    <ul class="flex items-center justify-end gap-1 mb-0">
-                                                        <li>
-                                                            <a href>
-                                                                <img src="../assets/images/svgs/icon-star.svg" alt
-                                                                    class="img-fluid">
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href>
-                                                                <img src="../assets/images/svgs/icon-star.svg" alt
-                                                                    class="img-fluid">
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href>
-                                                                <img src="../assets/images/svgs/icon-star.svg" alt
-                                                                    class="img-fluid">
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href>
-                                                                <img src="../assets/images/svgs/icon-star.svg" alt
-                                                                    class="img-fluid">
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href>
-                                                                <img src="../assets/images/svgs/icon-star.svg" alt
-                                                                    class="img-fluid">
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <p class="mb-0 mt-3 text-dark dark:text-white text-base">
-                                                This template is
-                                                great, UI-rich
-                                                and up-to-date.
-                                                Although
-                                                it is pretty
-                                                much complete, I
-                                                suggest to
-                                                improve a bit
-                                                of
-                                                documentation.
-                                                Thanks & Highly
-                                                recomended!
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item my-3">
-                                    <div class="card">
-                                        <div class="card-body p-6">
-                                            <div class="flex justify-between mb-4">
-                                                <div class="flex gap-3 items-center">
-                                                    <img src="../assets/images/profile/user-7.jpg" alt
-                                                        class="rounded-full h-10 w-10" />
-                                                    <div>
-                                                        <h6 class="text-base">Jenny
-                                                            Wilson</h6>
-                                                        <p class="mb-0">Features
-                                                            avaibility</p>
-                                                    </div>
-                                                </div>
-                                                <div>
-                                                    <ul class="flex items-center justify-end gap-1 mb-0">
-                                                        <li>
-                                                            <a href>
-                                                                <img src="../assets/images/svgs/icon-star.svg" alt
-                                                                    class="img-fluid">
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href>
-                                                                <img src="../assets/images/svgs/icon-star.svg" alt
-                                                                    class="img-fluid">
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href>
-                                                                <img src="../assets/images/svgs/icon-star.svg" alt
-                                                                    class="img-fluid">
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href>
-                                                                <img src="../assets/images/svgs/icon-star.svg" alt
-                                                                    class="img-fluid">
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href>
-                                                                <img src="../assets/images/svgs/icon-star.svg" alt
-                                                                    class="img-fluid">
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <p class="mb-0 mt-3 text-dark dark:text-white text-base">
-                                                The dashboard
-                                                template from
-                                                adminmart has
-                                                helped me
-                                                provide a clean
-                                                and sleek look
-                                                to my dashboard
-                                                and made
-                                                it look exactly
-                                                the way I wanted
-                                                it to, mainly
-                                                without
-                                                having.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item my-3">
-                                    <div class="card">
-                                        <div class="card-body p-6">
-                                            <div class="flex justify-between mb-4">
-                                                <div class="flex gap-3 items-center">
-                                                    <img src="../assets/images/profile/user-2.jpg" alt
-                                                        class="rounded-full h-10 w-10" />
-                                                    <div>
-                                                        <h6 class="text-base">Minshan
-                                                            Cui</h6>
-                                                        <p class="mb-0">Features
-                                                            avaibility</p>
-                                                    </div>
-                                                </div>
-                                                <div>
-                                                    <ul class="flex items-center justify-end gap-1 mb-0">
-                                                        <li>
-                                                            <a href>
-                                                                <img src="../assets/images/svgs/icon-star.svg" alt
-                                                                    class="img-fluid">
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href>
-                                                                <img src="../assets/images/svgs/icon-star.svg" alt
-                                                                    class="img-fluid">
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href>
-                                                                <img src="../assets/images/svgs/icon-star.svg" alt
-                                                                    class="img-fluid">
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href>
-                                                                <img src="../assets/images/svgs/icon-star.svg" alt
-                                                                    class="img-fluid">
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href>
-                                                                <img src="../assets/images/svgs/icon-star.svg" alt
-                                                                    class="img-fluid">
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <p class="mb-0 mt-3 text-dark dark:text-white text-base">
-                                                The quality of
-                                                design is
-                                                excellent,
-                                                customizability
-                                                and
-                                                flexibility much
-                                                better than the
-                                                other products
-                                                available in the
-                                                market. I
-                                                strongly
-                                                recommend the
-                                                AdminMart to
-                                                other buyers.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item my-3">
-                                    <div class="card">
-                                        <div class="card-body p-6">
-                                            <div class="flex justify-between mb-4">
-                                                <div class="flex gap-3 items-center">
-                                                    <img src="../assets/images/profile/user-3.jpg" alt
-                                                        class="rounded-full h-10 w-10" />
-                                                    <div>
-                                                        <h6 class="text-base">Eminson
-                                                            Mendoza</h6>
-                                                        <p class="mb-0">Features
-                                                            avaibility</p>
-                                                    </div>
-                                                </div>
-                                                <div>
-                                                    <ul class="flex items-center justify-end gap-1 mb-0">
-                                                        <li>
-                                                            <a href>
-                                                                <img src="../assets/images/svgs/icon-star.svg" alt
-                                                                    class="img-fluid">
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href>
-                                                                <img src="../assets/images/svgs/icon-star.svg" alt
-                                                                    class="img-fluid">
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href>
-                                                                <img src="../assets/images/svgs/icon-star.svg" alt
-                                                                    class="img-fluid">
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href>
-                                                                <img src="../assets/images/svgs/icon-star.svg" alt
-                                                                    class="img-fluid">
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href>
-                                                                <img src="../assets/images/svgs/icon-star.svg" alt
-                                                                    class="img-fluid">
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <p class="mb-0 mt-3 text-dark dark:text-white text-base">
-                                                This template is
-                                                great, UI-rich
-                                                and up-to-date.
-                                                Although
-                                                it is pretty
-                                                much complete, I
-                                                suggest to
-                                                improve a bit
-                                                of
-                                                documentation.
-                                                Thanks & Highly
-                                                recomended!
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item my-3">
-                                    <div class="card">
-                                        <div class="card-body p-6">
-                                            <div class="flex justify-between mb-4">
-                                                <div class="flex gap-3 items-center">
-                                                    <img src="../assets/images/profile/user-7.jpg" alt
-                                                        class="rounded-full h-10 w-10" />
-                                                    <div>
-                                                        <h6 class="text-base">Jenny
-                                                            Wilson</h6>
-                                                        <p class="mb-0">Features
-                                                            avaibility</p>
-                                                    </div>
-                                                </div>
-                                                <div>
-                                                    <ul class="flex items-center justify-end gap-1 mb-0">
-                                                        <li>
-                                                            <a href>
-                                                                <img src="../assets/images/svgs/icon-star.svg" alt
-                                                                    class="img-fluid">
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href>
-                                                                <img src="../assets/images/svgs/icon-star.svg" alt
-                                                                    class="img-fluid">
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href>
-                                                                <img src="../assets/images/svgs/icon-star.svg" alt
-                                                                    class="img-fluid">
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href>
-                                                                <img src="../assets/images/svgs/icon-star.svg" alt
-                                                                    class="img-fluid">
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href>
-                                                                <img src="../assets/images/svgs/icon-star.svg" alt
-                                                                    class="img-fluid">
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <p class="mb-0 mt-3 text-dark dark:text-white text-base">
-                                                The dashboard
-                                                template from
-                                                adminmart has
-                                                helped me
-                                                provide a clean
-                                                and sleek look
-                                                to my dashboard
-                                                and made
-                                                it look exactly
-                                                the way I wanted
-                                                it to, mainly
-                                                without
-                                                having.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item my-3">
-                                    <div class="card">
-                                        <div class="card-body p-6">
-                                            <div class="flex justify-between mb-4">
-                                                <div class="flex gap-3 items-center">
-                                                    <img src="../assets/images/profile/user-2.jpg" alt
-                                                        class="rounded-full h-10 w-10" />
-                                                    <div>
-                                                        <h6 class="text-base">Minshan
-                                                            Cui</h6>
-                                                        <p class="mb-0">Features
-                                                            avaibility</p>
-                                                    </div>
-                                                </div>
-                                                <div>
-                                                    <ul class="flex items-center justify-end gap-1 mb-0">
-                                                        <li>
-                                                            <a href>
-                                                                <img src="../assets/images/svgs/icon-star.svg" alt
-                                                                    class="img-fluid">
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href>
-                                                                <img src="../assets/images/svgs/icon-star.svg" alt
-                                                                    class="img-fluid">
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href>
-                                                                <img src="../assets/images/svgs/icon-star.svg" alt
-                                                                    class="img-fluid">
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href>
-                                                                <img src="../assets/images/svgs/icon-star.svg" alt
-                                                                    class="img-fluid">
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href>
-                                                                <img src="../assets/images/svgs/icon-star.svg" alt
-                                                                    class="img-fluid">
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <p class="mb-0 mt-3 text-dark dark:text-white text-base">
-                                                The quality of
-                                                design is
-                                                excellent,
-                                                customizability
-                                                and
-                                                flexibility much
-                                                better than the
-                                                other products
-                                                available in the
-                                                market. I
-                                                strongly
-                                                recommend the
-                                                AdminMart to
-                                                other buyers.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item my-3">
-                                    <div class="card">
-                                        <div class="card-body p-6">
-                                            <div class="flex justify-between mb-4">
-                                                <div class="flex gap-3 items-center">
-                                                    <img src="../assets/images/profile/user-3.jpg" alt
-                                                        class="rounded-full h-10 w-10" />
-                                                    <div>
-                                                        <h6 class="text-base">Eminson
-                                                            Mendoza</h6>
-                                                        <p class="mb-0">Features
-                                                            avaibility</p>
-                                                    </div>
-                                                </div>
-                                                <div>
-                                                    <ul class="flex items-center justify-end gap-1 mb-0">
-                                                        <li>
-                                                            <a href>
-                                                                <img src="../assets/images/svgs/icon-star.svg" alt
-                                                                    class="img-fluid">
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href>
-                                                                <img src="../assets/images/svgs/icon-star.svg" alt
-                                                                    class="img-fluid">
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href>
-                                                                <img src="../assets/images/svgs/icon-star.svg" alt
-                                                                    class="img-fluid">
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href>
-                                                                <img src="../assets/images/svgs/icon-star.svg" alt
-                                                                    class="img-fluid">
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href>
-                                                                <img src="../assets/images/svgs/icon-star.svg" alt
-                                                                    class="img-fluid">
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <p class="mb-0 mt-3 text-dark dark:text-white text-base">
-                                                This template is
-                                                great, UI-rich
-                                                and up-to-date.
-                                                Although
-                                                it is pretty
-                                                much complete, I
-                                                suggest to
-                                                improve a bit
-                                                of
-                                                documentation.
-                                                Thanks & Highly
-                                                recomended!
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item my-3">
-                                    <div class="card">
-                                        <div class="card-body p-6">
-                                            <div class="flex justify-between mb-4">
-                                                <div class="flex gap-3 items-center">
-                                                    <img src="../assets/images/profile/user-7.jpg" alt
-                                                        class="rounded-full h-10 w-10" />
-                                                    <div>
-                                                        <h6 class="text-base">Jenny
-                                                            Wilson</h6>
-                                                        <p class="mb-0">Features
-                                                            avaibility</p>
-                                                    </div>
-                                                </div>
-                                                <div>
-                                                    <ul class="flex items-center justify-end gap-1 mb-0">
-                                                        <li>
-                                                            <a href>
-                                                                <img src="../assets/images/svgs/icon-star.svg" alt
-                                                                    class="img-fluid">
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href>
-                                                                <img src="../assets/images/svgs/icon-star.svg" alt
-                                                                    class="img-fluid">
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href>
-                                                                <img src="../assets/images/svgs/icon-star.svg" alt
-                                                                    class="img-fluid">
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href>
-                                                                <img src="../assets/images/svgs/icon-star.svg" alt
-                                                                    class="img-fluid">
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href>
-                                                                <img src="../assets/images/svgs/icon-star.svg" alt
-                                                                    class="img-fluid">
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <p class="mb-0 mt-3 text-dark dark:text-white text-base">
-                                                The dashboard
-                                                template from
-                                                adminmart has
-                                                helped me
-                                                provide a clean
-                                                and sleek look
-                                                to my dashboard
-                                                and made
-                                                it look exactly
-                                                the way I wanted
-                                                it to, mainly
-                                                without
-                                                having.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Testimonial 1 -->
+                    <div class="card p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="text-yellow-400 flex">
+                                <i class="ti ti-star-filled"></i>
+                                <i class="ti ti-star-filled"></i>
+                                <i class="ti ti-star-filled"></i>
+                                <i class="ti ti-star-filled"></i>
+                                <i class="ti ti-star-filled"></i>
+                            </div>
+                        </div>
+                        <p class="mb-6 italic">"The personalized diet plan from Nut Castle completely transformed my relationship with food. I've lost 15kg in 6 months and feel more energetic than ever!"</p>
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                                <img src="../assets/images/profile/user-1.jpg" alt="Sarah M." class="w-full h-full object-cover">
+                            </div>
+                            <div>
+                                <h5 class="font-bold">Sarah M.</h5>
+                                <span class="text-sm">Diet Program Client</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 2 -->
+                    <div class="card p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="text-yellow-400 flex">
+                                <i class="ti ti-star-filled"></i>
+                                <i class="ti ti-star-filled"></i>
+                                <i class="ti ti-star-filled"></i>
+                                <i class="ti ti-star-filled"></i>
+                                <i class="ti ti-star-filled"></i>
+                            </div>
+                        </div>
+                        <p class="mb-6 italic">"The yoga classes at Nut Castle are exceptional. The instructors are knowledgeable and the atmosphere is so calming. It's become my favorite part of the week!"</p>
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                                <img src="../assets/images/profile/user-2.jpg" alt="Michael T." class="w-full h-full object-cover">
+                            </div>
+                            <div>
+                                <h5 class="font-bold">Michael T.</h5>
+                                <span class="text-sm">Yoga Class Member</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 3 -->
+                    <div class="card p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="text-yellow-400 flex">
+                                <i class="ti ti-star-filled"></i>
+                                <i class="ti ti-star-filled"></i>
+                                <i class="ti ti-star-filled"></i>
+                                <i class="ti ti-star-filled"></i>
+                                <i class="ti ti-star-filled"></i>
+                            </div>
+                        </div>
+                        <p class="mb-6 italic">"Not only is the food at Nut Castle delicious, but the nutritional guidance has helped me manage my diabetes better than ever. I'm so grateful for their expertise!"</p>
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                                <img src="../assets/images/profile/user-3.jpg" alt="Emma L." class="w-full h-full object-cover">
+                            </div>
+                            <div>
+                                <h5 class="font-bold">Emma L.</h5>
+                                <span class="text-sm">Health Consultation Client</span>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
         </section>
-        <!---Testimonial Section End--->
+        <!-- Testimonial Section End-->
 
-        <!-- Feature Section -->
-        <section class="py-11">
+        <!-- Location Section -->
+        <section id="location" class="py-12">
             <div class="container container-xl">
-                <div class="lg:w-3/5 w-full mx-auto" data-aos="fade-up" data-aos-delay="600" data-aos-duration="1000">
+                <div class="lg:w-3/5 w-full mx-auto mb-10">
+                    <h2 class="text-center font-bold md:text-4xl text-2xl mb-6">Visit Us</h2>
+                    <p class="text-lg text-center">Come experience wellness at our convenient location</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div class="card p-0 overflow-hidden">
+                        <div class="h-96 w-full">
+                            <!-- Replace with actual map or image of location -->
+                            <img src="../assets/images/backgrounds/map.jpg" alt="Map location" class="w-full h-full object-cover">
+                        </div>
+                    </div>
                     <div>
-                        <p class="text-primary font-medium text-center mb-3">ALMOST
-                            COVERED EVERYTHING</p>
-                        <h2 class="text-center font-bold md:text-4xl text-2xl">
-                            Other Amazing Features & Flexibility
-                            Provided
-                        </h2>
-                    </div>
-                </div>
-                <div class="grid grid-cols-12 gap-x-4 gap-y-6 mt-12">
-                    <div class="lg:col-span-3 md:col-span-4 col-span-12" data-aos="fade-up" data-aos-delay="800"
-                        data-aos-duration="1000">
-                        <div class="text-center mb-5">
-                            <i class="block ti ti-wand text-primary text-4xl mb-2"></i>
-                            <h5 class="font-semibold text-lg mb-1">6
-                                Theme Colors</h5>
-                            <p class="mb-0 text-dark dark:text-darklink">
-                                We have included 6 pre-defined
-                                Theme Colors with Elegant
-                                Admin.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="lg:col-span-3 md:col-span-4 col-span-12" data-aos="fade-up" data-aos-delay="800"
-                        data-aos-duration="1000">
-                        <div class="text-center mb-5">
-                            <i class="block ti ti-layout-sidebar text-primary text-4xl mb-2"></i>
-                            <h5 class="text-lg mb-1">Dark
-                                & Light Sidebar</h5>
-                            <p class="mb-0 text-dark dark:text-darklink">
-                                Included Dark and Light Sidebar
-                                for getting desire look and
-                                feel.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="lg:col-span-3 md:col-span-4 col-span-12" data-aos="fade-up" data-aos-delay="800"
-                        data-aos-duration="1000">
-                        <div class="text-center mb-5">
-                            <i class="block ti ti-archive text-primary text-4xl mb-2"></i>
-                            <h5 class="text-lg mb-1">425+
-                                Page Templates</h5>
-                            <p class="mb-0 text-dark dark:text-darklink">
-                                Yes, we have 5 demos & 79+ Pages
-                                per demo to make it easier.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="lg:col-span-3 md:col-span-4 col-span-12" data-aos="fade-up" data-aos-delay="800"
-                        data-aos-duration="1000">
-                        <div class="text-center mb-5">
-                            <i class="block ti ti-adjustments text-primary text-4xl mb-2"></i>
-                            <h5 class="text-lg mb-1">150+
-                                UI Components</h5>
-                            <p class="mb-0 text-dark dark:text-darklink">
-                                Almost 150+ UI Components being
-                                given with Modernize Admin
-                                Pack.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="lg:col-span-3 md:col-span-4 col-span-12" data-aos="fade-up" data-aos-delay="800"
-                        data-aos-duration="1000">
-                        <div class="text-center mb-5">
-                            <i class="block ti ti-tag text-primary text-4xl mb-2"></i>
-                            <h5 class="text-lg mb-1">Tailwind
-                                3x</h5>
-                            <p class="mb-0 text-dark dark:text-darklink">
-                                Its been made with Tailwind
-                                3 and full responsive
-                                layout.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="lg:col-span-3 md:col-span-4 col-span-12" data-aos="fade-up" data-aos-delay="800"
-                        data-aos-duration="1000">
-                        <div class="text-center mb-5">
-                            <i class="block ti ti-diamond text-primary text-4xl mb-2"></i>
-                            <h5 class="text-lg mb-1">3400+
-                                Font Icons</h5>
-                            <p class="mb-0 text-dark dark:text-darklink">
-                                Lots of Icon Fonts are included
-                                here in the package of
-                                Elegant Admin.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="lg:col-span-3 md:col-span-4 col-span-12" data-aos="fade-up" data-aos-delay="800"
-                        data-aos-duration="1000">
-                        <div class="text-center mb-5">
-                            <i class="block ti ti-device-desktop text-primary text-4xl mb-2"></i>
-                            <h5 class="text-lg mb-1">Fully
-                                Responsive</h5>
-                            <p class="mb-0 text-dark dark:text-darklink">
-                                All the layout of Modernize
-                                Admin is Fully Responsive and
-                                widely tested.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="lg:col-span-3 md:col-span-4 col-span-12" data-aos="fade-up" data-aos-delay="800"
-                        data-aos-duration="1000">
-                        <div class="text-center mb-5">
-                            <i class="block ti ti-database text-primary text-4xl mb-2"></i>
-                            <h5 class="text-lg mb-1">Preline
-                                UI</h5>
-                            <p class="mb-0 text-dark dark:text-darklink">
-                                Built with Tailwind css preline
-                                + gulp task manager.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="lg:col-span-3 md:col-span-4 col-span-12" data-aos="fade-up" data-aos-delay="800"
-                        data-aos-duration="1000">
-                        <div class="text-center mb-5">
-                            <i class="block ti ti-arrows-shuffle text-primary text-4xl mb-2"></i>
-                            <h5 class="text-lg mb-1">Easy
-                                to Customize</h5>
-                            <p class="mb-0 text-dark dark:text-darklink">
-                                Customization will be easy as we
-                                understand your pain.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="lg:col-span-3 md:col-span-4 col-span-12" data-aos="fade-up" data-aos-delay="800"
-                        data-aos-duration="1000">
-                        <div class="text-center mb-5">
-                            <i class="block ti ti-chart-pie text-primary text-4xl mb-2"></i>
-                            <h5 class="text-lg mb-1">Lots
-                                of Chart Options</h5>
-                            <p class="mb-0 text-dark dark:text-darklink">
-                                You name it and we have it, Yes
-                                lots of variations for
-                                Charts.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="lg:col-span-3 md:col-span-4 col-span-12" data-aos="fade-up" data-aos-delay="800"
-                        data-aos-duration="1000">
-                        <div class="text-center mb-5">
-                            <i class="block ti ti-layers-intersect text-primary text-4xl mb-2"></i>
-                            <h5 class="text-lg mb-1">Lots
-                                of Table Examples</h5>
-                            <p class="mb-0 text-dark dark:text-darklink">
-                                Data Tables are initial
-                                requirement and we added them.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="lg:col-span-3 md:col-span-4 col-span-12" data-aos="fade-up" data-aos-delay="800"
-                        data-aos-duration="1000">
-                        <div class="text-center mb-5">
-                            <i class="block ti ti-refresh text-primary text-4xl mb-2"></i>
-                            <h5 class="text-lg mb-1">Regular
-                                Updates</h5>
-                            <p class="mb-0 text-dark dark:text-darklink">
-                                We are constantly updating our
-                                pack with new features.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="lg:col-span-3 md:col-span-4 col-span-12" data-aos="fade-up" data-aos-delay="800"
-                        data-aos-duration="1000">
-                        <div class="text-center mb-5">
-                            <i class="block ti ti-book text-primary text-4xl mb-2"></i>
-                            <h5 class="text-lg mb-1">Detailed
-                                Documentation</h5>
-                            <p class="mb-0 text-dark dark:text-darklink">
-                                We have made detailed
-                                documentation, so it will easy
-                                to use.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="lg:col-span-3 md:col-span-4 col-span-12" data-aos="fade-up" data-aos-delay="800"
-                        data-aos-duration="1000">
-                        <div class="text-center mb-5">
-                            <i class="block ti ti-calendar text-primary text-4xl mb-2"></i>
-                            <h5 class="text-lg mb-1">Calendar
-                                Design</h5>
-                            <p class="mb-0 text-dark dark:text-darklink">
-                                Calendar is available with our
-                                package & in nice design.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="lg:col-span-3 md:col-span-4 col-span-12" data-aos="fade-up" data-aos-delay="800"
-                        data-aos-duration="1000">
-                        <div class="text-center mb-5">
-                            <i class="block ti ti-brand-wechat text-primary text-4xl mb-2"></i>
-                            <h5 class="text-lg mb-1">Dedicated
-                                Support</h5>
-                            <p class="mb-0 text-dark dark:text-darklink">
-                                We believe in supreme support is
-                                key and we offer that.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Feature Section End-->
-
-        <!-- Discord Section -->
-        <section class="py-11">
-            <div class="container container-xl">
-                <div class="lg:w-2/4 w-full mx-auto" data-aos="fade-up" data-aos-delay="1600" data-aos-duration="1000">
-                    <div class="card bg-center bg-no-repeat"
-                        style="background-image: url(../assets/images/backgrounds/line-bg.svg);">
-                        <div class="card-body pb-10 text-center">
-                            <h3 class="text-2xl">
-                                Haven't found an answer to your
-                                question?
-                            </h3>
-                            <p class>
-                                Connect with us either on
-                                discord or email us
-                            </p>
-                            <div class="sm:flex justify-center gap-4 mt-8">
-                                <a href="https://discord.com/invite/eMzE8F6Wqs" target="_blank"
-                                    class="btn py-3 px-6 mb-3 sm:mb-0 flex justify-center" type="button">Ask on
-                                    Discord</a>
-                                <a href="https://adminmart.com/support" target="_blank"
-                                    class="btn bg-transparent border border-secondary hover:bg-secondary text-secondary px-6 hover:text-white scroll-link  py-3 flex justify-center "
-                                    type="button">Submit
-                                    Ticket</a>
+                        <h3 class="text-2xl font-bold mb-4">Contact Information</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <i class="ti ti-map-pin text-primary text-xl mr-4 mt-1"></i>
+                                <p>123 Wellness Street<br>Healthy District<br>Nutrition City, 45678</p>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="ti ti-phone text-primary text-xl mr-4"></i>
+                                <p>(123) 456-7890</p>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="ti ti-mail text-primary text-xl mr-4"></i>
+                                <p>info@nutcastlecafe.com</p>
+                            </div>
+                            <div class="space-y-2">
+                                <h4 class="font-bold text-lg">Opening Hours:</h4>
+                                <p>Monday - Friday: 7:00 AM - 9:00 PM</p>
+                                <p>Saturday: 8:00 AM - 8:00 PM</p>
+                                <p>Sunday: 9:00 AM - 6:00 PM</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <!-- Discord Section End-->
+        <!-- Location Section End-->
 
-        <!-- Login Section -->
-        <section class=" mt-11 bg-primary overflow-hidden">
+        <!-- CTA Section -->
+        <section class="mt-8 bg-primary overflow-hidden py-16 text-white">
             <div class="container container-xl">
                 <div class="grid grid-cols-12 gap-6 justify-between items-center">
-                    <div class="xl:col-span-5 lg:col-span-7 col-span-12 lg:text-left text-center">
-                        <h2 class="font-bold lg:text-4xl text-3xl text-white mb-7 lg:pt-0 pt-10">
-                            Build your app with our highly
-                            customizable Tailwind based
-                            Dashboard
-                        </h2>
-                        <div class="sm:flex lg:justify-start justify-center gap-4">
-                            <a href="../main/authentication-login.html"
-                                class="btn bg-white text-primary hover:bg-white py-3  px-8 mb-3 sm:mb-0 flex justify-center">Login</a>
-                            <a href="../main/authentication-register.html"
-                                class="btn border border-white hover:bg-white text-white px-8 hover:text-primary py-3 flex justify-center">Register</a>
-                        </div>
+                    <div class="xl:col-span-7 lg:col-span-7 col-span-12 lg:text-left text-center">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Start Your Wellness Journey?</h2>
+                        <p class="text-lg mb-6 opacity-90">Join Nut Castle Cafe today and transform your lifestyle with our comprehensive health and nutrition services.</p>
                     </div>
-                    <div class="xl:col-span-7 lg:col-span-5 col-span-12">
-                        <div class="flex lg:justify-end justify-center">
-                            <img src="../assets/images/backgrounds/business-woman-checking-her-mail.png" alt
-                                class="w-auto max-w-full lg:ms-auto  -mb-4 pt-7" />
-                        </div>
+                    <div class="xl:col-span-5 lg:col-span-5 col-span-12 flex lg:justify-end justify-center">
+                        <a href="{{ route('login') }}" class="btn bg-white text-primary hover:bg-lightprimary py-3 px-8 text-lg font-medium">Login Now</a>
                     </div>
                 </div>
             </div>
         </section>
-        <!-- Login Section End-->
+        <!-- CTA Section End-->
 
         <!-- Footer Section -->
-        <section class="pt-8 pb-12">
+        <section class="pt-12 pb-6">
             <div class="container container-xl">
-                <div class="md:w-1/3 w-full mx-auto ">
-                    <div class="text-center">
-                        <a href="../index.html">
-                            <img src="../assets/images/logos/favicon.png" alt class="mx-auto mb-4" />
-                        </a>
-                        <p class="text-dark dark:text-white">All
-                            rights
-                            reserved by Modernize. Designed &
-                            Developed by</p>
-                        <a class="text-dark dark:text-white underline underline-offset-4 decoration-primary hover:opacity-90"
-                            href="https://adminmart.com/">AdminMart.</a>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                    <div>
+                        <h4 class="text-lg font-bold mb-4">Nut Castle Cafe</h4>
+                        <p class="mb-4">Your partner in health and nutrition, dedicated to helping you achieve optimal wellness through personalized services and expert guidance.</p>
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-primary hover:text-secondary"><i class="ti ti-brand-facebook"></i></a>
+                            <a href="#" class="text-primary hover:text-secondary"><i class="ti ti-brand-instagram"></i></a>
+                            <a href="#" class="text-primary hover:text-secondary"><i class="ti ti-brand-twitter"></i></a>
+                        </div>
                     </div>
+                    <div>
+                        <h4 class="text-lg font-bold mb-4">Quick Links</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="hover:text-primary">Home</a></li>
+                            <li><a href="#about-us" class="hover:text-primary">About Us</a></li>
+                            <li><a href="#services" class="hover:text-primary">Services</a></li>
+                            <li><a href="#activities" class="hover:text-primary">Activities</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-bold mb-4">Services</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="hover:text-primary">Health Check-ups</a></li>
+                            <li><a href="#" class="hover:text-primary">Diet Programs</a></li>
+                            <li><a href="#" class="hover:text-primary">Sports Classes</a></li>
+                            <li><a href="#" class="hover:text-primary">Consultations</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-bold mb-4">Newsletter</h4>
+                        <p class="mb-4">Subscribe to receive tips, recipes, and updates on our programs.</p>
+                        <div class="flex">
+                            <input type="email" placeholder="Your email" class="form-input rounded-r-none">
+                            <button class="btn btn-primary rounded-l-none">Send</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="border-t pt-6">
+                    <p class="text-center">© 2025 Nut Castle Cafe. All rights reserved.</p>
                 </div>
             </div>
         </section>
-
+        <!-- Footer Section End -->
     </div>
 @endsection

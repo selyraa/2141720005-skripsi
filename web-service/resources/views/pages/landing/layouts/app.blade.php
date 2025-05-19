@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
     <!-- Core Css -->
     <link rel="stylesheet" href="../assets/css/theme.css" />
-    <title>Modernize TailwindCSS HTML Admin Template</title>
+    <title>Nut Castle Cafe - Health & Wellness</title>
     <link rel="stylesheet" href="../assets/libs/owl.carousel/dist/assets/owl.carousel.min.css">
 </head>
 

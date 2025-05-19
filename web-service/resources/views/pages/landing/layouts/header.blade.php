@@ -4,8 +4,8 @@
         <div class="flex-1">
             <div class="brand-logo flex  items-center ">
                 <a href="../main/index.html" class="text-nowrap logo-img">
-                    <img src="../assets/images/logos/dark-logo.svg" class="dark:hidden block rtl:hidden" alt="Logo-Dark" />
-                    <img src="../assets/images/logos/light-logo.svg" class="dark:block hidden rtl:hidden rtl:dark:hidden"
+                    <img src="../assets/images/logos/logo-nutcastle.png" class="dark:hidden block rtl:hidden w-20" alt="Logo-Dark" />
+                    <img src="../assets/images/logos/logo-nutcastle.png" class="dark:block hidden rtl:hidden rtl:dark:hidden"
                         alt="Logo-light" />
 
                     <img src="../assets/images/logos/dark-logo-rtl.svg"
@@ -27,23 +27,27 @@
         <div>
             <ul class="xl:flex hidden items-center gap-7">
                 <li>
-                    <a href="../docs/index.html" target="_blank"
+                    <a href="#"
                         class="hover:text-primary dark:hover:text-primary text-link dark:text-darklink text-base">Home</a>
                 </li>
                 <li>
-                    <a href="https://adminmart.com/support/" target="_blank"
-                        class="hover:text-primary dark:hover:text-primary  text-link dark:text-darklink text-base">Keunggulan</a>
+                    <a href="#about-us"
+                        class="hover:text-primary dark:hover:text-primary text-link dark:text-darklink text-base">About Us</a>
                 </li>
                 <li>
-                    <a href="../docs/index.html" target="_blank"
-                        class="hover:text-primary dark:hover:text-primary text-link dark:text-darklink text-base">Paket</a>
+                    <a href="#services"
+                        class="hover:text-primary dark:hover:text-primary text-link dark:text-darklink text-base">Services</a>
                 </li>
                 <li>
-                    <a class="btn btn-outline-primary "
-                        href="#production-template">Daftar</a>
+                    <a href="#activities"
+                        class="hover:text-primary dark:hover:text-primary text-link dark:text-darklink text-base">Activities</a>
                 </li>
                 <li>
-                    <a href="../main/authentication-login.html" target="_blank" class="btn">Login</a>
+                    <a href="#location"
+                        class="hover:text-primary dark:hover:text-primary text-link dark:text-darklink text-base">Location</a>
+                </li>
+                <li>
+                    <a href="{{ route('login') }}" class="btn">Login</a>
                 </li>
             </ul>
         </div>
