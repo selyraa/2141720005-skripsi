@@ -161,7 +161,13 @@ class PredictionController extends Controller
             'alternative_program' => 'required_if:decision,change|string',
         ], [
             'user_id.required' => 'Pelanggan harus dipilih',
-            'user_id.exists' => 'Pelanggan tidak valid'
+            'user_id.exists' => 'Pelanggan tidak valid',
+            'decision.required' => 'Keputusan harus dipilih',
+            'decision.in' => 'Keputusan tidak valid',
+            'prediction.required' => 'Hasil prediksi harus dipilih',
+            'prediction.string' => 'Hasil prediksi harus berupa teks',
+            'alternative_program.required_if' => 'Program alternatif harus dipilih jika mengubah rekomendasi',
+            'alternative_program.string' => 'Program alternatif harus berupa teks'
         ]);
         
         $predictionData = session('prediction_data');
@@ -246,6 +252,25 @@ class PredictionController extends Controller
             'phone_number' => 'nullable|string|max:15',
             'gender' => 'nullable|in:male,female',
             'birth_date' => 'nullable|date',
+        ], [
+            'name.required' => 'Nama harus diisi',
+            'name.string' => 'Nama harus berupa teks',
+            'name.max' => 'Nama maksimal 255 karakter',
+            'email.required' => 'Email harus diisi',
+            'email.string' => 'Email harus berupa teks',
+            'email.email' => 'Format email tidak valid',
+            'email.max' => 'Email maksimal 255 karakter',
+            'email.unique' => 'Email sudah terdaftar',
+            'password.required' => 'Password harus diisi',
+            'password.string' => 'Password harus berupa teks',
+            'password.min' => 'Password minimal 8 karakter',
+            'password.confirmed' => 'Konfirmasi password tidak cocok',
+            'role_id.required' => 'Role harus dipilih',
+            'role_id.exists' => 'Role tidak valid',
+            'phone_number.string' => 'Nomor telepon harus berupa teks',
+            'phone_number.max' => 'Nomor telepon maksimal 15 karakter',
+            'gender.in' => 'Jenis kelamin harus male atau female',
+            'birth_date.date' => 'Format tanggal lahir tidak valid',
         ]);
         
         // Create the new customer user

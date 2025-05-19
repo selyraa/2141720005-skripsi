@@ -74,6 +74,23 @@ class AuthController extends Controller
     //         'phone_number' => 'nullable|string|max:15',
     //         'gender' => 'nullable|in:male,female',
     //         'birth_date' => 'nullable|date',
+    //     ], [
+    //         'name.required' => 'Nama harus diisi',
+    //         'name.string' => 'Nama harus berupa teks',
+    //         'name.max' => 'Nama maksimal 255 karakter',
+    //         'email.required' => 'Email harus diisi',
+    //         'email.string' => 'Email harus berupa teks',
+    //         'email.email' => 'Format email tidak valid',
+    //         'email.max' => 'Email maksimal 255 karakter',
+    //         'email.unique' => 'Email sudah terdaftar',
+    //         'password.required' => 'Password harus diisi',
+    //         'password.string' => 'Password harus berupa teks',
+    //         'password.min' => 'Password minimal 8 karakter',
+    //         'password.confirmed' => 'Konfirmasi password tidak cocok',
+    //         'phone_number.string' => 'Nomor telepon harus berupa teks',
+    //         'phone_number.max' => 'Nomor telepon maksimal 15 karakter',
+    //         'gender.in' => 'Jenis kelamin harus male atau female',
+    //         'birth_date.date' => 'Format tanggal lahir tidak valid',
     //     ]);
 
     //     // Get default user role (assuming you have a 'user' role in your roles table)

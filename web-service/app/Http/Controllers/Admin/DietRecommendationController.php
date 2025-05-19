@@ -65,6 +65,11 @@ class DietRecommendationController extends Controller
             'checkup_id' => 'required|exists:checkups,id',
             'llm_context_id' => 'required|exists:llm_contexts,id',
             'custom_prompt' => 'nullable|string',
+        ], [
+            'checkup_id.required' => 'Data pemeriksaan harus dipilih',
+            'checkup_id.exists' => 'Data pemeriksaan tidak valid',
+            'llm_context_id.required' => 'Konteks LLM harus dipilih',
+            'llm_context_id.exists' => 'Konteks LLM tidak valid',
         ]);
         
         // Get the checkup and LLM context data
@@ -189,6 +194,9 @@ class DietRecommendationController extends Controller
     {
         $validated = $request->validate([
             'result' => 'required|string',
+        ], [
+            'result.required' => 'Hasil rekomendasi harus diisi',
+            'result.string' => 'Hasil rekomendasi harus berupa teks',
         ]);
         
         $recommendation = DietRecommendation::findOrFail($id);
@@ -214,6 +222,6 @@ class DietRecommendationController extends Controller
         $recommendation->delete();
         
         return redirect()->route('diet-recommendations.index')
-            ->with('error', __('app.diet_recommendation_deleted_successfully'));
+            ->with('success', __('app.diet_recommendation_deleted_successfully'));
     }
 }
