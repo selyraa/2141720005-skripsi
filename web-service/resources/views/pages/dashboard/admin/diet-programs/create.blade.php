@@ -58,7 +58,7 @@
                         
                         <div class="grid grid-cols-1 gap-6">
                             <div class="form-group">
-                                <label for="name" class="form-label block mb-2 font-medium text-dark dark:text-white">{{ __('app.program_name') }} <span class="text-red-500">*</span></label>
+                                <label for="name" class="form-label block mb-2 font-medium text-dark dark:text-white">{{ __('app.program_name') }} <span class="text-error">*</span></label>
                                 <input type="text" id="name" name="name" value="{{ old('name') }}" class="form-control w-full" required>
                             </div>
 
