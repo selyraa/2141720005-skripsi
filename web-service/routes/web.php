@@ -32,7 +32,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Public Routes
-Route::redirect('/', '/login');
+Route::redirect('/', '/landing');
 Route::view('landing', 'pages.landing.index')->name('landing');
 
 // Authentication Routes

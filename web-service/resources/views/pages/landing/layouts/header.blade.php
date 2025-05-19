@@ -1,10 +1,10 @@
 <header
-    class="sticky top-header top-0 inset-x-0 z-[5] flex flex-wrap md:justify-start md:flex-nowrap text-sm px-0 sm:py-6 py-3  bg-white dark:bg-dark ">
+    class="sticky top-header top-0 inset-x-0 z-[5] flex flex-wrap md:justify-start md:flex-nowrap text-sm px-0 sm:py-3 py-2 bg-white dark:bg-dark ">
     <div class="container container-xl flex items-center">
         <div class="flex-1">
             <div class="brand-logo flex  items-center ">
                 <a href="../main/index.html" class="text-nowrap logo-img">
-                    <img src="../assets/images/logos/logo-nutcastle.png" class="dark:hidden block rtl:hidden w-20" alt="Logo-Dark" />
+                    <img src="../assets/images/logos/logo-nutcastle.png" class="dark:hidden block rtl:hidden w-16" alt="Logo-Dark" />
                     <img src="../assets/images/logos/logo-nutcastle.png" class="dark:block hidden rtl:hidden rtl:dark:hidden"
                         alt="Logo-light" />
 
@@ -25,29 +25,29 @@
 
         <!-- Menu-->
         <div>
-            <ul class="xl:flex hidden items-center gap-7">
+            <ul class="xl:flex hidden items-center gap-5">
                 <li>
                     <a href="#"
-                        class="hover:text-primary dark:hover:text-primary text-link dark:text-darklink text-base">Home</a>
+                        class="hover:text-primary dark:hover:text-primary text-link dark:text-darklink text-sm">Home</a>
                 </li>
                 <li>
                     <a href="#about-us"
-                        class="hover:text-primary dark:hover:text-primary text-link dark:text-darklink text-base">About Us</a>
+                        class="hover:text-primary dark:hover:text-primary text-link dark:text-darklink text-sm">About Us</a>
                 </li>
                 <li>
                     <a href="#services"
-                        class="hover:text-primary dark:hover:text-primary text-link dark:text-darklink text-base">Services</a>
+                        class="hover:text-primary dark:hover:text-primary text-link dark:text-darklink text-sm">Services</a>
                 </li>
                 <li>
                     <a href="#activities"
-                        class="hover:text-primary dark:hover:text-primary text-link dark:text-darklink text-base">Activities</a>
+                        class="hover:text-primary dark:hover:text-primary text-link dark:text-darklink text-sm">Activities</a>
                 </li>
                 <li>
                     <a href="#location"
-                        class="hover:text-primary dark:hover:text-primary text-link dark:text-darklink text-base">Location</a>
+                        class="hover:text-primary dark:hover:text-primary text-link dark:text-darklink text-sm">Location</a>
                 </li>
                 <li>
-                    <a href="{{ route('login') }}" class="btn">Login</a>
+                    <a href="{{ route('login') }}" class="btn py-1.5 px-4 text-sm">Login</a>
                 </li>
             </ul>
         </div>
