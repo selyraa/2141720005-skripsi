@@ -80,6 +80,7 @@ return [
     'already_have_account' => 'Sudah memiliki akun?',
     'agree_terms' => 'Saya menyetujui semua',
     'terms_conditions' => 'Syarat & Ketentuan',
+    'invalid_credential' => 'Email atau kata sandi salah. Silakan coba lagi.',
     
     // User
     'users' => 'Pengguna',
