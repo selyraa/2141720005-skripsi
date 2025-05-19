@@ -415,4 +415,6 @@ return [
     'of' => 'dari',
     'to' => 'ke',
     'entries' => 'entri',
+
+    'address' => 'Jl. Sigura - Gura No.Kav 2, Karangbesuki, Kec. Sukun, Kota Malang, Jawa Timur 65147',
 ];

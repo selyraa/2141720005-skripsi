@@ -365,22 +365,20 @@
                         <h3 class="text-2xl font-bold mb-4">Contact Information</h3>
                         <div class="space-y-4">
                             <div class="flex items-start">
-                                <i class="ti ti-map-pin text-primary text-xl mr-4 mt-1"></i>
-                                <p>123 Wellness Street<br>Healthy District<br>Nutrition City, 45678</p>
+                                 <i class="ti ti-map-pin text-primary text-xl mr-4"></i>
+                                <p>Jl. Sigura - Gura No.Kav 2, Karangbesuki, Kec. Sukun,<br> Kota Malang, Jawa Timur 65147</p>
                             </div>
                             <div class="flex items-center">
                                 <i class="ti ti-phone text-primary text-xl mr-4"></i>
-                                <p>(123) 456-7890</p>
+                                <p>+62 816-565-232</p>
                             </div>
-                            <div class="flex items-center">
+                            {{-- <div class="flex items-center">
                                 <i class="ti ti-mail text-primary text-xl mr-4"></i>
                                 <p>info@nutcastlecafe.com</p>
-                            </div>
+                            </div> --}}
                             <div class="space-y-2">
                                 <h4 class="font-bold text-lg">Opening Hours:</h4>
-                                <p>Monday - Friday: 7:00 AM - 9:00 PM</p>
-                                <p>Saturday: 8:00 AM - 8:00 PM</p>
-                                <p>Sunday: 9:00 AM - 6:00 PM</p>
+                                <p>Monday - Sunday: 7:00 AM - 3:00 PM</p>
                             </div>
                         </div>
                     </div>
@@ -390,7 +388,7 @@
         <!-- Location Section End-->
 
         <!-- CTA Section -->
-        <section class="mt-8 bg-primary overflow-hidden py-16 text-white">
+        {{-- <section class="mt-8 bg-primary overflow-hidden py-16 text-white">
             <div class="container container-xl">
                 <div class="grid grid-cols-12 gap-6 justify-between items-center">
                     <div class="xl:col-span-7 lg:col-span-7 col-span-12 lg:text-left text-center">
@@ -402,11 +400,11 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> --}}
         <!-- CTA Section End-->
 
         <!-- Footer Section -->
-        <section class="pt-12 pb-6">
+        {{-- <section class="pt-12 pb-6">
             <div class="container container-xl">
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
                     <div>
@@ -449,7 +447,7 @@
                     <p class="text-center">© 2025 Nut Castle Cafe. All rights reserved.</p>
                 </div>
             </div>
-        </section>
+        </section> --}}
         <!-- Footer Section End -->
     </div>
 @endsection
