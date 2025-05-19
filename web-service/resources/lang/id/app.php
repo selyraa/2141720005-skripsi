@@ -118,6 +118,10 @@ return [
     'new_password' => 'Kata Sandi Baru',
     'confirm_new_password' => 'Konfirmasi Kata Sandi Baru',
     'update_password' => 'Perbarui Kata Sandi',
+    'user_created_successfully' => 'Pengguna berhasil dibuat!',
+    'user_updated_successfully' => 'Pengguna berhasil diperbarui!',
+    'user_deleted_successfully' => 'Pengguna berhasil dihapus!',
+    'cannot_delete_own_account' => 'Anda tidak dapat menghapus akun Anda sendiri!',
     
     // Sidebar Navigation
     'administration' => 'Administrasi',
