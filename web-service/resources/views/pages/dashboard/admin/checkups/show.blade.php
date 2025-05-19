@@ -229,7 +229,11 @@
                                                    {{ $item->id === $checkup->id ? 'disabled' : '' }}>
                                                     <i class="ti ti-eye"></i> {{ __('app.details') }}
                                                 </a>
-                                                @if($item->id !== $checkup->id)
+                                                
+                                                <a href="{{ route('checkups.edit', $item->id) }}" class="btn btn-sm bg-lightprimary dark:bg-darkprimary text-primary hover:bg-primary hover:text-white transition-all">
+                                                    <i class="ti ti-edit"></i> {{ __('app.edit') }}
+                                                </a>
+                                                
                                                 <form action="{{ route('checkups.destroy', $item->id) }}" method="POST" class="inline-block" id="delete-history-form-{{ $item->id }}">
                                                     @csrf
                                                     @method('DELETE')
@@ -240,7 +244,6 @@
                                                         <i class="ti ti-trash"></i> {{ __('app.delete') }}
                                                     </button>
                                                 </form>
-                                                @endif
                                             </div>
                                         </td>
                                     </tr>
