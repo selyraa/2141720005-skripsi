@@ -151,6 +151,9 @@ return [
     'delete_diet_program' => 'Hapus Program Diet',
     'add_diet_program_form' => 'Form Tambah Program Diet',
     'confirm_delete_diet_program' => 'Apakah Anda yakin ingin menghapus program diet :item?',
+    'diet_program_created_successfully' => 'Program diet berhasil dibuat',
+    'diet_program_updated_successfully' => 'Program diet berhasil diperbarui',
+    'diet_program_deleted_successfully' => 'Program diet berhasil dihapus',
     
     // LLM Context
     'llm_contexts' => 'Konteks LLM',
@@ -179,8 +182,10 @@ return [
     'title' => 'Judul',
     'add_context_form' => 'Form Tambah Konteks',
     'select_context_template' => "Pilih Template Konteks",
-    
-    
+    'llm_context_created_successfully' => 'Konteks LLM berhasil dibuat',
+    'llm_context_updated_successfully' => 'Konteks LLM berhasil diperbarui',
+    'llm_context_deleted_successfully' => 'Konteks LLM berhasil dihapus',
+            
     'duration' => 'Durasi',
     'days' => 'Hari',
     'description' => 'Deskripsi',
@@ -219,6 +224,16 @@ return [
     'delete_schedule_consultation' => 'Hapus Jadwal Konsultasi',
     'confirm_delete_schedule' => 'Apakah Anda yakin ingin menghapus jadwal konsultasi untuk :name?',
     'create_schedule_form' => 'Form Buat Jadwal',
+    'consultation_schedule_created_successfully' => 'Jadwal konsultasi berhasil dibuat',
+    'consultation_schedule_updated_successfully' => 'Jadwal konsultasi berhasil diperbarui',
+    'consultation_schedule_deleted_successfully' => 'Jadwal konsultasi berhasil dihapus',
+    'schedule_consultation' => 'Jadwalkan Konsultasi',
+    'consultation_notes' => 'Catatan Konsultasi',
+    'update_consultation_notes' => 'Perbarui Catatan Konsultasi',
+    'save_notes' => 'Simpan Catatan',
+    'consultation_notes_updated_successfully' => 'Catatan konsultasi berhasil diperbarui!',
+    'consultation_history' => 'Riwayat Konsultasi',
+    'no_consultation_history' => 'Tidak ada riwayat konsultasi',
     
     // Checkups
     'checkups' => 'Pemeriksaan',
@@ -249,6 +264,9 @@ return [
     'my_consultation_history' => 'Riwayat Konsultasi Saya',
     'no_consultation_schedules_found' => 'Tidak ada jadwal konsultasi yang ditemukan',
     'view' => 'Lihat',
+    'checkup_created_successfully' => 'Data checkup berhasil dibuat!',
+    'checkup_updated_successfully' => 'Data checkup berhasil diperbarui!',
+    'checkup_deleted_successfully' => 'Data checkup berhasil dihapus!',
     
     // Diet Recommendation
     'diet_recommendations' => 'Rekomendasi Diet',
@@ -277,7 +295,9 @@ return [
     'no_diet_recommendations_found' => 'Tidak ada rekomendasi diet yang ditemukan.',
     'add_diet_recommendation' => 'Tambah Rekomendasi Diet',
     'add_diet_recommendation_form' => 'Form Tambah Rekomendasi Diet',
-    'diet_recommendation_created' => 'Diet recommendation updated successfully!',
+    'diet_recommendation_created_successfully' => 'Rekomendasi diet berhasil dibuat',
+    'diet_recommendation_updated_successfully' => 'Rekomendasi diet berhasil diperbarui',
+    'diet_recommendation_deleted_successfully' => 'Rekomendasi diet berhasil dihapus',
     'my_diet_recommendations' => 'Rekomendasi Diet Saya',
     
     // Prediction

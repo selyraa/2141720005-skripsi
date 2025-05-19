@@ -58,12 +58,20 @@ class ConsultationScheduleController extends Controller
             'program_enrollment_id' => 'required|exists:program_enrollments,id',
             'schedule_date' => 'required|date',
             'status' => 'required|integer|in:0,1,2',
+        ], [
+            'program_enrollment_id.required' => 'Program pendaftaran harus dipilih',
+            'program_enrollment_id.exists' => 'Program pendaftaran tidak valid',
+            'schedule_date.required' => 'Tanggal jadwal harus diisi',
+            'schedule_date.date' => 'Format tanggal jadwal tidak valid',
+            'status.required' => 'Status harus dipilih',
+            'status.integer' => 'Status harus berupa angka',
+            'status.in' => 'Status yang dipilih tidak valid',
         ]);
         
         ConsultationSchedule::create($validated);
         
         return redirect()->route('consultation-schedules.index')
-            ->with('success', 'Jadwal konsultasi berhasil dibuat!');
+            ->with('success', __('app.consultation_schedule_created_successfully'));
     }
 
     /**
@@ -114,12 +122,20 @@ class ConsultationScheduleController extends Controller
             'program_enrollment_id' => 'required|exists:program_enrollments,id',
             'schedule_date' => 'required|date',
             'status' => 'required|integer|in:0,1,2',
+        ], [
+            'program_enrollment_id.required' => 'Program pendaftaran harus dipilih',
+            'program_enrollment_id.exists' => 'Program pendaftaran tidak valid',
+            'schedule_date.required' => 'Tanggal jadwal harus diisi',
+            'schedule_date.date' => 'Format tanggal jadwal tidak valid',
+            'status.required' => 'Status harus dipilih',
+            'status.integer' => 'Status harus berupa angka',
+            'status.in' => 'Status yang dipilih tidak valid',
         ]);
         
         $schedule->update($validated);
         
         return redirect()->route('consultation-schedules.index')
-            ->with('success', 'Jadwal konsultasi berhasil diperbarui!');
+            ->with('success', __('app.consultation_schedule_updated_successfully'));
     }
 
     /**
@@ -134,6 +150,6 @@ class ConsultationScheduleController extends Controller
         $schedule->delete();
         
         return redirect()->route('consultation-schedules.index')
-            ->with('success', 'Jadwal konsultasi berhasil dihapus!');
+            ->with('error', __('app.consultation_schedule_deleted_successfully'));
     }
 }

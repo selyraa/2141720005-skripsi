@@ -138,7 +138,7 @@ class DietRecommendationController extends Controller
                 ]);
                 
                 return redirect()->route('diet-recommendations.show', $recommendation->id)
-                    ->with('success', 'Diet recommendation generated successfully!');
+                    ->with('success', __('app.diet_recommendation_created_successfully'));
             } else {
                 Log::error('Gemini API error: ' . $response->body());
                 return back()->with('error', 'Failed to generate recommendation from Gemini API. Please try again.');
@@ -199,7 +199,7 @@ class DietRecommendationController extends Controller
         ]);
         
         return redirect()->route('diet-recommendations.show', $recommendation->id)
-            ->with('success', 'Diet recommendation updated successfully!');
+            ->with('success', __('app.diet_recommendation_updated_successfully'));
     }
 
     /**
@@ -214,6 +214,6 @@ class DietRecommendationController extends Controller
         $recommendation->delete();
         
         return redirect()->route('diet-recommendations.index')
-            ->with('success', 'Diet recommendation deleted successfully!');
+            ->with('error', __('app.diet_recommendation_deleted_successfully'));
     }
 }

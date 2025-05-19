@@ -71,6 +71,20 @@ class UserController extends Controller
             'phone_number' => 'nullable|string|max:15',
             'gender' => 'nullable|in:male,female',
             'birth_date' => 'nullable|date',
+        ], [
+            'name.required' => 'Nama harus diisi',
+            'name.max' => 'Nama maksimal 255 karakter',
+            'email.required' => 'Email harus diisi',
+            'email.email' => 'Format email tidak valid',
+            'email.unique' => 'Email sudah terdaftar',
+            'password.required' => 'Password harus diisi',
+            'password.min' => 'Password minimal 8 karakter',
+            'password.confirmed' => 'Konfirmasi password tidak cocok',
+            'role_id.required' => 'Role harus dipilih',
+            'role_id.exists' => 'Role yang dipilih tidak valid',
+            'phone_number.max' => 'Nomor telepon maksimal 15 karakter',
+            'gender.in' => 'Jenis kelamin harus male atau female',
+            'birth_date.date' => 'Format tanggal lahir tidak valid',
         ]);
         
         $validatedData['password'] = Hash::make($validatedData['password']);
@@ -127,6 +141,19 @@ class UserController extends Controller
             'phone_number' => 'nullable|string|max:15',
             'gender' => 'nullable|in:male,female',
             'birth_date' => 'nullable|date',
+        ], [
+            'name.required' => 'Nama harus diisi',
+            'name.max' => 'Nama maksimal 255 karakter',
+            'email.required' => 'Email harus diisi',
+            'email.email' => 'Format email tidak valid',
+            'email.unique' => 'Email sudah terdaftar',
+            'password.min' => 'Password minimal 8 karakter',
+            'password.confirmed' => 'Konfirmasi password tidak cocok',
+            'role_id.required' => 'Role harus dipilih',
+            'role_id.exists' => 'Role yang dipilih tidak valid',
+            'phone_number.max' => 'Nomor telepon maksimal 15 karakter',
+            'gender.in' => 'Jenis kelamin harus male atau female',
+            'birth_date.date' => 'Format tanggal lahir tidak valid',
         ]);
         
         if (empty($validatedData['password'])) {

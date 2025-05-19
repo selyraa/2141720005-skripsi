@@ -66,12 +66,17 @@ class LlmContextController extends Controller
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'context' => 'required|string',
+        ], [
+            'title.required' => 'Judul harus diisi',
+            'title.max' => 'Judul maksimal 255 karakter',
+            'context.required' => 'Konteks harus diisi',
+            'context.string' => 'Konteks harus berupa teks',
         ]);
         
         LlmContext::create($validated);
         
         return redirect()->route('llm-contexts.index')
-            ->with('success', 'LLM Context created successfully.');
+            ->with('success', __('app.llm_context_created_successfully'));
     }
 
     /**
@@ -131,12 +136,17 @@ class LlmContextController extends Controller
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'context' => 'required|string',
+        ], [
+            'title.required' => 'Judul harus diisi',
+            'title.max' => 'Judul maksimal 255 karakter',
+            'context.required' => 'Konteks harus diisi',
+            'context.string' => 'Konteks harus berupa teks',
         ]);
         
         $llmContext->update($validated);
         
         return redirect()->route('llm-contexts.index')
-            ->with('success', 'LLM Context updated successfully.');
+            ->with('success', __('app.llm_context_updated_successfully'));
     }
 
     /**
@@ -158,6 +168,6 @@ class LlmContextController extends Controller
         $llmContext->delete();
         
         return redirect()->route('llm-contexts.index')
-            ->with('success', 'LLM Context deleted successfully.');
+            ->with('error', __('app.llm_context_deleted_successfully'));
     }
 }

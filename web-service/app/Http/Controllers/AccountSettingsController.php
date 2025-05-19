@@ -38,6 +38,22 @@ class AccountSettingsController extends Controller
             'gender' => 'nullable|in:male,female',
             'birth_date' => 'nullable|date',
             'profile_photo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ], [
+            'name.required' => 'Nama harus diisi',
+            'name.string' => 'Nama harus berupa teks',
+            'name.max' => 'Nama maksimal 255 karakter',
+            'email.required' => 'Email harus diisi',
+            'email.string' => 'Email harus berupa teks',
+            'email.email' => 'Format email tidak valid',
+            'email.max' => 'Email maksimal 255 karakter',
+            'email.unique' => 'Email sudah terdaftar',
+            'phone_number.string' => 'Nomor telepon harus berupa teks',
+            'phone_number.max' => 'Nomor telepon maksimal 15 karakter',
+            'gender.in' => 'Jenis kelamin harus male atau female',
+            'birth_date.date' => 'Format tanggal lahir tidak valid',
+            'profile_photo.image' => 'File harus berupa gambar',
+            'profile_photo.mimes' => 'Format gambar harus jpeg, png, jpg, atau gif',
+            'profile_photo.max' => 'Ukuran gambar maksimal 2MB',
         ]);
 
         $user->name = $request->name;
@@ -71,12 +87,18 @@ class AccountSettingsController extends Controller
         $request->validate([
             'current_password' => 'required',
             'password' => 'required|string|min:8|confirmed',
+        ], [
+            'current_password.required' => 'Password saat ini harus diisi',
+            'password.required' => 'Password baru harus diisi',
+            'password.string' => 'Password harus berupa teks',
+            'password.min' => 'Password minimal 8 karakter',
+            'password.confirmed' => 'Konfirmasi password tidak cocok',
         ]);
 
         $user = Auth::user();
 
         if (!Hash::check($request->current_password, $user->password)) {
-            return back()->withErrors(['current_password' => 'The current password is incorrect.']);
+            return back()->withErrors(['current_password' => 'Password saat ini tidak sesuai.']);
         }
 
         $user->password = Hash::make($request->password);

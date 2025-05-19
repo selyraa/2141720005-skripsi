@@ -56,12 +56,17 @@ class DietProgramController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255|unique:diet_programs,name,NULL,id,deleted_at,NULL',
             'description' => 'nullable|string',
+        ], [
+            'name.required' => 'Nama program diet harus diisi',
+            'name.max' => 'Nama program diet maksimal 255 karakter',
+            'name.unique' => 'Nama program diet sudah terdaftar',
+            'description.string' => 'Deskripsi harus berupa teks',
         ]);
         
         DietProgram::create($validated);
         
         return redirect()->route('diet-programs.index')
-            ->with('success', 'Diet program created successfully!');
+            ->with('success', __('app.diet_program_created_successfully'));
     }
 
     /**
@@ -121,12 +126,17 @@ class DietProgramController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255|unique:diet_programs,name,' . $id . ',id,deleted_at,NULL',
             'description' => 'nullable|string',
+        ], [
+            'name.required' => 'Nama program diet harus diisi',
+            'name.max' => 'Nama program diet maksimal 255 karakter',
+            'name.unique' => 'Nama program diet sudah terdaftar',
+            'description.string' => 'Deskripsi harus berupa teks',
         ]);
         
         $dietProgram->update($validated);
         
         return redirect()->route('diet-programs.index')
-            ->with('success', 'Diet program updated successfully!');
+            ->with('success', __('app.diet_program_updated_successfully'));
     }
 
     /**
@@ -151,6 +161,6 @@ class DietProgramController extends Controller
         $dietProgram->delete();
         
         return redirect()->route('diet-programs.index')
-            ->with('success', 'Diet program deleted successfully!');
+            ->with('error', __('app.diet_program_deleted_successfully'));
     }
 }

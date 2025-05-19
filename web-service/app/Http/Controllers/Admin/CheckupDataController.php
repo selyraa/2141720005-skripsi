@@ -73,12 +73,53 @@ class CheckupDataController extends Controller
             'cell_age' => 'required|numeric|min:1|max:120',
             'muscle_mass' => 'required|numeric|min:0|max:100',
             'water_content' => 'required|numeric|min:0|max:100',
+        ], [
+            'program_enrollment_id.required' => 'Program pendaftaran harus dipilih',
+            'program_enrollment_id.exists' => 'Program pendaftaran tidak valid',
+            'checkup_date.required' => 'Tanggal checkup harus diisi',
+            'checkup_date.date' => 'Format tanggal checkup tidak valid',
+            'height.required' => 'Tinggi badan harus diisi',
+            'height.numeric' => 'Tinggi badan harus berupa angka',
+            'height.min' => 'Tinggi badan minimal 100 cm',
+            'height.max' => 'Tinggi badan maksimal 250 cm',
+            'weight.required' => 'Berat badan harus diisi',
+            'weight.numeric' => 'Berat badan harus berupa angka',
+            'weight.min' => 'Berat badan minimal 30 kg',
+            'weight.max' => 'Berat badan maksimal 200 kg',
+            'body_fat.required' => 'Lemak tubuh harus diisi',
+            'body_fat.numeric' => 'Lemak tubuh harus berupa angka',
+            'body_fat.min' => 'Lemak tubuh minimal 0%',
+            'body_fat.max' => 'Lemak tubuh maksimal 100%',
+            'belly_fat.required' => 'Lemak perut harus diisi',
+            'belly_fat.numeric' => 'Lemak perut harus berupa angka',
+            'belly_fat.min' => 'Lemak perut minimal 0%',
+            'belly_fat.max' => 'Lemak perut maksimal 100%',
+            'bone_density.required' => 'Kepadatan tulang harus diisi',
+            'bone_density.numeric' => 'Kepadatan tulang harus berupa angka',
+            'bone_density.min' => 'Kepadatan tulang minimal 0',
+            'bone_density.max' => 'Kepadatan tulang maksimal 100',
+            'calories_needs.required' => 'Kebutuhan kalori harus diisi',
+            'calories_needs.numeric' => 'Kebutuhan kalori harus berupa angka',
+            'calories_needs.min' => 'Kebutuhan kalori minimal 500 kkal',
+            'calories_needs.max' => 'Kebutuhan kalori maksimal 5000 kkal',
+            'cell_age.required' => 'Usia sel harus diisi',
+            'cell_age.numeric' => 'Usia sel harus berupa angka',
+            'cell_age.min' => 'Usia sel minimal 1 tahun',
+            'cell_age.max' => 'Usia sel maksimal 120 tahun',
+            'muscle_mass.required' => 'Massa otot harus diisi',
+            'muscle_mass.numeric' => 'Massa otot harus berupa angka',
+            'muscle_mass.min' => 'Massa otot minimal 0 kg',
+            'muscle_mass.max' => 'Massa otot maksimal 100 kg',
+            'water_content.required' => 'Kadar air harus diisi',
+            'water_content.numeric' => 'Kadar air harus berupa angka',
+            'water_content.min' => 'Kadar air minimal 0%',
+            'water_content.max' => 'Kadar air maksimal 100%',
         ]);
         
         Checkup::create($validated);
         
         return redirect()->route('checkups.index')
-            ->with('success', 'Checkup data added successfully!');
+            ->with('success', __('app.checkup_created_successfully'));
     }
 
     /**
@@ -139,12 +180,53 @@ class CheckupDataController extends Controller
             'cell_age' => 'required|numeric|min:1|max:120',
             'muscle_mass' => 'required|numeric|min:0|max:100',
             'water_content' => 'required|numeric|min:0|max:100',
+        ], [
+            'program_enrollment_id.required' => 'Program pendaftaran harus dipilih',
+            'program_enrollment_id.exists' => 'Program pendaftaran tidak valid',
+            'checkup_date.required' => 'Tanggal checkup harus diisi',
+            'checkup_date.date' => 'Format tanggal checkup tidak valid',
+            'height.required' => 'Tinggi badan harus diisi',
+            'height.numeric' => 'Tinggi badan harus berupa angka',
+            'height.min' => 'Tinggi badan minimal 100 cm',
+            'height.max' => 'Tinggi badan maksimal 250 cm',
+            'weight.required' => 'Berat badan harus diisi',
+            'weight.numeric' => 'Berat badan harus berupa angka',
+            'weight.min' => 'Berat badan minimal 30 kg',
+            'weight.max' => 'Berat badan maksimal 200 kg',
+            'body_fat.required' => 'Lemak tubuh harus diisi',
+            'body_fat.numeric' => 'Lemak tubuh harus berupa angka',
+            'body_fat.min' => 'Lemak tubuh minimal 0%',
+            'body_fat.max' => 'Lemak tubuh maksimal 100%',
+            'belly_fat.required' => 'Lemak perut harus diisi',
+            'belly_fat.numeric' => 'Lemak perut harus berupa angka',
+            'belly_fat.min' => 'Lemak perut minimal 0%',
+            'belly_fat.max' => 'Lemak perut maksimal 100%',
+            'bone_density.required' => 'Kepadatan tulang harus diisi',
+            'bone_density.numeric' => 'Kepadatan tulang harus berupa angka',
+            'bone_density.min' => 'Kepadatan tulang minimal 0',
+            'bone_density.max' => 'Kepadatan tulang maksimal 100',
+            'calories_needs.required' => 'Kebutuhan kalori harus diisi',
+            'calories_needs.numeric' => 'Kebutuhan kalori harus berupa angka',
+            'calories_needs.min' => 'Kebutuhan kalori minimal 500 kkal',
+            'calories_needs.max' => 'Kebutuhan kalori maksimal 5000 kkal',
+            'cell_age.required' => 'Usia sel harus diisi',
+            'cell_age.numeric' => 'Usia sel harus berupa angka',
+            'cell_age.min' => 'Usia sel minimal 1 tahun',
+            'cell_age.max' => 'Usia sel maksimal 120 tahun',
+            'muscle_mass.required' => 'Massa otot harus diisi',
+            'muscle_mass.numeric' => 'Massa otot harus berupa angka',
+            'muscle_mass.min' => 'Massa otot minimal 0 kg',
+            'muscle_mass.max' => 'Massa otot maksimal 100 kg',
+            'water_content.required' => 'Kadar air harus diisi',
+            'water_content.numeric' => 'Kadar air harus berupa angka',
+            'water_content.min' => 'Kadar air minimal 0%',
+            'water_content.max' => 'Kadar air maksimal 100%',
         ]);
         
         $checkup->update($validated);
         
         return redirect()->route('checkups.index')
-            ->with('success', 'Checkup data updated successfully!');
+            ->with('success', __('app.checkup_updated_successfully'));
     }
 
     /**
@@ -159,6 +241,6 @@ class CheckupDataController extends Controller
         $checkup->delete();
         
         return redirect()->route('checkups.index')
-            ->with('success', 'Checkup data deleted successfully!');
+            ->with('error', __('app.checkup_deleted_successfully'));
     }
 }
