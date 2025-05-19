@@ -56,32 +56,32 @@
                     
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                         <div class="form-group">
-                            <label for="name" class="form-label block mb-2 font-medium text-dark dark:text-white">Nama</label>
+                            <label for="name" class="form-label block mb-2 font-medium text-dark dark:text-white">Nama <span class="text-error">*</span></label>
                             <input type="text" class="form-control w-full" id="name" name="name" value="{{ old('name', $user->name) }}" required>
                         </div>
                         
                         <div class="form-group">
-                            <label for="email" class="form-label block mb-2 font-medium text-dark dark:text-white">Email</label>
+                            <label for="email" class="form-label block mb-2 font-medium text-dark dark:text-white">Email <span class="text-error">*</span></label>
                             <input type="email" class="form-control w-full" id="email" name="email" value="{{ old('email', $user->email) }}" required>
                         </div>
                     </div>
                     
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                         <div class="form-group">
-                            <label for="password" class="form-label block mb-2 font-medium text-dark dark:text-white">Password</label>
+                            <label for="password" class="form-label block mb-2 font-medium text-dark dark:text-white">Password <span class="text-error">*</span></label>
                             <input type="password" class="form-control w-full" id="password" name="password">
                             <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">Kosongkan jika tidak ingin mengubah password</p>
                         </div>
                         
                         <div class="form-group">
-                            <label for="password_confirmation" class="form-label block mb-2 font-medium text-dark dark:text-white">Konfirmasi Password</label>
+                            <label for="password_confirmation" class="form-label block mb-2 font-medium text-dark dark:text-white">Konfirmasi Password <span class="text-error">*</span></label>
                             <input type="password" class="form-control w-full" id="password_confirmation" name="password_confirmation">
                         </div>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                         <div class="form-group">
-                            <label for="role_id" class="form-label block mb-2 font-medium text-dark dark:text-white">Role</label>
+                            <label for="role_id" class="form-label block mb-2 font-medium text-dark dark:text-white">Role <span class="text-error">*</span></label>
                             <select class="form-select w-full" id="role_id" name="role_id" required>
                                 <option value="">Pilih Role</option>
                                 @foreach($roles as $role)
