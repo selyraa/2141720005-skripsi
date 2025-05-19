@@ -100,54 +100,81 @@
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                             <div class="form-group">
                                 <label for="height" class="form-label block mb-2 font-medium text-dark dark:text-white">{{ __('app.height') }} ({{ __('app.cm') }}) <span class="text-red-500">*</span></label>
-                                <input type="number" id="height" name="height" value="{{ old('height') }}" min="100" max="250" step="0.01" class="form-control w-full" required>
+                                <input type="number" id="height" name="height" value="{{ old('height') }}" min="100" max="250" step="0.01" class="form-control w-full @error('height') border-error @enderror" required>
+                                @error('height')
+                                    <div class="text-error text-sm mt-1">{{ $message }}</div>
+                                @enderror
                             </div>
 
                             <div class="form-group">
                                 <label for="weight" class="form-label block mb-2 font-medium text-dark dark:text-white">{{ __('app.weight') }} ({{ __('app.kg') }}) <span class="text-red-500">*</span></label>
-                                <input type="number" id="weight" name="weight" value="{{ old('weight') }}" min="30" max="200" step="0.01" class="form-control w-full" required>
+                                <input type="number" id="weight" name="weight" value="{{ old('weight') }}" min="30" max="200" step="0.01" class="form-control w-full @error('weight') border-error @enderror" required>
+                                @error('weight')
+                                    <div class="text-error text-sm mt-1">{{ $message }}</div>
+                                @enderror
                             </div>
 
                             <div class="form-group">
                                 <label for="body_fat" class="form-label block mb-2 font-medium text-dark dark:text-white">{{ __('app.body_fat') }} (%) <span class="text-red-500">*</span></label>
-                                <input type="number" id="body_fat" name="body_fat" value="{{ old('body_fat') }}" min="0" max="100" step="0.01" class="form-control w-full" required>
+                                <input type="number" id="body_fat" name="body_fat" value="{{ old('body_fat') }}" min="0" max="100" step="0.01" class="form-control w-full @error('body_fat') border-error @enderror" required>
+                                @error('body_fat')
+                                    <div class="text-error text-sm mt-1">{{ $message }}</div>
+                                @enderror
                             </div>
 
                             <div class="form-group">
                                 <label for="belly_fat" class="form-label block mb-2 font-medium text-dark dark:text-white">{{ __('app.belly_fat') }} (%) <span class="text-red-500">*</span></label>
-                                <input type="number" id="belly_fat" name="belly_fat" value="{{ old('belly_fat') }}" min="0" max="100" step="0.01" class="form-control w-full" required>
+                                <input type="number" id="belly_fat" name="belly_fat" value="{{ old('belly_fat') }}" min="0" max="100" step="0.01" class="form-control w-full @error('belly_fat') border-error @enderror" required>
+                                @error('belly_fat')
+                                    <div class="text-error text-sm mt-1">{{ $message }}</div>
+                                @enderror
                             </div>
 
                             <div class="form-group">
                                 <label for="bone_density" class="form-label block mb-2 font-medium text-dark dark:text-white">{{ __('app.bone_density') }} <span class="text-red-500">*</span></label>
-                                <input type="number" id="bone_density" name="bone_density" value="{{ old('bone_density') }}" min="0" max="100" step="0.01" class="form-control w-full" required>
+                                <input type="number" id="bone_density" name="bone_density" value="{{ old('bone_density') }}" min="0" max="100" step="0.01" class="form-control w-full @error('bone_density') border-error @enderror" required>
+                                @error('bone_density')
+                                    <div class="text-error text-sm mt-1">{{ $message }}</div>
+                                @enderror
                             </div>
 
                             <div class="form-group">
                                 <label for="calories_needs" class="form-label block mb-2 font-medium text-dark dark:text-white">{{ __('app.calorie_needs') }} (kcal) <span class="text-red-500">*</span></label>
-                                <input type="number" id="calories_needs" name="calories_needs" value="{{ old('calories_needs') }}" min="500" max="5000" step="1" class="form-control w-full" required>
+                                <input type="number" id="calories_needs" name="calories_needs" value="{{ old('calories_needs') }}" min="500" max="5000" step="1" class="form-control w-full @error('calories_needs') border-error @enderror" required>
+                                @error('calories_needs')
+                                    <div class="text-error text-sm mt-1">{{ $message }}</div>
+                                @enderror
                             </div>
 
                             <div class="form-group">
                                 <label for="cell_age" class="form-label block mb-2 font-medium text-dark dark:text-white">{{ __('app.cell_age') }} <span class="text-red-500">*</span></label>
-                                <input type="number" id="cell_age" name="cell_age" value="{{ old('cell_age') }}" min="1" max="120" step="1" class="form-control w-full" required>
+                                <input type="number" id="cell_age" name="cell_age" value="{{ old('cell_age') }}" min="1" max="120" step="1" class="form-control w-full @error('cell_age') border-error @enderror" required>
+                                @error('cell_age')
+                                    <div class="text-error text-sm mt-1">{{ $message }}</div>
+                                @enderror
                             </div>
 
                             <div class="form-group">
                                 <label for="muscle_mass" class="form-label block mb-2 font-medium text-dark dark:text-white">{{ __('app.muscle_mass') }} (%) <span class="text-red-500">*</span></label>
-                                <input type="number" id="muscle_mass" name="muscle_mass" value="{{ old('muscle_mass') }}" min="0" max="100" step="0.01" class="form-control w-full" required>
+                                <input type="number" id="muscle_mass" name="muscle_mass" value="{{ old('muscle_mass') }}" min="0" max="100" step="0.01" class="form-control w-full @error('muscle_mass') border-error @enderror" required>
+                                @error('muscle_mass')
+                                    <div class="text-error text-sm mt-1">{{ $message }}</div>
+                                @enderror
                             </div>
 
                             <div class="form-group">
                                 <label for="water_content" class="form-label block mb-2 font-medium text-dark dark:text-white">{{ __('app.water_content') }} (%) <span class="text-red-500">*</span></label>
-                                <input type="number" id="water_content" name="water_content" value="{{ old('water_content') }}" min="0" max="100" step="0.01" class="form-control w-full" required>
+                                <input type="number" id="water_content" name="water_content" value="{{ old('water_content') }}" min="0" max="100" step="0.01" class="form-control w-full @error('water_content') border-error @enderror" required>
+                                @error('water_content')
+                                    <div class="text-error text-sm mt-1">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
 
                         <div class="border-t border-gray-200 dark:border-gray-700 pt-6">
                             <div class="form-group">
                                 <label for="diet_program_id" class="form-label block mb-2 font-medium text-dark dark:text-white">{{ __('app.change_diet_program') }}? ({{ __('app.optional') }})</label>
-                                <select id="diet_program_id" name="diet_program_id" class="form-select w-full">
+                                <select id="diet_program_id" name="diet_program_id" class="form-select w-full @error('diet_program_id') border-error @enderror">
                                     <option value="">{{ __('app.use_current_program') }}</option>
                                     @foreach($dietPrograms as $program)
                                         @if($program->id != $enrollment->diet_program_id)
@@ -158,6 +185,9 @@
                                     @endforeach
                                 </select>
                                 <p class="text-xs text-gray-500 mt-1">{{ __('app.change_program_hint') }}</p>
+                                @error('diet_program_id')
+                                    <div class="text-error text-sm mt-1">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
 

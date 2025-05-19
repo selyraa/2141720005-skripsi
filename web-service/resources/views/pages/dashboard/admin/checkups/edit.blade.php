@@ -64,7 +64,7 @@
                             <label for="program_enrollment_id" class="block text-sm font-medium mb-2 text-dark dark:text-white">
                                 Program Enrollment <span class="text-error">*</span>
                             </label>
-                            <select id="program_enrollment_id" name="program_enrollment_id" class="form-select w-full" required>
+                            <select id="program_enrollment_id" name="program_enrollment_id" class="form-select w-full @error('program_enrollment_id') border-error @enderror" required>
                                 <option value="">-- Pilih Program Enrollment --</option>
                                 @foreach($enrollments as $enrollment)
                                     <option value="{{ $enrollment->id }}" {{ old('program_enrollment_id', $checkup->program_enrollment_id) == $enrollment->id ? 'selected' : '' }}>
@@ -72,6 +72,9 @@
                                     </option>
                                 @endforeach
                             </select>
+                            @error('program_enrollment_id')
+                                <div class="text-error text-sm mt-1">{{ $message }}</div>
+                            @enderror
                         </div>
                         
                         <div class="mb-6">
@@ -80,7 +83,10 @@
                             </label>
                             <input type="date" id="checkup_date" name="checkup_date" 
                                    value="{{ old('checkup_date', $checkup->checkup_date ? $checkup->checkup_date->format('Y-m-d') : '') }}" 
-                                   class="form-control w-full" required>
+                                   class="form-control w-full @error('checkup_date') border-error @enderror" required>
+                            @error('checkup_date')
+                                <div class="text-error text-sm mt-1">{{ $message }}</div>
+                            @enderror
                         </div>
                         
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -89,7 +95,10 @@
                                     Tinggi Badan (cm) <span class="text-error">*</span>
                                 </label>
                                 <input type="number" id="height" name="height" min="100" max="250" step="0.1"
-                                       value="{{ old('height', $checkup->height) }}" class="form-control w-full" required>
+                                       value="{{ old('height', $checkup->height) }}" class="form-control w-full @error('height') border-error @enderror" required>
+                                @error('height')
+                                    <div class="text-error text-sm mt-1">{{ $message }}</div>
+                                @enderror
                             </div>
                             
                             <div class="mb-4">
@@ -97,7 +106,10 @@
                                     Berat Badan (kg) <span class="text-error">*</span>
                                 </label>
                                 <input type="number" id="weight" name="weight" min="30" max="200" step="0.1"
-                                       value="{{ old('weight', $checkup->weight) }}" class="form-control w-full" required>
+                                       value="{{ old('weight', $checkup->weight) }}" class="form-control w-full @error('weight') border-error @enderror" required>
+                                @error('weight')
+                                    <div class="text-error text-sm mt-1">{{ $message }}</div>
+                                @enderror
                             </div>
                             
                             <div class="mb-4">
@@ -105,7 +117,10 @@
                                     Lemak Tubuh (%) <span class="text-error">*</span>
                                 </label>
                                 <input type="number" id="body_fat" name="body_fat" min="0" max="100" step="0.1"
-                                       value="{{ old('body_fat', $checkup->body_fat) }}" class="form-control w-full" required>
+                                       value="{{ old('body_fat', $checkup->body_fat) }}" class="form-control w-full @error('body_fat') border-error @enderror" required>
+                                @error('body_fat')
+                                    <div class="text-error text-sm mt-1">{{ $message }}</div>
+                                @enderror
                             </div>
                             
                             <div class="mb-4">
@@ -113,7 +128,10 @@
                                     Lemak Perut (%) <span class="text-error">*</span>
                                 </label>
                                 <input type="number" id="belly_fat" name="belly_fat" min="0" max="100" step="0.1"
-                                       value="{{ old('belly_fat', $checkup->belly_fat) }}" class="form-control w-full" required>
+                                       value="{{ old('belly_fat', $checkup->belly_fat) }}" class="form-control w-full @error('belly_fat') border-error @enderror" required>
+                                @error('belly_fat')
+                                    <div class="text-error text-sm mt-1">{{ $message }}</div>
+                                @enderror
                             </div>
                             
                             <div class="mb-4">
@@ -121,7 +139,10 @@
                                     Massa Otot (kg) <span class="text-error">*</span>
                                 </label>
                                 <input type="number" id="muscle_mass" name="muscle_mass" min="0" max="100" step="0.1"
-                                       value="{{ old('muscle_mass', $checkup->muscle_mass) }}" class="form-control w-full" required>
+                                       value="{{ old('muscle_mass', $checkup->muscle_mass) }}" class="form-control w-full @error('muscle_mass') border-error @enderror" required>
+                                @error('muscle_mass')
+                                    <div class="text-error text-sm mt-1">{{ $message }}</div>
+                                @enderror
                             </div>
                             
                             <div class="mb-4">
@@ -129,7 +150,10 @@
                                     Kepadatan Tulang <span class="text-error">*</span>
                                 </label>
                                 <input type="number" id="bone_density" name="bone_density" min="0" max="100" step="0.1"
-                                       value="{{ old('bone_density', $checkup->bone_density) }}" class="form-control w-full" required>
+                                       value="{{ old('bone_density', $checkup->bone_density) }}" class="form-control w-full @error('bone_density') border-error @enderror" required>
+                                @error('bone_density')
+                                    <div class="text-error text-sm mt-1">{{ $message }}</div>
+                                @enderror
                             </div>
                             
                             <div class="mb-4">
@@ -137,7 +161,10 @@
                                     Kadar Air (%) <span class="text-error">*</span>
                                 </label>
                                 <input type="number" id="water_content" name="water_content" min="0" max="100" step="0.1"
-                                       value="{{ old('water_content', $checkup->water_content) }}" class="form-control w-full" required>
+                                       value="{{ old('water_content', $checkup->water_content) }}" class="form-control w-full @error('water_content') border-error @enderror" required>
+                                @error('water_content')
+                                    <div class="text-error text-sm mt-1">{{ $message }}</div>
+                                @enderror
                             </div>
                             
                             <div class="mb-4">
@@ -145,7 +172,10 @@
                                     Kebutuhan Kalori (kkal) <span class="text-error">*</span>
                                 </label>
                                 <input type="number" id="calories_needs" name="calories_needs" min="500" max="5000" step="1"
-                                       value="{{ old('calories_needs', $checkup->calories_needs) }}" class="form-control w-full" required>
+                                       value="{{ old('calories_needs', $checkup->calories_needs) }}" class="form-control w-full @error('calories_needs') border-error @enderror" required>
+                                @error('calories_needs')
+                                    <div class="text-error text-sm mt-1">{{ $message }}</div>
+                                @enderror
                             </div>
                             
                             <div class="mb-4">
@@ -153,7 +183,10 @@
                                     Usia Sel (tahun) <span class="text-error">*</span>
                                 </label>
                                 <input type="number" id="cell_age" name="cell_age" min="1" max="120" step="1"
-                                       value="{{ old('cell_age', $checkup->cell_age) }}" class="form-control w-full" required>
+                                       value="{{ old('cell_age', $checkup->cell_age) }}" class="form-control w-full @error('cell_age') border-error @enderror" required>
+                                @error('cell_age')
+                                    <div class="text-error text-sm mt-1">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
                         

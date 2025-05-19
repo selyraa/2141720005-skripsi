@@ -59,12 +59,18 @@
                         <div class="grid grid-cols-1 gap-6">
                             <div class="form-group">
                                 <label for="name" class="form-label block mb-2 font-medium text-dark dark:text-white">{{ __('app.program_name') }} <span class="text-error">*</span></label>
-                                <input type="text" id="name" name="name" value="{{ old('name') }}" class="form-control w-full" required>
+                                <input type="text" id="name" name="name" value="{{ old('name') }}" class="form-control w-full @error('name') border-error @enderror" required>
+                                @error('name')
+                                    <div class="text-error text-sm mt-1">{{ $message }}</div>
+                                @enderror
                             </div>
 
                             <div class="form-group">
                                 <label for="description" class="form-label block mb-2 font-medium text-dark dark:text-white">{{ __('app.description') }}</label>
-                                <textarea id="description" name="description" rows="4" class="form-control w-full">{{ old('description') }}</textarea>
+                                <textarea id="description" name="description" rows="4" class="form-control w-full @error('description') border-error @enderror">{{ old('description') }}</textarea>
+                                @error('description')
+                                    <div class="text-error text-sm mt-1">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
 

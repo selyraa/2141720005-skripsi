@@ -70,7 +70,7 @@
 
                             <div class="form-group">
                                 <label for="diet_program_id" class="form-label block mb-2 font-medium text-dark dark:text-white">{{ __('app.diet_program') }} <span class="text-red-500">*</span></label>
-                                <select id="diet_program_id" name="diet_program_id" class="form-select w-full" required>
+                                <select id="diet_program_id" name="diet_program_id" class="form-select w-full @error('diet_program_id') border-error @enderror" required>
                                     <option value="">{{ __('app.select_program') }}</option>
                                     @foreach($dietPrograms as $program)
                                         <option value="{{ $program->id }}" {{ old('diet_program_id', $enrollment->diet_program_id) == $program->id ? 'selected' : '' }}>
@@ -78,16 +78,22 @@
                                         </option>
                                     @endforeach
                                 </select>
+                                @error('diet_program_id')
+                                    <div class="text-error text-sm mt-1">{{ $message }}</div>
+                                @enderror
                             </div>
 
                             <div class="form-group">
                                 <label for="status" class="form-label block mb-2 font-medium text-dark dark:text-white">{{ __('app.status') }} <span class="text-red-500">*</span></label>
-                                <select id="status" name="status" class="form-select w-full" required>
+                                <select id="status" name="status" class="form-select w-full @error('status') border-error @enderror" required>
                                     <option value="0" {{ (string)old('status', $enrollment->getRawOriginal('status')) === '0' ? 'selected' : '' }}>{{ __('app.on_going') }}</option>
                                     <option value="1" {{ (string)old('status', $enrollment->getRawOriginal('status')) === '1' ? 'selected' : '' }}>{{ __('app.completed') }}</option>
                                     <option value="2" {{ (string)old('status', $enrollment->getRawOriginal('status')) === '2' ? 'selected' : '' }}>{{ __('app.cancelled') }}</option>
                                     <option value="3" {{ (string)old('status', $enrollment->getRawOriginal('status')) === '3' ? 'selected' : '' }}>{{ __('app.changed') }}</option>
                                 </select>
+                                @error('status')
+                                    <div class="text-error text-sm mt-1">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
 
