@@ -64,26 +64,6 @@
                             <div class="text-dark dark:text-white">
                                 {{ $recommendation->checkup->programEnrollment->dietProgram->name ?? 'N/A' }}</div>
                         </div>
-
-                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded">
-                            <div class="text-sm text-gray-500 dark:text-gray-400">{{ __('app.template_used') }}</div>
-                            <div class="text-dark dark:text-white">{{ $recommendation->llmContext->title }}</div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="card mt-6">
-                <div class="card-body">
-                    <h3 class="card-title mb-4 flex items-center">
-                        <i class="ti ti-file-text text-xl mr-2"></i> {{ __('app.context_used') }}
-                    </h3>
-
-                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded">
-                        <div class="overflow-x-auto">
-                            <pre class="whitespace-pre-wrap text-sm text-gray-700 dark:text-gray-300">{{ $recommendation->prompt }}</pre>
-                        </div>
                     </div>
                 </div>
             </div>

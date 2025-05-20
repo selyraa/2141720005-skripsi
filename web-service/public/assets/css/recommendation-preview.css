@@ -1,0 +1,58 @@
+.recommendation-preview {
+    position: relative;
+    max-height: 300px;
+    overflow: hidden;
+}
+
+.recommendation-preview .fade-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
+    pointer-events: none;
+}
+
+/* Preserve HTML formatting */
+.recommendation-preview ul {
+    padding-left: 1.5rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.recommendation-preview li {
+    margin-bottom: 0.25rem;
+}
+
+.recommendation-preview h1, 
+.recommendation-preview h2, 
+.recommendation-preview h3, 
+.recommendation-preview h4, 
+.recommendation-preview h5, 
+.recommendation-preview h6 {
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.recommendation-preview p {
+    margin-bottom: 0.75rem;
+}
+
+.recommendation-preview strong, 
+.recommendation-preview b {
+    font-weight: 600;
+}
+
+.recommendation-preview table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1rem;
+}
+
+.recommendation-preview table th,
+.recommendation-preview table td {
+    padding: 0.5rem;
+    border: 1px solid #e2e8f0;
+}

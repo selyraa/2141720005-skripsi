@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Checkup;
+use App\Models\DietRecommendation;
 use App\Models\ProgramEnrollment;
 use App\Models\DietProgram;
 use App\Http\Controllers\Admin\ReportController;
@@ -64,6 +65,9 @@ class CustomerDashboardController extends Controller
             'name' => $user->name
         ];
         
+        // Fetch latest diet recommendation for health tips
+        $latestDietRecommendation = null;
+        
         if ($enrollment) {
             // Get all checkups for this enrollment, ordered by date
             $checkups = Checkup::where('program_enrollment_id', $enrollment->id)
@@ -88,6 +92,19 @@ class CustomerDashboardController extends Controller
                 $latestNutritionData['calories_needs'] = $latestCheckup->calories_needs;
                 $latestNutritionData['water_content'] = $latestCheckup->water_content;
                 $userInfo['height'] = $latestCheckup->height;
+                
+                // Fetch the latest diet recommendation
+                $latestDietRecommendation = DietRecommendation::where('checkup_id', $latestCheckup->id)
+                    ->latest()
+                    ->first();
+            }
+            
+            // If no recommendation found for the latest checkup, try to find any latest recommendation
+            if (!$latestDietRecommendation && $checkups->isNotEmpty()) {
+                $checkupIds = $checkups->pluck('id')->toArray();
+                $latestDietRecommendation = DietRecommendation::whereIn('checkup_id', $checkupIds)
+                    ->latest()
+                    ->first();
             }
             
             // Calculate days in program and get registration date
@@ -160,7 +177,8 @@ class CustomerDashboardController extends Controller
             'latestNutritionData',
             'userInfo',
             'idealWeightMin',
-            'idealWeightMax'
+            'idealWeightMax',
+            'latestDietRecommendation'
         ));
     }
 }

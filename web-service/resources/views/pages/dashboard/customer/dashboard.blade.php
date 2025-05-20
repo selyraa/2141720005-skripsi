@@ -2,6 +2,10 @@
 
 @section('title', 'Dashboard Pelanggan')
 
+@push('styles')
+    <link rel="stylesheet" href="{{ asset('assets/css/recommendation-preview.css') }}">
+@endpush
+
 @section('content')
     <div class="w-full px-5 py-5">
         <!-- Welcome Header Card -->
@@ -284,7 +288,7 @@
             <!-- Right Column - User Profile and Tips -->
             <div class="lg:col-span-4 col-span-12">
                 <!-- User Profile Summary -->
-                <div class="card mb-6">
+                {{-- <div class="card mb-6">
                     <div class="card-body">
                         <h5 class="card-title">Informasi Pribadi</h5>
                         <p class="card-subtitle">Data profil Anda</p>
@@ -373,10 +377,10 @@
                                 <div class="w-full bg-gray-200 rounded-full h-2.5 mb-1">
                                     <div
                                         class="h-2.5 rounded-full 
-                            {{ $bmiCategory == 'underweight' ? 'bg-blue-600 w-1/4' : '' }}
-                            {{ $bmiCategory == 'normal' ? 'bg-green-600 w-2/4' : '' }}
-                            {{ $bmiCategory == 'overweight' ? 'bg-yellow-600 w-3/4' : '' }}
-                            {{ $bmiCategory == 'obese' ? 'bg-red-600 w-full' : '' }}">
+                                        {{ $bmiCategory == 'underweight' ? 'bg-blue-600 w-1/4' : '' }}
+                                        {{ $bmiCategory == 'normal' ? 'bg-green-600 w-2/4' : '' }}
+                                        {{ $bmiCategory == 'overweight' ? 'bg-yellow-600 w-3/4' : '' }}
+                                        {{ $bmiCategory == 'obese' ? 'bg-red-600 w-full' : '' }}">
                                     </div>
                                 </div>
                                 <div class="flex justify-between text-xs text-gray-600">
@@ -388,71 +392,137 @@
                             </div>
                         @endif
                     </div>
-                </div>
+                </div> --}}
 
                 <!-- Personalized Tips -->
                 <div class="card mb-6">
                     <div class="card-body">
-                        <h5 class="card-title">Tips Kesehatan</h5>
-                        <p class="card-subtitle">Rekomendasi personal untuk Anda</p>
+                        <h5 class="card-title">Tips dan Rekomendasi Program Diet</h5>
+                        <p class="card-subtitle">Ringkasan rekomendasi personal untuk Anda</p>
 
                         <div class="grid grid-cols-1 gap-4 mt-5">
-                            <div
-                                class="p-4 rounded-lg border border-{{ $programName == 'Naik BB' ? 'info' : ($programName == 'Turun BB' ? 'warning' : ($programName == 'Turun Lemak' ? 'danger' : 'success')) }}/20 bg-light{{ $programName == 'Naik BB' ? 'info' : ($programName == 'Turun BB' ? 'warning' : ($programName == 'Turun Lemak' ? 'danger' : 'success')) }}/10">
-                                <div class="flex">
-                                    <div class="flex-shrink-0 mr-3">
-                                        <div
-                                            class="w-10 h-10 rounded-full bg-light{{ $programName == 'Naik BB' ? 'info' : ($programName == 'Turun BB' ? 'warning' : ($programName == 'Turun Lemak' ? 'danger' : 'success')) }} flex items-center justify-center">
-                                            <i
-                                                class="ti ti-scale text-{{ $programName == 'Naik BB' ? 'info' : ($programName == 'Turun BB' ? 'warning' : (isset($enrollment->dietProgram) && $enrollment->dietProgram->name == 'Turun Lemak' ? 'danger' : 'success')) }}"></i>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <h6 class="font-medium mb-1">
-                                            @if ($programName == 'Naik BB')
-                                                Tips untuk Menaikkan Berat Badan
-                                            @elseif($programName == 'Turun BB')
-                                                Tips untuk Menurunkan Berat Badan
-                                            @elseif($programName == 'Turun Lemak')
-                                                Tips untuk Menurunkan Lemak Tubuh
-                                            @else
-                                                Tips Kesehatan Umum
-                                            @endif
+                            @if($latestDietRecommendation)
+                                <!-- Display latest diet recommendation content -->
+                                <div class="p-5 rounded-lg border border-{{ $programName == 'Naik BB' ? 'info' : ($programName == 'Turun BB' ? 'warning' : ($programName == 'Turun Lemak' ? 'danger' : 'success')) }}/20 bg-light{{ $programName == 'Naik BB' ? 'info' : ($programName == 'Turun BB' ? 'warning' : ($programName == 'Turun Lemak' ? 'danger' : 'success')) }}/10">
+                                    <div class="">
+                                        <h6 class="font-medium mb-3 text-{{ $programName == 'Naik BB' ? 'info' : ($programName == 'Turun BB' ? 'warning' : ($programName == 'Turun Lemak' ? 'danger' : 'success')) }}">
+                                            <i class="ti ti-bulb me-1"></i> Rekomendasi untuk Program {{ $programName }}
                                         </h6>
-                                        <ul class="list-disc ml-5 mt-2 text-sm text-gray-600 space-y-1">
-                                            @if ($programName == 'Naik BB')
-                                                <li>Konsumsi makanan padat nutrisi dengan kalori lebih tinggi</li>
-                                                <li>Tambahkan camilan sehat tinggi protein di antara waktu makan utama</li>
-                                                <li>Fokus pada latihan kekuatan untuk membangun massa otot</li>
-                                                <li>Konsumsi protein yang cukup (1.6-2.2 gram per kg berat badan)</li>
-                                            @elseif($programName == 'Turun BB')
-                                                <li>Batasi konsumsi makanan olahan dan tinggi gula</li>
-                                                <li>Tingkatkan aktivitas fisik harian (minimal 30-45 menit per hari)</li>
-                                                <li>Fokus pada makanan tinggi serat dan protein</li>
-                                                <li>Perhatikan porsi makan dan hindari makan berlebihan</li>
-                                            @elseif($programName == 'Turun Lemak')
-                                                <li>Lakukan latihan HIIT (High Intensity Interval Training) secara rutin
-                                                </li>
-                                                <li>Kombinasikan latihan kardio dengan latihan beban</li>
-                                                <li>Tingkatkan asupan protein untuk menjaga massa otot</li>
-                                                <li>Kurangi konsumsi karbohidrat olahan dan tingkatkan konsumsi lemak sehat
-                                                </li>
-                                            @else
-                                                <li>Pertahankan pola makan seimbang dengan porsi yang tepat</li>
-                                                <li>Tetap aktif dengan berolahraga secara konsisten</li>
-                                                <li>Pantau berat badan secara berkala</li>
-                                                <li>Jaga kualitas tidur yang baik (7-8 jam per malam)</li>
-                                            @endif
-                                        </ul>
+                                        <div class="prose prose-sm text-gray-600 mt-2 recommendation-preview" style="max-height: 300px; overflow: hidden;">
+                                            @php
+                                                // Use DOMDocument to limit HTML content while preserving formatting
+                                                $dom = new DOMDocument();
+                                                libxml_use_internal_errors(true); // Suppress warnings for HTML5 tags
+                                                $dom->loadHTML('<?xml encoding="utf-8" ?>' . $latestDietRecommendation->result);
+                                                libxml_clear_errors();
+                                                
+                                                // Extract and count text nodes
+                                                $text = $dom->textContent;
+                                                $words = str_word_count($text, 1, 'àáãâéêíóôõúüçÀÁÃÂÉÊÍÓÔÕÚÜÇ1234567890');
+                                                
+                                                // Always display exactly 150 words while preserving HTML structure
+                                                
+                                                // Initialize variables to track if we exceed 150 words
+                                                $hasMoreContent = count($words) > 150;
+                                                
+                                                // Create a new document for the limited content
+                                                $limitedDom = new DOMDocument();
+                                                $limitedDom->loadHTML('<?xml encoding="utf-8" ?>' . $latestDietRecommendation->result);
+                                                
+                                                // Find the point where exactly 150 words have been reached
+                                                $xpath = new DOMXPath($limitedDom);
+                                                $textNodes = $xpath->query('//text()');
+                                                
+                                                $wordCount = 0;
+                                                $nodesToRemove = [];
+                                                $stopProcessing = false;
+                                                
+                                                foreach ($textNodes as $node) {
+                                                    if ($stopProcessing) {
+                                                        $nodesToRemove[] = $node;
+                                                        continue;
+                                                    }
+                                                    
+                                                    $nodeWords = str_word_count($node->nodeValue, 1, 'àáãâéêíóôõúüçÀÁÃÂÉÊÍÓÔÕÚÜÇ1234567890');
+                                                    $wordCount += count($nodeWords);
+                                                    
+                                                    if ($wordCount > 150) {
+                                                        // Stop at this node and truncate to get exactly 150 words
+                                                        $remaining = 150 - ($wordCount - count($nodeWords));
+                                                        
+                                                        if ($remaining > 0) {
+                                                            // Truncate this node
+                                                            $truncatedWords = array_slice($nodeWords, 0, $remaining);
+                                                            $truncatedText = implode(' ', $truncatedWords);
+                                                            if ($hasMoreContent) {
+                                                                $truncatedText .= '...';
+                                                            }
+                                                            $node->nodeValue = $truncatedText;
+                                                        } else {
+                                                            // This node exceeds the limit
+                                                            $nodesToRemove[] = $node;
+                                                        }
+                                                        $stopProcessing = true;
+                                                    } else if ($wordCount == 150) {
+                                                        // Exactly at 150 words
+                                                        if ($hasMoreContent) {
+                                                            $node->nodeValue .= '...';
+                                                        }
+                                                        $stopProcessing = true;
+                                                    }
+                                                }
+                                                
+                                                // Remove any nodes that exceed the word limit
+                                                foreach ($nodesToRemove as $node) {
+                                                    if ($node->parentNode) {
+                                                        $node->parentNode->removeChild($node);
+                                                    }
+                                                }
+                                                
+                                                // Output the limited HTML content
+                                                echo $limitedDom->saveHTML();
+                                                if ($hasMoreContent) {
+                                                    echo '<div class="fade-overlay"></div>';
+                                                }
+                                            @endphp
+                                        </div>
+                                        @if($hasMoreContent)
+                                        <div class="mt-4 text-center">
+                                            <a href="{{ route('customer.diet-recommendations.show', $latestDietRecommendation->id) }}" class="btn btn-{{ $programName == 'Naik BB' ? 'info' : ($programName == 'Turun BB' ? 'warning' : ($programName == 'Turun Lemak' ? 'danger' : 'success')) }} hover:shadow-lg transition-all">
+                                                <i class="ti ti-article me-1"></i> Lihat rekomendasi lengkap
+                                            </a>
+                                        </div>
+                                        @endif
                                     </div>
                                 </div>
-                            </div>
+                            @else
+                                <!-- Show message when no diet recommendation is available -->
+                                <div class="p-4 rounded-lg border border-gray-200 bg-light/5">
+                                    <div class="flex">
+                                        <div class="flex-shrink-0 mr-3">
+                                            <div class="w-10 h-10 rounded-full bg-lightinfo flex items-center justify-center mr-4">
+                                                <i class="ti ti-info-circle text-info"></i>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h6 class="font-medium mb-1">Belum Ada Rekomendasi Diet</h6>
+                                            <p class="text-sm text-gray-600 mt-2">
+                                                Anda belum memiliki rekomendasi diet personal. Silakan hubungi ahli gizi atau asisten ahli gizi untuk mendapatkan pemeriksaan dan rekomendasi diet yang sesuai dengan kebutuhan Anda.
+                                            </p>
+                                            <div class="mt-3">
+                                                {{-- <a href="{{ route('customer.consultation-schedules.create') }}" class="btn btn-sm btn-primary">
+                                                    <i class="ti ti-calendar-plus text-xs mr-1"></i> Jadwalkan Konsultasi
+                                                </a> --}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
 
-                            <div class="p-4 bg-light/5 rounded-lg border">
+                            {{-- <div class="p-4 bg-light/5 rounded-lg border">
                                 <div class="flex">
                                     <div class="flex-shrink-0 mr-3">
-                                        <div
-                                            class="w-10 h-10 rounded-full bg-lightprimary dark:bg-darkprimary flex items-center justify-center">
+                                        <div class="w-10 h-10 rounded-full bg-lightprimary dark:bg-darkprimary flex items-center justify-center">
                                             <i class="ti ti-apple text-primary"></i>
                                         </div>
                                     </div>
@@ -462,13 +532,12 @@
                                             melancarkan pencernaan dan menjaga berat badan ideal.</p>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
 
-                            <div class="p-4 bg-light/5 rounded-lg border">
+                            {{-- <div class="p-4 bg-light/5 rounded-lg border">
                                 <div class="flex">
                                     <div class="flex-shrink-0 mr-3">
-                                        <div
-                                            class="w-10 h-10 rounded-full bg-lightsuccess dark:bg-darksuccess flex items-center justify-center">
+                                        <div class="w-10 h-10 rounded-full bg-lightsuccess dark:bg-darksuccess flex items-center justify-center">
                                             <i class="ti ti-bottle text-success"></i>
                                         </div>
                                     </div>
@@ -478,14 +547,13 @@
                                             menjaga metabolisme tubuh tetap optimal.</p>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
 
-                            @if ($latestNutritionData['calories_needs'])
+                            {{-- @if ($latestNutritionData['calories_needs'])
                                 <div class="p-4 bg-light/5 rounded-lg border">
                                     <div class="flex">
                                         <div class="flex-shrink-0 mr-3">
-                                            <div
-                                                class="w-10 h-10 rounded-full bg-lightwarn dark:bg-darkwarn flex items-center justify-center">
+                                            <div class="w-10 h-10 rounded-full bg-lightwarn dark:bg-darkwarn flex items-center justify-center">
                                                 <i class="ti ti-flame text-warning"></i>
                                             </div>
                                         </div>
@@ -497,7 +565,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            @endif
+                            @endif --}}
                         </div>
                     </div>
                 </div>
