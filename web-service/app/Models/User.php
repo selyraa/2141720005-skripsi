@@ -55,6 +55,11 @@ class User extends Authenticatable implements CanResetPasswordContract
         ];
     }
 
+    public function routeNotificationForWhatsapp()
+    {
+        return $this->phone_number;
+    }
+
     public function role()
     {
         return $this->belongsTo(Role::class);
