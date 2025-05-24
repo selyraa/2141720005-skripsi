@@ -11,7 +11,7 @@
                         <div class="xl:pt-0 pt-8">
                             <h6 class="flex items-center gap-2 text-base mb-3" data-aos="fade-up" data-aos-delay="200"
                                 data-aos-duration="1000">
-                                <i class="ti ti-apple text-secondary text-lg"></i>Healthy Living & Wellness
+                                <i class="ti ti-apple text-secondary text-lg"></i>Gaya Hidup Sehat & Kesehatan
                             </h6>
                             <h1 class="font-bold mb-7 lg:text-[55px] lg:leading-[66px] text-4xl" data-aos="fade-up"
                                 data-aos-delay="400" data-aos-duration="1000">
@@ -21,14 +21,14 @@
                                     Cafe</span>
                             </h1>
                             <p class="text-lg mb-10" data-aos="fade-up" data-aos-delay="600" data-aos-duration="1000">
-                                Your ultimate destination for nutritional wellness and healthy lifestyle. We combine delicious food with expert health guidance to help you achieve your optimal well-being.
+                                Destinasi utama Anda untuk kesehatan nutrisi dan gaya hidup sehat. Kami menggabungkan makanan lezat dengan panduan kesehatan ahli untuk membantu Anda mencapai kesejahteraan optimal.
                             </p>
                             <div class="md:flex items-center gap-3.5" data-aos="fade-up" data-aos-delay="800"
                                 data-aos-duration="1000">
                                 <a class="btn py-3 px-12 mb-3 sm:mb-0 flex justify-center"
-                                    href="{{ route('login') }}">Login</a>
+                                    href="{{ route('login') }}">Masuk</a>
                                 <a class="btn btn-outline-primary scroll-link px-6 py-3 flex justify-center"
-                                    href="#services">Our Services</a>
+                                    href="#services">Layanan Kami</a>
                             </div>
                         </div>
                     </div>
@@ -57,18 +57,18 @@
                         <div class="xl:pt-0 pt-8">
                             <h2 class="font-bold mb-7 text-4xl" data-aos="fade-up"
                                 data-aos-delay="400" data-aos-duration="1000">
-                                About
+                                Tentang
                                 <span class="text-primary">
                                     Nut Castle Cafe</span>
                             </h2>
                             <p class="text-lg mb-6" data-aos="fade-up" data-aos-delay="600" data-aos-duration="1000">
-                                Established in 2020, Nut Castle Cafe is more than just a cafe - it's a wellness hub dedicated to promoting healthy living through nutrition and fitness.
+                                Didirikan pada tahun 2020, Nut Castle Cafe lebih dari sekadar kafe - ini adalah pusat kesehatan yang didedikasikan untuk mempromosikan hidup sehat melalui nutrisi dan kebugaran.
                             </p>
                             <p class="text-lg mb-6" data-aos="fade-up" data-aos-delay="600" data-aos-duration="1000">
-                                Our mission is to create a community where health-conscious individuals can enjoy nutritious meals, receive expert guidance, and participate in wellness activities that enhance their quality of life.
+                                Misi kami adalah menciptakan komunitas di mana individu yang sadar kesehatan dapat menikmati makanan bergizi, menerima panduan ahli, dan berpartisipasi dalam kegiatan kesehatan yang meningkatkan kualitas hidup mereka.
                             </p>
                             <p class="text-lg mb-6" data-aos="fade-up" data-aos-delay="600" data-aos-duration="1000">
-                                At Nut Castle, we combine the science of nutrition with the art of culinary excellence to create dishes that are both delicious and beneficial for your body.
+                                Di Nut Castle, kami menggabungkan ilmu nutrisi dengan seni keunggulan kuliner untuk menciptakan hidangan yang lezat dan bermanfaat bagi tubuh Anda.
                             </p>
                         </div>
                     </div>
@@ -82,10 +82,10 @@
             <div class="container relative container-xl">
                 <div class="lg:w-3/5 w-full mx-auto" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
                     <h2 class="text-center font-bold md:text-4xl text-2xl mb-6">
-                        Our Services
+                        Layanan Kami
                     </h2>
                     <p class="text-lg mb-10 text-center" data-aos="fade-up" data-aos-delay="600" data-aos-duration="1000">
-                        Comprehensive wellness solutions tailored to your health needs
+                        Solusi kesehatan komprehensif yang disesuaikan dengan kebutuhan kesehatan Anda
                     </p>
                 </div>
 
@@ -97,12 +97,12 @@
                                 <div class="mb-6 text-primary">
                                     <i class="ti ti-stethoscope text-5xl"></i>
                                 </div>
-                                <h3 class="font-bold text-2xl mb-4">Health Check-ups</h3>
+                                <h3 class="font-bold text-2xl mb-4">Pemeriksaan Kesehatan</h3>
                                 <p class="mb-6">
-                                    Comprehensive health assessments including BMI calculation, body composition analysis, and nutritional evaluation conducted by our certified health professionals.
+                                    Penilaian kesehatan komprehensif termasuk perhitungan BMI, analisis komposisi tubuh, dan evaluasi gizi yang dilakukan oleh profesional kesehatan bersertifikat kami.
                                 </p>
                                 <a href="#" class="text-primary font-medium hover:underline flex items-center gap-2">
-                                    Learn more <i class="ti ti-arrow-right"></i>
+                                    Pelajari lebih lanjut <i class="ti ti-arrow-right"></i>
                                 </a>
                             </div>
                         </div>
@@ -115,12 +115,12 @@
                                 <div class="mb-6 text-primary">
                                     <i class="ti ti-user-circle text-5xl"></i>
                                 </div>
-                                <h3 class="font-bold text-2xl mb-4">Health Consultations</h3>
+                                <h3 class="font-bold text-2xl mb-4">Konsultasi Kesehatan</h3>
                                 <p class="mb-6">
-                                    One-on-one sessions with our nutritionists and health experts to create personalized nutrition plans that align with your health goals and dietary preferences.
+                                    Sesi one-on-one dengan ahli gizi dan pakar kesehatan kami untuk membuat rencana nutrisi personal yang selaras dengan tujuan kesehatan dan preferensi diet Anda.
                                 </p>
                                 <a href="#" class="text-primary font-medium hover:underline flex items-center gap-2">
-                                    Learn more <i class="ti ti-arrow-right"></i>
+                                    Pelajari lebih lanjut <i class="ti ti-arrow-right"></i>
                                 </a>
                             </div>
                         </div>
@@ -133,12 +133,12 @@
                                 <div class="mb-6 text-primary">
                                     <i class="ti ti-bike text-5xl"></i>
                                 </div>
-                                <h3 class="font-bold text-2xl mb-4">Sports Classes</h3>
+                                <h3 class="font-bold text-2xl mb-4">Kelas Olahraga</h3>
                                 <p class="mb-6">
-                                    Group and individual fitness sessions including yoga, pilates, and strength training designed to complement your nutritional journey and enhance overall wellness.
+                                    Sesi kebugaran kelompok dan individu termasuk yoga, pilates, dan latihan kekuatan yang dirancang untuk melengkapi perjalanan nutrisi Anda dan meningkatkan kesehatan secara keseluruhan.
                                 </p>
                                 <a href="#" class="text-primary font-medium hover:underline flex items-center gap-2">
-                                    Learn more <i class="ti ti-arrow-right"></i>
+                                    Pelajari lebih lanjut <i class="ti ti-arrow-right"></i>
                                 </a>
                             </div>
                         </div>
@@ -151,12 +151,12 @@
                                 <div class="mb-6 text-primary">
                                     <i class="ti ti-apple text-5xl"></i>
                                 </div>
-                                <h3 class="font-bold text-2xl mb-4">Diet Programs</h3>
+                                <h3 class="font-bold text-2xl mb-4">Program Diet</h3>
                                 <p class="mb-6">
-                                    Customized diet plans tailored to your specific health needs, whether it's weight management, muscle gain, or managing health conditions through nutrition.
+                                    Rencana diet yang disesuaikan dengan kebutuhan kesehatan spesifik Anda, baik itu manajemen berat badan, peningkatan massa otot, atau mengelola kondisi kesehatan melalui nutrisi.
                                 </p>
                                 <a href="#" class="text-primary font-medium hover:underline flex items-center gap-2">
-                                    Learn more <i class="ti ti-arrow-right"></i>
+                                    Pelajari lebih lanjut <i class="ti ti-arrow-right"></i>
                                 </a>
                             </div>
                         </div>
@@ -169,12 +169,12 @@
                                 <div class="mb-6 text-primary">
                                     <i class="ti ti-chef-hat text-5xl"></i>
                                 </div>
-                                <h3 class="font-bold text-2xl mb-4">Healthy Cafe</h3>
+                                <h3 class="font-bold text-2xl mb-4">Kafe Sehat</h3>
                                 <p class="mb-6">
-                                    Enjoy our menu of nutritious meals and beverages made from fresh, locally-sourced ingredients that support your health goals while delighting your taste buds.
+                                    Nikmati menu makanan dan minuman bergizi kami yang terbuat dari bahan-bahan segar dan lokal yang mendukung tujuan kesehatan Anda sambil memanjakan lidah Anda.
                                 </p>
                                 <a href="#" class="text-primary font-medium hover:underline flex items-center gap-2">
-                                    View Menu <i class="ti ti-arrow-right"></i>
+                                    Lihat Menu <i class="ti ti-arrow-right"></i>
                                 </a>
                             </div>
                         </div>
@@ -187,12 +187,12 @@
                                 <div class="mb-6 text-primary">
                                     <i class="ti ti-book text-5xl"></i>
                                 </div>
-                                <h3 class="font-bold text-2xl mb-4">Wellness Workshops</h3>
+                                <h3 class="font-bold text-2xl mb-4">Workshop Kesehatan</h3>
                                 <p class="mb-6">
-                                    Educational sessions and cooking classes to help you understand nutrition better and learn how to prepare healthy meals at home for continued wellness.
+                                    Sesi edukasi dan kelas memasak untuk membantu Anda memahami nutrisi dengan lebih baik dan belajar cara menyiapkan makanan sehat di rumah untuk kesehatan berkelanjutan.
                                 </p>
                                 <a href="#" class="text-primary font-medium hover:underline flex items-center gap-2">
-                                    See Schedule <i class="ti ti-arrow-right"></i>
+                                    Lihat Jadwal <i class="ti ti-arrow-right"></i>
                                 </a>
                             </div>
                         </div>
@@ -207,10 +207,10 @@
             <div class="container container-xl">
                 <div class="lg:w-3/5 w-full mx-auto">
                     <h2 class="text-center font-bold md:text-4xl text-2xl mb-10">
-                        Our Regular Activities
+                        Kegiatan Rutin Kami
                     </h2>
                     <p class="text-lg mb-10 text-center" data-aos="fade-up" data-aos-delay="600" data-aos-duration="1000">
-                        Join our community in these regular wellness activities
+                        Bergabunglah dengan komunitas kami dalam kegiatan kesehatan rutin ini
                     </p>
                 </div>
                 
@@ -221,11 +221,11 @@
                             <img src="../assets/images/backgrounds/activity-1.jpg" alt="Morning Yoga" class="w-full h-auto object-cover">
                         </div>
                         <div class="card-body">
-                            <span class="badge-primary text-xs font-bold py-1 px-2 rounded mb-3 inline-block">Monday & Wednesday</span>
-                            <h3 class="text-xl font-bold mb-2">Morning Yoga</h3>
-                            <p class="mb-4">Start your day with balance and energy through our guided yoga sessions suitable for all levels.</p>
+                            <span class="badge-primary text-xs font-bold py-1 px-2 rounded mb-3 inline-block">Senin & Rabu</span>
+                            <h3 class="text-xl font-bold mb-2">Yoga Pagi</h3>
+                            <p class="mb-4">Mulai hari Anda dengan keseimbangan dan energi melalui sesi yoga terpandu kami yang cocok untuk semua level.</p>
                             <div class="flex items-center">
-                                <span class="text-sm"><i class="ti ti-clock mr-1"></i> 7:00 AM - 8:30 AM</span>
+                                <span class="text-sm"><i class="ti ti-clock mr-1"></i> 7:00 - 8:30 Pagi</span>
                             </div>
                         </div>
                     </div>
@@ -236,11 +236,11 @@
                             <img src="../assets/images/backgrounds/activity-2.jpg" alt="Nutrition Consultation" class="w-full h-auto object-cover">
                         </div>
                         <div class="card-body">
-                            <span class="badge-primary text-xs font-bold py-1 px-2 rounded mb-3 inline-block">Tuesday & Thursday</span>
-                            <h3 class="text-xl font-bold mb-2">Nutrition Consultations</h3>
-                            <p class="mb-4">One-on-one sessions with our certified nutritionists to personalize your diet plan.</p>
+                            <span class="badge-primary text-xs font-bold py-1 px-2 rounded mb-3 inline-block">Selasa & Kamis</span>
+                            <h3 class="text-xl font-bold mb-2">Konsultasi Nutrisi</h3>
+                            <p class="mb-4">Sesi one-on-one dengan ahli gizi bersertifikat kami untuk mempersonalisasi rencana diet Anda.</p>
                             <div class="flex items-center">
-                                <span class="text-sm"><i class="ti ti-clock mr-1"></i> 10:00 AM - 4:00 PM</span>
+                                <span class="text-sm"><i class="ti ti-clock mr-1"></i> 10:00 Pagi - 4:00 Sore</span>
                             </div>
                         </div>
                     </div>
@@ -251,11 +251,11 @@
                             <img src="../assets/images/backgrounds/activity-3.jpg" alt="Cooking Workshop" class="w-full h-auto object-cover">
                         </div>
                         <div class="card-body">
-                            <span class="badge-primary text-xs font-bold py-1 px-2 rounded mb-3 inline-block">Saturday</span>
-                            <h3 class="text-xl font-bold mb-2">Healthy Cooking Workshop</h3>
-                            <p class="mb-4">Learn to prepare delicious and nutritious meals with our chef's guidance and tips.</p>
+                            <span class="badge-primary text-xs font-bold py-1 px-2 rounded mb-3 inline-block">Sabtu</span>
+                            <h3 class="text-xl font-bold mb-2">Workshop Memasak Sehat</h3>
+                            <p class="mb-4">Belajar menyiapkan makanan lezat dan bergizi dengan panduan dan tips dari chef kami.</p>
                             <div class="flex items-center">
-                                <span class="text-sm"><i class="ti ti-clock mr-1"></i> 2:00 PM - 4:00 PM</span>
+                                <span class="text-sm"><i class="ti ti-clock mr-1"></i> 2:00 - 4:00 Sore</span>
                             </div>
                         </div>
                     </div>
@@ -269,7 +269,7 @@
             <div class="container container-xl">
                 <div class="lg:w-3/5 w-full mx-auto">
                     <h2 class="text-center font-bold md:text-4xl text-2xl mb-10" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
-                        What Our Clients Say
+                        Apa Kata Klien Kami
                     </h2>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -284,14 +284,14 @@
                                 <i class="ti ti-star-filled"></i>
                             </div>
                         </div>
-                        <p class="mb-6 italic">"The personalized diet plan from Nut Castle completely transformed my relationship with food. I've lost 15kg in 6 months and feel more energetic than ever!"</p>
+                        <p class="mb-6 italic">"Program diet yang dipersonalisasi dari Nut Castle benar-benar mengubah hubungan saya dengan makanan. Saya berhasil menurunkan 15kg dalam 6 bulan dan merasa lebih berenergi dari sebelumnya!"</p>
                         <div class="flex items-center">
                             <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
                                 <img src="../assets/images/profile/user-1.jpg" alt="Sarah M." class="w-full h-full object-cover">
                             </div>
                             <div>
                                 <h5 class="font-bold">Sarah M.</h5>
-                                <span class="text-sm">Diet Program Client</span>
+                                <span class="text-sm">Klien Program Diet</span>
                             </div>
                         </div>
                     </div>
@@ -307,14 +307,14 @@
                                 <i class="ti ti-star-filled"></i>
                             </div>
                         </div>
-                        <p class="mb-6 italic">"The yoga classes at Nut Castle are exceptional. The instructors are knowledgeable and the atmosphere is so calming. It's become my favorite part of the week!"</p>
+                        <p class="mb-6 italic">"Kelas yoga di Nut Castle sangat luar biasa. Instrukturnya berpengetahuan luas dan suasananya sangat menenangkan. Ini telah menjadi bagian favorit saya dalam seminggu!"</p>
                         <div class="flex items-center">
                             <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
                                 <img src="../assets/images/profile/user-2.jpg" alt="Michael T." class="w-full h-full object-cover">
                             </div>
                             <div>
                                 <h5 class="font-bold">Michael T.</h5>
-                                <span class="text-sm">Yoga Class Member</span>
+                                <span class="text-sm">Anggota Kelas Yoga</span>
                             </div>
                         </div>
                     </div>
@@ -330,14 +330,14 @@
                                 <i class="ti ti-star-filled"></i>
                             </div>
                         </div>
-                        <p class="mb-6 italic">"Not only is the food at Nut Castle delicious, but the nutritional guidance has helped me manage my diabetes better than ever. I'm so grateful for their expertise!"</p>
+                        <p class="mb-6 italic">"Makanan di Nut Castle tidak hanya lezat, tetapi panduan nutrisi mereka juga telah membantu saya mengelola diabetes lebih baik dari sebelumnya. Saya sangat berterima kasih atas keahlian mereka!"</p>
                         <div class="flex items-center">
                             <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
                                 <img src="../assets/images/profile/user-3.jpg" alt="Emma L." class="w-full h-full object-cover">
                             </div>
                             <div>
                                 <h5 class="font-bold">Emma L.</h5>
-                                <span class="text-sm">Health Consultation Client</span>
+                                <span class="text-sm">Klien Konsultasi Kesehatan</span>
                             </div>
                         </div>
                     </div>
@@ -350,8 +350,8 @@
         <section id="location" class="py-12">
             <div class="container container-xl">
                 <div class="lg:w-3/5 w-full mx-auto mb-10">
-                    <h2 class="text-center font-bold md:text-4xl text-2xl mb-6">Visit Us</h2>
-                    <p class="text-lg text-center">Come experience wellness at our convenient location</p>
+                    <h2 class="text-center font-bold md:text-4xl text-2xl mb-6">Kunjungi Kami</h2>
+                    <p class="text-lg text-center">Datang dan rasakan kesehatan di lokasi kami yang nyaman</p>
                 </div>
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
@@ -362,10 +362,11 @@
                         </div>
                     </div>
                     <div>
-                        <h3 class="text-2xl font-bold mb-4">Contact Information</h3>
+                        <h3 class="text-2xl font-bold mb-4">Informasi Kontak</h3>
                         <div class="space-y-4">
                             <div class="flex items-start">
                                  <i class="ti ti-map-pin text-primary text-xl mr-4"></i>
+
                                 <p class="ml-2">Jl. Sigura - Gura No.Kav 2, Karangbesuki, Kec. Sukun,<br> Kota Malang, Jawa Timur 65147</p>
                             </div>
                             <div class="flex items-center">
@@ -377,8 +378,8 @@
                                 <p>info@nutcastlecafe.com</p>
                             </div> --}}
                             <div class="space-y-2">
-                                <h4 class="font-bold text-lg">Opening Hours:</h4>
-                                <p>Monday - Sunday: 7:00 AM - 3:00 PM</p>
+                                <h4 class="font-bold text-lg">Jam Operasional:</h4>
+                                <p>Senin - Minggu: 7:00 Pagi - 3:00 Sore</p>
                             </div>
                         </div>
                     </div>
@@ -392,11 +393,11 @@
             <div class="container container-xl">
                 <div class="grid grid-cols-12 gap-6 justify-between items-center">
                     <div class="xl:col-span-7 lg:col-span-7 col-span-12 lg:text-left text-center">
-                        <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Start Your Wellness Journey?</h2>
-                        <p class="text-lg mb-6 opacity-90">Join Nut Castle Cafe today and transform your lifestyle with our comprehensive health and nutrition services.</p>
+                        <h2 class="text-3xl md:text-4xl font-bold mb-4">Siap Memulai Perjalanan Kesehatan Anda?</h2>
+                        <p class="text-lg mb-6 opacity-90">Bergabunglah dengan Nut Castle Cafe hari ini dan transformasikan gaya hidup Anda dengan layanan kesehatan dan nutrisi komprehensif kami.</p>
                     </div>
                     <div class="xl:col-span-5 lg:col-span-5 col-span-12 flex lg:justify-end justify-center">
-                        <a href="{{ route('login') }}" class="btn bg-white text-primary hover:bg-lightprimary py-3 px-8 text-lg font-medium">Login Now</a>
+                        <a href="{{ route('login') }}" class="btn bg-white text-primary hover:bg-lightprimary py-3 px-8 text-lg font-medium">Masuk Sekarang</a>
                     </div>
                 </div>
             </div>
@@ -409,7 +410,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
                     <div>
                         <h4 class="text-lg font-bold mb-4">Nut Castle Cafe</h4>
-                        <p class="mb-4">Your partner in health and nutrition, dedicated to helping you achieve optimal wellness through personalized services and expert guidance.</p>
+                        <p class="mb-4">Mitra Anda dalam kesehatan dan nutrisi, didedikasikan untuk membantu Anda mencapai kesejahteraan optimal melalui layanan personal dan bimbingan ahli.</p>
                         <div class="flex space-x-4">
                             <a href="#" class="text-primary hover:text-secondary"><i class="ti ti-brand-facebook"></i></a>
                             <a href="#" class="text-primary hover:text-secondary"><i class="ti ti-brand-instagram"></i></a>
@@ -417,34 +418,34 @@
                         </div>
                     </div>
                     <div>
-                        <h4 class="text-lg font-bold mb-4">Quick Links</h4>
+                        <h4 class="text-lg font-bold mb-4">Tautan Cepat</h4>
                         <ul class="space-y-2">
-                            <li><a href="#" class="hover:text-primary">Home</a></li>
-                            <li><a href="#about-us" class="hover:text-primary">About Us</a></li>
-                            <li><a href="#services" class="hover:text-primary">Services</a></li>
-                            <li><a href="#activities" class="hover:text-primary">Activities</a></li>
+                            <li><a href="#" class="hover:text-primary">Beranda</a></li>
+                            <li><a href="#about-us" class="hover:text-primary">Tentang Kami</a></li>
+                            <li><a href="#services" class="hover:text-primary">Layanan</a></li>
+                            <li><a href="#activities" class="hover:text-primary">Kegiatan</a></li>
                         </ul>
                     </div>
                     <div>
-                        <h4 class="text-lg font-bold mb-4">Services</h4>
+                        <h4 class="text-lg font-bold mb-4">Layanan</h4>
                         <ul class="space-y-2">
-                            <li><a href="#" class="hover:text-primary">Health Check-ups</a></li>
-                            <li><a href="#" class="hover:text-primary">Diet Programs</a></li>
-                            <li><a href="#" class="hover:text-primary">Sports Classes</a></li>
-                            <li><a href="#" class="hover:text-primary">Consultations</a></li>
+                            <li><a href="#" class="hover:text-primary">Pemeriksaan Kesehatan</a></li>
+                            <li><a href="#" class="hover:text-primary">Program Diet</a></li>
+                            <li><a href="#" class="hover:text-primary">Kelas Olahraga</a></li>
+                            <li><a href="#" class="hover:text-primary">Konsultasi</a></li>
                         </ul>
                     </div>
                     <div>
-                        <h4 class="text-lg font-bold mb-4">Newsletter</h4>
-                        <p class="mb-4">Subscribe to receive tips, recipes, and updates on our programs.</p>
+                        <h4 class="text-lg font-bold mb-4">Buletin</h4>
+                        <p class="mb-4">Berlangganan untuk menerima tips, resep, dan update tentang program kami.</p>
                         <div class="flex">
-                            <input type="email" placeholder="Your email" class="form-input rounded-r-none">
-                            <button class="btn btn-primary rounded-l-none">Send</button>
+                            <input type="email" placeholder="Email Anda" class="form-input rounded-r-none">
+                            <button class="btn btn-primary rounded-l-none">Kirim</button>
                         </div>
                     </div>
                 </div>
                 <div class="border-t pt-6">
-                    <p class="text-center">© 2025 Nut Castle Cafe. All rights reserved.</p>
+                    <p class="text-center">© 2025 Nut Castle Cafe. Hak cipta dilindungi undang-undang.</p>
                 </div>
             </div>
         </section> --}}

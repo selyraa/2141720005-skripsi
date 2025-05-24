@@ -28,26 +28,26 @@
             <ul class="xl:flex hidden items-center gap-5">
                 <li>
                     <a href="#"
-                        class="hover:text-primary dark:hover:text-primary text-link dark:text-darklink text-sm">Home</a>
+                        class="hover:text-primary dark:hover:text-primary text-link dark:text-darklink text-sm">Beranda</a>
                 </li>
                 <li>
                     <a href="#about-us"
-                        class="hover:text-primary dark:hover:text-primary text-link dark:text-darklink text-sm">About Us</a>
+                        class="hover:text-primary dark:hover:text-primary text-link dark:text-darklink text-sm">Tentang Kami</a>
                 </li>
                 <li>
                     <a href="#services"
-                        class="hover:text-primary dark:hover:text-primary text-link dark:text-darklink text-sm">Services</a>
+                        class="hover:text-primary dark:hover:text-primary text-link dark:text-darklink text-sm">Layanan</a>
                 </li>
                 <li>
                     <a href="#activities"
-                        class="hover:text-primary dark:hover:text-primary text-link dark:text-darklink text-sm">Activities</a>
+                        class="hover:text-primary dark:hover:text-primary text-link dark:text-darklink text-sm">Kegiatan</a>
                 </li>
                 <li>
                     <a href="#location"
-                        class="hover:text-primary dark:hover:text-primary text-link dark:text-darklink text-sm">Location</a>
+                        class="hover:text-primary dark:hover:text-primary text-link dark:text-darklink text-sm">Lokasi</a>
                 </li>
                 <li>
-                    <a href="{{ route('login') }}" class="btn py-1.5 px-4 text-sm">Login</a>
+                    <a href="{{ route('login') }}" class="btn py-1.5 px-4 text-sm">Masuk</a>
                 </li>
             </ul>
         </div>
