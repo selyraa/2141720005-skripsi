@@ -1,15 +1,15 @@
 <header
     class="sticky top-header top-0 inset-x-0 z-[1] flex flex-wrap md:justify-start md:flex-nowrap text-sm bg-white dark:bg-dark ">
     <div class="with-vertical w-full py-3">
-        <div class="w-full mx-auto px-4 lg:py-1 py-3 lg:px-4" aria-label="Global">
+        <div class="w-full mx-auto px-3 sm:px-4 lg:py-1 py-3 lg:px-4" aria-label="Global">
             <div class="relative md:flex md:items-center md:justify-between">
-                <div class="hs-collapse  grow md:block">
+                <div class="hs-collapse grow md:block">
                     <div class="flex justify-between items-center">
-                        <div class="flex items-center gap-2">
+                        <div class="flex items-center gap-1 sm:gap-2">
                             <div class="relative">
-                                <a class="xl:flex hidden text-xl icon-hover cursor-pointer text-link dark:text-darklink sidebartoggler h-10 w-10 hover:text-primary light-dark-hoverbg  justify-center items-center rounded-full"
+                                <a class="xl:flex hidden text-xl icon-hover cursor-pointer text-link dark:text-darklink sidebartoggler h-10 w-10 hover:text-primary light-dark-hoverbg justify-center items-center rounded-full"
                                     id="headerCollapse" href="javascript:void(0)">
-                                    <i class="ti ti-menu-2 relative z-[1] "></i>
+                                    <i class="ti ti-menu-2 relative z-[1]"></i>
                                 </a>
                                 <!--Mobile Sidebar Toggle -->
                                 <div class="sticky top-0 inset-x-0 xl:hidden">
@@ -18,7 +18,7 @@
                                         <a class="text-xl icon-hover cursor-pointer text-link dark:text-darklink sidebartoggler h-10 w-10 hover:text-primary light-dark-hoverbg flex justify-center items-center rounded-full"
                                             data-hs-overlay="#application-sidebar-brand"
                                             aria-controls="application-sidebar-brand" aria-label="Toggle navigation">
-                                            <i class="ti ti-menu-2 relative z-[1] "></i>
+                                            <i class="ti ti-menu-2 relative z-[1]"></i>
                                         </a>
                                         <!-- End Navigation Toggle -->
                                     </div>
@@ -26,14 +26,14 @@
                                 <!-- End Sidebar Toggle -->
                             </div>
 
-                            <a class="hidden lg:flex relative hs-dropdown-toggle cursor-pointer text-xl hover:text-primary text-link dark:text-darklink h-10 w-10 light-dark-hoverbg  justify-center items-center rounded-full"
+                            <a class="hidden lg:flex relative hs-dropdown-toggle cursor-pointer text-xl hover:text-primary text-link dark:text-darklink h-10 w-10 light-dark-hoverbg justify-center items-center rounded-full"
                                 data-hs-overlay="#hs-focus-management-modal">
                                 <i class="ti ti-search relative"></i>
                             </a>
 
                             <div class="lg:hidden">
                                 <button type="button"
-                                    class="p-2 inline-flex h-10 w-10 text-link dark:text-darklink hover:text-primary light-dark-hoverbg  justify-center items-center rounded-full"
+                                    class="p-1 sm:p-2 inline-flex h-9 w-9 sm:h-10 sm:w-10 text-link dark:text-darklink hover:text-primary light-dark-hoverbg justify-center items-center rounded-full"
                                     data-hs-overlay="#navbar-offcanvas-example-menu"
                                     aria-controls="navbar-offcanvas-example-menu" aria-label="Toggle navigation">
                                     <i class="ti ti-apps text-xl"></i>
@@ -62,16 +62,16 @@
                         <div class="icon-nav items-center gap-3 lg:gap-4 flex">
                             <!-- Theme Toggle  -->
                             <button type="button"
-                                class="hs-dark-mode-active:hidden icon-hover block hs-dark-mode group items-center font-medium hover:text-primary text-link dark:text-darklink h-10 w-10 light-dark-hoverbg  justify-center rounded-full"
+                                class="hs-dark-mode-active:hidden icon-hover block hs-dark-mode group items-center font-medium hover:text-primary text-link dark:text-darklink h-9 w-9 sm:h-10 sm:w-10 light-dark-hoverbg justify-center rounded-full"
                                 data-hs-theme-click-value="dark" id="dark-layout">
                                 <i
-                                    class="ti ti-moon text-xl  text-link dark:text-darklink relative  hover:text-primary"></i>
+                                    class="ti ti-moon text-lg sm:text-xl text-link dark:text-darklink relative hover:text-primary"></i>
                             </button>
                             <button type="button"
-                                class="hs-dark-mode-active:block icon-hover hidden hs-dark-mode group  items-center  font-medium hover:text-primary text-link dark:text-darklink h-10 w-10 light-dark-hoverbg  justify-center rounded-full"
+                                class="hs-dark-mode-active:block icon-hover hidden hs-dark-mode group items-center font-medium hover:text-primary text-link dark:text-darklink h-9 w-9 sm:h-10 sm:w-10 light-dark-hoverbg justify-center rounded-full"
                                 data-hs-theme-click-value="light" id="light-layout">
                                 <i
-                                    class="ti ti-sun text-xl  text-link dark:text-darklink relative  hover:text-primary"></i>
+                                    class="ti ti-sun text-lg sm:text-xl text-link dark:text-darklink relative hover:text-primary"></i>
                             </button>
 
                             <!-- Notifications DD -->
@@ -172,18 +172,18 @@
                             <div
                                 class="hs-dropdown [--strategy:absolute] [--adaptive:none] sm:[--trigger:hover] sm:relative group/menu">
                                 <a id="hs-dropdown-hover-event-profile"
-                                    class="relative hs-dropdown-toggle h-10 w-10 cursor-pointer hover:bg-lightprimary dark:hover:bg-darkprimary flex justify-center items-center rounded-full overflow-hidden group-hover/menu:ring-2 group-hover/menu:ring-primary">
+                                    class="relative hs-dropdown-toggle h-9 w-9 sm:h-10 sm:w-10 cursor-pointer hover:bg-lightprimary dark:hover:bg-darkprimary flex justify-center items-center rounded-full overflow-hidden group-hover/menu:ring-2 group-hover/menu:ring-primary">
                                     <img src="{{ auth()->user()->profile_photo_url }}" class="w-full h-full object-cover" alt="Profile">
                                 </a>
-                                <div class="card hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 right-0 rtl:right-auto rtl:left-0 mt-2 min-w-max top-auto w-full sm:w-[280px] hidden z-[2]"
+                                <div class="card hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 right-0 rtl:right-auto rtl:left-0 mt-2 min-w-[240px] top-auto w-full sm:w-[280px] hidden z-[2]"
                                     aria-labelledby="hs-dropdown-hover-event-profile">
-                                    <div class="px-7 py-4 border-b border-gray-200 dark:border-gray-700">
+                                    <div class="px-4 sm:px-7 py-4 border-b border-gray-200 dark:border-gray-700">
                                         <div class="flex items-center justify-between">
                                             <div class="flex items-center">
-                                                <img src="{{ auth()->user()->profile_photo_url }}" class="h-14 w-14 rounded-full mr-3" alt="User">
-                                                <div class="ml-2">
+                                                <img src="{{ auth()->user()->profile_photo_url }}" class="h-12 w-12 sm:h-14 sm:w-14 rounded-full mr-2 sm:mr-3" alt="User">
+                                                <div class="ml-1 sm:ml-2">
                                                     <h5
-                                                        class="text-base font-medium text-bodytext dark:text-darklink mb-1">
+                                                        class="text-sm sm:text-base font-medium text-bodytext dark:text-darklink mb-1">
                                                         {{ auth()->user()->name }}</h5>
                                                     <p class="text-xs text-gray-500 dark:text-gray-400">
                                                         {{ auth()->user()->role->name ?? 'No Role' }}</p>
@@ -193,17 +193,17 @@
                                     </div>
                                     <div class="py-2">
                                         <a href="{{ route('account.settings') }}"
-                                            class="dropdown-menu-link py-2 px-5 hover:bg-lightprimary hover:dark:bg-darkprimary flex items-center gap-2">
-                                            <i class="ti ti-settings text-lg"></i>
-                                            <span>{{ __('app.account_settings') }}</span>
+                                            class="dropdown-menu-link py-2 px-3 sm:px-5 hover:bg-lightprimary hover:dark:bg-darkprimary flex items-center gap-1 sm:gap-2">
+                                            <i class="ti ti-settings text-md sm:text-lg"></i>
+                                            <span class="text-sm sm:text-base">{{ __('app.account_settings') }}</span>
                                         </a>
                                         <hr class="my-2 border-gray-200 dark:border-gray-700">
                                         <form action="{{ route('logout') }}" method="POST">
                                             @csrf
                                             <button type="submit"
-                                                class="dropdown-menu-link py-2 px-5 hover:bg-lightprimary hover:dark:bg-darkprimary w-full text-left flex items-center gap-2 text-error">
-                                                <i class="ti ti-logout text-lg"></i>
-                                                <span>{{ __('app.logout') }}</span>
+                                                class="dropdown-menu-link py-2 px-3 sm:px-5 hover:bg-lightprimary hover:dark:bg-darkprimary w-full text-left flex items-center gap-1 sm:gap-2 text-error">
+                                                <i class="ti ti-logout text-md sm:text-lg"></i>
+                                                <span class="text-sm sm:text-base">{{ __('app.logout') }}</span>
                                             </button>
                                         </form>
                                     </div>

@@ -7,23 +7,23 @@
 @endpush
 
 @section('content')
-    <div class="w-full px-5 py-5">
+    <div class="w-full px-2 sm:px-5 py-2 sm:py-5">
         <!-- Welcome Header Card -->
         <div
             class="card bg-lightsuccess dark:bg-darkinfo shadow-none dark:shadow-none position-relative overflow-hidden mb-6">
             <div class="card-body md:py-3 py-5">
-                <div class="flex items-center grid grid-cols-12 gap-6">
-                    <div class="col-span-9">
-                        <h4 class="font-semibold text-xl text-dark dark:text-white mb-3">
+                <div class="grid grid-cols-12 gap-4 sm:gap-6">
+                    <div class="col-span-12 sm:col-span-8 md:col-span-9">
+                        <h4 class="font-semibold text-lg sm:text-xl text-dark dark:text-white mb-2 sm:mb-3">
                             Selamat Datang, {{ $userInfo['name'] }}
                         </h4>
-                        <p class="text-gray-600">Program Diet Anda: <span
+                        <p class="text-gray-600 text-sm sm:text-base">Program Diet Anda: <span
                                 class="font-semibold text-primary">{{ $programName }}</span></p>
                     </div>
-                    <div class="col-span-3">
-                        <div class="bg-lightprimary dark:bg-darkprimary px-4 py-3 rounded-lg text-center">
-                            <p class="font-semibold text-primary">Mengikuti Program</p>
-                            <h5 class="text-xl font-bold text-primary mb-0">{{ $daysInProgram }} hari</h5>
+                    <div class="col-span-12 sm:col-span-4 md:col-span-3 mt-2 sm:mt-0">
+                        <div class="bg-lightprimary dark:bg-darkprimary px-3 sm:px-4 py-2 sm:py-3 rounded-lg text-center">
+                            <p class="font-semibold text-primary text-sm sm:text-base">Mengikuti Program</p>
+                            <h5 class="text-lg sm:text-xl font-bold text-primary mb-0">{{ $daysInProgram }} hari</h5>
                             @if ($registrationDate)
                                 <p class="text-xs text-gray-600 mt-1">Terdaftar sejak:
                                     {{ $registrationDate->format('d M Y') }}</p>
@@ -35,18 +35,18 @@
         </div>
 
         <!-- Overview Stats Cards -->
-        <div class="grid grid-cols-12 gap-6 mb-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-6">
             <!-- Current Weight Card -->
-            <div class="col-span-12 sm:col-span-6 lg:col-span-3">
+            <div class="w-full">
                 <div class="card mb-0 shadow-none bg-lightprimary dark:bg-darkprimary w-full">
-                    <div class="card-body">
+                    <div class="card-body py-3 sm:py-4">
                         <div class="text-center">
                             <div class="flex justify-center">
-                                <img src="/assets/images/svgs/icon-user-male.svg" width="40" height="40"
-                                    class="mb-3" alt="">
+                                <img src="/assets/images/svgs/icon-user-male.svg" width="36" height="36"
+                                    class="mb-2 sm:mb-3" alt="">
                             </div>
-                            <p class="font-semibold text-primary mb-1">Berat Badan Terkini</p>
-                            <h5 class="text-lg font-semibold text-primary mb-0">
+                            <p class="font-semibold text-primary mb-1 text-sm sm:text-base">Berat Badan Terkini</p>
+                            <h5 class="text-md sm:text-lg font-semibold text-primary mb-0">
                                 {{ $currentWeight ? number_format($currentWeight, 1) . ' kg' : '-- kg' }}</h5>
                             @if ($weightChange !== null)
                                 <div class="flex justify-center mt-2">
@@ -63,16 +63,16 @@
             </div>
 
             <!-- Starting Weight Card -->
-            <div class="col-span-12 sm:col-span-6 lg:col-span-3">
+            <div class="w-full">
                 <div class="card mb-0 shadow-none bg-lightblue dark:bg-darkblue w-full">
-                    <div class="card-body">
+                    <div class="card-body py-3 sm:py-4">
                         <div class="text-center">
                             <div class="flex justify-center">
-                                <img src="/assets/images/svgs/icon-briefcase.svg" width="40" height="40"
-                                    class="mb-3" alt="">
+                                <img src="/assets/images/svgs/icon-briefcase.svg" width="36" height="36"
+                                    class="mb-2 sm:mb-3" alt="">
                             </div>
-                            <p class="font-semibold text-blue mb-1">Berat Badan Awal</p>
-                            <h5 class="text-lg font-semibold text-blue mb-0">
+                            <p class="font-semibold text-blue mb-1 text-sm sm:text-base">Berat Badan Awal</p>
+                            <h5 class="text-md sm:text-lg font-semibold text-blue mb-0">
                                 {{ $firstCheckupWeight ? number_format($firstCheckupWeight, 1) . ' kg' : '-- kg' }}</h5>
                             <p class="text-xs text-gray-600 mt-2">Pemeriksaan pertama</p>
                         </div>
@@ -81,16 +81,16 @@
             </div>
 
             <!-- BMI Card -->
-            <div class="col-span-12 sm:col-span-6 lg:col-span-3">
+            <div class="w-full">
                 <div class="card mb-0 shadow-none bg-lightinfo dark:bg-darkinfo w-full">
-                    <div class="card-body">
+                    <div class="card-body py-3 sm:py-4">
                         <div class="text-center">
                             <div class="flex justify-center">
-                                <img src="/assets/images/svgs/icon-mailbox.svg" width="40" height="40" class="mb-3"
+                                <img src="/assets/images/svgs/icon-mailbox.svg" width="36" height="36" class="mb-2 sm:mb-3"
                                     alt="">
                             </div>
-                            <p class="font-semibold text-info mb-1">BMI</p>
-                            <h5 class="text-lg font-semibold text-info mb-0">
+                            <p class="font-semibold text-info mb-1 text-sm sm:text-base">BMI</p>
+                            <h5 class="text-md sm:text-lg font-semibold text-info mb-0">
                                 {{ $bmiValue ? number_format($bmiValue, 1) : '--' }}</h5>
                             @if ($bmiCategory)
                                 <div class="flex justify-center mt-2">
@@ -118,16 +118,16 @@
             </div>
 
             <!-- Calorie Needs Card -->
-            <div class="col-span-12 sm:col-span-6 lg:col-span-3">
+            <div class="w-full">
                 <div class="card mb-0 shadow-none bg-lightsuccess dark:bg-darksuccess w-full">
-                    <div class="card-body">
+                    <div class="card-body py-3 sm:py-4">
                         <div class="text-center">
                             <div class="flex justify-center">
-                                <img src="/assets/images/svgs/icon-favorites.svg" width="40" height="40"
-                                    class="mb-3" alt="">
+                                <img src="/assets/images/svgs/icon-favorites.svg" width="36" height="36"
+                                    class="mb-2 sm:mb-3" alt="">
                             </div>
-                            <p class="font-semibold text-success mb-1">Kebutuhan Kalori</p>
-                            <h5 class="text-lg font-semibold text-success mb-0">
+                            <p class="font-semibold text-success mb-1 text-sm sm:text-base">Kebutuhan Kalori</p>
+                            <h5 class="text-md sm:text-lg font-semibold text-success mb-0">
                                 {{ $latestNutritionData['calories_needs'] ? number_format($latestNutritionData['calories_needs']) . ' kkal' : '-- kkal' }}
                             </h5>
                             <p class="text-xs text-gray-600 mt-2">Berdasarkan data pemeriksaan terakhir</p>
@@ -138,17 +138,17 @@
         </div>
 
         <!-- Main Dashboard Content -->
-        <div class="grid grid-cols-12 gap-6">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6">
             <!-- Left Column - Large Charts and Summary -->
-            <div class="lg:col-span-8 col-span-12">
+            <div class="lg:col-span-8 col-span-1">
                 <!-- Weight Trend Chart -->
-                <div class="card mb-6">
+                <div class="card mb-4 sm:mb-6">
                     <div class="card-body">
-                        <h5 class="card-title">Tren Berat Badan</h5>
-                        <p class="card-subtitle">Progres berat badan Anda selama mengikuti program</p>
+                        <h5 class="card-title text-lg sm:text-xl">Tren Berat Badan</h5>
+                        <p class="card-subtitle text-sm sm:text-base">Progres berat badan Anda selama mengikuti program</p>
                         @if (count($weightTrendData['dates']) > 0)
-                            <div class="card-body p-4 border rounded-lg bg-light/5 mt-5 mb-3">
-                                <div id="weight-trend-chart" class="my-4"
+                            <div class="card-body p-3 sm:p-4 border rounded-lg bg-light/5 mt-4 sm:mt-5 mb-2 sm:mb-3">
+                                <div id="weight-trend-chart" class="my-2 sm:my-4" style="min-height: 250px; height: 100%;"
                                     data-dates='{{ json_encode($weightTrendData['dates']) }}'
                                     data-weights='{{ json_encode($weightTrendData['weights']) }}'>
                                 </div>
@@ -161,11 +161,11 @@
                                 </div>
                             </div>
                         @else
-                            <div class="flex items-center justify-center h-80 bg-gray-50 dark:bg-gray-800 rounded-lg my-8">
-                                <div class="text-center">
-                                    <i class="ti ti-chart-line text-gray-400 text-4xl mb-3"></i>
-                                    <p class="text-gray-500 dark:text-gray-400">Belum ada data tren berat badan.</p>
-                                    <p class="text-xs text-gray-400 mt-2">Data akan ditampilkan setelah beberapa kali
+                            <div class="flex items-center justify-center h-60 sm:h-80 bg-gray-50 dark:bg-gray-800 rounded-lg my-4 sm:my-8">
+                                <div class="text-center px-4">
+                                    <i class="ti ti-chart-line text-gray-400 text-3xl sm:text-4xl mb-2 sm:mb-3"></i>
+                                    <p class="text-gray-500 dark:text-gray-400 text-sm sm:text-base">Belum ada data tren berat badan.</p>
+                                    <p class="text-xs text-gray-400 mt-1 sm:mt-2">Data akan ditampilkan setelah beberapa kali
                                         pemeriksaan.</p>
                                 </div>
                             </div>
@@ -174,19 +174,19 @@
                 </div>
 
                 <!-- Body Composition Chart -->
-                <div class="card mb-6">
+                <div class="card mb-4 sm:mb-6">
                     <div class="card-body">
-                        <h5 class="card-title">Komposisi Tubuh</h5>
-                        <p class="card-subtitle">Perubahan komposisi tubuh selama mengikuti program</p>
+                        <h5 class="card-title text-lg sm:text-xl">Komposisi Tubuh</h5>
+                        <p class="card-subtitle text-sm sm:text-base">Perubahan komposisi tubuh selama mengikuti program</p>
                         @if (count($bodyCompositionData['dates']) > 0)
-                            <div class="card-body p-4 border rounded-lg bg-light/5 mt-5 mb-3">
-                                <div id="body-composition-chart" class="my-4" style="min-height: 350px;"
+                            <div class="card-body p-3 sm:p-4 border rounded-lg bg-light/5 mt-4 sm:mt-5 mb-2 sm:mb-3">
+                                <div id="body-composition-chart" class="my-2 sm:my-4" style="min-height: 280px; height: 100%;"
                                     data-dates='{{ json_encode($bodyCompositionData['dates']) }}'
                                     data-body-fat='{{ json_encode($bodyCompositionData['bodyFat']) }}'
                                     data-belly-fat='{{ json_encode($bodyCompositionData['bellyFat']) }}'
                                     data-muscle-mass='{{ json_encode($bodyCompositionData['muscleMass']) }}'>
                                 </div>
-                                <div class="grid grid-cols-3 gap-3 mt-2">
+                                <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-3 mt-2">
                                     <div class="flex items-center justify-center">
                                         <span class="inline-block w-3 h-3 rounded-full mr-2"
                                             style="background-color: #EC4899;"></span>
@@ -232,52 +232,51 @@
                         </div>
 
                         @if (count($checkups) > 0)
-                            <div class="overflow-x-auto mt-4 pb-2" style="max-width: 100%;">
-                                <table class="table-bordered table-striped w-full">
-                                    <thead class="bg-light">
-                                        <tr>
-                                            <th class="px-4 py-3 border-b text-left font-semibold text-sm">Tanggal</th>
-                                            <th class="px-4 py-3 border-b text-left font-semibold text-sm">Berat (kg)</th>
-                                            <th class="px-4 py-3 border-b text-left font-semibold text-sm">Tinggi (cm)</th>
-                                            <th class="px-4 py-3 border-b text-left font-semibold text-sm">BMI</th>
-                                            <th class="px-4 py-3 border-b text-left font-semibold text-sm">Lemak Tubuh (%)
-                                            </th>
-                                            <th class="px-4 py-3 border-b text-left font-semibold text-sm">Lemak Perut (%)
-                                            </th>
-                                            <th class="px-4 py-3 border-b text-left font-semibold text-sm">Massa Otot (kg)
-                                            </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($checkups->sortByDesc('checkup_date') as $checkup)
-                                            <tr class="hover:bg-light">
-                                                <td class="px-4 py-3 border-b text-sm whitespace-nowrap">
-                                                    {{ $checkup->checkup_date->format('d M Y') }}</td>
-                                                <td class="px-4 py-3 border-b text-sm font-semibold whitespace-nowrap">
-                                                    {{ number_format($checkup->weight, 1) }}</td>
-                                                <td class="px-4 py-3 border-b text-sm whitespace-nowrap">
-                                                    {{ number_format($checkup->height, 1) }}</td>
-                                                <td class="px-4 py-3 border-b text-sm whitespace-nowrap">
-                                                    {{ number_format($checkup->calculateBmi(), 1) }}</td>
-                                                <td class="px-4 py-3 border-b text-sm whitespace-nowrap">
-                                                    {{ $checkup->body_fat ? number_format($checkup->body_fat, 1) : '-' }}
-                                                </td>
-                                                <td class="px-4 py-3 border-b text-sm whitespace-nowrap">
-                                                    {{ $checkup->belly_fat ? number_format($checkup->belly_fat, 1) : '-' }}
-                                                </td>
-                                                <td class="px-4 py-3 border-b text-sm whitespace-nowrap">
-                                                    {{ $checkup->muscle_mass ? number_format($checkup->muscle_mass, 1) : '-' }}
-                                                </td>
+                            <div class="overflow-x-auto mt-3 sm:mt-4 pb-2" style="max-width: 100%;">
+                                <div class="min-w-[800px]">
+                                    <table class="table-bordered table-striped w-full">
+                                        <thead class="bg-light">
+                                            <tr>
+                                                <th class="px-2 sm:px-4 py-2 sm:py-3 border-b text-left font-semibold text-xs sm:text-sm">Tanggal</th>
+                                                <th class="px-2 sm:px-4 py-2 sm:py-3 border-b text-left font-semibold text-xs sm:text-sm">Berat (kg)</th>
+                                                <th class="px-2 sm:px-4 py-2 sm:py-3 border-b text-left font-semibold text-xs sm:text-sm">Tinggi (cm)</th>
+                                                <th class="px-2 sm:px-4 py-2 sm:py-3 border-b text-left font-semibold text-xs sm:text-sm">BMI</th>
+                                                <th class="px-2 sm:px-4 py-2 sm:py-3 border-b text-left font-semibold text-xs sm:text-sm">Lemak Tubuh (%)</th>
+                                                <th class="px-2 sm:px-4 py-2 sm:py-3 border-b text-left font-semibold text-xs sm:text-sm">Lemak Perut (%)</th>
+                                                <th class="px-2 sm:px-4 py-2 sm:py-3 border-b text-left font-semibold text-xs sm:text-sm">Massa Otot (kg)</th>
                                             </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($checkups->sortByDesc('checkup_date') as $checkup)
+                                                <tr class="hover:bg-light">
+                                                    <td class="px-2 sm:px-4 py-2 sm:py-3 border-b text-xs sm:text-sm whitespace-nowrap">
+                                                        {{ $checkup->checkup_date->format('d M Y') }}</td>
+                                                    <td class="px-2 sm:px-4 py-2 sm:py-3 border-b text-xs sm:text-sm font-semibold whitespace-nowrap">
+                                                        {{ number_format($checkup->weight, 1) }}</td>
+                                                    <td class="px-2 sm:px-4 py-2 sm:py-3 border-b text-xs sm:text-sm whitespace-nowrap">
+                                                        {{ number_format($checkup->height, 1) }}</td>
+                                                    <td class="px-2 sm:px-4 py-2 sm:py-3 border-b text-xs sm:text-sm whitespace-nowrap">
+                                                        {{ number_format($checkup->calculateBmi(), 1) }}</td>
+                                                    <td class="px-2 sm:px-4 py-2 sm:py-3 border-b text-xs sm:text-sm whitespace-nowrap">
+                                                        {{ $checkup->body_fat ? number_format($checkup->body_fat, 1) : '-' }}
+                                                    </td>
+                                                    <td class="px-2 sm:px-4 py-2 sm:py-3 border-b text-xs sm:text-sm whitespace-nowrap">
+                                                        {{ $checkup->belly_fat ? number_format($checkup->belly_fat, 1) : '-' }}
+                                                    </td>
+                                                    <td class="px-2 sm:px-4 py-2 sm:py-3 border-b text-xs sm:text-sm whitespace-nowrap">
+                                                        {{ $checkup->muscle_mass ? number_format($checkup->muscle_mass, 1) : '-' }}
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         @else
-                            <div class="bg-gray-50 dark:bg-gray-800 p-8 rounded-lg text-center mt-4">
-                                <i class="ti ti-clipboard-list text-gray-400 text-4xl mb-3"></i>
-                                <p class="text-gray-500 dark:text-gray-400 font-medium">Belum ada data pemeriksaan.</p>
-                                <p class="text-sm text-gray-400 dark:text-gray-500 mt-3">Silakan hubungi ahli gizi untuk
+                            <div class="bg-gray-50 dark:bg-gray-800 p-4 sm:p-8 rounded-lg text-center mt-3 sm:mt-4">
+                                <i class="ti ti-clipboard-list text-gray-400 text-3xl sm:text-4xl mb-2 sm:mb-3"></i>
+                                <p class="text-gray-500 dark:text-gray-400 font-medium text-sm sm:text-base">Belum ada data pemeriksaan.</p>
+                                <p class="text-xs sm:text-sm text-gray-400 dark:text-gray-500 mt-2 sm:mt-3">Silakan hubungi ahli gizi untuk
                                     melakukan pemeriksaan.</p>
                             </div>
                         @endif
@@ -286,12 +285,12 @@
             </div>
 
             <!-- Right Column - User Profile and Tips -->
-            <div class="lg:col-span-4 col-span-12">
+            <div class="lg:col-span-4 col-span-1">
                 <!-- User Profile Summary -->
-                {{-- <div class="card mb-6">
+                {{-- <div class="card mb-4 sm:mb-6">
                     <div class="card-body">
-                        <h5 class="card-title">Informasi Pribadi</h5>
-                        <p class="card-subtitle">Data profil Anda</p>
+                        <h5 class="card-title text-lg sm:text-xl">Informasi Pribadi</h5>
+                        <p class="card-subtitle text-sm sm:text-base">Data profil Anda</p>
 
                         <div class="flex flex-col space-y-4 mt-8">
                             <div class="flex items-center">
@@ -395,20 +394,20 @@
                 </div> --}}
 
                 <!-- Personalized Tips -->
-                <div class="card mb-6">
+                <div class="card mb-4 sm:mb-6">
                     <div class="card-body">
-                        <h5 class="card-title">Tips dan Rekomendasi Program Diet</h5>
-                        <p class="card-subtitle">Ringkasan rekomendasi personal untuk Anda</p>
+                        <h5 class="card-title text-lg sm:text-xl">Tips dan Rekomendasi Program Diet</h5>
+                        <p class="card-subtitle text-sm sm:text-base">Ringkasan rekomendasi personal untuk Anda</p>
 
-                        <div class="grid grid-cols-1 gap-4 mt-5">
+                        <div class="grid grid-cols-1 gap-3 sm:gap-4 mt-4 sm:mt-5">
                             @if($latestDietRecommendation)
                                 <!-- Display latest diet recommendation content -->
-                                <div class="p-5 rounded-lg border border-{{ $programName == 'Naik BB' ? 'info' : ($programName == 'Turun BB' ? 'warning' : ($programName == 'Turun Lemak' ? 'danger' : 'success')) }}/20 bg-light{{ $programName == 'Naik BB' ? 'info' : ($programName == 'Turun BB' ? 'warning' : ($programName == 'Turun Lemak' ? 'danger' : 'success')) }}/10">
+                                <div class="p-3 sm:p-5 rounded-lg border border-{{ $programName == 'Naik BB' ? 'info' : ($programName == 'Turun BB' ? 'warning' : ($programName == 'Turun Lemak' ? 'danger' : 'success')) }}/20 bg-light{{ $programName == 'Naik BB' ? 'info' : ($programName == 'Turun BB' ? 'warning' : ($programName == 'Turun Lemak' ? 'danger' : 'success')) }}/10">
                                     <div class="">
-                                        <h6 class="font-medium mb-3 text-{{ $programName == 'Naik BB' ? 'info' : ($programName == 'Turun BB' ? 'warning' : ($programName == 'Turun Lemak' ? 'danger' : 'success')) }}">
+                                        <h6 class="font-medium mb-2 sm:mb-3 text-{{ $programName == 'Naik BB' ? 'info' : ($programName == 'Turun BB' ? 'warning' : ($programName == 'Turun Lemak' ? 'danger' : 'success')) }} text-sm sm:text-base">
                                             <i class="ti ti-bulb me-1"></i> Rekomendasi untuk Program {{ $programName }}
                                         </h6>
-                                        <div class="prose prose-sm text-gray-600 mt-2 recommendation-preview" style="max-height: 300px; overflow: hidden;">
+                                        <div class="prose prose-sm text-gray-600 mt-2 recommendation-preview" style="max-height: 250px; sm:max-height: 300px; overflow: hidden;">
                                             @php
                                                 // Use DOMDocument to limit HTML content while preserving formatting
                                                 $dom = new DOMDocument();
@@ -487,8 +486,8 @@
                                             @endphp
                                         </div>
                                         @if($hasMoreContent)
-                                        <div class="mt-4 text-center">
-                                            <a href="{{ route('customer.diet-recommendations.show', $latestDietRecommendation->id) }}" class="btn btn-{{ $programName == 'Naik BB' ? 'info' : ($programName == 'Turun BB' ? 'warning' : ($programName == 'Turun Lemak' ? 'danger' : 'success')) }} hover:shadow-lg transition-all">
+                                        <div class="mt-3 sm:mt-4 text-center">
+                                            <a href="{{ route('customer.diet-recommendations.show', $latestDietRecommendation->id) }}" class="btn btn-sm sm:btn-md btn-{{ $programName == 'Naik BB' ? 'info' : ($programName == 'Turun BB' ? 'warning' : ($programName == 'Turun Lemak' ? 'danger' : 'success')) }} hover:shadow-lg transition-all text-xs sm:text-sm">
                                                 <i class="ti ti-article me-1"></i> Lihat rekomendasi lengkap
                                             </a>
                                         </div>
@@ -497,20 +496,20 @@
                                 </div>
                             @else
                                 <!-- Show message when no diet recommendation is available -->
-                                <div class="p-4 rounded-lg border border-gray-200 bg-light/5">
-                                    <div class="flex">
-                                        <div class="flex-shrink-0 mr-3">
-                                            <div class="w-10 h-10 rounded-full bg-lightinfo flex items-center justify-center mr-4">
+                                <div class="p-3 sm:p-4 rounded-lg border border-gray-200 bg-light/5">
+                                    <div class="flex flex-col sm:flex-row items-center sm:items-start">
+                                        <div class="flex-shrink-0 mb-3 sm:mb-0 sm:mr-3">
+                                            <div class="w-10 h-10 rounded-full bg-lightinfo flex items-center justify-center sm:mr-4">
                                                 <i class="ti ti-info-circle text-info"></i>
                                             </div>
                                         </div>
-                                        <div>
-                                            <h6 class="font-medium mb-1">Belum Ada Rekomendasi Diet</h6>
-                                            <p class="text-sm text-gray-600 mt-2">
+                                        <div class="text-center sm:text-left">
+                                            <h6 class="font-medium mb-1 text-sm sm:text-base">Belum Ada Rekomendasi Diet</h6>
+                                            <p class="text-xs sm:text-sm text-gray-600 mt-1 sm:mt-2">
                                                 Anda belum memiliki rekomendasi diet personal. Silakan hubungi ahli gizi atau asisten ahli gizi untuk mendapatkan pemeriksaan dan rekomendasi diet yang sesuai dengan kebutuhan Anda.
                                             </p>
-                                            <div class="mt-3">
-                                                {{-- <a href="{{ route('customer.consultation-schedules.create') }}" class="btn btn-sm btn-primary">
+                                            <div class="mt-2 sm:mt-3">
+                                                {{-- <a href="{{ route('customer.consultation-schedules.create') }}" class="btn btn-xs sm:btn-sm btn-primary">
                                                     <i class="ti ti-calendar-plus text-xs mr-1"></i> Jadwalkan Konsultasi
                                                 </a> --}}
                                             </div>
@@ -578,4 +577,35 @@
     <script src="{{ asset('assets/libs/apexcharts/dist/apexcharts.min.js') }}"></script>
     <script src="{{ asset('assets/js/dashboards/dashboard.js') }}"></script>
     <script src="{{ asset('assets/js/dashboards/diet-charts/customer-dashboard-charts.js') }}"></script>
+    <script>
+        // Add responsive chart options for mobile view
+        document.addEventListener('DOMContentLoaded', function() {
+            const isMobile = window.innerWidth < 768;
+            
+            // Global chart options for responsive design
+            if (typeof ApexCharts !== 'undefined') {
+                ApexCharts.prototype.setResponsiveOptions = function() {
+                    if (isMobile) {
+                        this.w.config.chart.toolbar.show = false;
+                        this.w.config.chart.height = 250;
+                        this.w.config.legend.fontSize = '10px';
+                        this.w.config.xaxis.labels.style.fontSize = '10px';
+                        this.w.config.yaxis.labels.style.fontSize = '10px';
+                        
+                        if (this.w.config.chart.type === 'line') {
+                            this.w.config.markers.size = 3;
+                        }
+                    }
+                };
+
+                // Modify global default options for better mobile experience
+                const originalInit = ApexCharts.prototype.init;
+                ApexCharts.prototype.init = function() {
+                    const result = originalInit.apply(this, arguments);
+                    this.setResponsiveOptions();
+                    return result;
+                };
+            }
+        });
+    </script>
 @endpush

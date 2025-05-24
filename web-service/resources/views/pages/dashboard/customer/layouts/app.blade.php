@@ -31,7 +31,7 @@
                 <!--  Header End -->
 
                 <!-- Main content -->
-                <div class="py-6 px-5 pt-3">
+                <div class="py-3 sm:py-6 px-3 sm:px-5 pt-2 sm:pt-3">
                     @yield('content')
                 </div>
 
