@@ -1,28 +1,28 @@
 @extends('pages.dashboard.admin.layouts.app')
 
 @section('content')
-    <div class="card bg-lightsuccess dark:bg-darkinfo shadow-none dark:shadow-none position-relative overflow-hidden mb-6">
-        <div class="card-body md:py-3 py-5">
-            <div class="flex items-center grid grid-cols-12 gap-6">
-                <div class="col-span-9">
-                    <h4 class="font-semibold text-xl text-dark dark:text-white mb-3">
+    <div class="card bg-lightsuccess dark:bg-darkinfo shadow-none dark:shadow-none position-relative overflow-hidden mb-4 sm:mb-6">
+        <div class="card-body py-4 sm:py-5 md:py-3">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div class="w-full sm:w-auto">
+                    <h4 class="font-semibold text-lg sm:text-xl text-dark dark:text-white mb-2 sm:mb-3">
                         {{ __('app.customer_checkup_data') }}
                     </h4>
-                    <ol class="flex items-center whitespace-nowrap" aria-label="Breadcrumb">
+                    <ol class="flex flex-wrap sm:flex-nowrap items-center text-xs sm:text-sm" aria-label="Breadcrumb">
                         <li class="inline-flex items-center">
-                            <a class="flex items-center text-sm text-gray-500 hover:text-primary focus:outline-none focus:text-primary dark:focus:text-primary leading-tight" href="{{ route('dashboard') }}">
+                            <a class="flex items-center text-gray-500 hover:text-primary focus:outline-none focus:text-primary dark:focus:text-primary leading-tight" href="{{ route('dashboard') }}">
                                 {{ __('app.home') }}
                             </a>
-                            <i class="ti ti-slash text-sm leading-tight font-medium mx-2"></i>
+                            <i class="ti ti-slash leading-tight font-medium mx-1 sm:mx-2"></i>
                         </li>
-                        <li class="inline-flex items-center text-sm font-semibold text-gray-800 truncate dark:text-gray-200 leading-tight" aria-current="page">
+                        <li class="inline-flex items-center font-semibold text-gray-800 truncate dark:text-gray-200 leading-tight" aria-current="page">
                             {{ __('app.customer_checkup_data') }}
                         </li>
                     </ol>
                 </div>
-                <div class="col-span-3">
-                    <div class="flex justify-end">
-                        <a href="{{ route('checkups.create') }}" class="btn btn-primary">
+                <div class="w-full sm:w-auto mt-2 sm:mt-0">
+                    <div class="flex justify-start sm:justify-end">
+                        <a href="{{ route('checkups.create') }}" class="btn btn-xs sm:btn-sm md:btn-md btn-primary">
                             <i class="ti ti-plus me-1"></i> {{ __('app.add_checkup') }}
                         </a>
                     </div>
@@ -31,35 +31,37 @@
         </div>
     </div>
 
-    <div class="grid grid-cols-12 gap-6">
+    <div class="grid grid-cols-12 gap-4 sm:gap-6">
         <div class="col-span-12">
             <div class="card">
                 <div class="card-body">
-                    <h3 class="card-title mb-4 flex justify-between items-center">
-                        <span>{{ __('app.customer_checkup_data') }}</span>
-                        <span class="text-sm text-gray-500 font-normal">{{ __('app.latest_checkup_note') }}</span>
-                    </h3>
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-3 sm:mb-4">
+                        <h3 class="card-title text-base sm:text-lg mb-1 sm:mb-0">{{ __('app.customer_checkup_data') }}</h3>
+                        <span class="text-xs sm:text-sm text-gray-500 font-normal">{{ __('app.latest_checkup_note') }}</span>
+                    </div>
                     
                     @if(session('success'))
-                        <div class="bg-lightsuccess dark:bg-darksuccess text-success px-4 py-3 rounded relative mb-4" role="alert">
-                            <span class="block sm:inline">{{ session('success') }}</span>
-                            <button type="button" class="absolute top-0 bottom-0 right-0 px-4 py-3" onclick="this.parentElement.style.display='none'">
-                                <i class="ti ti-x"></i>
+                        <div class="bg-lightsuccess dark:bg-darksuccess text-success px-3 sm:px-4 py-2 sm:py-3 rounded relative mb-3 sm:mb-4" role="alert">
+                            <span class="block text-xs sm:text-sm">{{ session('success') }}</span>
+                            <button type="button" class="absolute top-0 bottom-0 right-0 px-3 sm:px-4 py-2 sm:py-3" onclick="this.parentElement.style.display='none'">
+                                <i class="ti ti-x text-xs sm:text-sm"></i>
                             </button>
                         </div>
                     @endif
 
                     @if(session('error'))
-                        <div class="bg-lighterror dark:bg-darkerror text-error px-4 py-3 rounded relative mb-4" role="alert">
-                            <span class="block sm:inline">{{ session('error') }}</span>
-                            <button type="button" class="absolute top-0 bottom-0 right-0 px-4 py-3" onclick="this.parentElement.style.display='none'">
-                                <i class="ti ti-x"></i>
+                        <div class="bg-lighterror dark:bg-darkerror text-error px-3 sm:px-4 py-2 sm:py-3 rounded relative mb-3 sm:mb-4" role="alert">
+                            <span class="block text-xs sm:text-sm">{{ session('error') }}</span>
+                            <button type="button" class="absolute top-0 bottom-0 right-0 px-3 sm:px-4 py-2 sm:py-3" onclick="this.parentElement.style.display='none'">
+                                <i class="ti ti-x text-xs sm:text-sm"></i>
                             </button>
                         </div>
                     @endif
 
-                    <div class="overflow-x-auto">
-                        <table class="table-auto w-full text-left border-spacing-0 border-separate">
+                    <div class="overflow-x-auto -mx-4 sm:-mx-0">
+                        <div class="inline-block min-w-full align-middle">
+                            <div class="overflow-hidden">
+                                <table class="table-auto w-full text-left border-spacing-0 border-separate">
                             <thead>
                                 <tr>
                                     <th class="px-4 py-3 border-b font-semibold text-gray-800 dark:text-gray-200">{{ __('app.number') }}</th>
@@ -135,10 +137,14 @@
                                 @endforelse
                             </tbody>
                         </table>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Add pagination component -->
-                    @include('components.pagination', ['paginator' => $checkups, 'perPage' => $perPage, 'perPageOptions' => $perPageOptions])
+                    <div class="mt-4 pt-2">
+                        @include('components.pagination', ['paginator' => $checkups, 'perPage' => $perPage, 'perPageOptions' => $perPageOptions])
+                    </div>
                 </div>
             </div>
         </div>
