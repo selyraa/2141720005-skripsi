@@ -76,7 +76,7 @@
 
                             <!-- Notifications DD -->
 
-                            <div
+                            {{-- <div
                                 class="hs-dropdown [--strategy:absolute] [--adaptive:none] sm:[--trigger:hover] sm:relative group/menu">
                                 <a id="hs-dropdown-hover-event-notification"
                                     class="relative hs-dropdown-toggle h-10 w-10 text-link dark:text-darklink cursor-pointer hover:bg-lightprimary  hover:text-primary dark:hover:bg-darkprimary flex justify-center items-center rounded-full group-hover/menu:bg-lightprimary group-hover/menu:text-primary">
@@ -166,7 +166,7 @@
                                         </a>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
 
                             <!-- User Profile Dropdown -->
                             <div
@@ -192,20 +192,10 @@
                                         </div>
                                     </div>
                                     <div class="py-2">
-                                        <a href="javascript:void(0)"
-                                            class="dropdown-menu-link py-2 px-5 hover:bg-lightprimary hover:dark:bg-darkprimary flex items-center gap-2">
-                                            <i class="ti ti-user-circle text-lg"></i>
-                                            <span>{{ __('app.profile') }}</span>
-                                        </a>
                                         <a href="{{ route('account.settings') }}"
                                             class="dropdown-menu-link py-2 px-5 hover:bg-lightprimary hover:dark:bg-darkprimary flex items-center gap-2">
                                             <i class="ti ti-settings text-lg"></i>
                                             <span>{{ __('app.account_settings') }}</span>
-                                        </a>
-                                        <a href="javascript:void(0)"
-                                            class="dropdown-menu-link py-2 px-5 hover:bg-lightprimary hover:dark:bg-darkprimary flex items-center gap-2">
-                                            <i class="ti ti-message-dots text-lg"></i>
-                                            <span>{{ __('Pesan Saya') }}</span>
                                         </a>
                                         <hr class="my-2 border-gray-200 dark:border-gray-700">
                                         <form action="{{ route('logout') }}" method="POST">
