@@ -1,2 +1,14 @@
 User-agent: *
-Disallow:
+Disallow: /admin/
+Disallow: /dashboard/
+Disallow: /login
+Disallow: /register
+Disallow: /password/
+Disallow: /api/
+Disallow: /storage/
+Disallow: /laravel-filemanager/
+
+# Allow important pages to be indexed
+Allow: /
+Allow: /landing
+

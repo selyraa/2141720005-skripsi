@@ -1,0 +1,54 @@
+services:
+  app:
+    build: web-service
+    container_name: nutcastle-app
+    restart: unless-stopped
+    ports:
+      - "11200:80"
+    environment:
+      - SERVER_NAME=:80 # disable https
+    volumes:
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      - mysql
+
+  predictor:
+    build: prediction-service
+    container_name: nutcastle-predictor
+    restart: unless-stopped
+    ports:
+      - "11201:5000"
+    volumes:
+      - ./prediction-service:/app
+
+  mysql:
+      image: mysql:8
+      container_name: nutcastle-mysql
+      restart: unless-stopped
+      environment:
+        - MYSQL_DATABASE=sql_nutcastle_ra
+        - MYSQL_USER=sql_nutcastle_ra
+        - MYSQL_PASSWORD=1aaf8bd1d58bf
+        - MYSQL_ROOT_PASSWORD=rootpassword
+      volumes:
+        - mysql_data:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: nutcastle-phpmyadmin
+    restart: unless-stopped
+    ports:
+      - "11203:80"
+    environment:
+      - PMA_HOST=mysql
+      - PMA_PORT=3306
+      - UPLOAD_LIMIT=64M
+    depends_on:
+      - mysql
+
+
+volumes:
+  caddy_data:
+  caddy_config:
+  mysql_data:
