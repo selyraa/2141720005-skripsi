@@ -12,3 +12,4 @@ Disallow: /laravel-filemanager/
 Allow: /
 Allow: /landing
 
+p
